@@ -26,7 +26,9 @@
   home.packages = with pkgs; [
     docker-client
     colima
+    raycast
     keeweb
+    lens
     bun
     nodejs
     devenv
