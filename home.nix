@@ -62,6 +62,13 @@
       source = ./nvim/lua;
       recursive = true;
     };
+    # "/Library/Keyboard Layouts/altgr-wr.icns".source = ./altgr-weur/altgr-weur.icns;
+    # "/Library/Keyboard Layouts/altgr-wr.keylayout".source = ./altgr-weur/altgr-weur.keylayout;
+    ".config/ghostty/config".text = ''
+      font-family = JetBrainsMono Nerd Font Mono
+      font-size = 16
+      theme = Kanagawa Wave
+    '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -83,6 +90,15 @@
     PROMPT = "$ ";
     # RPROMPT = "%~";
   };
+
+  # programs.ghostty = {
+  #   enable = true;
+  #   settings = {
+  #     font-family = "JetBrainsMono Nerd Font Mono";
+  #     font-size = 16;
+  #     theme = "Kanagawa Wave";
+  #   };
+  # };
 
   programs.kitty = {
     enable = true;
