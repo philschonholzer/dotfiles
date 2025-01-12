@@ -258,23 +258,23 @@
       enable = true;
     };
 
-    # profileExtra = ''
-    #   # Add paths for NIX to PATH. https://checkoway.net/musings/nix/#fixing-shell-integration
-    #   if [[ -f '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-    #     source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    #   fi    
-    # '';
-
-    # sessionVariables = {
-    #   EDITOR = "code --wait";
-    #   PROMPT = "$ ";
-    #   RPROMPT = "%~";
-    # };
+    initExtra = ''
+      c() {
+        local dir
+        dir=$(fd -H -d 3 -t f -g '.envrc' ~/Development --exec dirname | sed 's|^/Users/philip/Development||' | fzf)
+        if [ -z "$dir" ]; then
+          echo "No selection made."
+          return 1
+        fi
+        cd ~/Development/"$dir" || return 1
+      }
+    '';
 
     shellAliases = {
       pn = "pnpm";
       mysql-proxy-apptiva = "cloud-sql-proxy kubernetes-283408:europe-west6:apptiva-mysql-8-common -p 3308";
       flake-init = "nix flake init --template github:the-nix-way/dev-templates#empty";
+      v = "c && vi .";
     };
 
     # initExtra = "[ -f ~/.config/tabtab/zsh/__tabtab.zsh ] && . ~/.config/tabtab/zsh/__tabtab.zsh || true";
