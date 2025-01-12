@@ -286,7 +286,6 @@
       plugins = [
         "git"
         "history"
-        "sudo"
         "npm"
         "docker"
       ];
