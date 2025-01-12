@@ -291,6 +291,9 @@
         "npm"
         "docker"
       ];
+      extraConfig = ''
+        DISABLE_AUTO_TITLE=true
+      '';
     };
   };
 
