@@ -40,7 +40,7 @@
     gnused
     nixpkgs-fmt
     lazydocker
-    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin]) 
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     nerd-fonts.jetbrains-mono
   ];
 
@@ -107,8 +107,8 @@
       "cmd+t" = "new_tab_with_cwd";
     };
     font = {
-     name = "JetBrainsMono Nerd Font Mono";
-     size = 16;
+      name = "JetBrainsMono Nerd Font Mono";
+      size = 16;
     };
     themeFile = "kanagawa";
     settings = {
@@ -122,7 +122,9 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      gui = {sidePanelWidth = 0.2;};
+      gui = {
+        sidePanelWidth = 0.2;
+      };
       git = {
         paging = {
           colorArgs = "always";
@@ -141,7 +143,8 @@
     keyMode = "vi";
     historyLimit = 10000;
     plugins = with pkgs; [
-      { plugin = tmuxPlugins.catppuccin;
+      {
+        plugin = tmuxPlugins.catppuccin;
         extraConfig = ''
           ### https://github.com/catppuccin/tmux/tree/697087f593dae0163e01becf483b192894e69e33?tab=readme-ov-file#config-1 2024-05-15
           set -g @catppuccin_window_left_separator ""
@@ -158,7 +161,7 @@
           set -g @catppuccin_status_modules_right "directory session"
 
           set -g @catppuccin_directory_text "#{pane_current_path}"
-        ''; 
+        '';
       }
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.resurrect
@@ -190,11 +193,11 @@
     enable = true;
     keymap = {
       manager.preprend_keymap = [
-        { 
+        {
           run = ''
             shell 'qlmanage -p "$@"' --confirm
-          ''; 
-          on = [ "<C-p>" ]; 
+          '';
+          on = [ "<C-p>" ];
         }
       ];
     };
@@ -207,7 +210,7 @@
     vimAlias = true;
     vimdiffAlias = true;
     extraLuaPackages = ps: [ ps.magick ];
-    extraPackages = with pkgs; [ 
+    extraPackages = with pkgs; [
       imagemagick
       tree-sitter
       cargo
@@ -222,7 +225,11 @@
     delta.enable = true;
     userEmail = "philip.schoenholzer@apptiva.ch";
     userName = "Philip Schönholzer";
-    ignores = [ "*~" ".DS_Store" "/.direnv" ];
+    ignores = [
+      "*~"
+      ".DS_Store"
+      "/.direnv"
+    ];
     extraConfig = {
       core = {
         # editor = "code --wait";
@@ -245,7 +252,7 @@
 
   # Zsh
   programs.zsh = {
-    enable = true; 
+    enable = true;
     enableCompletion = false;
     syntaxHighlighting = {
       enable = true;
@@ -288,8 +295,8 @@
 
   # Ssh
   programs.ssh = {
-    enable = true; 
-    includes = ["~/.colima/ssh_config"];
+    enable = true;
+    includes = [ "~/.colima/ssh_config" ];
 
     matchBlocks = {
       "Github" = {
@@ -314,7 +321,6 @@
       };
     };
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
