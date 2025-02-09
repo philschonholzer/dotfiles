@@ -42,6 +42,7 @@
     lazydocker
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     nerd-fonts.jetbrains-mono
+    glow
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -69,6 +70,7 @@
       font-size = 16
       theme = Kanagawa Wave
     '';
+    "repo-preview.sh".source = ./repo-preview.sh;
   };
 
   # Home Manager can also manage your environment variables through
@@ -219,6 +221,13 @@
 
   };
 
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Monokai Extended";
+    };
+  };
+
   # Git
   programs.git = {
     enable = true;
@@ -261,12 +270,16 @@
     initExtra = ''
       c() {
         local dir
-        dir=$(fd -H -d 3 -t f -g '.envrc' ~/Development --exec dirname | sed 's|^/Users/philip/Development||' | fzf)
+        dir=$(fd -H -d 3 -t d -g '.git' ~/Development ~/.config --exec dirname | \
+              awk -F'/' '{short=substr($0, index($0,$5)); print short "\t" $0}' | \
+              fzf --with-nth=1 \
+                  --preview '~/repo-preview.sh {2}' | \
+              cut -f2)
         if [ -z "$dir" ]; then
           echo "No selection made."
           return 1
         fi
-        cd ~/Development/"$dir" || return 1
+        cd "$dir" || return 
       }
     '';
 
