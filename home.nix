@@ -136,61 +136,6 @@
     };
   };
 
-  programs.tmux = {
-    enable = true;
-    terminal = "xterm-kitty";
-    mouse = true;
-    baseIndex = 1;
-    clock24 = true;
-    keyMode = "vi";
-    historyLimit = 10000;
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.catppuccin;
-        extraConfig = ''
-          ### https://github.com/catppuccin/tmux/tree/697087f593dae0163e01becf483b192894e69e33?tab=readme-ov-file#config-1 2024-05-15
-          set -g @catppuccin_window_left_separator ""
-          set -g @catppuccin_window_right_separator " "
-          set -g @catppuccin_window_middle_separator " █"
-          set -g @catppuccin_window_number_position "right"
-
-          set -g @catppuccin_window_default_fill "number"
-          set -g @catppuccin_window_default_text "#W"
-
-          set -g @catppuccin_window_current_fill "number"
-          set -g @catppuccin_window_current_text "#W"
-
-          set -g @catppuccin_status_modules_right "directory session"
-
-          set -g @catppuccin_directory_text "#{pane_current_path}"
-        '';
-      }
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.resurrect
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
-        '';
-      }
-    ];
-    extraConfig = ''
-      set -gq allow-passthrough on
-      set -g visual-activity off
-      set -g default-command "$SHELL"
-      set -g default-shell "$SHELL"
-
-      # set left and right status bar
-      set -g allow-rename off
-      set -g status-interval 5
-      set -g status-left-length 100
-      set -g status-right-length 100
-      # renumber when window is closed
-      set -g renumber-window on
-    '';
-  };
-
   programs.yazi = {
     enable = true;
     keymap = {
