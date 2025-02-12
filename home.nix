@@ -230,11 +230,13 @@
 
     shellAliases = {
       pn = "pnpm";
+      p = "pnpm";
       mysql-proxy-apptiva = "cloud-sql-proxy kubernetes-283408:europe-west6:apptiva-mysql-8-common -p 3308";
       flake-init = "nix flake init --template github:the-nix-way/dev-templates#empty";
       v = "c && vi .";
       hms = "home-manager switch";
       hme = "home-manager edit";
+      lg = "lazygit";
     };
 
     # initExtra = "[ -f ~/.config/tabtab/zsh/__tabtab.zsh ] && . ~/.config/tabtab/zsh/__tabtab.zsh || true";
