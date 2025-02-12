@@ -226,6 +226,8 @@
         fi
         cd "$dir" || return 
       }
+
+      source ~/completion-for-pnpm.zsh
     '';
 
     shellAliases = {
