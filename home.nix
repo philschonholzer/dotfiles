@@ -30,7 +30,7 @@
     keeweb
     lens
     bun
-    nodejs
+    nodejs_23
     devenv
     ghc
     wget
