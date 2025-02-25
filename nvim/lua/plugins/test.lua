@@ -1,7 +1,10 @@
 return {
-	{ "nvim-neotest/neotest-jest" },
 	{
 		"nvim-neotest/neotest",
-		opts = { adapters = { "neotest-jest" } },
+		dependencies = {
+			"marilari88/neotest-vitest",
+			"nvim-neotest/neotest-jest",
+		},
+		opts = { adapters = { "neotest-jest", ["neotest-vitest"] = {} } },
 	},
 }
