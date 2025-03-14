@@ -27,7 +27,7 @@ return {
 		end
 
 		opts.formatters = opts.formatters or {}
-		opts.formatters.biome = {
+		opts.formatters["biome-check"] = {
 			require_cwd = true,
 		}
 	end,
