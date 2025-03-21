@@ -285,6 +285,13 @@
         user = "git";
         identityFile = "~/.ssh/id_rsa_bb";
       };
+      "Infomaniak" = {
+        host = "phischer";
+        hostname = "91.214.190.25";
+        user = "debian";
+        identityFile = "~/.ssh/id_rsa_infomaniak";
+        forwardAgent = true;
+      };
       "Default" = {
         host = "*";
         extraOptions = {
