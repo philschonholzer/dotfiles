@@ -43,6 +43,7 @@
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     nerd-fonts.jetbrains-mono
     glow
+    superfile
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -59,10 +60,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     "completion-for-pnpm.zsh".source = ./completion-for-pnpm.zsh;
-    ".config/nvim/lua/" = {
-      source = ./nvim/lua;
-      recursive = true;
-    };
     # "/Library/Keyboard Layouts/altgr-wr.icns".source = ./altgr-weur/altgr-weur.icns;
     # "/Library/Keyboard Layouts/altgr-wr.keylayout".source = ./altgr-weur/altgr-weur.keylayout;
     ".config/ghostty/config".text = ''
@@ -71,6 +68,10 @@
       theme = Kanagawa Wave
     '';
     "repo-preview.sh".source = ./repo-preview.sh;
+  };
+
+  xdg.configFile = {
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
   };
 
   # Home Manager can also manage your environment variables through
