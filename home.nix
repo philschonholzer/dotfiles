@@ -14,7 +14,15 @@
       bitwarden-desktop
       nodejs_24
       pnpm
+      wl-clipboard
     ];
+  };
+
+  home.file = {
+    "repo-preview.sh" = {
+      source = ./repo-preview.sh;
+      executable = true;
+    };
   };
 
   programs.firefox.enable = true;
