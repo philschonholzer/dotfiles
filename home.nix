@@ -12,6 +12,7 @@
 
     packages = with pkgs; [
       bitwarden-desktop
+      slack
       nodejs_24
       pnpm
       wl-clipboard
@@ -116,6 +117,7 @@
 
   wayland.windowManager.hyprland.settings = {
     "$passwordManager" = "bitwarden";
+    "$messenger" = "slack";
 
     input = {
       left_handed = true;
