@@ -13,6 +13,7 @@
     packages = with pkgs; [
       bitwarden-desktop
       slack
+      telegram-desktop
       nodejs_24
       pnpm
       wl-clipboard
