@@ -30,7 +30,7 @@
     keeweb
     lens
     bun
-    nodejs_23
+    nodejs_24
     devenv
     ghc
     wget
@@ -223,7 +223,7 @@
       }
     ];
 
-    initExtra = ''
+    initContent = ''
       c() {
         local dir
         dir=$(fd -H -d 3 -t d -g '.git' ~/Development ~/.config --exec dirname | \
@@ -294,6 +294,25 @@
         user = "debian";
         identityFile = "~/.ssh/id_rsa_infomaniak";
         forwardAgent = true;
+      };
+      "VPN" = {
+        host = "vpn";
+        hostname = "91.214.190.25";
+        port = 22;
+        user = "debian";
+        identityFile = "~/.ssh/id_rsa_infomaniak";
+        remoteForwards = [
+          {
+            bind.port = 9933;
+            host.address = "localhost";
+            host.port = 22;
+          }
+          {
+            bind.port = 9999;
+            host.address = "localhost";
+            host.port = 3000;
+          }
+        ];
       };
       "Default" = {
         host = "*";
