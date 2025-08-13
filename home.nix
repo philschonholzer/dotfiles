@@ -127,4 +127,10 @@
       force_no_accel = 0;
     };
   };
+  services.hypridle.settings.listener = lib.mkForce [
+    {
+      timeout = 300;
+      on-timeout = "loginctl lock-session";
+    }
+  ];
 }
