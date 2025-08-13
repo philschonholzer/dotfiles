@@ -44,6 +44,8 @@
     nerd-fonts.jetbrains-mono
     glow
     superfile
+    typst
+    typstyle
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
