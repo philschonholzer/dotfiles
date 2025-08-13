@@ -48,6 +48,7 @@
     layout = "us";
     variant = "altgr-intl";
   };
+  services.gnome.gnome-keyring.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.philip = {
