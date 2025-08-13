@@ -122,6 +122,9 @@
     input = {
       left_handed = true;
       natural_scroll = true;
+      accel_profile = "adaptive";
+      sensitivity = -0.1; # -1.0 - 1.0, 0 means no modification.
+      force_no_accel = 0;
     };
   };
 }
