@@ -18,6 +18,7 @@
       nodejs_24
       pnpm
       wl-clipboard
+      keymapp
     ];
   };
 
