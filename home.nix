@@ -18,7 +18,9 @@
       nodejs_24
       pnpm
       wl-clipboard
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       keymapp
+      lens
     ];
   };
 
