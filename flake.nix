@@ -30,8 +30,8 @@
         home-manager.nixosModules.home-manager
         {
           omarchy = {
-            full_name = "Philip Schoenholzer";
-            email_address = "philip@schoenholzer.com";
+            full_name = "Philip Schönholzer";
+            email_address = "philip.schoenholzer@apptiva.ch";
             theme = "nord";
             monitors = ["DP-3, 5120x2160, 0x0, 1.6"];
             quick_app_bindings = [
