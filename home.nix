@@ -105,6 +105,8 @@
       enable = true;
     };
 
+    historySubstringSearch.enable = true;
+
     initContent = ''
       c() {
         local dir
