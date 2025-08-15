@@ -39,7 +39,7 @@
               "SUPER, A, exec, $webapp=https://chat.mistral.ai/chat --profile-directory=Privat"
               "SUPER SHIFT, A, exec, $webapp=https://chatgpt.com --profile-directory=Privat"
               "SUPER, Y, exec, $webapp=https://youtube.com/ --profile-directory=Privat"
-              "SUPER, M, exec, $webapp=https://mail.missiveapp.com/# --profile-directory=Work"
+              "SUPER, M, exec, $webapp=https://mail.missiveapp.com/ --profile-directory=Work"
               "SUPER SHIFT, M, exec, $webapp=https://calendar.google.com/ --profile-directory=Work"
               "SUPER, T, exec, $webapp=https://trello.com/ --profile-directory=Work"
 
