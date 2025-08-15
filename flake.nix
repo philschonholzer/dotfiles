@@ -50,6 +50,7 @@
               "SUPER, G, exec, $messenger"
               "SUPER, O, exec, obsidian -disable-gpu"
               "SUPER, slash, exec, $passwordManager"
+              "SUPER SHIFT, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
             ];
           };
 
