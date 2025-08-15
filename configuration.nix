@@ -79,7 +79,19 @@
     neovim
     wget
     gcc
+    # For Prisma:
+    nodePackages_latest.pnpm
+    nodePackages_latest.vercel
+    nodePackages_latest.prisma
+    openssl
+    nodejs_24
+    # End Prisma
   ];
+
+  # Prisma:
+  environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+  environment.variables.PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+  environment.variables.PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
 
   environment.variables.EDITOR = "nvim";
 
