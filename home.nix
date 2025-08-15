@@ -143,4 +143,5 @@
       on-timeout = "loginctl lock-session";
     }
   ];
+  services.cliphist.enable = true;
 }
