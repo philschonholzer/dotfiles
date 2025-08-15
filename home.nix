@@ -43,8 +43,13 @@
     extraLuaPackages = ps: [ps.magick];
     extraPackages = with pkgs; [
       imagemagick
+      websocat
       cargo
       lua
+      lua-language-server
+      stylua
+      tinymist
+      ghostscriptX
     ];
   };
 
