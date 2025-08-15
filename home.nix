@@ -33,6 +33,11 @@
 
   programs.firefox.enable = true;
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -51,6 +56,46 @@
       tinymist
       ghostscriptX
     ];
+  };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui = {
+        sidePanelWidth = 0.2;
+      };
+      git = {
+        paging = {
+          colorArgs = "always";
+          pager = "delta --dark --paging=never --syntax-theme base16-256 -s";
+        };
+      };
+    };
+  };
+
+  # Git
+  programs.git = {
+    enable = true;
+    delta.enable = true;
+    ignores = [
+      "*~"
+      ".DS_Store"
+      "/.direnv"
+    ];
+    extraConfig = {
+      core = {
+        # editor = "code --wait";
+      };
+      pull = {
+        rebase = true;
+      };
+      rebase = {
+        autoStash = true;
+      };
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
 
   programs.zsh = {
