@@ -19,7 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
-    { import = "lazyvim.plugins.extras.formatting.biome" },
+    -- { import = "lazyvim.plugins.extras.formatting.biome" },
     { import = "plugins" },
   },
   defaults = {
