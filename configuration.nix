@@ -13,7 +13,10 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.keyboard.zsa.enable = true;
@@ -51,7 +54,21 @@
     layout = "us";
     variant = "altgr-intl";
   };
-  services.gnome.gnome-keyring.enable = true;
+
+  services.greetd.settings.default_session.user = "philip";
+
+  # Prevent logs from overriding tuigreet: https://github.com/apognu/tuigreet/issues/190
+  systemd.services.greetd.serviceConfig = {
+    StandardInput = "tty";
+    # Without this errors will spam on screen
+    StandardOutput = "tty";
+    StandardError = "journal";
+    # Without these bootlogs will spam on screen
+    TTYPath = "/dev/tty1";
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.philip = {
@@ -66,9 +83,24 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
+
+    # Optimize storage
+    # You can also manually optimize the store via:
+    #    nix-store --optimise
+    # Refer to the following link for more details:
+    # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+    auto-optimise-store = true;
+
     substituters = ["https://hyprland.cachix.org"];
     trusted-substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
+  # Perform garbage collection weekly to maintain low disk usage
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
   };
 
   # Allow unfree packages
@@ -78,6 +110,8 @@
       # outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
+    config.allowUnfree = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
