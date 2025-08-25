@@ -29,6 +29,7 @@ return {
 
       opts.formatters = opts.formatters or {}
       opts.formatters["biome-check"] = {
+        command = "biome",
         require_cwd = true,
       }
     end,
@@ -46,7 +47,7 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       opts.ensure_installed = vim.tbl_filter(function(value)
         return not vim.tbl_contains({ "biome" }, value)
