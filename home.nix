@@ -22,6 +22,16 @@
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       keymapp
       lens
+      p7zip
+      insync
+      insync-nautilus
+      dbeaver-bin
+      pinta
+      papers
+      xournalpp
+      onlyoffice-desktopeditors
+      pandoc
+      neofetch
     ];
   };
 
