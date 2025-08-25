@@ -72,6 +72,7 @@
       stylua
       tinymist
       ghostscriptX
+      marksman
     ];
   };
 
