@@ -11,6 +11,7 @@
     stateVersion = "25.05";
 
     packages = with pkgs; [
+      unstable.opencode
       ente-auth
       bitwarden-desktop
       slack

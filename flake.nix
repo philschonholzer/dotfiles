@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     omarchy-nix = {
       url = "github:henrysipp/omarchy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,10 +22,14 @@
     home-manager,
     omarchy-nix,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
+    overlays = import ./overlays.nix {inherit inputs;};
     # Used with `nixos-rebuild --flake .#<hostname>`
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit outputs;};
       modules = [
         ./configuration.nix
         omarchy-nix.nixosModules.default

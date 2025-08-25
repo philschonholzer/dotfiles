@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  outputs,
   ...
 }: {
   imports = [
@@ -71,7 +72,12 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    overlays = [
+      # outputs.overlays.additions
+      # outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
