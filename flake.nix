@@ -50,6 +50,7 @@
               "SUPER, T, exec, $webapp=https://trello.com/ --profile-directory=Work"
 
               "SUPER, return, exec, $terminal"
+              "SUPER SHIFT, R, exec, pkill waybar && waybar &"
               "SUPER, F, exec, $fileManager"
               "SUPER, N, exec, $terminal -e nvim"
               "SUPER, D, exec, $terminal -e lazydocker"
@@ -57,6 +58,8 @@
               "SUPER, O, exec, obsidian -disable-gpu"
               "SUPER, slash, exec, $passwordManager"
               "SUPER SHIFT, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
+              "SUPER ALT, ESCAPE, exec, systemctl suspend"
+              "SUPER SHIFT, return, fullscreen,"
             ];
           };
 
