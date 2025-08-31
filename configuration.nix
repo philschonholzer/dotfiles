@@ -80,6 +80,8 @@
   };
 
   programs.zsh.enable = true;
+  programs.appimage.enable = true;
+  programs.seahorse.enable = true;
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];

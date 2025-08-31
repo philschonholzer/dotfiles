@@ -4,7 +4,39 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  tableplusAppImage = "${config.home.homeDirectory}/Applications/TablePlus-x64.AppImage";
+  kdriveAppImage = "${config.home.homeDirectory}/Applications/kDrive-3.7.5.20250812-amd64.AppImage";
+
+  tableplusEnv = pkgs.buildFHSEnv {
+    name = "tableplus";
+    targetPkgs = pkgs:
+      with pkgs; [
+        glib
+        gnutls
+        libsecret
+      ];
+    runScript = "${pkgs.appimage-run}/bin/appimage-run ${tableplusAppImage}";
+  };
+  kdriveEnv = pkgs.buildFHSEnv {
+    name = "kdrive";
+    targetPkgs = pkgs:
+      with pkgs; [
+        glib
+        gnutls
+        libsecret
+      ];
+    runScript = ''
+      # Force X11 so Qt doesn’t explode under Wayland/Hyprland
+      export XDG_SESSION_TYPE=x11
+      export QT_QPA_PLATFORM=xcb
+      unset WAYLAND_DISPLAY
+      unset SESSION_MANAGER
+
+      exec ${pkgs.appimage-run}/bin/appimage-run ${kdriveAppImage} "$@"
+    '';
+  };
+in {
   home = {
     username = "philip";
     homeDirectory = "/home/philip";
@@ -32,6 +64,11 @@
       onlyoffice-desktopeditors
       pandoc
       neofetch
+      mysql84
+      tableplusEnv
+      kchat
+      kdriveEnv
+      gcr
     ];
   };
 
@@ -83,6 +120,7 @@
       tinymist
       ghostscriptX
       marksman
+      lsof
     ];
   };
 
@@ -158,6 +196,8 @@
       v = "c && vi .";
       nrs = "sudo nixos-rebuild switch";
       lg = "lazygit";
+      tableplus = "appimage-run ~/Applications/TablePlus-x64.AppImage";
+      tp = "tableplus";
     };
   };
 
@@ -198,6 +238,29 @@
 
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/nvim";
+    "hypr/xdph.conf".text = ''
+      screencopy {
+        allow_token_by_default = true
+      }
+    '';
+  };
+
+  xdg.desktopEntries = {
+    tableplus = {
+      name = "TablePlus";
+      exec = "tableplus";
+      icon = "${config.home.homeDirectory}/.local/share/icons/tableplus.png";
+      categories = ["Development" "Database"];
+      type = "Application";
+    };
+    kdrive = {
+      name = "kDrive";
+      comment = "kDrive cloud sync client";
+      exec = "kdrive";
+      icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg"; # put an icon here if you want
+      categories = ["Network" "FileTransfer"];
+      terminal = false;
+    };
   };
 
   wayland.windowManager.hyprland.settings = {
@@ -225,4 +288,8 @@
     }
   ];
   services.cliphist.enable = true;
+  services.gnome-keyring = {
+    enable = true;
+    # components = ["secrets" "ssh"]; # enable the Secrets API for libsecret
+  };
 }
