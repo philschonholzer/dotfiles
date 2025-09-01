@@ -5,8 +5,10 @@
   lib,
   ...
 }: let
-  tableplusAppImage = "${config.home.homeDirectory}/Applications/TablePlus-x64.AppImage";
-  kdriveAppImage = "${config.home.homeDirectory}/Applications/kDrive-3.7.5.20250812-amd64.AppImage";
+  tableplusAppImage = pkgs.fetchurl {
+    url = "https://tableplus.com/release/linux/x64/TablePlus-x64.AppImage";
+    sha256 = "02104v34p84yn1fpqy0pcy12b5a1vi1drb4sfarcq8d9da8hywp0";
+  };
 
   tableplusEnv = pkgs.buildFHSEnv {
     name = "tableplus";
@@ -18,6 +20,8 @@
       ];
     runScript = "${pkgs.appimage-run}/bin/appimage-run ${tableplusAppImage}";
   };
+
+  kdriveAppImage = "${config.home.homeDirectory}/Applications/kDrive-3.7.5.20250812-amd64.AppImage";
   kdriveEnv = pkgs.buildFHSEnv {
     name = "kdrive";
     targetPkgs = pkgs:
