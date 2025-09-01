@@ -21,7 +21,10 @@
     runScript = "${pkgs.appimage-run}/bin/appimage-run ${tableplusAppImage}";
   };
 
-  kdriveAppImage = "${config.home.homeDirectory}/Applications/kDrive-3.7.5.20250812-amd64.AppImage";
+  kdriveAppImage = pkgs.fetchurl {
+    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.5.20250812-amd64.AppImage";
+    sha256 = "1l54a0gzi499d3zgq4v9wrp7497n440sibv0dgycm3li3hqi2nya";
+  };
   kdriveEnv = pkgs.buildFHSEnv {
     name = "kdrive";
     targetPkgs = pkgs:
