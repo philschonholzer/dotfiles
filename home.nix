@@ -61,6 +61,9 @@ in {
       kchat
       kdriveEnv
       gcr
+      ente-auth
+      poedit
+      morgen
     ];
   };
 
@@ -280,8 +283,4 @@ in {
     }
   ];
   services.cliphist.enable = true;
-  services.gnome-keyring = {
-    enable = true;
-    # components = ["secrets" "ssh"]; # enable the Secrets API for libsecret
-  };
 }
