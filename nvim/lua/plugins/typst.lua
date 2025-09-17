@@ -9,6 +9,7 @@ return {
             -- optional settings for tinymist
             exportPdf = "onSave", -- or "onType"
             formatterMode = "typstyle",
+            formatterProseWrap = true,
           },
           keys = {
             { "<leader>cp", "<cmd>TypstPreview<cr>", desc = "Start Typst Preview" },
