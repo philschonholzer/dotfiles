@@ -12,3 +12,5 @@ vim.opt.autoindent = true
 
 vim.o.title = true
 vim.o.titlestring = "Neovim " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
+vim.opt.spelllang = { "en", "de" } -- set languages

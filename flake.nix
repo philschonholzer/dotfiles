@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
+    nix-colors.url = "github:misterio77/nix-colors";
     omarchy-nix = {
       url = "github:henrysipp/omarchy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,27 +40,6 @@
             email_address = "philip.schoenholzer@apptiva.ch";
             theme = "nord";
             monitors = ["DP-3, 5120x2160, 0x0, 1.6"];
-            quick_app_bindings = [
-              "SUPER, B, exec, firefox"
-              "SUPER, A, exec, $webapp=https://chat.mistral.ai/chat --profile-directory=Privat"
-              "SUPER SHIFT, A, exec, $webapp=https://chatgpt.com --profile-directory=Privat"
-              "SUPER, Y, exec, $webapp=https://youtube.com/ --profile-directory=Privat"
-              "SUPER, M, exec, $webapp=https://mail.missiveapp.com/ --profile-directory=Work"
-              "SUPER SHIFT, M, exec, $webapp=https://calendar.google.com/ --profile-directory=Work"
-              "SUPER, T, exec, $webapp=https://trello.com/ --profile-directory=Work"
-
-              "SUPER, return, exec, $terminal"
-              "SUPER SHIFT, R, exec, pkill waybar && waybar &"
-              "SUPER, F, exec, $fileManager"
-              "SUPER, N, exec, $terminal -e nvim"
-              "SUPER, D, exec, $terminal -e lazydocker"
-              "SUPER, G, exec, $messenger"
-              "SUPER, O, exec, obsidian -disable-gpu"
-              "SUPER, slash, exec, $passwordManager"
-              "SUPER SHIFT, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
-              "SUPER ALT, ESCAPE, exec, systemctl suspend"
-              "SUPER SHIFT, return, fullscreen,"
-            ];
           };
 
           home-manager = {
@@ -68,7 +47,7 @@
             useUserPackages = true;
             users.philip = {
               imports = [
-                ./home.nix
+                (import ./home.nix inputs)
                 omarchy-nix.homeManagerModules.default
               ];
             };
