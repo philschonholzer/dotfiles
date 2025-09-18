@@ -1,10 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   outputs,
+  lib,
   ...
 }: {
   imports = [
@@ -22,11 +19,6 @@
   hardware.keyboard.zsa.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -55,7 +47,20 @@
     variant = "altgr-intl";
   };
 
-  services.greetd.settings.default_session.user = "philip";
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        # By adding default_session it ensures you can still access the tty terminal if you logout of your windows manager otherwise you would just relaunch into it.
+        default_session = {
+          # Again here just change "-cmd Hyprland" to "-cmd your-start-command".
+          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --cmd Hyprland";
+          # DO NOT CHANGE THIS USER
+          user = "greeter";
+        };
+      };
+    };
+  };
 
   # Prevent logs from overriding tuigreet: https://github.com/apognu/tuigreet/issues/190
   systemd.services.greetd.serviceConfig = {
@@ -77,7 +82,6 @@
     isNormalUser = true;
     description = "Philip Schoenholzer";
     extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [];
     shell = pkgs.zsh;
   };
 
@@ -107,13 +111,13 @@
     options = "--delete-older-than 1w";
   };
 
-  # Allow unfree packages
   nixpkgs = {
     overlays = [
       # outputs.overlays.additions
       # outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
+    # Allow unfree packages
     config.allowUnfree = true;
   };
 
