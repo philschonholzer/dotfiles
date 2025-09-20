@@ -71,16 +71,13 @@ in {
       gnome-calculator
       wofi-emoji
       wlvncc
+      sushi
     ];
   };
 
   home.file = {
     "repo-preview.sh" = {
       source = ./repo-preview.sh;
-      executable = true;
-    };
-    "vnc-mac-mini-auth.sh" = {
-      source = ./vnc-mac-mini-auth.sh;
       executable = true;
     };
   };
@@ -277,8 +274,12 @@ in {
     wlvncc = {
       name = "VNC";
       comment = "Remote Desktop to MacMini";
-      # exec = "vncmacmini";
-      exec = "wlvncc -A ${config.home.homeDirectory}/vnc-mac-mini-auth.sh 192.168.1.65";
+      # Add a script in ~/.secrets/vnc-mac-mini-auth.sh
+      #
+      ##!/usr/bin/env bash
+      #
+      # echo -e "user\npassword"
+      exec = "wlvncc -A ${config.home.homeDirectory}/.secrets/vnc-mac-mini-auth.sh 192.168.1.65";
     };
   };
 

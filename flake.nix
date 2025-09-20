@@ -47,7 +47,7 @@
             useUserPackages = true;
             users.philip = {
               imports = [
-                (import ./home.nix inputs)
+                (import ./home-manager/home.nix inputs)
                 omarchy-nix.homeManagerModules.default
               ];
             };
