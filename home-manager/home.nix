@@ -74,6 +74,7 @@ in {
       wofi-emoji
       wlvncc
       sushi
+      handbrake
     ];
   };
 
