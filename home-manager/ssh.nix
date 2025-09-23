@@ -20,7 +20,7 @@ inputs: {
         host = "phischer";
         hostname = "91.214.190.25";
         user = "debian";
-        identityFile = "~/.ssh/id_rsa_infomaniak";
+        identityFile = "~/.ssh/infomaniak_ed25519";
         forwardAgent = true;
       };
       "MacMini" = {
