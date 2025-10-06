@@ -75,6 +75,7 @@ in {
       wlvncc
       sushi
       handbrake
+      localsend
     ];
   };
 
