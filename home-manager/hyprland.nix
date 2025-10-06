@@ -39,9 +39,12 @@ inputs: {
         "fadeLayersIn, 1, 1.79, almostLinear"
         "fadeLayersOut, 1, 1.39, almostLinear"
         "workspaces, 1, 2, default, slide"
-        "specialworkspace, 1, 2.5, easeOutQuint, slidevert"
-
+        "specialWorkspace, 1, 3, default, slidevert"
       ];
     };
+
+    workspace = [
+      "special:slack, on-created-empty:slack, gapsout:25"
+    ];
   };
 }

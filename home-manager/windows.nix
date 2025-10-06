@@ -32,17 +32,14 @@
       # Fix some dragging issues with XWayland
       "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 
-      # Slack special workspace sizing and placement
-      "workspace special:slack, class:^(slack)$"
-      "tile, class:^(slack)$"
-      # We'll resize via exec rule after mapping because Hyprland lacks percentage width rule directly per windowrule.
-      "noblur, class:^(slack)$"
-      # Resize Slack to 40% of monitor width and full height when it appears
-      "exec, class:^(slack)$, bash -lc 'sleep 0.05; MON=$(hyprctl monitors -j | jq -r ".[0].width"); WIDTH=$(awk -v m=$MON 'BEGIN {print int(m*0.4)}'); hyprctl dispatch resizeactive exact $WIDTH -1'"
       # Float in the middle for clipse clipboard manager
       "float, class:(clipse)"
       "size 622 652, class:(clipse)"
       "stayfocused, class:(clipse)"
+
+      # Slack special workspace configuration
+      "workspace special:slack, class:^(Slack)$"
+      "size 40% 100%, class:^(Slack)$"
     ];
 
     layerrule = [

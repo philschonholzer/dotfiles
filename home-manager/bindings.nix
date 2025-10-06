@@ -28,6 +28,7 @@ inputs: {
       "SUPER, N, exec, $terminal -e nvim"
       "SUPER SHIFT, D, exec, $terminal -e lazydocker"
       "SUPER, G, exec, $messenger"
+      "SUPER, C, togglespecialworkspace, slack"
       "SUPER, O, exec, obsidian -disable-gpu"
       "SUPER, E, exec, wofi-emoji"
       "SUPER, slash, exec, $passwordManager"
@@ -105,9 +106,6 @@ inputs: {
       "SHIFT CTRL, F2, exec, ~/.local/share/omarchy/bin/apple-display-brightness +60000"
 
       # Super workspace floating layer
-      "SUPER, C, exec, pgrep -x slack >/dev/null || (slack & sleep 1); hyprctl dispatch togglespecialworkspace slack"
-      "SUPER SHIFT, C, movetoworkspace, special:slack"
-
       "SUPER, S, togglespecialworkspace, magic"
       "SUPER SHIFT, S, movetoworkspace, special:magic"
 
