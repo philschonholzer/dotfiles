@@ -47,6 +47,7 @@ in {
           "bluetooth"
           "network"
           "wireplumber"
+          "memory"
           "cpu"
           "power-profiles-daemon"
           "battery"
@@ -56,8 +57,8 @@ in {
           format = "{icon}";
           format-icons = {
             default = "";
-            "1" = "";
-            "2" = "󰅾";
+            "1" = "";
+            "2" = "󰃭";
             "3" = "";
             "4" = "4";
             "5" = "5";
@@ -65,21 +66,24 @@ in {
             "7" = "7";
             "8" = "8";
             "9" = "9";
-            "10" = "󰏲";
+            "10" = "10 󰏲";
             # active = "󱓻";
           };
           persistent-workspaces = {
             "1" = [];
             "2" = [];
             "3" = [];
-            "4" = [];
-            "5" = [];
           };
         };
         cpu = {
           interval = 5;
           format = "{usage}% ";
           on-click = "ghostty -e btop";
+          max-length = 10;
+        };
+        memory = {
+          interval = 30;
+          format = "{}%   ";
           max-length = 10;
         };
         clock = {
