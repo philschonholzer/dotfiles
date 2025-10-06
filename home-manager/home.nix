@@ -32,6 +32,7 @@ in {
     (import ./bindings.nix inputs)
     ./ssh.nix
     ./hyprland.nix
+    ./windows.nix
   ];
 
   home = {

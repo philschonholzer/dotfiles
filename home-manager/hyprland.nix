@@ -39,6 +39,8 @@ inputs: {
         "fadeLayersIn, 1, 1.79, almostLinear"
         "fadeLayersOut, 1, 1.39, almostLinear"
         "workspaces, 1, 2, default, slide"
+        "specialworkspace, 1, 2.5, easeOutQuint, slidevert"
+
       ];
     };
   };

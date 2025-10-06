@@ -105,6 +105,9 @@ inputs: {
       "SHIFT CTRL, F2, exec, ~/.local/share/omarchy/bin/apple-display-brightness +60000"
 
       # Super workspace floating layer
+      "SUPER, C, exec, pgrep -x slack >/dev/null || (slack & sleep 1); hyprctl dispatch togglespecialworkspace slack"
+      "SUPER SHIFT, C, movetoworkspace, special:slack"
+
       "SUPER, S, togglespecialworkspace, magic"
       "SUPER SHIFT, S, movetoworkspace, special:magic"
 
