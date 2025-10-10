@@ -77,6 +77,8 @@ in {
       sushi
       handbrake
       localsend
+      inkscape
+      gftp
     ];
   };
 
