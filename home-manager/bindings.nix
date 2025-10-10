@@ -17,7 +17,7 @@ inputs: {
       "SUPER CTRL, A, exec, $webapp=https://chat.mistral.ai/chat --profile-directory=Privat"
       "SUPER SHIFT, A, exec, $webapp=https://chatgpt.com --profile-directory=Work"
       "SUPER, Y, exec, $webapp=https://youtube.com/ --profile-directory=Privat"
-      "SUPER, M, exec, $webapp=https://mail.missiveapp.com/ --profile-directory=Work"
+      "SUPER, M, togglespecialworkspace, mail"
       "SUPER SHIFT, M, exec, $webapp=https://calendar.google.com/ --profile-directory=Work"
       "SUPER, T, exec, $webapp=https://trello.com/ --profile-directory=Work"
 
@@ -118,7 +118,7 @@ inputs: {
       "SUPER, PRINT, exec, hyprpicker -a"
 
       # Clipse
-      "CTRL SUPER, V, exec, ghostty --class clipse -e clipse"
+      "CTRL SUPER, V, exec, ghostty --title=clipse -e clipse"
     ];
 
     bindm = [

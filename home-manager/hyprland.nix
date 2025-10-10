@@ -44,7 +44,8 @@ inputs: {
     };
 
     workspace = [
-      "special:slack, on-created-empty:slack, gapsout:25"
+      "special:slack, on-created-empty:slack, gapsout:50"
+      "special:mail, on-created-empty:$webapp=https://mail.missiveapp.com/ --profile-directory=Work, gapsout:50"
     ];
   };
 }

@@ -33,13 +33,20 @@
       "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 
       # Float in the middle for clipse clipboard manager
-      "float, class:(clipse)"
-      "size 622 652, class:(clipse)"
-      "stayfocused, class:(clipse)"
+      "float, title:(clipse)"
+      "size 622 652, title:(clipse)"
+      "stayfocused, title:(clipse)"
 
       # Slack special workspace configuration
       "workspace special:slack, class:^(Slack)$"
-      "size 40% 100%, class:^(Slack)$"
+      "pseudo, class:^(Slack)$"
+      "size 50% 90%, class:^(Slack)$"
+      "float, class:^(Slack)$, title:Huddle.*"
+      "pin, class:^(Slack)$, title:Huddle.*"
+
+      "workspace special:mail, class:^(chrome-mail\.missiveapp\.com__-Work)$"
+      "pseudo, class:^(chrome-mail\.missiveapp\.com__-Work)$"
+      "size 50% 90%, class:^(chrome-mail\.missiveapp\.com__-Work)$"
     ];
 
     layerrule = [
