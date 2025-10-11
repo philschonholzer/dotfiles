@@ -1,5 +1,8 @@
 {...}: {
   imports = [
+    ./cliphist.nix
+    ./firefox.nix
+    ./fzf.nix
     ./git.nix
     ./ghostty.nix
     ./kdrive.nix

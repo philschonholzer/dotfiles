@@ -52,23 +52,4 @@ inputs: {
       gftp
     ];
   };
-
-  programs.firefox.enable = true;
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  services.hypridle.settings.listener = lib.mkForce [
-    {
-      timeout = 300;
-      on-timeout = "loginctl lock-session";
-    }
-    {
-      timeout = 900;
-      on-timeout = "systemctl suspend";
-    }
-  ];
-  services.cliphist.enable = true;
 }
