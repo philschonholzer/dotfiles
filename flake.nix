@@ -47,13 +47,22 @@
             useUserPackages = true;
             users.philip = {
               imports = [
-                (import ./home-manager/home.nix inputs)
+                (import ./machines/beelink.nix inputs)
                 omarchy-nix.homeManagerModules.default
               ];
             };
           };
         }
       ];
+    };
+    homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
+      system = "aarch64-darwin";
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [./machines/darwin.nix];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
     };
   };
 }
