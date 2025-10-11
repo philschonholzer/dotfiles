@@ -1,9 +1,4 @@
-inputs: {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   wayland.windowManager.hyprland.settings = {
     bind = lib.mkForce [
       # Move focus with mainMod + arrow keys
