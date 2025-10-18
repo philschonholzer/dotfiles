@@ -4,5 +4,6 @@ inputs: {...}: {
     ./hyprland.nix
     (import ./waybar.nix inputs)
     ./windows.nix
+    ./hypridle.nix
   ];
 }
