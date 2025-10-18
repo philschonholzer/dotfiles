@@ -82,7 +82,7 @@ in {
         };
         memory = {
           interval = 30;
-          format = "{}%   ";
+          format = "{}%   ";
           max-length = 10;
         };
         clock = {
