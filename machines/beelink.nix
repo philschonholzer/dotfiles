@@ -16,6 +16,8 @@ inputs: {
 
     packages = with pkgs; [
       unstable.opencode
+      unstable.blender
+      unstable.morgen
       ente-auth
       bitwarden-desktop
       slack
@@ -42,7 +44,6 @@ inputs: {
       gcr
       ente-auth
       poedit
-      morgen
       gnome-calculator
       wofi-emoji
       sushi
@@ -50,6 +51,7 @@ inputs: {
       localsend
       inkscape
       gftp
+      parsec-bin
     ];
   };
 }
