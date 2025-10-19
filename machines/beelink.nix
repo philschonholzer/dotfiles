@@ -52,6 +52,17 @@ inputs: {
       inkscape
       gftp
       parsec-bin
+      swaybg
     ];
   };
+
+  programs.alacritty.enable = true;
+  programs.fuzzel.enable = true;
+  programs.swaylock.enable = true;
+  services.mako.enable = true;
+  services.swayidle.enable = true;
+  services.polkit-gnome.enable = true;
+
+  # Niri configuration
+  xdg.configFile."niri/config.kdl".source = ../home-manager/desktop-manager/niri.kdl;
 }

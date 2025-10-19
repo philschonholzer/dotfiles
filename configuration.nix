@@ -53,8 +53,8 @@
       settings = {
         # By adding default_session it ensures you can still access the tty terminal if you logout of your windows manager otherwise you would just relaunch into it.
         default_session = {
-          # Again here just change "-cmd Hyprland" to "-cmd your-start-command".
-          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --cmd Hyprland";
+          # Allow choosing between Hyprland and niri at login
+          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --sessions ${pkgs.hyprland}/share/wayland-sessions:${pkgs.niri}/share/wayland-sessions";
           # DO NOT CHANGE THIS USER
           user = "greeter";
         };
@@ -76,6 +76,8 @@
   };
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  security.polkit.enable = true;
+  security.pam.services.swaylock = {};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.philip = {
@@ -88,6 +90,7 @@
   programs.zsh.enable = true;
   programs.appimage.enable = true;
   programs.seahorse.enable = true;
+  programs.niri.enable = true;
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
@@ -127,6 +130,11 @@
     neovim
     wget
     gcc
+    alacritty
+    fuzzel
+    swaylock
+    mako
+    swayidle
   ];
 
   environment.variables.EDITOR = "nvim";

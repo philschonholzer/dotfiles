@@ -1,0 +1,218 @@
+// Niri configuration for Philip's setup
+
+prefer-no-csd
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "altgr-intl"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        natural-scroll
+        left-handed
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse
+}
+
+cursor {
+    // Hide the cursor after one second of inactivity.
+    hide-after-inactive-ms 650
+}
+
+
+// Configure your monitor (update with actual output name from `niri msg outputs`)
+output "DP-3" {
+    mode "5120x2160"
+    scale 1.6
+    position x=0 y=0
+}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    always-center-single-column
+    
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    
+    default-column-width { proportion 0.5; }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    focus-ring {
+      off
+    }
+
+    border {
+    }
+
+    struts {
+      left 32
+      right 32
+    }
+}
+
+// Start waybar at startup (already configured in your setup)
+spawn-at-startup "waybar"
+
+// Start mako for notifications
+spawn-at-startup "mako"
+
+// Start swayidle for idle management
+spawn-at-startup "swayidle"
+
+hotkey-overlay {
+    // skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // Keep animations enabled but simple
+}
+
+// Window rules
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Bitwarden floating window
+window-rule {
+    match app-id="Bitwarden"
+    open-floating true
+}
+
+// Slack special workspace (similar to hyprland config)
+// window-rule {
+//     match app-id="Slack"
+//     open-on-workspace 2
+// }
+
+binds {
+    // Important hotkeys
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    
+    // Core applications (matching your existing setup)
+    Mod+T { spawn "ghostty"; }
+    Mod+D hotkey-overlay-title="Run Application: fuzzel" { spawn "fuzzel"; }
+    Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
+    
+    // Password manager (matching hyprland config)
+    Mod+P { spawn "bitwarden"; }
+    
+    // Messenger (matching hyprland config)  
+    Mod+M { spawn "slack"; }
+    
+    // // Volume controls
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    //
+    // // Media controls
+    // XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    // XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    //
+    // // Brightness controls
+    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    
+    // Window management
+    Mod+W repeat=false { close-window; }
+    Mod+O repeat=false { toggle-overview; }
+    
+    // Navigation (vim-like)
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+    
+    // Moving windows
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { move-column-right; }
+    
+    // Workspace navigation
+    Mod+Period { focus-workspace-down; }
+    Mod+Comma { focus-workspace-up; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    
+    // Move to workspace
+    Mod+Shift+Period { move-column-to-workspace-down; }
+    Mod+Shift+Comma { move-column-to-workspace-up; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    
+    // Column management
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Tab { toggle-column-tabbed-display; }
+    
+    // Sizing
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-column; }
+    
+    // Fine adjustments
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    
+    // Floating toggle
+    Mod+V { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    
+    // Screenshots
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+    
+    // System
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+E { quit; }
+    Mod+Shift+P { power-off-monitors; }
+}
