@@ -4,6 +4,7 @@ prefer-no-csd
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+    GTK_THEME "Adwaita:dark"
 }
 
 input {
