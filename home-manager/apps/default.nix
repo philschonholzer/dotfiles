@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./chromium.nix
     ./cliphist.nix
     ./firefox.nix
     ./fzf.nix
