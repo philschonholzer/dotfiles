@@ -35,6 +35,7 @@ in {
         spacing = 0;
         height = 26;
         modules-left = [
+          "niri/workspaces"
           "hyprland/workspaces"
         ];
         modules-center = [
@@ -73,6 +74,9 @@ in {
             "2" = [];
             "3" = [];
           };
+        };
+        "niri/window" = {
+          format = "{app_id}";
         };
         cpu = {
           interval = 5;
