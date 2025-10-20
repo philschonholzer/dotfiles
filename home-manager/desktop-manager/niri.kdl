@@ -26,7 +26,7 @@ input {
         left-handed
     }
     warp-mouse-to-focus
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="40%"
 }
 
 cursor {
@@ -106,6 +106,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+  geometry-corner-radius 4
+  clip-to-geometry true
+}
+
 // Slack special workspace (similar to hyprland config)
 // window-rule {
 //     match app-id="Slack"
@@ -119,6 +124,7 @@ binds {
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Application: fuzzel" { spawn "fuzzel"; }
+    Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
@@ -149,19 +155,15 @@ binds {
     
     // Navigation (vim-like)
     Mod+H { focus-column-left; }
-    Mod+J { focus-window-down; }
-    Mod+K { focus-window-up; }
     Mod+L { focus-column-right; }
     
     // Moving windows
     Mod+Shift+H { move-column-left; }
-    Mod+Shift+J { move-window-down; }
-    Mod+Shift+K { move-window-up; }
     Mod+Shift+L { move-column-right; }
     
     // Workspace navigation
-    Mod+Period { focus-workspace-down; }
-    Mod+Comma { focus-workspace-up; }
+    Mod+J { focus-workspace-down; }
+    Mod+K { focus-workspace-up; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -173,8 +175,10 @@ binds {
     Mod+9 { focus-workspace 9; }
     
     // Move to workspace
-    Mod+Shift+Period { move-column-to-workspace-down; }
-    Mod+Shift+Comma { move-column-to-workspace-up; }
+    Mod+Shift+J { move-column-to-workspace-down; }
+    Mod+Shift+K { move-column-to-workspace-up; }
+    Mod+Shift+Ctrl+J { move-workspace-down; }
+    Mod+Shift+Ctrl+K { move-workspace-up; }
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -188,7 +192,8 @@ binds {
     // Column management
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Tab { toggle-column-tabbed-display; }
+    Mod+Tab { focus-window-down-or-top; }
+    Mod+Shift+Tab { toggle-column-tabbed-display; }
     
     // Sizing
     Mod+R { switch-preset-column-width; }
