@@ -5,7 +5,7 @@ inputs: {
 }: let
   palette = config.colorScheme.palette;
   convert = inputs.nix-colors.lib.conversions.hexToRGBString;
-  backgroundRgb = "rgb(${convert ", " palette.base00})";
+  backgroundRgb = "rgba(${convert ", " palette.base00},0.9)";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
   home.file = {
@@ -22,10 +22,11 @@ in {
 
         window#waybar {
           background-color: ${backgroundRgb};
+          border-bottom: 3px solid rgba(${convert ", " palette.base05},0.2);
         }
 
         #workspaces button.active {
-          border-bottom: 2px solid ${foregroundRgb};
+          border-bottom: 3px solid ${foregroundRgb};
         }
       '';
     };
