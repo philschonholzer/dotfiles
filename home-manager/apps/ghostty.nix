@@ -8,6 +8,8 @@
       window-padding-color = "extend";
       background-opacity = 0.95;
       window-decoration = "none";
+      font-family = "Liberation Sans 11";
+      font-size = 12;
 
       keybind =
         lib.mkForce [

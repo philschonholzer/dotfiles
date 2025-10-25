@@ -53,7 +53,6 @@ inputs: {
       inkscape
       gftp
       parsec-bin
-      swaybg
       xwayland-satellite
     ];
   };
@@ -90,8 +89,57 @@ inputs: {
       };
     };
   };
+
+  # Fonts
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = ["Noto Serif"];
+      sansSerif = ["Noto Sans"];
+      monospace = ["JetBrainsMono Nerd Font"];
+    };
+  };
+
+  # Direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.swaylock.enable = true;
-  services.mako.enable = true;
+  services.mako = {
+    enable = true;
+
+    settings = {
+      background-color = "#${config.colorScheme.palette.base00}";
+      text-color = "#${config.colorScheme.palette.base05}";
+      border-color = "#${config.colorScheme.palette.base04}";
+      progress-color = "#${config.colorScheme.palette.base0D}";
+
+      width = 420;
+      height = 110;
+      padding = "10";
+      margin = "10";
+      border-size = 2;
+      border-radius = 0;
+
+      anchor = "top-right";
+      layer = "overlay";
+
+      default-timeout = 5000;
+      ignore-timeout = false;
+      max-visible = 5;
+      sort = "-time";
+
+      group-by = "app-name";
+
+      actions = true;
+
+      format = "<b>%s</b>\\n%b";
+      markup = true;
+    };
+  };
   services.swayidle.enable = true;
   services.polkit-gnome.enable = true;
 
@@ -100,7 +148,22 @@ inputs: {
 
   xdg.portal = {
     enable = true;
-    config.common.default = "*";
-    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+    config = {
+      common = {
+        default = ["gtk"];
+      };
+      niri = {
+        default = [
+          "gtk"
+          "gnome"
+        ];
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+      };
+    };
   };
 }

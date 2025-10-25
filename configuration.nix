@@ -22,6 +22,17 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # Sound
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
@@ -91,6 +102,10 @@
   programs.appimage.enable = true;
   programs.seahorse.enable = true;
   programs.niri.enable = true;
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "ghostty";
+  };
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
@@ -101,10 +116,6 @@
     # Refer to the following link for more details:
     # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
     auto-optimise-store = true;
-
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   # Perform garbage collection weekly to maintain low disk usage
@@ -129,15 +140,34 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
+    curl
     gcc
     alacritty
     fuzzel
     swaylock
     mako
     swayidle
+    libnotify # Notification client ($ notify-send)
+    nautilus
+    blueberry
+    unzip
+    gnome-keyring
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    nerd-fonts.jetbrains-mono
   ];
 
   environment.variables.EDITOR = "nvim";
+
+  # Added these for screen sharing to work. But maybe the are not needed because I changed xdg setting at the same time in beelink.nix
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "niri";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_SESSION_DESKTOP = "niri";
+  };
 
   virtualisation.docker.enable = true;
 

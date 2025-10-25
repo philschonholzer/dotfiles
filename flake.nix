@@ -5,11 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
-    omarchy-nix = {
-      url = "github:henrysipp/omarchy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +15,7 @@
     self,
     nixpkgs,
     home-manager,
-    omarchy-nix,
+    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -29,20 +24,19 @@
     # Used with `nixos-rebuild --flake .#<hostname>`
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs;};
+      specialArgs = {inherit outputs nix-colors;};
       modules = [
         ./configuration.nix
-        omarchy-nix.nixosModules.default
         home-manager.nixosModules.home-manager
-        ./omarchy-config.nix
         {
           home-manager = {
+            backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             users.philip = {
               imports = [
+                nix-colors.homeManagerModules.default
                 (import ./machines/beelink.nix inputs)
-                omarchy-nix.homeManagerModules.default
               ];
             };
           };

@@ -1,6 +1,8 @@
 {...}: {
   programs.git = {
     enable = true;
+    userEmail = "philip.schoenholzer@apptiva.ch";
+    userName = "Philip Schönholzer";
     delta.enable = true;
     ignores = [
       "*~"
