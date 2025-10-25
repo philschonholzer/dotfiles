@@ -28,6 +28,7 @@ in {
   };
 
   programs.waybar = {
+    enable = true;
     settings = lib.mkForce [
       {
         layer = "top";
@@ -52,6 +53,15 @@ in {
           "power-profiles-daemon"
           "battery"
         ];
+        "niri/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+          };
+        };
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";

@@ -67,12 +67,18 @@ layout {
     }
 
     border {
+      width 3
+      active-color "#7fc8ff"
     }
 
     struts {
       left 32
       right 32
     }
+}
+
+overview {
+    zoom 0.25
 }
 
 // Start waybar at startup (already configured in your setup)
@@ -128,10 +134,11 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
-    Mod+P { spawn "bitwarden"; }
+    Mod+P { spawn-sh "~/open-repo"; }
     
     // Messenger (matching hyprland config)  
-    Mod+M { spawn "slack"; }
+    Mod+E hotkey-overlay-title="Trello" { spawn "chromium" "--profile-directory=Work" "--app=https://trello.com/u/philipschoenholzer/boards"; }
+    Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium" "--profile-directory=Privat" "--app=https://chatgpt.com/"; }
     
     // // Volume controls
     // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
