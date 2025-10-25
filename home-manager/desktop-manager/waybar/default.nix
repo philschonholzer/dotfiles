@@ -9,6 +9,10 @@ inputs: {
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
   home.file = {
+    ".config/waybar/" = {
+      source = ./css;
+      recursive = true;
+    };
     ".config/waybar/theme.css" = {
       text = ''
         @define-color background ${backgroundRgb};
