@@ -1,7 +1,7 @@
 inputs: {...}: {
   imports = [
     (import ./waybar inputs)
-    ./hypridle.nix
+    ./swayidle.nix
     ./hyprpaper.nix
     (import ./theme.nix inputs)
   ];

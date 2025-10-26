@@ -140,7 +140,6 @@ inputs: {
       markup = true;
     };
   };
-  services.swayidle.enable = true;
   services.polkit-gnome.enable = true;
 
   # Niri configuration

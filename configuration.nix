@@ -146,7 +146,6 @@
     fuzzel
     swaylock
     mako
-    swayidle
     libnotify # Notification client ($ notify-send)
     nautilus
     blueberry

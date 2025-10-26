@@ -87,9 +87,6 @@ spawn-at-startup "waybar"
 // Start mako for notifications
 spawn-at-startup "mako"
 
-// Start swayidle for idle management
-spawn-at-startup "swayidle"
-
 hotkey-overlay {
     // skip-at-startup
 }
