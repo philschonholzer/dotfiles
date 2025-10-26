@@ -31,8 +31,6 @@ inputs: {
       keymapp
       lens
       p7zip
-      insync
-      insync-nautilus
       dbeaver-bin
       pinta
       papers
