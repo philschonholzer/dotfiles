@@ -19,6 +19,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
   in {
     overlays = import ./overlays.nix {inherit inputs;};
     # Used with `nixos-rebuild --flake .#<hostname>`
@@ -44,7 +45,7 @@
       ];
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
-      system = "aarch64-darwin";
+      inherit pkgs;
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
       modules = [./machines/darwin.nix];

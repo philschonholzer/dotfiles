@@ -64,7 +64,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    "completion-for-pnpm.zsh".source = ./completion-for-pnpm.zsh;
     # "/Library/Keyboard Layouts/altgr-wr.icns".source = ./altgr-weur/altgr-weur.icns;
     # "/Library/Keyboard Layouts/altgr-wr.keylayout".source = ./altgr-weur/altgr-weur.keylayout;
     ".config/ghostty/config".text = ''
