@@ -12,7 +12,6 @@
     ./kdrive.nix
     ./lazydocker.nix
     ./lazygit.nix
-    ./mosh.nix
     ./nvim.nix
     ./ripgrep.nix
     ./ssh.nix

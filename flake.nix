@@ -19,7 +19,10 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
+    pkgs = import nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
   in {
     overlays = import ./overlays.nix {inherit inputs;};
     # Used with `nixos-rebuild --flake .#<hostname>`
@@ -28,6 +31,7 @@
       specialArgs = {inherit outputs nix-colors;};
       modules = [
         ./configuration.nix
+        ./modules
         home-manager.nixosModules.home-manager
         {
           home-manager = {
