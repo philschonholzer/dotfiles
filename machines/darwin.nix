@@ -307,6 +307,12 @@
     };
   };
 
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    attachExistingSession = true;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
