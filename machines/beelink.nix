@@ -138,7 +138,6 @@ inputs: {
       markup = true;
     };
   };
-  services.polkit-gnome.enable = true;
 
   # Niri configuration
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/desktop-manager/niri.kdl";

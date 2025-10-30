@@ -16,7 +16,7 @@
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
-    ./table-plus.nix
+    # ./table-plus.nix
     ./vnc.nix
     ./zsh.nix
   ];

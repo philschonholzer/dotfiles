@@ -26,7 +26,7 @@
   in {
     overlays = import ./overlays.nix {inherit inputs;};
     # Used with `nixos-rebuild --flake .#<hostname>`
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit outputs nix-colors;};
       modules = [
