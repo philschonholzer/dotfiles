@@ -4,42 +4,33 @@
       name = "ChatGPT";
       url = "https://chat.openai.com";
       profile = "Work";
-      iconUrl = "https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png";
-      iconSha256 = "024yhp9kqky0v9yviz9z60gwfqksvbx7vf8gads03idvvcja89hn";
+      iconPath = "${./icons/chatgpt.png}";
       categories = ["Network" "Office" "Development"];
     };
     trello = {
       name = "Trello";
       url = "https://trello.com";
       profile = "Work";
-      iconUrl = "https://trello.com/favicon.ico";
-      iconSha256 = "0wz620krw53yqcqm8c7l9cq9yi1scnxfqndv060dpwzk0kwqnaif";
+      iconPath = "${./icons/trello.svg}";
       categories = ["Network" "Office" "ProjectManagement"];
     };
     notion = {
       name = "Notion";
       url = "https://notion.so";
       profile = "Work";
-      iconUrl = "https://www.notion.so/images/logo-ios.png";
-      iconSha256 = "0iwvaxcwpj9k7by1zv6v1kqlnj2afxg113jrrz89vp10zl52mi2r";
+      iconPath = "${./icons/notion.png}";
       categories = ["Network" "Office"];
     };
     missive = {
       name = "Missive";
       url = "https://missiveapp.com";
       profile = "Work";
-      iconUrl = "https://mail.missiveapp.com/favicon.ico";
-      iconSha256 = "0axi09fb3bhp2mnmls2qrmfk4l1knm7xci6wp1jrif3qwrp73s6m";
+      iconPath = "${./icons/missive.svg}";
       categories = ["Network" "Email"];
     };
   };
 
-  makeWebApp = class: app: let
-    icon = pkgs.fetchurl {
-      url = app.iconUrl;
-      sha256 = app.iconSha256;
-    };
-  in {
+  makeWebApp = class: app: {
     package = pkgs.writeShellScriptBin "chromium-${class}" ''
       exec ${pkgs.chromium}/bin/chromium \
         --profile-directory="${app.profile}" \
@@ -50,7 +41,7 @@
     desktopEntry = {
       name = app.name;
       exec = "chromium-${class} %U";
-      icon = "${icon}";
+      icon = "${app.iconPath}";
       categories = app.categories;
     };
   };
