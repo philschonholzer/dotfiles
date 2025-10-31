@@ -14,10 +14,28 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs11" />
+     id="defs11">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,6.7688408,0,1 @ F,0,0,1,0,6.187679,0,1 @ F,0,0,1,0,6.187679,0,1 @ F,0,0,1,0,6.7688408,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
   <sodipodi:namedview
      id="namedview11"
-     pagecolor="#ffffff"
+     pagecolor="#8c8c8c"
      bordercolor="#000000"
      borderopacity="0.25"
      inkscape:showpageshadow="2"
@@ -25,7 +43,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="5.3"
-     inkscape:cx="19.528302"
+     inkscape:cx="19.622642"
      inkscape:cy="19.90566"
      inkscape:window-width="1361"
      inkscape:window-height="849"
@@ -33,6 +51,16 @@
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg11" />
+  <path
+     style="display:inline;fill:#ffffff;stroke-width:0.829925"
+     id="rect1"
+     width="46"
+     height="40"
+     x="7.5495166e-15"
+     y="-5.3290705e-15"
+     inkscape:path-effect="#path-effect1"
+     sodipodi:type="rect"
+     d="M 6.7688408,0 39.812321,0 A 6.187679,6.187679 45 0 1 46,6.187679 l 0,27.624642 A 6.187679,6.187679 135 0 1 39.812321,40 L 6.7688408,40 A 6.7688408,6.7688408 45 0 1 0,33.231159 V 6.7688408 A 6.7688408,6.7688408 135 0 1 6.7688408,0 Z" />
   <path
      d="m 21.033221,26.1822 c 0.5738,0.6366 1.3966,1.0017 2.2574,1.0017 0.8608,0 1.6835,-0.3651 2.2573,-1.0017 l 11.1533,-12.3738 c 0.2868,-0.3183 0.6982,-0.5008 1.1286,-0.5008 h 1.4778 c 0.2788,0 0.5047,-0.2243 0.5047,-0.5009 V 11.805 c 0,-0.2765 -0.2259,-0.5008 -0.5047,-0.5008 h -1.4778 c -1.0042,0 -1.9641,0.426 -2.6335,1.1687 l -11.1533,12.3737 c -0.2044,0.2268 -0.4902,0.3464 -0.7995,0.3329 -0.2801,-0.0121 -0.5401,-0.1495 -0.727,-0.3569 l -11.1316,-12.3497 c -0.6693,-0.7427 -1.6292402,-1.1687 -2.6335602,-1.1687 h -1.47777 c -0.27875,0 -0.50475,0.2243 -0.50475,0.5008 v 1.0017 c 0,0.2766 0.226,0.5009 0.50475,0.5009 h 1.47777 c 0.43042,0 0.84166,0.1825 1.12866,0.5008 z"
      class="path text-color-a"

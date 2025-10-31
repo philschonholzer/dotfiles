@@ -23,10 +23,17 @@
     };
     missive = {
       name = "Missive";
-      url = "https://missiveapp.com";
+      url = "https://mail.missiveapp.com/";
       profile = "Work";
       iconPath = "${./icons/missive.svg}";
       categories = ["Network" "Email"];
+    };
+    google-voice = {
+      name = "Google Voice";
+      url = "https://voice.google.com";
+      profile = "Work";
+      iconPath = "${./icons/google-voice.svg}";
+      categories = ["Network" "Telephony"];
     };
   };
 

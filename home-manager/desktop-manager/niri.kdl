@@ -81,8 +81,19 @@ overview {
     zoom 0.25
 }
 
+workspace "phone"
+workspace "mail"
+workspace "slack"
+workspace "tasks"
+
 // Start waybar at startup (already configured in your setup)
 spawn-at-startup "waybar"
+
+// Start Google Voice 
+spawn-at-startup "chromium-google-voice"
+
+// Start Missive
+spawn-at-startup "chromium-missive"
 
 // Start mako for notifications
 spawn-at-startup "mako"
@@ -95,6 +106,18 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
     // Keep animations enabled but simple
+}
+
+// Open Google Voice on workspace "phone"
+window-rule {
+    match at-startup=true app-id=r#"^chrome-voice.google.com__-Work$"#
+    open-on-workspace "phone"
+}
+
+// Open Missive on workspace "mail"
+window-rule {
+    match at-startup=true app-id="chrome-missiveapp.com__-Work"
+    open-on-workspace "mail"
 }
 
 // Window rules
@@ -119,6 +142,12 @@ window-rule {
 //     match app-id="Slack"
 //     open-on-workspace 2
 // }
+
+// Google Voice on workspace 1
+window-rule {
+    match app-id="chromium-google-voice"
+    open-on-workspace "1"
+}
 
 binds {
     // Important hotkeys
