@@ -6,7 +6,7 @@
 }: let
   palette = config.colorScheme.palette;
   convert = nix-colors.lib.conversions.hexToRGBString;
-  backgroundRgb = "rgba(${convert ", " palette.base00},0.9)";
+  backgroundRgb = "rgba(${convert ", " palette.base05},0.1)";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
   home.file = {
@@ -23,7 +23,7 @@ in {
 
         window#waybar {
           background-color: ${backgroundRgb};
-          border-bottom: 3px solid rgba(${convert ", " palette.base05},0.2);
+          border-bottom: 3px solid rgba(${convert ", " palette.base05},0.1);
         }
 
         #workspaces button.active {
@@ -126,8 +126,8 @@ in {
         battery = {
           interval = 5;
           format = "{capacity}% {icon}";
-          format-discharging = "{icon}";
-          format-charging = "{icon}";
+          format-discharging = "{capacity}% {icon}";
+          format-charging = "{capacity}% {icon}";
           format-plugged = "";
           format-icons = {
             charging = [
