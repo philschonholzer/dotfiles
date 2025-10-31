@@ -26,27 +26,15 @@
   in {
     overlays = import ./overlays.nix {inherit inputs;};
     # Used with `nixos-rebuild --flake .#<hostname>`
+    nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit outputs nix-colors;};
+      modules = import ./machines/beelink.nix inputs;
+    };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit outputs nix-colors;};
-      modules = [
-        ./configuration.nix
-        ./modules
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            backupFileExtension = "backup";
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.philip = {
-              imports = [
-                nix-colors.homeManagerModules.default
-                (import ./machines/beelink.nix inputs)
-              ];
-            };
-          };
-        }
-      ];
+      modules = import ./machines/macbook-intel.nix inputs;
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
