@@ -95,6 +95,12 @@ spawn-at-startup "chromium-google-voice"
 // Start Missive
 spawn-at-startup "chromium-missive"
 
+// Start Slack
+spawn-at-startup "slack"
+
+// Start Trello
+spawn-at-startup "chromium-trello"
+
 // Start mako for notifications
 spawn-at-startup "mako"
 
@@ -116,8 +122,20 @@ window-rule {
 
 // Open Missive on workspace "mail"
 window-rule {
-    match at-startup=true app-id="chrome-missiveapp.com__-Work"
+    match at-startup=true app-id="chrome-mail.missiveapp.com__-Work"
     open-on-workspace "mail"
+}
+
+// Open Slack on workspace "slack"
+window-rule {
+    match at-startup=true app-id="Slack"
+    open-on-workspace "slack"
+}
+
+// Open Trello on workspace "tasks"
+window-rule {
+    match at-startup=true app-id="chrome-trello.com__-Work"
+    open-on-workspace "tasks"
 }
 
 // Window rules
