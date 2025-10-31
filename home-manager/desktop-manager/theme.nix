@@ -1,5 +1,5 @@
-inputs: {pkgs, ...}: {
-  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+{nix-colors}: {pkgs, ...}: {
+  colorScheme = nix-colors.colorSchemes.kanagawa;
 
   gtk = {
     enable = true;

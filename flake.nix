@@ -14,27 +14,32 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     nix-colors,
     ...
-  } @ inputs: let
+  }: let
     inherit (self) outputs;
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
       config.allowUnfree = true;
     };
   in {
-    overlays = import ./overlays.nix {inherit inputs;};
+    overlays = import ./overlays.nix {
+      inputs = {
+        inherit nixpkgs-unstable;
+      };
+    };
     # Used with `nixos-rebuild --flake .#<hostname>`
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors;};
-      modules = import ./machines/beelink.nix inputs;
+      specialArgs = {inherit outputs nix-colors home-manager;};
+      modules = [./machines/beelink.nix];
     };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors;};
-      modules = import ./machines/macbook-intel.nix inputs;
+      specialArgs = {inherit outputs nix-colors home-manager;};
+      modules = [./machines/macbook-intel.nix];
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;

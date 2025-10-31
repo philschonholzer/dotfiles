@@ -1,8 +1,8 @@
-inputs: {...}: {
+{nix-colors}: {...}: {
   imports = [
-    (import ./waybar inputs)
+    (import ./waybar {inherit nix-colors;})
     ./swayidle.nix
     ./hyprpaper.nix
-    (import ./theme.nix inputs)
+    (import ./theme.nix {inherit nix-colors;})
   ];
 }

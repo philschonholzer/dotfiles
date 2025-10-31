@@ -1,10 +1,10 @@
-inputs: {
+{nix-colors}: {
   config,
   lib,
   ...
 }: let
   palette = config.colorScheme.palette;
-  convert = inputs.nix-colors.lib.conversions.hexToRGBString;
+  convert = nix-colors.lib.conversions.hexToRGBString;
   backgroundRgb = "rgba(${convert ", " palette.base00},0.9)";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
