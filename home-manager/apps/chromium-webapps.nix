@@ -1,88 +1,62 @@
 {pkgs, ...}: let
-  makeWebApp = {name, url, profile, class}:
-    pkgs.writeShellScriptBin "chromium-${class}" ''
-      exec ${pkgs.chromium}/bin/chromium \
-        --profile-directory="${profile}" \
-        --app="${url}" \
-        --class="${class}" \
-        "$@"
-    '';
-
-  chatgptIcon = pkgs.fetchurl {
-    url = "https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png";
-    sha256 = "024yhp9kqky0v9yviz9z60gwfqksvbx7vf8gads03idvvcja89hn";
-  };
-
-  trelloIcon = pkgs.fetchurl {
-    url = "https://trello.com/favicon.ico";
-    sha256 = "0wz620krw53yqcqm8c7l9cq9yi1scnxfqndv060dpwzk0kwqnaif";
-  };
-
-  notionIcon = pkgs.fetchurl {
-    url = "https://www.notion.so/images/logo-ios.png";
-    sha256 = "0iwvaxcwpj9k7by1zv6v1kqlnj2afxg113jrrz89vp10zl52mi2r";
-  };
-
-  missiveIcon = pkgs.fetchurl {
-    url = "https://mail.missiveapp.com/favicon.ico";
-    sha256 = "0axi09fb3bhp2mnmls2qrmfk4l1knm7xci6wp1jrif3qwrp73s6m";
-  };
-in {
-  home.packages = [
-    (makeWebApp {
+  apps = {
+    chatgpt = {
       name = "ChatGPT";
       url = "https://chat.openai.com";
       profile = "Work";
-      class = "chatgpt";
-    })
-    (makeWebApp {
-      name = "Trello";
-      url = "https://trello.com";
-      profile = "Work";
-      class = "trello";
-    })
-    (makeWebApp {
-      name = "Notion";
-      url = "https://notion.so";
-      profile = "Work";
-      class = "notion";
-    })
-    (makeWebApp {
-      name = "Missive";
-      url = "https://missiveapp.com";
-      profile = "Work";
-      class = "missive";
-    })
-  ];
-
-  xdg.desktopEntries = {
-    chatgpt = {
-      name = "ChatGPT";
-      exec = "chromium-chatgpt %U";
-      icon = "${chatgptIcon}";
+      iconUrl = "https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png";
+      iconSha256 = "024yhp9kqky0v9yviz9z60gwfqksvbx7vf8gads03idvvcja89hn";
       categories = ["Network" "Office" "Development"];
-      startupWMClass = "chatgpt";
     };
     trello = {
       name = "Trello";
-      exec = "chromium-trello %U";
-      icon = "${trelloIcon}";
+      url = "https://trello.com";
+      profile = "Work";
+      iconUrl = "https://trello.com/favicon.ico";
+      iconSha256 = "0wz620krw53yqcqm8c7l9cq9yi1scnxfqndv060dpwzk0kwqnaif";
       categories = ["Network" "Office" "ProjectManagement"];
-      startupWMClass = "trello";
     };
     notion = {
       name = "Notion";
-      exec = "chromium-notion %U";
-      icon = "${notionIcon}";
+      url = "https://notion.so";
+      profile = "Work";
+      iconUrl = "https://www.notion.so/images/logo-ios.png";
+      iconSha256 = "0iwvaxcwpj9k7by1zv6v1kqlnj2afxg113jrrz89vp10zl52mi2r";
       categories = ["Network" "Office"];
-      startupWMClass = "notion";
     };
     missive = {
       name = "Missive";
-      exec = "chromium-missive %U";
-      icon = "${missiveIcon}";
+      url = "https://missiveapp.com";
+      profile = "Work";
+      iconUrl = "https://mail.missiveapp.com/favicon.ico";
+      iconSha256 = "0axi09fb3bhp2mnmls2qrmfk4l1knm7xci6wp1jrif3qwrp73s6m";
       categories = ["Network" "Email"];
-      startupWMClass = "missive";
     };
   };
+
+  makeWebApp = class: app: let
+    icon = pkgs.fetchurl {
+      url = app.iconUrl;
+      sha256 = app.iconSha256;
+    };
+  in {
+    package = pkgs.writeShellScriptBin "chromium-${class}" ''
+      exec ${pkgs.chromium}/bin/chromium \
+        --profile-directory="${app.profile}" \
+        --app="${app.url}" \
+        --class="${class}" \
+        "$@"
+    '';
+    desktopEntry = {
+      name = app.name;
+      exec = "chromium-${class} %U";
+      icon = "${icon}";
+      categories = app.categories;
+    };
+  };
+
+  webApps = pkgs.lib.mapAttrs makeWebApp apps;
+in {
+  home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
+  xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
 }

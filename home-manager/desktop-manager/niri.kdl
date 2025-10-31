@@ -133,9 +133,11 @@ binds {
     // Password manager (matching hyprland config)
     Mod+P { spawn-sh "~/open-repo"; }
     
-    // Messenger (matching hyprland config)  
-    Mod+E hotkey-overlay-title="Trello" { spawn "chromium" "--profile-directory=Work" "--app=https://trello.com/u/philipschoenholzer/boards"; }
-    Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium" "--profile-directory=Privat" "--app=https://chatgpt.com/"; }
+    // Web apps
+    Mod+E hotkey-overlay-title="Trello" { spawn "chromium-trello"; }
+    Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium-chatgpt"; }
+    Mod+N hotkey-overlay-title="Notion" { spawn "chromium-notion"; }
+    Mod+M hotkey-overlay-title="Missive" { spawn "chromium-missive"; }
     
     // // Volume controls
     // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
