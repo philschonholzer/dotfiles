@@ -1,14 +1,12 @@
 {
-  nix-colors,
-  ...
-} @ args: {
   pkgs,
   lib,
   config,
+  nix-colors,
   ...
 }: {
   imports = [
-    (import ../home-manager/desktop-manager {inherit nix-colors;})
+    ../home-manager/desktop-manager
     ../home-manager/apps
     ../home-manager/scripts
   ];

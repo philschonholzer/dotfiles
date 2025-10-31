@@ -1,6 +1,7 @@
-{nix-colors}: {
+{
   config,
   lib,
+  nix-colors,
   ...
 }: let
   palette = config.colorScheme.palette;

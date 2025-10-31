@@ -1,10 +1,11 @@
-{nix-colors}: {
+{
   pkgs,
   lib,
+  nix-colors,
   ...
 }: {
   imports = [
-    (import ./desktop-manager {inherit nix-colors;})
+    ./desktop-manager
     ./apps
     ./scripts
   ];

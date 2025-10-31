@@ -12,10 +12,11 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
+        extraSpecialArgs = {inherit nix-colors;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
-            (import ../home-manager/x86.nix {inherit nix-colors;})
+            ../home-manager/x86.nix
           ];
         };
       };
