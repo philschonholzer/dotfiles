@@ -33,7 +33,7 @@ in {
         }
 
         #workspaces button.active {
-          background-color: rgba(${convert ", " palette.base05},0.1);
+          border-top: 3px solid rgba(${convert ", " palette.base05},0.5);
         }
       '';
     };
