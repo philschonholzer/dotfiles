@@ -41,6 +41,11 @@
       specialArgs = {inherit outputs nix-colors home-manager;};
       modules = [./machines/macbook-intel];
     };
+    nixosConfigurations.macbook = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = {inherit outputs nix-colors home-manager;};
+      modules = [./machines/macbook];
+    };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       # Specify your home configuration modules here, for example,
