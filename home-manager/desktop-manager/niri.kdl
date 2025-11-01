@@ -181,7 +181,7 @@ binds {
     Mod+P { spawn-sh "~/open-repo"; }
     
     // Web apps
-    Mod+E hotkey-overlay-title="Trello" { spawn "chromium-trello"; }
+    Mod+E hotkey-overlay-title="Trello Board" { spawn-sh "~/open-trello-board"; }
     Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium-chatgpt"; }
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
     
