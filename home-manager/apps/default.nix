@@ -2,7 +2,7 @@
   imports = [
     ./btop.nix
     ./chromium.nix
-    ./chromium-webapps.nix
+    ./web-apps
     ./cliphist.nix
     ./eza.nix
     ./fd.nix

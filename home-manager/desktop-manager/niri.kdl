@@ -99,7 +99,7 @@ spawn-at-startup "chromium-missive"
 spawn-at-startup "slack"
 
 // Start Trello
-spawn-at-startup "chromium-trello"
+spawn-at-startup "chromium-trello-tasks"
 
 // Start mako for notifications
 spawn-at-startup "mako"

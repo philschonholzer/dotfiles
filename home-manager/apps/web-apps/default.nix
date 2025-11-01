@@ -14,6 +14,13 @@
       iconPath = "${./icons/trello.svg}";
       categories = ["Network" "Office" "ProjectManagement"];
     };
+    trello-tasks = {
+      name = "Meine Tasks - Trello";
+      url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
+      profile = "Work";
+      iconPath = "${./icons/trello.svg}";
+      categories = ["Network" "Office" "ProjectManagement"];
+    };
     notion = {
       name = "Notion";
       url = "https://notion.so";
