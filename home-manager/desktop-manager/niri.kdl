@@ -43,7 +43,7 @@ output "DP-3" {
 }
 
 layout {
-    gaps 16
+    gaps 8
     center-focused-column "never"
     always-center-single-column
     
@@ -68,10 +68,12 @@ layout {
 
     border {
       width 3
-      active-color "#7fc8ff"
+      inactive-color "#727169"
+      active-color "#7E9CD8"
     }
 
     struts {
+      top -8
       left 32
       right 32
     }

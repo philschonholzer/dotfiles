@@ -6,7 +6,7 @@
 }: let
   palette = config.colorScheme.palette;
   convert = nix-colors.lib.conversions.hexToRGBString;
-  backgroundRgb = "rgba(${convert ", " palette.base05},0.1)";
+  backgroundRgb = "transparent";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
   home.file = {
@@ -21,13 +21,19 @@ in {
           color: ${foregroundRgb};
         }
 
+        window#waybar .modules-left {
+          margin-left: 36;
+        }
+        window#waybar .modules-right {
+          margin-right: 36;
+        }
+
         window#waybar {
           background-color: ${backgroundRgb};
-          border-bottom: 3px solid rgba(${convert ", " palette.base05},0.1);
         }
 
         #workspaces button.active {
-          border-bottom: 3px solid ${foregroundRgb};
+          background-color: rgba(${convert ", " palette.base05},0.1);
         }
       '';
     };
@@ -37,10 +43,11 @@ in {
     enable = true;
     settings = lib.mkForce [
       {
+        reload_style_on_change = true;
         layer = "top";
         position = "top";
-        spacing = 0;
-        height = 26;
+        spacing = 4;
+        height = 36;
         modules-left = [
           "niri/workspaces"
           "hyprland/workspaces"
