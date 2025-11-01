@@ -4,8 +4,9 @@
   ...
 }: {
   imports = [
-    ../configuration.nix
-    ../modules
+    ./hardware-configuration.nix
+    ../../configuration.nix
+    ../../modules
     home-manager.nixosModules.home-manager
     {
       home-manager = {
@@ -16,7 +17,7 @@
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
-            ../home-manager/x86.nix
+            ../../home-manager/x86.nix
           ];
         };
       };

@@ -34,12 +34,12 @@
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit outputs nix-colors home-manager;};
-      modules = [./machines/beelink.nix];
+      modules = [./machines/beelink];
     };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit outputs nix-colors home-manager;};
-      modules = [./machines/macbook-intel.nix];
+      modules = [./machines/macbook-intel];
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
