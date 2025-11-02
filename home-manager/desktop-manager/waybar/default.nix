@@ -35,6 +35,11 @@ in {
         #workspaces button.active {
           border-top: 3px solid rgba(${convert ", " palette.base05},0.5);
         }
+
+        button:hover {
+          background-color: rgba(${convert ", " palette.base05},0.3);
+        }
+
       '';
     };
   };
