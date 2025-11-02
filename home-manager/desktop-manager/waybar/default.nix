@@ -8,6 +8,7 @@
   convert = nix-colors.lib.conversions.hexToRGBString;
   backgroundRgb = "transparent";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
+  hoverRgb = "rgba(${convert ", " palette.base05},0.3)";
 in {
   home.file = {
     ".config/waybar/" = {
@@ -17,6 +18,7 @@ in {
     ".config/waybar/theme.css" = {
       text = ''
         @define-color background ${backgroundRgb};
+        @define-color hoverBg ${hoverRgb};
         * {
           color: ${foregroundRgb};
         }
@@ -24,6 +26,7 @@ in {
         window#waybar .modules-left {
           margin-left: 36;
         }
+
         window#waybar .modules-right {
           margin-right: 36;
         }
@@ -37,7 +40,7 @@ in {
         }
 
         button:hover {
-          background-color: rgba(${convert ", " palette.base05},0.3);
+          background-color: @hoverBg
         }
 
       '';
@@ -114,7 +117,7 @@ in {
         };
         memory = {
           interval = 30;
-          format = "{}%   ";
+          format = "{}%  ";
           max-length = 10;
         };
         clock = {

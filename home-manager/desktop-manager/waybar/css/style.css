@@ -22,6 +22,7 @@
 
 #custom-dropbox,
 #cpu,
+#memory,
 #power-profiles-daemon,
 #battery,
 #network,
@@ -31,7 +32,15 @@
 #clock {
   background-color: transparent;
   min-width: 12px;
-  margin-right: 13px;
+  padding: 0 6;
+}
+
+#cpu:hover,
+#network:hover,
+#bluetooth:hover,
+#wireplumber:hover,
+#memory:hover {
+  background-color: @hoverBg;
 }
 
 tooltip {
