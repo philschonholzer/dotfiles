@@ -41,6 +41,11 @@ output "DP-3" {
     scale 1.6
     position x=0 y=0
 }
+output "eDP-1" {
+    mode "2560x1600"
+    scale 1.6
+    position x=0 y=0
+}
 
 layout {
     gaps 8
@@ -136,7 +141,7 @@ window-rule {
 
 // Open Trello on workspace "tasks"
 window-rule {
-    match at-startup=true app-id="chrome-trello.com__-Work"
+    match at-startup=true app-id="chrome-trello.com__v_Nqy4HPGw_philip-in-arbeit-Work"
     open-on-workspace "tasks"
 }
 
