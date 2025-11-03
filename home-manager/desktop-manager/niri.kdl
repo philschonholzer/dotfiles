@@ -58,7 +58,7 @@ layout {
         proportion 0.66667
     }
     
-    default-column-width { proportion 0.5; }
+    default-column-width { fixed 1280; }
 
     preset-window-heights {
         proportion 0.33333
@@ -151,12 +151,6 @@ window-rule {
     open-floating true
 }
 
-// Bitwarden floating window
-window-rule {
-    match app-id="Bitwarden"
-    open-floating true
-}
-
 window-rule {
   geometry-corner-radius 4
   clip-to-geometry true
@@ -169,10 +163,6 @@ window-rule {
 // }
 
 // Google Voice on workspace 1
-window-rule {
-    match app-id="chromium-google-voice"
-    open-on-workspace "1"
-}
 
 binds {
     // Important hotkeys
