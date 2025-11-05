@@ -123,6 +123,13 @@ animations {
     // Keep animations enabled but simple
 }
 
+// Block out mako notifications from screencasts.
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screencast"
+}
+
 // Open Google Voice on workspace "phone"
 window-rule {
     match at-startup=true app-id=r#"^chrome-voice.google.com__-Work$"#
@@ -145,6 +152,37 @@ window-rule {
 window-rule {
     match at-startup=true app-id="chrome-trello.com__v_Nqy4HPGw_philip-in-arbeit-Work"
     open-on-workspace "tasks"
+}
+
+// Block out password managers from screencasts.
+window-rule {
+    match app-id="Bitwarden"
+
+    block-out-from "screencast"
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
 }
 
 // Window rules
@@ -267,6 +305,9 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+
+    // Pick window to screencast 
+    Mod+Shift+X hotkey-overlay-title="Pick Window to Share" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
