@@ -32,6 +32,8 @@ input {
 cursor {
     // Hide the cursor after one second of inactivity.
     hide-after-inactive-ms 650
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
 }
 
 
