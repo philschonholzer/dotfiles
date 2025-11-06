@@ -2,7 +2,7 @@
   imports = [
     ./waybar
     ./swayidle.nix
-    ./hyprpaper.nix
+    ./swaybg.nix
     ./theme.nix
   ];
 }
