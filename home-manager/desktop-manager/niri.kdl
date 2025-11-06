@@ -307,6 +307,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // Pick window to screencast 
+    Mod+X hotkey-overlay-title="Share window" { set-dynamic-cast-monitor; }
     Mod+Shift+X hotkey-overlay-title="Pick Window to Share" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     
     // System
