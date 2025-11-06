@@ -53,6 +53,7 @@
       gftp
       parsec-bin
       xwayland-satellite
+      brightnessctl
       jq
     ];
   };

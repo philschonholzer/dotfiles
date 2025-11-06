@@ -235,8 +235,8 @@ binds {
     // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
     //
     // // Brightness controls
-    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     
     // Window management
     Mod+W repeat=false { close-window; }
