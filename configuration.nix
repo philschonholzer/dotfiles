@@ -62,7 +62,7 @@
         # By adding default_session it ensures you can still access the tty terminal if you logout of your windows manager otherwise you would just relaunch into it.
         default_session = {
           # Allow choosing between Hyprland and niri at login
-          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --sessions ${pkgs.hyprland}/share/wayland-sessions:${pkgs.niri}/share/wayland-sessions";
+          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --sessions ${pkgs.niri}/share/wayland-sessions";
           # DO NOT CHANGE THIS USER
           user = "greeter";
         };
@@ -107,6 +107,9 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
+
+    extra-substituters = ["https://vicinae.cachix.org"];
+    extra-trusted-public-keys = ["vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="];
 
     # Optimize storage
     # You can also manually optimize the store via:

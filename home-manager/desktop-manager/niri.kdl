@@ -213,7 +213,7 @@ binds {
     
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run Application: fuzzel" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
     Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     

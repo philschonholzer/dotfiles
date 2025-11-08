@@ -1,6 +1,7 @@
 {
   home-manager,
   nix-colors,
+  vicinae,
   ...
 }: {
   imports = [
@@ -17,6 +18,7 @@
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
+            vicinae.homeManagerModules.default
             ../../home-manager/x86.nix
           ];
         };

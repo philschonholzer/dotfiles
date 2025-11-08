@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = {
@@ -17,6 +18,7 @@
     nixpkgs-unstable,
     home-manager,
     nix-colors,
+    vicinae,
     ...
   }: let
     inherit (self) outputs;
@@ -33,17 +35,17 @@
     # Used with `nixos-rebuild --flake .#<hostname>`
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager;};
+      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
       modules = [./machines/beelink];
     };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager;};
+      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
       modules = [./machines/macbook-intel];
     };
     nixosConfigurations.macbook = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager;};
+      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
       modules = [./machines/macbook];
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
