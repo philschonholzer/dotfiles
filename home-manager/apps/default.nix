@@ -3,7 +3,6 @@
     ./btop.nix
     ./chromium.nix
     ./web-apps
-    ./cliphist.nix
     ./eza.nix
     ./fd.nix
     ./firefox.nix

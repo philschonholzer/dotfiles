@@ -303,7 +303,9 @@ binds {
     // Floating toggle
     Mod+V { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    
+
+    // Clipboard history
+    Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     // Screenshots
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
