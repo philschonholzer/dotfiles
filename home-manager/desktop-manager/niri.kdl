@@ -98,9 +98,6 @@ workspace "tasks"
 // Start waybar at startup (already configured in your setup)
 spawn-at-startup "waybar"
 
-// Set wallpaper
-spawn-at-startup "swaybg -i ~/Pictures/Wallpapers/kanagawa-blend.jpg"
-
 // Start Google Voice 
 spawn-at-startup "chromium-google-voice"
 
