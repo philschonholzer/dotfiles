@@ -218,7 +218,7 @@ binds {
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
-    Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
+    Mod+B hotkey-overlay-title="Firefox" { spawn "focus-or-spawn" "firefox" "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
@@ -226,7 +226,7 @@ binds {
     
     // Web apps
     Mod+E hotkey-overlay-title="Trello Board" { spawn-sh "~/open-trello-board"; }
-    Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium-chatgpt"; }
+    Mod+A hotkey-overlay-title="ChatGPT" { spawn "focus-or-spawn" "chrome-chat.openai.com__-Work" "chromium-chatgpt"; }
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
     
     // // Volume controls
