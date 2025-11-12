@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./common.nix];
 
   # x86-specific packages
@@ -16,5 +12,9 @@
   ];
 
   # Niri configuration for x86
-  xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/desktop-manager/niri.kdl";
+  services.niri = {
+    enable = true;
+    configFile = "niri.kdl";
+    enableSwayidle = true;
+  };
 }

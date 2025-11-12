@@ -61,10 +61,9 @@
       settings = {
         # By adding default_session it ensures you can still access the tty terminal if you logout of your windows manager otherwise you would just relaunch into it.
         default_session = {
-          # Allow choosing between Hyprland and niri at login
-          command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --sessions ${pkgs.niri}/share/wayland-sessions";
           # DO NOT CHANGE THIS USER
           user = "greeter";
+          # Note: command is configured by the niri module
         };
       };
     };
@@ -99,10 +98,15 @@
   programs.zsh.enable = true;
   programs.appimage.enable = true;
   programs.seahorse.enable = true;
-  programs.niri.enable = true;
   programs.nautilus-open-any-terminal = {
     enable = true;
     terminal = "ghostty";
+  };
+
+  # Niri is now configured through modules/niri.nix
+  services.niri = {
+    enable = true;
+    enableSystemIntegration = true;
   };
 
   nix.settings = {
@@ -162,12 +166,7 @@
 
   environment.variables.EDITOR = "nvim";
 
-  # Added these for screen sharing to work. But maybe the are not needed because I changed xdg setting at the same time in beelink.nix
-  environment.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "niri";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "niri";
-  };
+  # Environment variables for Niri are now configured through modules/niri.nix
 
   virtualisation.docker.enable = true;
 
