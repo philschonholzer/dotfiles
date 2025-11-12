@@ -5,6 +5,7 @@
       ids = ["*"];
       settings = {
         main = {
+          capslock = "tab";
           j = "overloadt2(meta, j, 200)";
           f = "overloadt2(meta, f, 200)";
           k = "overloadt2(shift, k, 200)";
