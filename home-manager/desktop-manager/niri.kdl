@@ -79,6 +79,10 @@ layout {
       inactive-color "#727169"
       active-color "#7E9CD8"
     }
+     tab-indicator {
+        width 5
+        gap 1
+    }
 
     struts {
       top -8
