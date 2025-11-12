@@ -17,6 +17,7 @@ input {
     }
 
     touchpad {
+        dwt
         tap
         natural-scroll
     }
@@ -307,8 +308,11 @@ binds {
     Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     // Screenshots
     Print { screenshot; }
+    Mod+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
+    Mod+Ctrl+S { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    Mod+Alt+S { screenshot-window; }
 
     // Pick window to screencast 
     Mod+X hotkey-overlay-title="Share window" { set-dynamic-cast-monitor; }
