@@ -58,6 +58,7 @@ in {
         height = 36;
         modules-left = [
           "niri/workspaces"
+          "custom/niri-windows"
           "hyprland/workspaces"
         ];
         modules-center = [
@@ -108,6 +109,12 @@ in {
         };
         "niri/window" = {
           format = "{app_id}";
+        };
+        "custom/niri-windows" = {
+          exec = "niri-window-indicator";
+          interval = 1;
+          format = "{}";
+          tooltip = false;
         };
         cpu = {
           interval = 5;
