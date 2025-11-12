@@ -92,7 +92,7 @@ layout {
 }
 
 overview {
-    zoom 0.25
+    zoom 0.3
 }
 
 workspace "phone"
