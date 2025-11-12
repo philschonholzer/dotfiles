@@ -7,7 +7,6 @@
     ./desktop-manager
     ./apps
     ./scripts
-    ./niri.nix
   ];
 
   home = {
