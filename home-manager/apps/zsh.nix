@@ -2,6 +2,13 @@
   programs.zsh = {
     enable = true;
 
+    enableCompletion = true;
+
+    initContent = ''
+      # Case-insensitive completion
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+    '';
+
     syntaxHighlighting = {
       enable = true;
     };
