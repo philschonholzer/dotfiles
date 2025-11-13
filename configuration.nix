@@ -156,6 +156,7 @@
     blueberry
     unzip
     gnome-keyring
+    pwvucontrol
   ];
 
   fonts.packages = with pkgs; [

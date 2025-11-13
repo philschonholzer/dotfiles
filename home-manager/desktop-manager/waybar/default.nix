@@ -217,7 +217,7 @@ in {
           "format" = "";
           format-muted = "󰝟";
           scroll-step = 5;
-          on-click = "pavucontrol";
+          on-click = "pwvucontrol";
           tooltip-format = "Playing at {volume}%";
           on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
           max-volume = 150; # Optional: allow volume over 100%
