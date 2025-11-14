@@ -1,0 +1,43 @@
+// ARM/MacBook M2-specific configuration overrides
+// This file contains only the differences from niri-base.kdl
+
+// ARM-specific environment variable for software GL rendering
+environment {
+    LIBGL_ALWAYS_SOFTWARE "1"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "altgr-intl"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        natural-scroll
+        scroll-factor 0.5
+        accel-speed 0.5
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="40%"
+}
+
+cursor {
+    hide-after-inactive-ms 650
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
+// Virtual display for ARM/VM environment
+output "Virtual-1" {
+    mode "3840x2160@60.000"
+    scale 2
+    position x=0 y=0
+}

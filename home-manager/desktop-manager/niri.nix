@@ -13,8 +13,8 @@ in {
 
     configFile = lib.mkOption {
       type = lib.types.str;
-      default = "niri.kdl";
-      description = "Name of the Niri config file in desktop-manager/";
+      default = "niri-beelink.kdl";
+      description = "Name of the machine-specific Niri config override file in desktop-manager/niri-configs/ (e.g., niri-beelink.kdl, niri-macbook-intel.kdl, or niri-macbook-m2.kdl)";
     };
 
     enableSwayidle = lib.mkOption {
@@ -32,15 +32,20 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # Generate niri config with substitutions
+    # Generate niri config by merging base + machine-specific overrides
     xdg.configFile."niri/config.kdl".text = let
-      baseConfig = builtins.readFile ./${cfg.configFile};
+      # Read machine-specific overrides from niri-configs directory
+      machineConfig = builtins.readFile ./niri-configs/${cfg.configFile};
+      # Read base configuration from niri-configs directory
+      baseConfig = builtins.readFile ./niri-configs/niri-base.kdl;
+      # Concatenate: machine-specific first (for environment block), then base
+      mergedConfig = machineConfig + "\n" + baseConfig;
     in
       # Replace the default-column-width line with the configured value
       builtins.replaceStrings
         ["default-column-width { proportion 0.5; }"]
         ["default-column-width { ${cfg.defaultColumnWidth}; }"]
-        baseConfig;
+        mergedConfig;
 
     # Swayidle integration with Niri
     services.swayidle = lib.mkIf cfg.enableSwayidle (let

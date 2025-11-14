@@ -5,9 +5,9 @@
   # If you want to enable any of these later, add them to home.packages
 
   # Niri configuration for ARM (MacBook)
+  # Note: configFile is specified per-machine in machines/<machine>/default.nix
   services.niri = {
     enable = true;
-    configFile = "niri-m.kdl";
     enableSwayidle = true;
   };
 }

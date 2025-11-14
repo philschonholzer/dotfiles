@@ -1,49 +1,11 @@
-// Niri configuration for Philip's setup
+// Niri base configuration for Philip's setup
+// Machine-specific settings (outputs, input devices, environment) are in separate files
 
 prefer-no-csd
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     GTK_THEME "Adwaita:dark"
-    LIBGL_ALWAYS_SOFTWARE "1"
-}
-
-input {
-    keyboard {
-        xkb {
-            layout "us"
-            variant "altgr-intl"
-        }
-        numlock
-    }
-
-    touchpad {
-        tap
-        natural-scroll
-    }
-
-    mouse {
-        natural-scroll
-        scroll-factor 0.5
-        accel-speed 0.5
-    }
-    warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="40%"
-}
-
-cursor {
-    // Hide the cursor after one second of inactivity.
-    hide-after-inactive-ms 650
-    xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 24
-}
-
-
-// Configure your monitor (update with actual output name from `niri msg outputs`)
-output "Virtual-1" {
-    mode "3840x2160@60.000"
-    scale 2
-    position x=0 y=0
 }
 
 layout {
@@ -201,14 +163,6 @@ window-rule {
   geometry-corner-radius 4
   clip-to-geometry true
 }
-
-// Slack special workspace (similar to hyprland config)
-// window-rule {
-//     match app-id="Slack"
-//     open-on-workspace 2
-// }
-
-// Google Voice on workspace 1
 
 binds {
     // Important hotkeys

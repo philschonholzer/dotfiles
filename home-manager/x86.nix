@@ -12,9 +12,9 @@
   ];
 
   # Niri configuration for x86
+  # Note: configFile is specified per-machine in machines/<machine>/default.nix
   services.niri = {
     enable = true;
-    configFile = "niri.kdl";
     enableSwayidle = true;
   };
 }
