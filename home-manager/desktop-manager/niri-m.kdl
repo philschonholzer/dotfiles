@@ -34,6 +34,8 @@ input {
 cursor {
     // Hide the cursor after one second of inactivity.
     hide-after-inactive-ms 650
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
 }
 
 
@@ -73,6 +75,10 @@ layout {
       inactive-color "#727169"
       active-color "#7E9CD8"
     }
+     tab-indicator {
+        width 5
+        gap 1
+    }
 
     struts {
       top -8
@@ -82,13 +88,15 @@ layout {
 }
 
 overview {
-    zoom 0.25
+    zoom 0.3
 }
 
 workspace "phone"
 workspace "mail"
 workspace "slack"
 workspace "tasks"
+
+spawn-at-startup "wbg" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
 
 // Start waybar at startup (already configured in your setup)
 spawn-at-startup "waybar"
@@ -108,6 +116,9 @@ spawn-at-startup "chromium-trello-tasks"
 // Start mako for notifications
 spawn-at-startup "mako"
 
+// Start mic monitor on the right 1px wide
+spawn-at-startup "wlavu" "-a" "right" "-w" "1"
+
 hotkey-overlay {
     // skip-at-startup
 }
@@ -116,6 +127,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
     // Keep animations enabled but simple
+}
+
+// Block out mako notifications from screencasts.
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screencast"
 }
 
 // Open Google Voice on workspace "phone"
@@ -138,19 +156,44 @@ window-rule {
 
 // Open Trello on workspace "tasks"
 window-rule {
-    match at-startup=true app-id="chrome-trello.com__-Work"
+    match at-startup=true app-id="chrome-trello.com__v_Nqy4HPGw_philip-in-arbeit-Work"
     open-on-workspace "tasks"
+}
+
+// Block out password managers from screencasts.
+window-rule {
+    match app-id="Bitwarden"
+
+    block-out-from "screencast"
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
 }
 
 // Window rules
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Bitwarden floating window
-window-rule {
-    match app-id="Bitwarden"
     open-floating true
 }
 
@@ -166,10 +209,6 @@ window-rule {
 // }
 
 // Google Voice on workspace 1
-window-rule {
-    match app-id="chromium-google-voice"
-    open-on-workspace "1"
-}
 
 binds {
     // Important hotkeys
@@ -177,8 +216,8 @@ binds {
     
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run Application: fuzzel" { spawn "fuzzel"; }
-    Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
+    Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
+    Mod+B hotkey-overlay-title="Firefox" { spawn "focus-or-spawn" "firefox" "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
@@ -186,24 +225,24 @@ binds {
     
     // Web apps
     Mod+E hotkey-overlay-title="Trello Board" { spawn-sh "~/open-trello-board"; }
-    Mod+A hotkey-overlay-title="ChatGPT" { spawn "chromium-chatgpt"; }
+    Mod+A hotkey-overlay-title="ChatGPT" { spawn "focus-or-spawn" "chrome-chat.openai.com__-Work" "chromium-chatgpt"; }
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
     
     // // Volume controls
-    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     //
     // // Media controls
-    // XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    // XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
     //
     // // Brightness controls
-    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     
     // Window management
     Mod+W repeat=false { close-window; }
@@ -275,11 +314,20 @@ binds {
     // Floating toggle
     Mod+V { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    
+
+    // Clipboard history
+    Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     // Screenshots
     Print { screenshot; }
+    Mod+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
+    Mod+Ctrl+S { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    Mod+Alt+S { screenshot-window; }
+
+    // Pick window to screencast 
+    Mod+X hotkey-overlay-title="Share window" { set-dynamic-cast-monitor; }
+    Mod+Shift+X hotkey-overlay-title="Pick Window to Share" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
