@@ -1,29 +1,13 @@
-{
-  home-manager,
-  nix-colors,
-  vicinae,
-  wlavu,
-  ...
-}: {
+{home-manager, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../configuration.nix
-    ../../modules
-    home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        backupFileExtension = "backup";
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = {inherit nix-colors wlavu;};
-        users.philip = {
-          imports = [
-            nix-colors.homeManagerModules.default
-            vicinae.homeManagerModules.default
-            ../../home-manager/x86.nix
-          ];
-        };
-      };
-    }
+    ../common.nix
   ];
+
+  # Machine-specific home-manager configuration
+  home-manager.users.philip = {
+    services.niri = {
+      defaultColumnWidth = "fixed 1280";
+    };
+  };
 }

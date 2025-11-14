@@ -22,11 +22,25 @@ in {
       default = true;
       description = "Enable swayidle integration with Niri power management";
     };
+
+    defaultColumnWidth = lib.mkOption {
+      type = lib.types.str;
+      default = "proportion 0.5";
+      description = "Default column width configuration for Niri layout";
+      example = "fixed 1280";
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    # Symlink the config file
-    xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/desktop-manager/${cfg.configFile}";
+    # Generate niri config with substitutions
+    xdg.configFile."niri/config.kdl".text = let
+      baseConfig = builtins.readFile ./${cfg.configFile};
+    in
+      # Replace the default-column-width line with the configured value
+      builtins.replaceStrings
+        ["default-column-width { proportion 0.5; }"]
+        ["default-column-width { ${cfg.defaultColumnWidth}; }"]
+        baseConfig;
 
     # Swayidle integration with Niri
     services.swayidle = lib.mkIf cfg.enableSwayidle (let

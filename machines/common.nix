@@ -2,8 +2,32 @@
   pkgs,
   outputs,
   lib,
+  home-manager,
+  nix-colors,
+  vicinae,
+  wlavu,
   ...
 }: {
+  imports = [
+    ../modules
+    home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        backupFileExtension = "backup";
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {inherit nix-colors wlavu;};
+        users.philip = {
+          imports = [
+            nix-colors.homeManagerModules.default
+            vicinae.homeManagerModules.default
+            ../home-manager/x86.nix
+          ];
+        };
+      };
+    }
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot = {
     enable = true;
@@ -13,7 +37,7 @@
 
   hardware.keyboard.zsa.enable = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = lib.mkDefault "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -87,7 +111,7 @@
   security.pam.services.swaylock = {};
   security.rtkit.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.philip = {
     isNormalUser = true;
     description = "Philip Schoenholzer";
@@ -194,7 +218,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

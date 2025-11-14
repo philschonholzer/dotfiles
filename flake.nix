@@ -40,8 +40,14 @@
     # Used with `nixos-rebuild --flake .#<hostname>`
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
-      modules = [./machines/beelink];
+      specialArgs = {
+        inherit outputs nix-colors home-manager vicinae;
+        wlavu = wlavu.packages."x86_64-linux".default;
+      };
+      modules = [
+        ./machines/beelink
+        {networking.hostName = "beelink";}
+      ];
     };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -49,12 +55,18 @@
         inherit outputs nix-colors home-manager vicinae;
         wlavu = wlavu.packages."x86_64-linux".default;
       };
-      modules = [./machines/macbook-intel];
+      modules = [
+        ./machines/macbook-intel
+        {networking.hostName = "macbook-intel";}
+      ];
     };
-    nixosConfigurations.macbook = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.macbook-m2 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {inherit outputs nix-colors home-manager vicinae;};
-      modules = [./machines/macbook];
+      modules = [
+        ./machines/macbook-m2
+        {networking.hostName = "macbook-m2";}
+      ];
     };
     homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
