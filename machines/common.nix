@@ -21,7 +21,11 @@
           imports = [
             nix-colors.homeManagerModules.default
             vicinae.homeManagerModules.default
-            ../home-manager/x86.nix
+            (
+              if pkgs.stdenv.isAarch64
+              then ../home-manager/arm.nix
+              else ../home-manager/x86.nix
+            )
           ];
         };
       };

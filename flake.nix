@@ -62,7 +62,10 @@
     };
     nixosConfigurations.macbook-m2 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
+      specialArgs = {
+        inherit outputs nix-colors home-manager vicinae;
+        wlavu = wlavu.packages."aarch64-linux".default;
+      };
       modules = [
         ./machines/macbook-m2
         {networking.hostName = "macbook-m2";}
