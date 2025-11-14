@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vicinae.url = "github:vicinaehq/vicinae";
+    wlavu = {
+      url = "github:philschonholzer/wlavu";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use your nixpkgs, not wlavu's
+    };
   };
 
   outputs = {
@@ -19,6 +23,7 @@
     home-manager,
     nix-colors,
     vicinae,
+    wlavu,
     ...
   }: let
     inherit (self) outputs;
@@ -40,7 +45,10 @@
     };
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit outputs nix-colors home-manager vicinae;};
+      specialArgs = {
+        inherit outputs nix-colors home-manager vicinae;
+        wlavu = wlavu.packages."x86_64-linux".default;
+      };
       modules = [./machines/macbook-intel];
     };
     nixosConfigurations.macbook = nixpkgs.lib.nixosSystem {

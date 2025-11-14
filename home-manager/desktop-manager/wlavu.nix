@@ -1,0 +1,3 @@
+{wlavu, ...}: {
+  home.packages = [wlavu];
+}

@@ -2,6 +2,7 @@
   home-manager,
   nix-colors,
   vicinae,
+  wlavu,
   ...
 }: {
   imports = [
@@ -14,7 +15,7 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit nix-colors;};
+        extraSpecialArgs = {inherit nix-colors wlavu;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default

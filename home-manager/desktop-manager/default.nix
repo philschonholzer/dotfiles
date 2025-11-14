@@ -5,5 +5,6 @@
     ./theme.nix
     ./vicinae.nix
     ./wbg.nix
+    ./wlavu.nix
   ];
 }
