@@ -13,6 +13,7 @@
     ./lazydocker.nix
     ./lazygit.nix
     ./nvim.nix
+    ./qutebrowser.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
