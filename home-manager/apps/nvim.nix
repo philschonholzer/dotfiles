@@ -9,7 +9,6 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
     extraLuaPackages = ps: [ps.magick];
     extraPackages = with pkgs; [
       alejandra
@@ -23,6 +22,8 @@
       ghostscriptX
       marksman
       lsof
+      tree-sitter
+      statix
     ];
   };
 
