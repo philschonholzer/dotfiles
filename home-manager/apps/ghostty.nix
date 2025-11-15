@@ -13,6 +13,10 @@ in {
       font-family = "Liberation Sans 11";
       font-size = 12;
 
+      # Copy selected text to clipboard automatically
+      copy-on-select = "clipboard";
+      app-notifications = "no-clipboard-copy";
+
       theme = "myconfig";
     };
     themes = {
