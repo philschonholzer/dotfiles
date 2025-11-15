@@ -1,8 +1,6 @@
-{...}: {
+{
   programs.zsh = {
     enable = true;
-
-    enableCompletion = true;
 
     initContent = ''
       # Case-insensitive completion
@@ -15,19 +13,7 @@
 
     historySubstringSearch.enable = true;
 
-    zplug = {
-      enable = true;
-      plugins = [
-        {
-          name = "plugins/git";
-          tags = ["from:oh-my-zsh"];
-        }
-        {
-          name = "fdellwing/zsh-bat";
-          tags = ["as:command"];
-        }
-      ];
-    };
+    # zprof.enable = true; # Profile zsh startup (what causes long startup times)
 
     shellAliases = {
       pn = "pnpm";
