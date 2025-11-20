@@ -30,6 +30,11 @@
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
       config.allowUnfree = true;
+      overlays = builtins.attrValues (import ./overlays.nix {
+        inputs = {
+          inherit nixpkgs-unstable;
+        };
+      });
     };
   in {
     overlays = import ./overlays.nix {
