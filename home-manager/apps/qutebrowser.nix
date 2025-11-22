@@ -1,4 +1,21 @@
-{pkgs, ...}: let
+# Qutebrowser configuration with work and private profiles
+#
+# Usage:
+#   qutebrowser-work    - Launch work profile (basedir: ~/.local/share/qutebrowser-work)
+#   qutebrowser-private - Launch private profile (basedir: ~/.local/share/qutebrowser-private)
+#   qutebrowser         - Default profile (basedir: ~/.local/share/qutebrowser)
+#
+# All profiles share the same configuration (settings, keybindings, theme).
+# Each profile maintains separate:
+# - Browsing history
+# - Cookies and sessions
+# - Bookmarks
+# - Cache and downloads
+{
+  pkgs,
+  config,
+  ...
+}: let
   # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
   # Scheme name: Kanagawa
   # Scheme author: Tommaso Laurenzi (https://github.com/rebelot)
@@ -20,6 +37,32 @@
   base0D = "#7e9cd8";
   base0E = "#957fb8";
   base0F = "#d27e99";
+
+  # Wrapper script for work profile
+  # Shares config with default profile via symlink
+  qutebrowser-work = pkgs.writeShellScriptBin "qutebrowser-work" ''
+    WORK_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-work"
+    DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
+
+    exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+      --basedir "$WORK_DIR" \
+      --config-py "$DEFAULT_CONFIG" \
+      --desktop-file-name qutebrowser-work \
+      "$@"
+  '';
+
+  # Wrapper script for private profile
+  # Shares config with default profile via symlink
+  qutebrowser-private = pkgs.writeShellScriptBin "qutebrowser-private" ''
+    PRIVATE_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-private"
+    DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
+
+    exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+      --basedir "$PRIVATE_DIR" \
+      --config-py "$DEFAULT_CONFIG" \
+      --desktop-file-name qutebrowser-private \
+      "$@"
+  '';
 in {
   programs.qutebrowser = {
     enable = true;
@@ -253,6 +296,35 @@ in {
           };
         };
       };
+    };
+  };
+
+  # Add wrapper scripts to PATH
+  home.packages = [
+    qutebrowser-work
+    qutebrowser-private
+  ];
+
+  # Desktop entries for both profiles
+  xdg.desktopEntries = {
+    qutebrowser-work = {
+      name = "Qutebrowser (Work)";
+      genericName = "Web Browser - Work Profile";
+      exec = "${qutebrowser-work}/bin/qutebrowser-work %u";
+      terminal = false;
+      categories = ["Application" "Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml"];
+      icon = "qutebrowser";
+    };
+
+    qutebrowser-private = {
+      name = "Qutebrowser (Private)";
+      genericName = "Web Browser - Private Profile";
+      exec = "${qutebrowser-private}/bin/qutebrowser-private %u";
+      terminal = false;
+      categories = ["Application" "Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml"];
+      icon = "qutebrowser";
     };
   };
 }

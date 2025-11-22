@@ -64,16 +64,16 @@ spawn-at-startup "wbg" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
 spawn-at-startup "waybar"
 
 // Start Google Voice 
-spawn-at-startup "chromium-google-voice"
+spawn-at-startup "webapp-google-voice"
 
 // Start Missive
-spawn-at-startup "chromium-missive"
+spawn-at-startup "webapp-missive"
 
 // Start Slack
 spawn-at-startup "slack"
 
 // Start Trello
-spawn-at-startup "chromium-trello-tasks"
+spawn-at-startup "webapp-trello-tasks"
 
 // Start mako for notifications
 spawn-at-startup "mako"
@@ -171,7 +171,7 @@ binds {
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
-    Mod+B hotkey-overlay-title="Firefox" { spawn "focus-or-spawn" "firefox" "firefox"; }
+    Mod+B hotkey-overlay-title="Firefox" { spawn "focus-or-spawn" "qutebrowser-work" "qutebrowser-work"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
@@ -179,7 +179,7 @@ binds {
     
     // Web apps
     Mod+E hotkey-overlay-title="Trello Board" { spawn-sh "~/open-trello-board"; }
-    Mod+A hotkey-overlay-title="ChatGPT" { spawn "focus-or-spawn" "chrome-chat.openai.com__-Work" "chromium-chatgpt"; }
+    Mod+A hotkey-overlay-title="ChatGPT" { spawn "focus-or-spawn" "chatgpt" "webapp-chatgpt"; }
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
     
     // // Volume controls
