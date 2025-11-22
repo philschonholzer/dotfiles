@@ -32,13 +32,23 @@ in {
       "L" = "tab-next";
       "J" = "back";
       "K" = "forward";
+      "l" = "jseval -q window.scrollBy({top: -400, left: 0, behavior: 'smooth'});";
+      "h" = "jseval -q window.scrollBy({top: 400, left: 0, behavior: 'smooth'});";
     };
     settings = {
-      tabs.indicator.width = 3;
-      tabs.favicons.scale = 0.9;
+      tabs = {
+        show = "multiple";
+        indicator.width = 3;
+        favicons.scale = 0.9;
+      };
 
       fonts.tabs.selected = "11pt";
       fonts.tabs.unselected = "11pt";
+
+      statusbar.show = "in-mode";
+
+      # Enable smooth scrolling
+      scrolling.smooth = true;
 
       colors = {
         webpage.preferred_color_scheme = "dark";
