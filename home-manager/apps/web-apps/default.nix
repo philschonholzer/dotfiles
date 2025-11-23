@@ -49,6 +49,7 @@
       exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \
+        --set "tabs.tabs_are_windows" "true" \
         --desktop-file-name "${class}" \
         --target window \
         --override-restore \

@@ -69,6 +69,20 @@ in {
     package = pkgs.unstable.qutebrowser;
     extraConfig = ''
       c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
+
+      # Auto-enter passthrough mode for Missive
+      config.set('input.mode_override', 'passthrough', 'mail.missiveapp.com')
+
+      # Auto-enter passthrough mode for Trello
+      config.set('input.mode_override', 'passthrough', 'trello.com')
+
+      # Allow notifications for web apps
+      config.set('content.notifications.enabled', True, 'mail.missiveapp.com')
+      config.set('content.notifications.enabled', True, 'trello.com')
+      config.set('content.notifications.enabled', True, 'voice.google.com')
+
+      # Allow audio recording for Google Voice
+      config.set('content.media.audio_capture', True, 'voice.google.com')
     '';
     keyBindings.normal = {
       "H" = "tab-prev";
