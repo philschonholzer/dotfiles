@@ -69,11 +69,11 @@ spawn-at-startup "webapp-google-voice"
 // Start Missive
 spawn-at-startup "webapp-missive"
 
-// Start Slack
-spawn-at-startup "slack"
-
 // Start Trello
 spawn-at-startup "webapp-trello-tasks"
+
+// Start Slack
+spawn-at-startup "slack"
 
 // Start mako for notifications
 spawn-at-startup "mako"
@@ -82,7 +82,7 @@ spawn-at-startup "mako"
 spawn-at-startup "wlavu" "-a" "right" "-w" "1"
 
 hotkey-overlay {
-    // skip-at-startup
+    skip-at-startup
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -100,13 +100,13 @@ layer-rule {
 
 // Open Google Voice on workspace "phone"
 window-rule {
-    match at-startup=true app-id=r#"^chrome-voice.google.com__-Work$"#
+    match at-startup=true app-id=r#"^google-voice$"#
     open-on-workspace "phone"
 }
 
 // Open Missive on workspace "mail"
 window-rule {
-    match at-startup=true app-id="chrome-mail.missiveapp.com__-Work"
+    match at-startup=true app-id="missive"
     open-on-workspace "mail"
 }
 
@@ -118,7 +118,7 @@ window-rule {
 
 // Open Trello on workspace "tasks"
 window-rule {
-    match at-startup=true app-id="chrome-trello.com__v_Nqy4HPGw_philip-in-arbeit-Work"
+    match at-startup=true app-id="trello-tasks"
     open-on-workspace "tasks"
 }
 

@@ -14,6 +14,11 @@
     homeDirectory = "/home/philip";
     stateVersion = "25.05";
 
+    sessionVariables = {
+      BROWSER = "qutebrowser-work";
+      DEFAULT_BROWSER = "qutebrowser-work";
+    };
+
     packages = with pkgs; [
       unstable.opencode
       unstable.blender
@@ -97,6 +102,25 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  # Set default applications
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/chrome" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-htm" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-html" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-shtml" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-xhtml" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-xht" = "org.qutebrowser.qutebrowser.desktop";
+      "application/xhtml+xml" = "org.qutebrowser.qutebrowser.desktop";
+    };
   };
 
   programs.swaylock.enable = true;
