@@ -51,6 +51,7 @@
       parsec-bin
       xwayland-satellite
       jq
+      alejandra
     ];
   };
 

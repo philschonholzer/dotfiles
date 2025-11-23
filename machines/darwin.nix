@@ -43,6 +43,7 @@
     biome
     gnused
     nixpkgs-fmt
+    alejandra
     lazydocker
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     nerd-fonts.jetbrains-mono
