@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.file = {
     "fetch-trello-boards.sh" = {
       source = ./fetch-boards.sh;
@@ -16,10 +20,16 @@
           exit 1
         fi
 
-        exec ${pkgs.chromium}/bin/chromium \
-          --profile-directory="Work" \
-          --app="$board" \
-          --class="trello-board" \
+        DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
+
+        exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+          --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-trello" \
+          --config-py "$DEFAULT_CONFIG" \
+          --set "tabs.tabs_are_windows" "true" \
+          --desktop-file-name "trello" \
+          --target window \
+          --override-restore \
+          "$board" \
           "$@"
       '';
       executable = true;
