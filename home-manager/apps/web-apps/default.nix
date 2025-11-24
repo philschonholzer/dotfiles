@@ -40,6 +40,18 @@
       iconPath = "${./icons/google-voice.svg}";
       categories = ["Network" "Telephony"];
     };
+    whats-app = {
+      name = "WhatsApp";
+      url = "https://web.whatsapp.com/";
+      iconPath = "${./icons/whatsapp.svg}";
+      categories = ["Network" "InstantMessaging" "Chat"];
+    };
+    deepl = {
+      name = "Deepl Write";
+      url = "https://www.deepl.com/de/write";
+      iconPath = "${./icons/deepl-dark.svg}";
+      categories = ["Utility"];
+    };
   };
 
   makeWebApp = class: app: {

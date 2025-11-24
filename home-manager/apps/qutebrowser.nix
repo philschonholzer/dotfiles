@@ -80,9 +80,11 @@ in {
       config.set('content.notifications.enabled', True, 'mail.missiveapp.com')
       config.set('content.notifications.enabled', True, 'trello.com')
       config.set('content.notifications.enabled', True, 'voice.google.com')
+      config.set('content.notifications.enabled', True, 'web.whatsapp.com')
 
       # Allow audio recording for Google Voice
       config.set('content.media.audio_capture', True, 'voice.google.com')
+      config.set('content.media.audio_video_capture', True, 'web.whatsapp.com')
     '';
     keyBindings.normal = {
       "H" = "tab-prev";
