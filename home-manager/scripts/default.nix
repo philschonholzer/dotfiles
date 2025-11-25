@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./bitwarden-fill
     ./find-repos
     ./focus-or-spawn
     ./niri-window-indicator

@@ -97,6 +97,7 @@ in {
       "K" = "forward";
       "l" = "jseval -q window.scrollBy({top: -400, left: 0, behavior: 'smooth'});";
       "h" = "jseval -q window.scrollBy({top: 400, left: 0, behavior: 'smooth'});";
+      ",p" = "spawn --userscript bitwarden-fill";
     };
     settings = {
       tabs = {
