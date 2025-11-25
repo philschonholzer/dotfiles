@@ -109,6 +109,10 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      # PDF
+      "application/pdf" = "org.gnome.Papers.desktop";
+
+      # Browser
       "text/html" = "org.qutebrowser.qutebrowser.desktop";
       "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
       "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
@@ -121,6 +125,13 @@
       "application/x-extension-xhtml" = "org.qutebrowser.qutebrowser.desktop";
       "application/x-extension-xht" = "org.qutebrowser.qutebrowser.desktop";
       "application/xhtml+xml" = "org.qutebrowser.qutebrowser.desktop";
+
+      # Telegram
+      "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+      "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
+
+      # Tel
+      "x-scheme-handler/tel" = "google-voice.desktop";
     };
   };
 
