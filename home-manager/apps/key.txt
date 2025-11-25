@@ -1,0 +1,7 @@
+#       Serial: 34058449, Slot: 1
+#         Name: Prime
+#      Created: Tue, 25 Nov 2025 08:21:05 +0000
+#   PIN policy: Never  (A PIN is NOT required to decrypt)
+# Touch policy: Cached (A physical touch is required for decryption, and is cached for 15 seconds)
+#    Recipient: age1yubikey1qvqf885295p93yrvsr4kaayey2dfy8a4sshqed8sztzleqrwtrznkt393nz
+AGE-PLUGIN-YUBIKEY-16XCQWQ5Z3E3X7CQTM942V

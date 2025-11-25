@@ -82,9 +82,13 @@ in {
       config.set('content.notifications.enabled', True, 'voice.google.com')
       config.set('content.notifications.enabled', True, 'web.whatsapp.com')
 
-      # Allow audio recording for Google Voice
+      # Allow audio recording
       config.set('content.media.audio_capture', True, 'voice.google.com')
+      # Allow audio and video recording
       config.set('content.media.audio_video_capture', True, 'web.whatsapp.com')
+
+      # Darkmode for Google Apps
+      config.set('colors.webpage.darkmode.enabled', True, 'google.com')
     '';
     keyBindings.normal = {
       "H" = "tab-prev";
@@ -108,6 +112,8 @@ in {
 
       # Enable smooth scrolling
       scrolling.smooth = true;
+
+      editor.command = ["nvim" "{file}"];
 
       colors = {
         webpage.preferred_color_scheme = "dark";

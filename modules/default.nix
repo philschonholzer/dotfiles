@@ -1,8 +1,9 @@
 {
   imports = [
     ./mosh.nix
+    ./niri.nix
     ./portals.nix
     ./playerctl.nix
-    ./niri.nix
+    ./yubikey.nix
   ];
 }

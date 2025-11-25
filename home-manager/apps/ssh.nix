@@ -8,7 +8,7 @@ inputs: {
         host = "github.com";
         hostname = "github.com";
         user = "git";
-        identityFile = "~/.ssh/id_rsa";
+        # identityFile removed - uses yubikey-agent instead
       };
       "Bitbucket" = {
         host = "bitbucket.org";
