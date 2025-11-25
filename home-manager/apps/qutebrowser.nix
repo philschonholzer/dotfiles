@@ -113,6 +113,8 @@ in {
       # Enable smooth scrolling
       scrolling.smooth = true;
 
+      downloads.location.directory = "${config.home.homeDirectory}/Downloads/";
+
       editor.command = ["nvim" "{file}"];
 
       colors = {
