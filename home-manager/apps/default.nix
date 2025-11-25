@@ -2,10 +2,12 @@
   imports = [
     ./btop.nix
     ./chromium.nix
+    ./direnv.nix
     ./web-apps
     ./eza.nix
     ./fd.nix
     ./firefox.nix
+    ./fuzzel.nix
     ./fzf.nix
     ./git.nix
     ./ghostty.nix

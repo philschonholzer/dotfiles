@@ -1,10 +1,11 @@
 AGENT QUICKSTART (keep ~20 lines)
 
 Build / Lint / Test:
+
 1. Nix flake eval: nix flake show
-2. Rebuild NixOS host: sudo nixos-rebuild switch --flake .#nixos
+2. Rebuild NixOS host: nixos-rebuild dry-build --flake .#$HOST
 3. Darwin home build: home-manager switch --flake .#philip
-4. Format Nix: nix fmt (alejandra) / or: alejandra .
+4. Format Nix: alejandra .
 5. Neovim config: launch nvim (lazy manages plugins). Update plugins: :Lazy sync
 6. Lua formatting: stylua . (config in nvim/stylua.toml)
 7. Lint Lua (via LSP): lua-language-server (configured in lua-lang.lua)
