@@ -271,6 +271,9 @@ binds {
 
     // Clipboard history
     Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
+    
+    // Open file from Downloads
+    Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }
     // Screenshots
     Print { screenshot; }
     Mod+S { screenshot; }
