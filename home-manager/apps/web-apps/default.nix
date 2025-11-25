@@ -62,6 +62,7 @@
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \
         --set "tabs.tabs_are_windows" "true" \
+        --set "content.javascript.clipboard" "access-paste" \
         --desktop-file-name "${class}" \
         --target window \
         --override-restore \
