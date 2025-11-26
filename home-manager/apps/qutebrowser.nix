@@ -88,7 +88,7 @@ in {
       config.set('content.media.audio_video_capture', True, 'web.whatsapp.com')
 
       # Darkmode for Google Apps
-      config.set('colors.webpage.darkmode.enabled', True, 'google.com')
+      config.set('colors.webpage.darkmode.enabled', True, '*.google.com')
     '';
     keyBindings.normal = {
       "H" = "tab-prev";
