@@ -282,9 +282,9 @@ binds {
     Alt+Print { screenshot-window; }
     Mod+Alt+S { screenshot-window; }
 
-    // Pick window to screencast 
-    Mod+X hotkey-overlay-title="Share window" { set-dynamic-cast-monitor; }
-    Mod+Shift+X hotkey-overlay-title="Pick Window to Share" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    // Pick window or screen to screencast 
+    Mod+X hotkey-overlay-title="Pick Window to Share" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    Mod+Shift+X hotkey-overlay-title="Share screen" { set-dynamic-cast-monitor; }
     
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
