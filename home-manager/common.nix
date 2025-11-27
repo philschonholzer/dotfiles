@@ -54,6 +54,8 @@
       xwayland-satellite
       jq
       alejandra
+      unstable.gthumb
+      loupe
     ];
   };
 
@@ -73,6 +75,15 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      # Images
+      "image/jpeg" = "org.gnome.gThumb.desktop";
+      "image/png" = "org.gnome.gThumb.desktop";
+      "image/gif" = "org.gnome.gThumb.desktop";
+      "image/bmp" = "org.gnome.gThumb.desktop";
+      "image/webp" = "org.gnome.gThumb.desktop";
+      "image/tiff" = "org.gnome.gThumb.desktop";
+      "image/svg+xml" = "org.gnome.gThumb.desktop";
+
       # PDF
       "application/pdf" = "org.gnome.Papers.desktop";
 
