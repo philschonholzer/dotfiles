@@ -1,3 +1,9 @@
+# Web applications as Qutebrowser instances
+#
+# Note: webapp-google-voice has a systemd auto-restart service due to a QtWebEngine/Wayland
+# crash on suspend/resume (QTBUG-86763). The crash happens when waking from suspend because
+# QtWebEngine tries to update screen info before the compositor has restored outputs.
+# This is hardware/timing specific and cannot be prevented at the application level.
 {
   pkgs,
   config,
@@ -81,4 +87,29 @@
 in {
   home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
   xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
+
+  # Auto-restart service for webapp-google-voice
+  # Workaround for QtWebEngine crash on suspend/resume due to Wayland timing issue
+  # See: https://bugreports.qt.io/browse/QTBUG-86763
+  systemd.user.services.webapp-google-voice = {
+    Unit = {
+      Description = "Google Voice Web App (Qutebrowser)";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${webApps.google-voice.package}/bin/webapp-google-voice";
+      Restart = "on-failure";
+      RestartSec = 5;
+      # Prevent restart loop if it fails too quickly
+      StartLimitBurst = 5;
+      StartLimitIntervalSec = 30;
+    };
+
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
 }
