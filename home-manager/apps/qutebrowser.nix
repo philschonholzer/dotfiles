@@ -63,7 +63,28 @@
       --desktop-file-name qutebrowser-private \
       "$@"
   '';
+  # Bitwarden credential filler userscript
+  bitwarden-fill = pkgs.writeShellApplication {
+    name = "bitwarden-fill";
+    runtimeInputs = with pkgs; [
+      rbw
+      gnugrep
+      gawk
+      gnused
+      coreutils
+      fuzzel
+    ];
+    text = builtins.readFile ./bitwarden-fill.sh;
+  };
 in {
+  # Create userscript symlinks for all qutebrowser profiles
+  # Note: qutebrowser looks in {basedir}/data/userscripts
+  home.file = {
+    ".local/share/qutebrowser/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
+    ".local/share/qutebrowser-work/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
+    ".local/share/qutebrowser-private/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
+  };
+
   programs.qutebrowser = {
     enable = true;
     package = pkgs.unstable.qutebrowser;
@@ -97,7 +118,9 @@ in {
       "K" = "forward";
       "l" = "jseval -q window.scrollBy({top: -400, left: 0, behavior: 'smooth'});";
       "h" = "jseval -q window.scrollBy({top: 400, left: 0, behavior: 'smooth'});";
-      ",p" = "spawn --userscript bitwarden-fill";
+      ",l" = "spawn --userscript bitwarden-fill";
+      ",u" = "spawn --userscript bitwarden-fill username";
+      ",p" = "spawn --userscript bitwarden-fill password";
     };
     settings = {
       tabs = {
@@ -117,6 +140,8 @@ in {
       downloads.location.directory = "${config.home.homeDirectory}/Downloads/";
 
       editor.command = ["nvim" "{file}"];
+
+      messages.timeout = 9000;
 
       colors = {
         webpage.preferred_color_scheme = "dark";
