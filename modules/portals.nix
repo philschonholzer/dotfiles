@@ -4,7 +4,7 @@
   #     xdg-desktop-portal-wlr = final.unstable.xdg-desktop-portal-wlr;
   #   })
   # ];
-
+  # https://github.com/emersion/xdg-desktop-portal-wlr/issues/107
   xdg.portal = {
     enable = true;
     # wlr = {
