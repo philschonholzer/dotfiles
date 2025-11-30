@@ -24,8 +24,6 @@
       unstable.blender
       ente-auth
       bitwarden-desktop
-      rbw
-      pinentry-gnome3
       telegram-desktop
       nodejs_24
       pnpm

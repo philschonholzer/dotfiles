@@ -16,6 +16,7 @@
     ./lazygit.nix
     ./nvim.nix
     ./qutebrowser.nix
+    ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
