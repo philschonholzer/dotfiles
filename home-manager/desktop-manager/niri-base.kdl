@@ -97,7 +97,7 @@ layer-rule {
 
 // Open Google Voice on workspace "phone"
 window-rule {
-    match at-startup=true app-id=r#"^google-voice$"#
+    match app-id=r#"^google-voice$"#
     open-on-workspace "phone"
 }
 
