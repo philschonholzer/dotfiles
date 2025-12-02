@@ -58,6 +58,12 @@
       iconPath = "${./icons/deepl-dark.svg}";
       categories = ["Utility"];
     };
+    google-drive = {
+      name = "Google Drive";
+      url = "https://drive.google.com/drive/";
+      iconPath = "${./icons/google-drive.svg}";
+      categories = ["Utility"];
+    };
   };
 
   makeWebApp = class: app: {
