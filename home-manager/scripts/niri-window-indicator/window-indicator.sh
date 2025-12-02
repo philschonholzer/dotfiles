@@ -15,7 +15,7 @@ indicator=$(echo "$windows" | jq -r --arg ws "$focused_ws" '
   [.[] | select(.workspace_id == ($ws | tonumber))] |
   sort_by(.layout.pos_in_scrolling_layout) |
   to_entries |
-  map(if .value.is_focused then "󰖯" else "·" end) |
+  map(if .value.is_focused then "⦿" else "·" end) |
   join("")
 ')
 
