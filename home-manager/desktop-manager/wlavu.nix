@@ -3,9 +3,9 @@
 
   systemd.user.services.wlavu = {
     Unit = {
-      Description = "Wlavu audio visualizer";
-      After = ["graphical-session.target"];
+      Description = "Wlavu audio visualization";
       PartOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
     };
 
     Service = {

@@ -70,6 +70,11 @@
     package = pkgs.writeShellScriptBin "webapp-${class}" ''
       DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
+      # Unset Qt environment variables to avoid conflicts with other Qt applications
+      # (e.g. vicinae using Qt 6.10.0 vs qutebrowser's Qt 6.10.1)
+      unset QT_PLUGIN_PATH
+      unset LD_LIBRARY_PATH
+
       exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \

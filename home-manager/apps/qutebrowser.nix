@@ -40,10 +40,13 @@
 
   # Wrapper script for work profile
   # Shares config with default profile via symlink
+  # Unsets Qt environment variables to avoid conflicts with other Qt applications (e.g. vicinae)
   qutebrowser-work = pkgs.writeShellScriptBin "qutebrowser-work" ''
     WORK_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-work"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
+    unset QT_PLUGIN_PATH
+    unset LD_LIBRARY_PATH
     exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
       --basedir "$WORK_DIR" \
       --config-py "$DEFAULT_CONFIG" \
@@ -53,10 +56,13 @@
 
   # Wrapper script for private profile
   # Shares config with default profile via symlink
+  # Unsets Qt environment variables to avoid conflicts with other Qt applications (e.g. vicinae)
   qutebrowser-private = pkgs.writeShellScriptBin "qutebrowser-private" ''
     PRIVATE_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-private"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
+    unset QT_PLUGIN_PATH
+    unset LD_LIBRARY_PATH
     exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
       --basedir "$PRIVATE_DIR" \
       --config-py "$DEFAULT_CONFIG" \
@@ -76,18 +82,23 @@
     ];
     text = builtins.readFile ./bitwarden-fill.sh;
   };
-in {
-  # Create userscript symlinks for all qutebrowser profiles
-  # Note: qutebrowser looks in {basedir}/data/userscripts
-  home.file = {
-    ".local/share/qutebrowser/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
-    ".local/share/qutebrowser-work/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
-    ".local/share/qutebrowser-private/data/userscripts/bitwarden-fill".source = "${bitwarden-fill}/bin/bitwarden-fill";
+  # Wrapper for default qutebrowser that unsets Qt environment variables
+  # This prevents conflicts with other Qt applications (e.g. vicinae using Qt 6.10.0
+  # vs qutebrowser's Qt 6.10.1) which set QT_PLUGIN_PATH and LD_LIBRARY_PATH
+  qutebrowser-wrapped = pkgs.symlinkJoin {
+    name = "qutebrowser-wrapped";
+    paths = [pkgs.unstable.qutebrowser];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/qutebrowser \
+        --unset QT_PLUGIN_PATH \
+        --unset LD_LIBRARY_PATH
+    '';
   };
-
+in {
   programs.qutebrowser = {
     enable = true;
-    package = pkgs.unstable.qutebrowser;
+    package = qutebrowser-wrapped;
     extraConfig = ''
       c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
 
@@ -118,9 +129,9 @@ in {
       "K" = "forward";
       "l" = "jseval -q window.scrollBy({top: -400, left: 0, behavior: 'smooth'});";
       "h" = "jseval -q window.scrollBy({top: 400, left: 0, behavior: 'smooth'});";
-      ",l" = "spawn --userscript bitwarden-fill";
-      ",u" = "spawn --userscript bitwarden-fill username";
-      ",p" = "spawn --userscript bitwarden-fill password";
+      ",l" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill";
+      ",u" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill username";
+      ",p" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill password";
     };
     settings = {
       tabs = {
