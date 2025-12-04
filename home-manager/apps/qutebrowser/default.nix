@@ -390,4 +390,15 @@ in {
       icon = "qutebrowser";
     };
   };
+
+  # Setup dictionaries for qutebrowser profiles (default, work, private)
+  # Using xdg.dataFile to create symlinks in the data directories
+  xdg.dataFile = {
+    # Default profile
+    "qutebrowser/qtwebengine_dictionaries".source = ./qtwebengine_dictionaries;
+    # Work profile
+    "qutebrowser-work/data/qtwebengine_dictionaries".source = ./qtwebengine_dictionaries;
+    # Private profile
+    "qutebrowser-private/data/qtwebengine_dictionaries".source = ./qtwebengine_dictionaries;
+  };
 }

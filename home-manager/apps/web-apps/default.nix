@@ -95,9 +95,21 @@
   };
 
   webApps = pkgs.lib.mapAttrs makeWebApp apps;
+
+  # Path to qutebrowser dictionaries
+  dictionaries = ../qutebrowser/qtwebengine_dictionaries;
 in {
   home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
   xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
+
+  # Setup dictionaries for all web app qutebrowser instances
+  # Using xdg.dataFile to create symlinks in the data directories
+  xdg.dataFile =
+    pkgs.lib.mapAttrs' (class: _: {
+      name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
+      value.source = dictionaries;
+    })
+    apps;
 
   # Auto-restart service for webapp-google-voice
   # Workaround for QtWebEngine crash on suspend/resume due to Wayland timing issue
