@@ -59,7 +59,8 @@ in {
         modules-left = [
           "niri/workspaces"
           "custom/niri-windows"
-          "hyprland/workspaces"
+          "custom/qutebrowser-profile"
+          # "hyprland/workspaces"
         ];
         modules-center = [
           "clock"
@@ -114,6 +115,12 @@ in {
           exec = "niri-window-indicator";
           interval = 1;
           format = "{}";
+          tooltip = false;
+        };
+        "custom/qutebrowser-profile" = {
+          exec = "qutebrowser-profile-indicator";
+          interval = 1;
+          format = "🌐 {}";
           tooltip = false;
         };
         cpu = {

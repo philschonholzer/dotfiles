@@ -5,6 +5,7 @@
     ./niri-window-indicator
     ./open-downloads
     ./open-repo.nix
+    ./qutebrowser-profile
     ./trello-boards
   ];
 }
