@@ -154,6 +154,8 @@ in {
 
       messages.timeout = 9000;
 
+      spellcheck.languages = ["en-US" "de-DE"];
+
       colors = {
         webpage.preferred_color_scheme = "dark";
 

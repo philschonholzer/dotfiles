@@ -15,7 +15,7 @@
     ./lazydocker.nix
     ./lazygit.nix
     ./nvim.nix
-    ./qutebrowser.nix
+    ./qutebrowser
     ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
