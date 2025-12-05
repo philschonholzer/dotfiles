@@ -83,34 +83,10 @@
     variant = "altgr-intl";
   };
 
-  services = {
-    greetd = {
-      enable = true;
-      settings = {
-        # By adding default_session it ensures you can still access the tty terminal if you logout of your windows manager otherwise you would just relaunch into it.
-        default_session = {
-          # DO NOT CHANGE THIS USER
-          user = "greeter";
-          # Note: command is configured by the niri module
-        };
-      };
-    };
-  };
-
-  # Prevent logs from overriding tuigreet: https://github.com/apognu/tuigreet/issues/190
-  systemd.services.greetd.serviceConfig = {
-    StandardInput = "tty";
-    # Without this errors will spam on screen
-    StandardOutput = "tty";
-    StandardError = "journal";
-    # Without these bootlogs will spam on screen
-    TTYPath = "/dev/tty1";
-    TTYReset = true;
-    TTYVHangup = true;
-    TTYVTDisallocate = true;
-  };
+  services.xserver.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   security.pam.services.swaylock = {};
   security.rtkit.enable = true;
