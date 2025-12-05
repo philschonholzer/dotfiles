@@ -4,8 +4,8 @@
   ...
 }: let
   kdriveAppImage = pkgs.fetchurl {
-    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.5.20250812-amd64.AppImage";
-    sha256 = "1l54a0gzi499d3zgq4v9wrp7497n440sibv0dgycm3li3hqi2nya";
+    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.9.1-amd64.AppImage";
+    sha256 = "0qiknfmw108hvrcmi1pml5ls73c3ngr2y18cnzysb9hn2hr5pc40";
   };
   kdriveEnv = pkgs.writeShellScriptBin "kdrive" ''
     # Force X11 so Qt doesn’t explode under Wayland/Hyprland
@@ -27,6 +27,26 @@ in {
       icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg"; # put an icon here if you want
       categories = ["Network" "FileTransfer"];
       terminal = false;
+    };
+  };
+
+  systemd.user.services.kdrive = {
+    Unit = {
+      Description = "kDrive cloud sync client";
+      After = ["graphical-session.target"];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${kdriveEnv}/bin/kdrive";
+      Restart = "on-failure";
+      RestartSec = "10s";
+      Environment = [
+        "XDG_SESSION_TYPE=x11"
+        "QT_QPA_PLATFORM=xcb"
+      ];
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
     };
   };
 }
