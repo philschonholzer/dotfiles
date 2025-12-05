@@ -10,7 +10,7 @@
 
     Service = {
       ExecStart = "${wlavu}/bin/wlavu -a right -w 2";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = 3;
     };
 
