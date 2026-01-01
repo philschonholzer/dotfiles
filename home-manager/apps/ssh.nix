@@ -1,6 +1,7 @@
 inputs: {
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     includes = ["~/.colima/ssh_config"];
 
     matchBlocks = {
@@ -30,7 +31,7 @@ inputs: {
         identityFile = "~/.ssh/id_ed25519_macmini";
         forwardAgent = true;
       };
-      "Default" = {
+      "*" = {
         host = "*";
         extraOptions = {
           IgnoreUnknown = "AddKeysToAgent,UseKeychain";

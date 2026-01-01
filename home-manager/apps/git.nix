@@ -1,15 +1,16 @@
 {...}: {
   programs.git = {
     enable = true;
-    userEmail = "philip.schoenholzer@apptiva.ch";
-    userName = "Philip Schönholzer";
-    delta.enable = true;
     ignores = [
       "*~"
       ".DS_Store"
       "/.direnv"
     ];
-    extraConfig = {
+    settings = {
+      user = {
+        email = "philip.schoenholzer@apptiva.ch";
+        name = "Philip Schönholzer";
+      };
       core = {
         # editor = "code --wait";
       };
@@ -23,5 +24,9 @@
         defaultBranch = "main";
       };
     };
+  };
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 }

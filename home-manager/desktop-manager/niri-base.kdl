@@ -58,7 +58,7 @@ workspace "mail"
 workspace "slack"
 workspace "tasks"
 
-spawn-at-startup "wbg" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
+spawn-at-startup "wbg" "-s" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
 
 // Start waybar at startup (already configured in your setup)
 spawn-at-startup "waybar"

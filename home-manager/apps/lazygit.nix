@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.lazygit = {
     enable = true;
     settings = {
@@ -6,10 +6,12 @@
         sidePanelWidth = 0.2;
       };
       git = {
-        paging = {
-          colorArgs = "always";
-          pager = "delta --dark --paging=never --syntax-theme base16-256 -s";
-        };
+        pagers = [
+          {
+            colorArgs = "always";
+            pager = "delta --dark --paging=never --syntax-theme base16-256 -s";
+          }
+        ];
       };
     };
   };

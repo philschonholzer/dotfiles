@@ -13,7 +13,7 @@
           exit 1
         fi
 
-        ghostty --working-directory="$dir/" -e "nvim ."
+        ghostty --working-directory="$dir/" -e "nvim" "."
       '';
       executable = true;
     };

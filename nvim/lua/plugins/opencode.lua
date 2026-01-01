@@ -2,12 +2,10 @@ return {
   "NickvanDyke/opencode.nvim",
   dependencies = {
     -- Recommended for better prompt input, and required to use opencode.nvim's embedded terminal — otherwise optional
-    { "folke/snacks.nvim", opts = { input = { enabled = true } } },
+    ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+    { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
   },
   ---@type opencode.Opts
-  opts = {
-    -- Your configuration, if any — see lua/opencode/config.lua
-  },
   keys = {
     -- Recommended keymaps
     {
