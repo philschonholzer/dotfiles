@@ -60,9 +60,6 @@ workspace "tasks"
 
 spawn-at-startup "wbg" "-s" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
 
-// Start waybar at startup (already configured in your setup)
-spawn-at-startup "waybar"
-
 // Start Missive (Google Voice started via systemd service for auto-restart)
 spawn-at-startup "webapp-missive"
 

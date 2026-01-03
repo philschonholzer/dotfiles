@@ -49,6 +49,7 @@ in {
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
     settings = lib.mkForce [
       {
         reload_style_on_change = true;
