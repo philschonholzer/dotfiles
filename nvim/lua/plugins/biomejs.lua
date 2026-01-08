@@ -42,6 +42,7 @@ return {
       servers = {
         biome = {
           mason = false,
+          cmd = { "biome", "lsp-proxy" },
         },
       },
     },
