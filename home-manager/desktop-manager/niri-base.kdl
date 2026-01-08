@@ -167,7 +167,8 @@ binds {
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
-    Mod+B hotkey-overlay-title="Firefox" { spawn "focus-or-spawn" "qutebrowser-work" "qutebrowser-work"; }
+    Mod+B hotkey-overlay-title="Browser (Work)" { spawn "focus-or-spawn" "qutebrowser-work" "qutebrowser-work"; }
+    Mod+Shift+B hotkey-overlay-title="Browser (Private)" { spawn "focus-or-spawn" "qutebrowser-private" "qutebrowser-private"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     // Password manager (matching hyprland config)
