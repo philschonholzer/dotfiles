@@ -128,7 +128,7 @@
       anchor = "top-right";
       layer = "overlay";
 
-      default-timeout = 5000;
+      default-timeout = 10000;
       ignore-timeout = false;
       max-visible = 5;
       sort = "-time";
