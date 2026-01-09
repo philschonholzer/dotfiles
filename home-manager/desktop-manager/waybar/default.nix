@@ -133,6 +133,7 @@ in {
         memory = {
           interval = 30;
           format = "{}%  ";
+          on-click = "ghostty -e btop";
           max-length = 10;
         };
         clock = {
