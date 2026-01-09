@@ -282,7 +282,7 @@ binds {
     // Pick window or screen to screencast 
     Mod+X hotkey-overlay-title="Share Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
     Mod+Shift+X hotkey-overlay-title="Share screen" { set-dynamic-cast-monitor; }
-    Mod+Ctrl+X hotkey-overlay-title="Share nothing" { clear-dynamic-cast-window; }
+    Mod+Ctrl+X hotkey-overlay-title="Share nothing" { clear-dynamic-cast-target; }
     
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
