@@ -99,17 +99,7 @@ if [[ -z "$ENTRIES" ]]; then
     exit 0
   fi
 
-  # Remove folder path from selection
-  ENTRY_WITHOUT_FOLDER="${SELECTED##*/}"
-
-  if [[ "$ENTRY_WITHOUT_FOLDER" == *"@"* ]]; then
-    ENTRY_NAME="${ENTRY_WITHOUT_FOLDER##*@}"
-    USERNAME="${ENTRY_WITHOUT_FOLDER%@*}"
-  else
-    ENTRY_NAME="$ENTRY_WITHOUT_FOLDER"
-    USERNAME=""
-  fi
-
+  ENTRY_NAME="$SELECTED"
   SEARCH_TERM="all entries"
   MANUAL_SELECTION=true
 fi
@@ -121,18 +111,7 @@ if [[ -z "${MANUAL_SELECTION:-}" ]]; then
 
   if [[ $MATCH_COUNT -eq 1 ]]; then
     # Single match - auto-fill
-    # Remove folder path (format: "Folder/username@EntryName" or "username@EntryName" or "EntryName")
-    ENTRY_WITHOUT_FOLDER="${ENTRIES##*/}"
-
-    if [[ "$ENTRY_WITHOUT_FOLDER" == *"@"* ]]; then
-      # Extract entry name (last part after final @)
-      ENTRY_NAME="${ENTRY_WITHOUT_FOLDER##*@}"
-      # Extract username (everything before @EntryName)
-      USERNAME="${ENTRY_WITHOUT_FOLDER%@*}"
-    else
-      ENTRY_NAME="$ENTRY_WITHOUT_FOLDER"
-      USERNAME=""
-    fi
+    ENTRY_NAME="$ENTRIES"
   else
     # Multiple matches - let user choose with fuzzel
     SELECTED=$(echo "$ENTRIES" | fuzzel -d)
@@ -142,25 +121,21 @@ if [[ -z "${MANUAL_SELECTION:-}" ]]; then
       exit 0
     fi
 
-    # Remove folder path from selection
-    ENTRY_WITHOUT_FOLDER="${SELECTED##*/}"
-
-    if [[ "$ENTRY_WITHOUT_FOLDER" == *"@"* ]]; then
-      ENTRY_NAME="${ENTRY_WITHOUT_FOLDER##*@}"
-      USERNAME="${ENTRY_WITHOUT_FOLDER%@*}"
-    else
-      ENTRY_NAME="$ENTRY_WITHOUT_FOLDER"
-      USERNAME=""
-    fi
+    ENTRY_NAME="$SELECTED"
   fi
 fi
 
-# Get password from rbw
-if [[ -n "$USERNAME" ]]; then
-  PASSWORD=$(rbw get "$ENTRY_NAME" "$USERNAME" 2>/dev/null)
-else
-  PASSWORD=$(rbw get "$ENTRY_NAME" 2>/dev/null)
+# Get credentials from rbw using JSON output
+ENTRY_JSON=$(rbw get "$ENTRY_NAME" --raw 2>/dev/null)
+
+if [[ -z "$ENTRY_JSON" ]]; then
+  echo "message-error 'Failed to retrieve entry for $ENTRY_NAME'" >>"$QUTE_FIFO"
+  exit 1
 fi
+
+# Parse JSON to extract username and password using jq
+USERNAME=$(echo "$ENTRY_JSON" | jq -r '.data.username // empty')
+PASSWORD=$(echo "$ENTRY_JSON" | jq -r '.data.password // empty')
 
 if [[ -z "$PASSWORD" ]]; then
   echo "message-error 'Failed to retrieve password for $ENTRY_NAME'" >>"$QUTE_FIFO"
@@ -185,12 +160,13 @@ fi
   both | *)
     if [[ -n "$USERNAME" ]]; then
       echo "message-info 'Filling $USERNAME (matched: $SEARCH_TERM) from $RBW_PROFILE vault'"
+      echo "fake-key $USERNAME"
+      echo "fake-key <Tab>"
+      echo "fake-key $PASSWORD"
     else
-      echo "message-info 'Filling credentials (matched: $SEARCH_TERM) from $RBW_PROFILE vault'"
+      echo "message-info 'Filling password only (matched: $SEARCH_TERM) from $RBW_PROFILE vault'"
+      echo "fake-key $PASSWORD"
     fi
-    echo "fake-key $USERNAME"
-    echo "fake-key <Tab>"
-    echo "fake-key $PASSWORD"
     ;;
   esac
 } >>"$QUTE_FIFO"

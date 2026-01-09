@@ -74,6 +74,7 @@
     name = "bitwarden-fill";
     runtimeInputs = with pkgs; [
       rbw
+      jq
       gnugrep
       gawk
       gnused
