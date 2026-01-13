@@ -6,11 +6,12 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
-  #   modifications = final: prev: {
-  #     # example = prev.example.overrideAttrs (oldAttrs: rec {
-  #     # ...
-  #     # });
-  #   };
+  modifications = final: prev: {
+    # Build Blender with HIP support for AMD GPU compute
+    blender = prev.blender.override {
+      hipSupport = true;
+    };
+  };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
@@ -18,6 +19,14 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
+      overlays = [
+        # Apply HIP support to unstable.blender too
+        (ufinal: uprev: {
+          blender = uprev.blender.override {
+            hipSupport = true;
+          };
+        })
+      ];
     };
   };
 }
