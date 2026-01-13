@@ -48,6 +48,21 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  # Enable Avahi for .local hostname resolution (mDNS)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    nssmdns6 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      hinfo = true;
+      userServices = true;
+      workstation = true;
+    };
+  };
+
   # Sound
   services.pulseaudio.enable = false;
   services.pipewire = {
