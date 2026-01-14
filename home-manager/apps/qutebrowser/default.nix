@@ -153,7 +153,7 @@ in {
 
       editor.command = ["nvim" "{file}"];
 
-      messages.timeout = 9000;
+      messages.timeout = 5000;
 
       spellcheck.languages = ["en-US" "de-DE"];
 
