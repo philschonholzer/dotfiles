@@ -64,6 +64,12 @@
       iconPath = "${./icons/google-drive.svg}";
       categories = ["Utility"];
     };
+    google-meet = {
+      name = "Google Meet";
+      url = "https://meet.google.com";
+      iconPath = "${./icons/google-meet.svg}";
+      categories = ["Network" "VideoConference"];
+    };
   };
 
   makeWebApp = class: app: {
