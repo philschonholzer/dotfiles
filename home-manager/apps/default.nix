@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./affinity.nix
     ./btop.nix
     ./chromium.nix
     ./direnv.nix
