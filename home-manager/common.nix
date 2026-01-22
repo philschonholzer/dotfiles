@@ -122,14 +122,13 @@
       height = 110;
       padding = "10";
       margin = "10";
-      border-size = 2;
-      border-radius = 0;
+      border-size = 3;
+      border-radius = 12;
 
       anchor = "top-right";
       layer = "overlay";
 
       default-timeout = 10000;
-      ignore-timeout = false;
       max-visible = 5;
       sort = "-time";
 
