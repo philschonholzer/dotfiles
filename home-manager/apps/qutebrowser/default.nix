@@ -103,11 +103,10 @@ in {
     extraConfig = ''
       c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
 
-      # Auto-enter passthrough mode for Missive
+      # Auto-enter passthrough or insert mode for Missive, trello and chatgpt
       config.set('input.mode_override', 'passthrough', 'mail.missiveapp.com')
-
-      # Auto-enter passthrough mode for Trello
       config.set('input.mode_override', 'passthrough', 'trello.com')
+      config.set('input.mode_override', 'insert', 'chatgpt.com')
 
       # Allow notifications for web apps
       config.set('content.notifications.enabled', True, 'mail.missiveapp.com')
