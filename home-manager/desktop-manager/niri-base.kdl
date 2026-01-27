@@ -276,8 +276,8 @@ binds {
     Mod+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Mod+Ctrl+S { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-    Mod+Alt+S { screenshot-window; }
+    Shift+Print { screenshot-window; }
+    Mod+Shift+S { screenshot-window; }
 
     // Pick window or screen to screencast 
     Mod+X hotkey-overlay-title="Share Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
