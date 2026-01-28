@@ -66,11 +66,6 @@
   # Enable hardware graphics acceleration
   hardware.graphics = {
     enable = true;
-    enable32Bit = pkgs.stdenv.hostPlatform.isx86_64; # Only for x86_64 systems
-    extraPackages = with pkgs;
-      lib.optionals stdenv.hostPlatform.isx86_64 [
-        rocmPackages.clr.icd # ROCm/HIP runtime for AMD GPU compute (x86_64 only)
-      ];
   };
 
   # Sound

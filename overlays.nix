@@ -7,10 +7,7 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # Build Blender with HIP support for AMD GPU compute
-    blender = prev.blender.override {
-      hipSupport = true;
-    };
+    # Blender without HIP support for aarch64 compatibility
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -20,12 +17,7 @@
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
       overlays = [
-        # Apply HIP support to unstable.blender too
-        (ufinal: uprev: {
-          blender = uprev.blender.override {
-            hipSupport = true;
-          };
-        })
+        # No HIP support overlay for aarch64 compatibility
       ];
     };
   };

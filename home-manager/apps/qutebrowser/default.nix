@@ -47,7 +47,7 @@
 
     unset QT_PLUGIN_PATH
     unset LD_LIBRARY_PATH
-    exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+    exec /usr/bin/qutebrowser \
       --basedir "$WORK_DIR" \
       --config-py "$DEFAULT_CONFIG" \
       --desktop-file-name qutebrowser-work \
@@ -63,7 +63,7 @@
 
     unset QT_PLUGIN_PATH
     unset LD_LIBRARY_PATH
-    exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+    exec /usr/bin/qutebrowser \
       --basedir "$PRIVATE_DIR" \
       --config-py "$DEFAULT_CONFIG" \
       --desktop-file-name qutebrowser-private \
@@ -88,7 +88,7 @@
   # vs qutebrowser's Qt 6.10.1) which set QT_PLUGIN_PATH and LD_LIBRARY_PATH
   qutebrowser-wrapped = pkgs.symlinkJoin {
     name = "qutebrowser-wrapped";
-    paths = [pkgs.unstable.qutebrowser];
+    paths = ["/usr"];
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/qutebrowser \
@@ -99,7 +99,7 @@
 in {
   programs.qutebrowser = {
     enable = true;
-    package = qutebrowser-wrapped;
+    package = pkgs.writeShellScriptBin "qutebrowser" "/usr/bin/qutebrowser";
     extraConfig = ''
       c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
 
@@ -114,6 +114,7 @@ in {
       config.set('content.notifications.enabled', True, 'trello.com')
       config.set('content.notifications.enabled', True, 'voice.google.com')
       config.set('content.notifications.enabled', True, 'web.whatsapp.com')
+      config.set('content.notifications.enabled', True, 'web.morgen.so')
 
       # Allow audio recording
       config.set('content.media.audio_capture', True, 'voice.google.com')

@@ -28,7 +28,7 @@
   }: let
     inherit (self) outputs;
     pkgs = import nixpkgs {
-      system = "aarch64-darwin";
+      system = "aarch64-linux";
       config.allowUnfree = true;
       overlays = builtins.attrValues (import ./overlays.nix {
         inputs = {
@@ -65,25 +65,17 @@
         {networking.hostName = "macbook-intel";}
       ];
     };
-    nixosConfigurations.macbook-m2 = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = {
+    homeConfigurations.philip = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
         inherit outputs nix-colors home-manager vicinae;
-        wlavu = wlavu.packages."aarch64-linux".default;
+        # wlavu = wlavu.packages."x86_64-linux".default;
       };
       modules = [
+        nix-colors.homeManagerModules.default
         ./machines/macbook-m2
-        {networking.hostName = "macbook-m2";}
+        # {networking.hostName = "macbook-m2";}
       ];
-    };
-    homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
-      modules = [./machines/darwin.nix];
-
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
     };
 
     # Formatter for `nix fmt`

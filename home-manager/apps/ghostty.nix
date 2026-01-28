@@ -2,7 +2,6 @@
   palette = config.colorScheme.palette;
 in {
   programs.ghostty = {
-    enable = true;
     settings = {
       # Window settings
       window-padding-x = 14;

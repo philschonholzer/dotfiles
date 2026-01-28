@@ -12,7 +12,7 @@
     ./fzf.nix
     ./git.nix
     ./ghostty.nix
-    ./kdrive.nix
+    # ./kdrive.nix
     ./lazydocker.nix
     ./lazygit.nix
     ./nvim.nix
@@ -21,7 +21,7 @@
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
-    ./table-plus.nix
+    # ./table-plus.nix
     ./vnc.nix
     ./yubikey.nix
     ./zsh.nix

@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./desktop-manager
     ./apps
     ./scripts
   ];
@@ -12,7 +11,6 @@
   home = {
     username = "philip";
     homeDirectory = "/home/philip";
-    stateVersion = "25.05";
 
     sessionVariables = {
       BROWSER = "qutebrowser-work";
@@ -49,15 +47,12 @@
       inkscape
       gftp
       parsec-bin
-      xwayland-satellite
       jq
       alejandra
       unstable.gthumb
       loupe
     ];
   };
-
-  programs.alacritty.enable = true;
 
   # Fonts
   fonts.fontconfig = {

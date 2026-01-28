@@ -22,7 +22,7 @@
 
         DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-        exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+        exec /usr/bin/qutebrowser \
           --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-trello" \
           --config-py "$DEFAULT_CONFIG" \
           --set "tabs.tabs_are_windows" "true" \
