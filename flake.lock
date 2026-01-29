@@ -24,11 +24,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769711359,
-        "narHash": "sha256-iT6ayD09BHE1TQH5RwnhIXbSmo1kvGVzf064NOoJNHU=",
+        "lastModified": 1769715303,
+        "narHash": "sha256-dVrw0JhaShMOfptcwf4/hYRQJBDGEoHlR4muf2+ZM1c=",
         "owner": "philschonholzer",
         "repo": "dictation",
-        "rev": "0a81f9d0a3da5185880d5c1d667cd00d02782793",
+        "rev": "4fa60b860c92c183e160583810aaa490f1f1d921",
         "type": "github"
       },
       "original": {
