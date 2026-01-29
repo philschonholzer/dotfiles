@@ -6,6 +6,7 @@
   nix-colors,
   vicinae,
   wlavu,
+  dictation,
   ...
 }: {
   imports = [
@@ -16,7 +17,7 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit nix-colors wlavu;};
+        extraSpecialArgs = {inherit nix-colors wlavu dictation;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default

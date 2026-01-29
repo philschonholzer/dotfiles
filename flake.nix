@@ -14,6 +14,10 @@
       url = "github:philschonholzer/wlavu";
       inputs.nixpkgs.follows = "nixpkgs"; # Use your nixpkgs, not wlavu's
     };
+    dictation = {
+      url = "github:philschonholzer/dictation";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -24,6 +28,7 @@
     nix-colors,
     vicinae,
     wlavu,
+    dictation,
     ...
   }: let
     inherit (self) outputs;
@@ -46,7 +51,7 @@
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae;
+        inherit outputs nix-colors home-manager vicinae dictation;
         wlavu = wlavu.packages."x86_64-linux".default;
       };
       modules = [
@@ -57,7 +62,7 @@
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae;
+        inherit outputs nix-colors home-manager vicinae dictation;
         wlavu = wlavu.packages."x86_64-linux".default;
       };
       modules = [
@@ -68,7 +73,7 @@
     nixosConfigurations.macbook-m2 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae;
+        inherit outputs nix-colors home-manager vicinae dictation;
         wlavu = wlavu.packages."aarch64-linux".default;
       };
       modules = [

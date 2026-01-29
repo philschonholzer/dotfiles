@@ -3,6 +3,7 @@
     ./affinity.nix
     ./btop.nix
     ./chromium.nix
+    ./dictation.nix
     ./direnv.nix
     ./web-apps
     ./eza.nix

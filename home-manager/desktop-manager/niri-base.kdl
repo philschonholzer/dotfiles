@@ -269,6 +269,11 @@ binds {
     // Clipboard history
     Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     
+    // Dictation controls
+    Mod+G hotkey-overlay-title="Dictation (English)" { spawn "dictation" "en"; }
+    Mod+Shift+G hotkey-overlay-title="Dictation (German)" { spawn "dictation" "de"; }
+    Mod+Ctrl+G hotkey-overlay-title="Stop Dictation" { spawn "dictation" "stop"; }
+    
     // Open file from Downloads
     Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }
     // Screenshots
