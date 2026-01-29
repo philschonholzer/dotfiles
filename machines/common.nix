@@ -63,6 +63,13 @@
     };
   };
 
+  # Static hostname for QNAP NAS
+  # This ensures resolution works even for apps that don't use NSS (like browsers with c-ares)
+  # If the QNAP IP changes, update it here or set a DHCP reservation in your router
+  networking.hosts = {
+    "192.168.1.12" = ["NAS.local" "nas"];
+  };
+
   # Enable hardware graphics acceleration
   hardware.graphics = {
     enable = true;
@@ -202,8 +209,6 @@
   ];
 
   environment.variables.EDITOR = "nvim";
-
-  # Environment variables for Niri are now configured through modules/niri.nix
 
   virtualisation.docker.enable = true;
 

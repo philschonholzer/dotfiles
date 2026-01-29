@@ -16,6 +16,7 @@
     ./lazydocker.nix
     ./lazygit.nix
     ./nvim.nix
+    ./qnap.nix
     ./qutebrowser
     ./rbw.nix
     ./ripgrep.nix
