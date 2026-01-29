@@ -11,7 +11,7 @@
     vimdiffAlias = true;
     extraLuaPackages = ps: [ps.magick];
     extraPackages = with pkgs; [
-      alejandra
+      nixfmt-rfc-style
       imagemagick
       websocat
       cargo
