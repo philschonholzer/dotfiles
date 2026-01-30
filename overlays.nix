@@ -1,5 +1,6 @@
 # This file defines overlays
-{inputs, ...}: {
+{ inputs, ... }:
+{
   # This one brings our custom packages from the 'pkgs' directory
   #   additions = final: _prev: import ../pkgs final.pkgs;
 
@@ -7,10 +8,6 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # Build Blender with HIP support for AMD GPU compute
-    blender = prev.blender.override {
-      hipSupport = true;
-    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -19,11 +16,12 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
+      config.rocmSupport = true;
       overlays = [
-        # Apply HIP support to unstable.blender too
+        # Apply ROCm support to unstable.blender for AMD GPU compute
         (ufinal: uprev: {
           blender = uprev.blender.override {
-            hipSupport = true;
+            rocmSupport = true;
           };
         })
       ];
