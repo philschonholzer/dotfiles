@@ -15,7 +15,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
   # Scheme name: Kanagawa
   # Scheme author: Tommaso Laurenzi (https://github.com/rebelot)
@@ -40,7 +41,7 @@
 
   # Wrapper script for work profile
   # Shares config with default profile via symlink
-  # Unsets Qt environment variables to avoid conflicts with other Qt applications (e.g. vicinae)
+  # Unsets Qt environment variables to prevent symbol conflicts (see qutebrowser-wrapped comment)
   qutebrowser-work = pkgs.writeShellScriptBin "qutebrowser-work" ''
     WORK_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-work"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
@@ -56,7 +57,7 @@
 
   # Wrapper script for private profile
   # Shares config with default profile via symlink
-  # Unsets Qt environment variables to avoid conflicts with other Qt applications (e.g. vicinae)
+  # Unsets Qt environment variables to prevent symbol conflicts (see qutebrowser-wrapped comment)
   qutebrowser-private = pkgs.writeShellScriptBin "qutebrowser-private" ''
     PRIVATE_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-private"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
@@ -84,19 +85,21 @@
     text = builtins.readFile ./bitwarden-fill.sh;
   };
   # Wrapper for default qutebrowser that unsets Qt environment variables
-  # This prevents conflicts with other Qt applications (e.g. vicinae using Qt 6.10.0
-  # vs qutebrowser's Qt 6.10.1) which set QT_PLUGIN_PATH and LD_LIBRARY_PATH
+  # This prevents conflicts with vicinae (which is in home.packages and sets QT_PLUGIN_PATH
+  # to Qt 6.10.0 via home-manager's buildEnv). Qutebrowser uses Qt 6.10.1 and will crash
+  # with symbol errors if it tries to load Qt 6.10.0 libraries from the environment.
   qutebrowser-wrapped = pkgs.symlinkJoin {
     name = "qutebrowser-wrapped";
-    paths = [pkgs.unstable.qutebrowser];
-    buildInputs = [pkgs.makeWrapper];
+    paths = [ pkgs.unstable.qutebrowser ];
+    buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/qutebrowser \
         --unset QT_PLUGIN_PATH \
         --unset LD_LIBRARY_PATH
     '';
   };
-in {
+in
+{
   programs.qutebrowser = {
     enable = true;
     package = qutebrowser-wrapped;
@@ -147,14 +150,27 @@ in {
 
       # Enable smooth scrolling
       scrolling.smooth = true;
+      input = {
+        insert_mode = {
+          auto_enter = true;
+          auto_load = true;
+          auto_leave = true;
+        };
+      };
 
       downloads.location.directory = "${config.home.homeDirectory}/Downloads/";
 
-      editor.command = ["nvim" "{file}"];
+      editor.command = [
+        "nvim"
+        "{file}"
+      ];
 
       messages.timeout = 5000;
 
-      spellcheck.languages = ["en-US" "de-DE"];
+      spellcheck.languages = [
+        "en-US"
+        "de-DE"
+      ];
 
       colors = {
         webpage.preferred_color_scheme = "dark";
@@ -375,8 +391,15 @@ in {
       genericName = "Web Browser - Work Profile";
       exec = "${qutebrowser-work}/bin/qutebrowser-work %u";
       terminal = false;
-      categories = ["Application" "Network" "WebBrowser"];
-      mimeType = ["text/html" "text/xml"];
+      categories = [
+        "Application"
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "text/xml"
+      ];
       icon = "qutebrowser";
     };
 
@@ -385,8 +408,15 @@ in {
       genericName = "Web Browser - Private Profile";
       exec = "${qutebrowser-private}/bin/qutebrowser-private %u";
       terminal = false;
-      categories = ["Application" "Network" "WebBrowser"];
-      mimeType = ["text/html" "text/xml"];
+      categories = [
+        "Application"
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "text/xml"
+      ];
       icon = "qutebrowser";
     };
   };
