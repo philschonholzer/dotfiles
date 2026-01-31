@@ -2,7 +2,7 @@ inputs: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    includes = ["~/.colima/ssh_config"];
+    includes = [ "~/.colima/ssh_config" ];
 
     matchBlocks = {
       "Github" = {
@@ -20,6 +20,13 @@ inputs: {
       "Infomaniak" = {
         host = "phischer";
         hostname = "91.214.190.25";
+        user = "debian";
+        identityFile = "~/.ssh/infomaniak_ed25519";
+        forwardAgent = true;
+      };
+      "Infomaniak-Build" = {
+        host = "phischer-build";
+        hostname = "193.108.54.25";
         user = "debian";
         identityFile = "~/.ssh/infomaniak_ed25519";
         forwardAgent = true;
