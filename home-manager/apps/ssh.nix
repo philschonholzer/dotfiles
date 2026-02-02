@@ -9,6 +9,7 @@ inputs: {
         host = "github.com";
         hostname = "github.com";
         user = "git";
+        identityFile = "~/.ssh/github_ed25519";
         # identityFile removed - uses yubikey-agent instead
       };
       "Bitbucket" = {
@@ -22,6 +23,13 @@ inputs: {
         hostname = "91.214.190.25";
         user = "debian";
         identityFile = "~/.ssh/infomaniak_ed25519";
+        forwardAgent = true;
+      };
+      "InfomaniakBuild" = {
+        host = "phischer-build";
+        hostname = "193.108.54.25";
+        user = "debian";
+        identityFile = "~/.ssh/infomaniak-phischer-build-server";
         forwardAgent = true;
       };
       "MacMini" = {

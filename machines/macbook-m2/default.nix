@@ -1,6 +1,10 @@
-{ config, pkgs, nix-colors, ... }:
-
 {
+  config,
+  pkgs,
+  nix-colors,
+  nerd-dictation-pkg,
+  ...
+}: {
   imports = [
     ../../home-manager/arm.nix
   ];
@@ -19,6 +23,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    # Nerd-dictation - offline speech-to-text
+    nerd-dictation-pkg.dictation # Helper script: dictation en/de/stop/status
+    nerd-dictation-pkg.nerd-dictation # Main command
+
+    # Optional: language models if you want them separately
+    # nerd-dictation-pkg.vosk-model-en-us
+    # nerd-dictation-pkg.vosk-model-de
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -72,4 +84,3 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-

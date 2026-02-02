@@ -20,7 +20,7 @@
     packages = with pkgs; [
       unstable.opencode
       unstable.blender
-      ente-auth
+      # ente-auth
       bitwarden-desktop
       telegram-desktop
       nodejs_24
