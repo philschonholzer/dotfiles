@@ -3,7 +3,7 @@
 #
 # Usage:
 #   dictation en   - Start English dictation
-#   dictation de   - Start German dictation  
+#   dictation de   - Start German dictation
 #   dictation stop - Stop dictation
 {
   pkgs,
