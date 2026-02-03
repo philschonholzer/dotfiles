@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   open-downloads = pkgs.writeShellApplication {
     name = "open-downloads";
     runtimeInputs = with pkgs; [
@@ -15,6 +16,7 @@
     ];
     text = builtins.readFile ./open-downloads.sh;
   };
-in {
-  home.packages = [open-downloads];
+in
+{
+  home.packages = [ open-downloads ];
 }

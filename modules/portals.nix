@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # nixpkgs.overlays = [
   #   (final: prev: {
   #     xdg-desktop-portal-wlr = final.unstable.xdg-desktop-portal-wlr;

@@ -9,7 +9,8 @@
   pkgs,
   dictation,
   ...
-}: {
+}:
+{
   home.packages = [
     dictation.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

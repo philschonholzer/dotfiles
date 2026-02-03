@@ -5,15 +5,22 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "virtio_pci" "usbhid" "usb_storage" "sr_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "virtio_pci"
+    "usbhid"
+    "usb_storage"
+    "sr_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/60cabe38-563d-4b2f-9593-f06435e0dabd";
@@ -21,7 +28,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/f4139084-0f57-45df-a2d9-09962f7661a2";}
+    { device = "/dev/disk/by-uuid/f4139084-0f57-45df-a2d9-09962f7661a2"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   home.file = {
     "repo-preview.sh" = {
       source = ./repo-preview.sh;

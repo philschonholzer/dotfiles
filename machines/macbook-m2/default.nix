@@ -1,4 +1,5 @@
-{home-manager, ...}: {
+{ home-manager, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../common.nix

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   home.file = {
     "fetch-trello-boards.sh" = {
       source = ./fetch-boards.sh;

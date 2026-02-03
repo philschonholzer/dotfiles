@@ -3,13 +3,15 @@
   lib,
   nix-colors,
   ...
-}: let
+}:
+let
   palette = config.colorScheme.palette;
   convert = nix-colors.lib.conversions.hexToRGBString;
   backgroundRgb = "transparent";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
   hoverRgb = "rgba(${convert ", " palette.base05},0.3)";
-in {
+in
+{
   home.file = {
     ".config/waybar/" = {
       source = ./css;
@@ -104,9 +106,9 @@ in {
             # active = "󱓻";
           };
           persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
           };
         };
         "niri/window" = {
@@ -162,7 +164,13 @@ in {
           };
         };
         network = {
-          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
           format = "{icon}";
           format-wifi = "{icon}";
           format-ethernet = "󰀂";
@@ -231,7 +239,9 @@ in {
           on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
           max-volume = 150; # Optional: allow volume over 100%
         };
-        tray = {spacing = 13;};
+        tray = {
+          spacing = 13;
+        };
         power-profiles-daemon = {
           format = "{icon}";
           tooltip-format = "Power profile: {profile}";

@@ -1,5 +1,5 @@
 {
-  imports = [./common.nix];
+  imports = [ ./common.nix ];
 
   # arm-specific: packages that are disabled on ARM (commented out on x86)
   # If you want to enable any of these later, add them to home.packages

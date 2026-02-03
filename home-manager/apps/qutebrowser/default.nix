@@ -15,7 +15,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
   # Scheme name: Kanagawa
   # Scheme author: Tommaso Laurenzi (https://github.com/rebelot)
@@ -89,15 +90,16 @@
   # with symbol errors if it tries to load Qt 6.10.0 libraries from the environment.
   qutebrowser-wrapped = pkgs.symlinkJoin {
     name = "qutebrowser-wrapped";
-    paths = [pkgs.unstable.qutebrowser];
-    buildInputs = [pkgs.makeWrapper];
+    paths = [ pkgs.unstable.qutebrowser ];
+    buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/qutebrowser \
         --unset QT_PLUGIN_PATH \
         --unset LD_LIBRARY_PATH
     '';
   };
-in {
+in
+{
   programs.qutebrowser = {
     enable = true;
     package = qutebrowser-wrapped;

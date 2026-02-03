@@ -2,14 +2,15 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaPackages = ps: [ps.magick];
+    extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with pkgs; [
       nixfmt-rfc-style
       imagemagick
@@ -28,6 +29,7 @@
   };
 
   xdg.configFile = {
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/nvim";
+    "nvim".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/nvim";
   };
 }

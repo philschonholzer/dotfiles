@@ -5,7 +5,7 @@ Build / Lint / Test:
 1. Nix flake eval: nix flake show
 2. Rebuild NixOS host: nixos-rebuild dry-build --flake .#$HOST
 3. Darwin home build: home-manager switch --flake .#philip
-4. Format Nix: alejandra .
+4. Format Nix: nix fmt
 5. Neovim config: launch nvim (lazy manages plugins). Update plugins: :Lazy sync
 6. Lua formatting: stylua . (config in nvim/stylua.toml)
 7. Lint Lua (via LSP): lua-language-server (configured in lua-lang.lua)
@@ -13,7 +13,7 @@ Build / Lint / Test:
 
 Style & Conventions:
 9. Nix: pure, declarative; keep inputs pinned in flake.nix, no imperative nix-env.
-10. Formatting: Use alejandra for .nix, stylua (2-space, width 120) for Lua.
+10. Formatting: Use nixfmt-rfc-style for .nix, stylua (2-space, width 120) for Lua.
 11. Imports: Prefer local relative Lua requires (e.g. require("config.lazy")). Group plugin specs; early returns allowed (see example.lua).
 12. Naming: snake_case for Lua variables/functions; UpperCamelCase for modules if exported; Nix attributes are lowercase-hyphen or snake_case.
 13. Types / annotations: Use EmmyLua @type hints where helpful (see opts functions). Avoid unused params (prefix _).

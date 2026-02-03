@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.nmgui];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.nmgui ];
 }

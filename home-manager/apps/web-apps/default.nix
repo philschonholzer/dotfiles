@@ -8,67 +8,96 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   apps = {
     chatgpt = {
       name = "ChatGPT";
       url = "https://chat.openai.com";
       iconPath = "${./icons/chatgpt.png}";
-      categories = ["Network" "Office" "Development"];
+      categories = [
+        "Network"
+        "Office"
+        "Development"
+      ];
     };
     trello = {
       name = "Trello";
       url = "https://trello.com";
       iconPath = "${./icons/trello.svg}";
-      categories = ["Network" "Office" "ProjectManagement"];
+      categories = [
+        "Network"
+        "Office"
+        "ProjectManagement"
+      ];
     };
     trello-tasks = {
       name = "Meine Tasks - Trello";
       url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
       iconPath = "${./icons/trello.svg}";
-      categories = ["Network" "Office" "ProjectManagement"];
+      categories = [
+        "Network"
+        "Office"
+        "ProjectManagement"
+      ];
     };
     notion = {
       name = "Notion";
       url = "https://notion.so";
       iconPath = "${./icons/notion.png}";
-      categories = ["Network" "Office"];
+      categories = [
+        "Network"
+        "Office"
+      ];
     };
     missive = {
       name = "Missive";
       url = "https://mail.missiveapp.com/";
       iconPath = "${./icons/missive.svg}";
-      categories = ["Network" "Email"];
+      categories = [
+        "Network"
+        "Email"
+      ];
     };
     google-voice = {
       name = "Google Voice";
       url = "https://voice.google.com";
       iconPath = "${./icons/google-voice.svg}";
-      categories = ["Network" "Telephony"];
+      categories = [
+        "Network"
+        "Telephony"
+      ];
     };
     whats-app = {
       name = "WhatsApp";
       url = "https://web.whatsapp.com/";
       iconPath = "${./icons/whatsapp.svg}";
-      categories = ["Network" "InstantMessaging" "Chat"];
+      categories = [
+        "Network"
+        "InstantMessaging"
+        "Chat"
+      ];
     };
     deepl = {
       name = "Deepl Write";
       url = "https://www.deepl.com/de/write";
       iconPath = "${./icons/deepl-dark.svg}";
-      categories = ["Utility"];
+      categories = [ "Utility" ];
     };
     google-drive = {
       name = "Google Drive";
       url = "https://drive.google.com/drive/";
       iconPath = "${./icons/google-drive.svg}";
-      categories = ["Utility"];
+      categories = [ "Utility" ];
     };
     google-meet = {
       name = "Google Meet";
       url = "https://meet.google.com";
       iconPath = "${./icons/google-meet.svg}";
-      categories = ["Network" "VideoConference"];
+      categories = [
+        "Network"
+        "VideoConference"
+      ];
     };
   };
 
@@ -105,18 +134,17 @@
 
   # Path to qutebrowser dictionaries
   dictionaries = ../qutebrowser/qtwebengine_dictionaries;
-in {
+in
+{
   home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
   xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
 
   # Setup dictionaries for all web app qutebrowser instances
   # Using xdg.dataFile to create symlinks in the data directories
-  xdg.dataFile =
-    pkgs.lib.mapAttrs' (class: _: {
-      name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
-      value.source = dictionaries;
-    })
-    apps;
+  xdg.dataFile = pkgs.lib.mapAttrs' (class: _: {
+    name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
+    value.source = dictionaries;
+  }) apps;
 
   # Auto-restart service for webapp-google-voice
   # Workaround for QtWebEngine crash on suspend/resume due to Wayland timing issue
@@ -124,8 +152,8 @@ in {
   systemd.user.services.webapp-google-voice = {
     Unit = {
       Description = "Google Voice Web App (Qutebrowser)";
-      After = ["graphical-session.target"];
-      PartOf = ["graphical-session.target"];
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -139,7 +167,7 @@ in {
     };
 
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }

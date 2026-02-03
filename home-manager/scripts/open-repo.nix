@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   home.file = {
     "open-repo" = {
       text = ''

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./desktop-manager
     ./apps
@@ -28,7 +29,7 @@
       nodejs_24
       pnpm
       wl-clipboard
-      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       google-cloud-sql-proxy
       keymapp
       p7zip
@@ -51,7 +52,7 @@
       parsec-bin
       xwayland-satellite
       jq
-      alejandra
+      nixfmt-rfc-style
       unstable.gthumb
       loupe
     ];
@@ -63,9 +64,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      serif = ["Noto Serif"];
-      sansSerif = ["Noto Sans"];
-      monospace = ["JetBrainsMono Nerd Font"];
+      serif = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
     };
   };
 

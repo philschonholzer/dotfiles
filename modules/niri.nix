@@ -5,9 +5,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.services.niri;
-in {
+in
+{
   options.services.niri = {
     enable = lib.mkEnableOption "Niri window manager";
 

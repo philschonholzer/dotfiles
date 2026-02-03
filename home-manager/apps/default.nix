@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./affinity.nix
     ./btop.nix

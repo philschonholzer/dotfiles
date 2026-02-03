@@ -2,7 +2,8 @@
   pkgs,
   nix-colors,
   ...
-}: {
+}:
+{
   colorScheme = nix-colors.colorSchemes.kanagawa;
 
   gtk = {

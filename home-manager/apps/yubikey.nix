@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home = {
     packages = with pkgs; [
       yubikey-manager # offizielles yubikey CLI tool

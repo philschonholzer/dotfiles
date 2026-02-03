@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./find-repos
     ./focus-or-spawn

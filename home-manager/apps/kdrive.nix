@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   kdriveAppImage = pkgs.fetchurl {
     url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.9.1-amd64.AppImage";
     sha256 = "0qiknfmw108hvrcmi1pml5ls73c3ngr2y18cnzysb9hn2hr5pc40";
@@ -17,8 +18,12 @@
     exec ${pkgs.appimage-run}/bin/appimage-run ${kdriveAppImage} "$@"
   '';
   kdriveMountPoint = "${config.home.homeDirectory}/kDrive";
-in {
-  home.packages = [kdriveEnv pkgs.rclone];
+in
+{
+  home.packages = [
+    kdriveEnv
+    pkgs.rclone
+  ];
 
   xdg.desktopEntries = {
     kdrive = {
@@ -26,7 +31,10 @@ in {
       comment = "kDrive cloud sync client";
       exec = "kdrive";
       icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg"; # put an icon here if you want
-      categories = ["Network" "FileTransfer"];
+      categories = [
+        "Network"
+        "FileTransfer"
+      ];
       terminal = false;
     };
   };
@@ -34,7 +42,7 @@ in {
   systemd.user.services.kdrive = {
     Unit = {
       Description = "kDrive cloud sync client";
-      After = ["graphical-session.target"];
+      After = [ "graphical-session.target" ];
     };
     Service = {
       Type = "simple";
@@ -47,15 +55,15 @@ in {
       ];
     };
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 
   systemd.user.services.kdrive-mount = {
     Unit = {
       Description = "Mount Infomaniak kDrive via rclone";
-      After = ["network-online.target"];
-      Wants = ["network-online.target"];
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
     };
     Service = {
       Type = "notify";
@@ -66,7 +74,7 @@ in {
       RestartSec = "10s";
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [ "default.target" ];
     };
   };
 }

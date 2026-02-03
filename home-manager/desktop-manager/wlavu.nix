@@ -1,11 +1,12 @@
-{wlavu, ...}: {
-  home.packages = [wlavu];
+{ wlavu, ... }:
+{
+  home.packages = [ wlavu ];
 
   systemd.user.services.wlavu = {
     Unit = {
       Description = "Wlavu audio visualization";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -15,7 +16,7 @@
     };
 
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }

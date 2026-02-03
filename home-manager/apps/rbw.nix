@@ -6,7 +6,8 @@
 #
 # The bitwarden-fill userscript automatically selects the profile
 # based on the qutebrowser profile (work/private).
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Install rbw package
   home.packages = with pkgs; [
     rbw

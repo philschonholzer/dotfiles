@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ../home-manager/apps/nvim.nix
     # ../home-manager/scripts
@@ -42,10 +43,9 @@
     pnpm
     biome
     gnused
-    nixpkgs-fmt
-    alejandra
+    nixfmt-rfc-style
     lazydocker
-    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     nerd-fonts.jetbrains-mono
     glow
     superfile
@@ -147,7 +147,7 @@
           run = ''
             shell 'qlmanage -p "$@"' --confirm
           '';
-          on = ["<C-p>"];
+          on = [ "<C-p>" ];
         }
       ];
     };
@@ -262,7 +262,7 @@
   # Ssh
   programs.ssh = {
     enable = true;
-    includes = ["~/.colima/ssh_config"];
+    includes = [ "~/.colima/ssh_config" ];
 
     matchBlocks = {
       "Github" = {
