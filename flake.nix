@@ -18,6 +18,10 @@
       url = "github:philschonholzer/dictation";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sqlit = {
+      url = "github:Maxteabag/sqlit";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {
@@ -29,17 +33,20 @@
     vicinae,
     wlavu,
     dictation,
+    sqlit,
     ...
   }: let
     inherit (self) outputs;
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
       config.allowUnfree = true;
-      overlays = builtins.attrValues (import ./overlays.nix {
-        inputs = {
-          inherit nixpkgs-unstable;
-        };
-      });
+      overlays = builtins.attrValues (
+        import ./overlays.nix {
+          inputs = {
+            inherit nixpkgs-unstable;
+          };
+        }
+      );
     };
   in {
     overlays = import ./overlays.nix {
@@ -51,8 +58,15 @@
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae dictation;
+        inherit
+          outputs
+          nix-colors
+          home-manager
+          vicinae
+          dictation
+          ;
         wlavu = wlavu.packages."x86_64-linux".default;
+        sqlit-pkg = sqlit.packages."x86_64-linux".default;
       };
       modules = [
         ./machines/beelink
@@ -62,8 +76,15 @@
     nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae dictation;
+        inherit
+          outputs
+          nix-colors
+          home-manager
+          vicinae
+          dictation
+          ;
         wlavu = wlavu.packages."x86_64-linux".default;
+        sqlit-pkg = sqlit.packages."x86_64-linux".default;
       };
       modules = [
         ./machines/macbook-intel
@@ -73,8 +94,15 @@
     nixosConfigurations.macbook-m2 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {
-        inherit outputs nix-colors home-manager vicinae dictation;
+        inherit
+          outputs
+          nix-colors
+          home-manager
+          vicinae
+          dictation
+          ;
         wlavu = wlavu.packages."aarch64-linux".default;
+        sqlit-pkg = sqlit.packages."aarch64-linux".default;
       };
       modules = [
         ./machines/macbook-m2

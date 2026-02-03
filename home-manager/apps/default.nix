@@ -21,6 +21,7 @@
     ./qutebrowser
     ./rbw.nix
     ./ripgrep.nix
+    ./sqlit.nix
     ./ssh.nix
     ./starship.nix
     ./table-plus.nix

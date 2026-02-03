@@ -7,6 +7,7 @@
   vicinae,
   wlavu,
   dictation,
+  sqlit-pkg,
   ...
 }: {
   imports = [
@@ -17,7 +18,7 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit nix-colors wlavu dictation;};
+        extraSpecialArgs = {inherit nix-colors wlavu dictation sqlit-pkg;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
