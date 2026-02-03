@@ -2,7 +2,7 @@ inputs: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    includes = [ "~/.colima/ssh_config" ];
+    includes = ["~/.colima/ssh_config"];
 
     matchBlocks = {
       "Github" = {
@@ -28,7 +28,7 @@ inputs: {
         host = "phischer-build";
         hostname = "193.108.54.25";
         user = "debian";
-        identityFile = "~/.ssh/infomaniak_ed25519";
+        identityFile = "~/.ssh/infomaniak-phischer-build-server";
         forwardAgent = true;
       };
       "MacMini" = {
