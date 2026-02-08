@@ -46,12 +46,24 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.keyboard.zsa.enable = true;
+  hardware.xpadneo.enable = true;
 
   networking.hostName = lib.mkDefault "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Privacy = "device";
+        JustWorksRepairing = "always";
+        Class = "0x000100";
+        FastConnectable = "true";
+      };
+    };
+  };
   services.blueman.enable = true;
 
   # Enable Avahi for .local hostname resolution (mDNS)
