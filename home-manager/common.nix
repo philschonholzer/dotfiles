@@ -46,6 +46,7 @@
       wofi-emoji
       sushi
       handbrake
+      kdePackages.kdenlive
       localsend
       inkscape
       gftp
