@@ -107,6 +107,9 @@
 
       # Tel
       "x-scheme-handler/tel" = "google-voice.desktop";
+
+      # Games
+      "x-scheme-handler/acmanager" = "Assetto Corsa.desktop";
     };
   };
 
