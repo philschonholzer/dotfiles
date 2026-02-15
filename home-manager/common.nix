@@ -47,6 +47,7 @@
       sushi
       handbrake
       kdePackages.kdenlive
+      ffmpeg-full
       localsend
       inkscape
       gftp
