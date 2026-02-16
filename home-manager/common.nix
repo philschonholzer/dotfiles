@@ -57,6 +57,7 @@
       nixfmt-rfc-style
       unstable.gthumb
       loupe
+      libreoffice
     ];
   };
 
