@@ -88,6 +88,9 @@ let
   # This prevents conflicts with vicinae (which is in home.packages and sets QT_PLUGIN_PATH
   # to Qt 6.10.0 via home-manager's buildEnv). Qutebrowser uses Qt 6.10.1 and will crash
   # with symbol errors if it tries to load Qt 6.10.0 libraries from the environment.
+  #
+  # The default qutebrowser now uses the work profile basedir by default.
+  # It also explicitly loads the config from the default location to share settings.
   qutebrowser-wrapped = pkgs.symlinkJoin {
     name = "qutebrowser-wrapped";
     paths = [ pkgs.unstable.qutebrowser ];
@@ -95,7 +98,8 @@ let
     postBuild = ''
       wrapProgram $out/bin/qutebrowser \
         --unset QT_PLUGIN_PATH \
-        --unset LD_LIBRARY_PATH
+        --unset LD_LIBRARY_PATH \
+        --add-flags "--basedir ${config.home.homeDirectory}/.local/share/qutebrowser-work --config-py ${config.home.homeDirectory}/.config/qutebrowser/config.py"
     '';
   };
 in
@@ -157,8 +161,14 @@ in
           auto_leave = true;
         };
       };
+      downloads = {
+        location = {
 
-      downloads.location.directory = "${config.home.homeDirectory}/Downloads/";
+          directory = "${config.home.homeDirectory}/Downloads/";
+          prompt = false;
+        };
+        open_dispatcher = "nautilus";
+      };
 
       editor.command = [
         "nvim"
