@@ -101,7 +101,7 @@ in {
     enable = true;
     package = pkgs.writeShellScriptBin "qutebrowser" "/usr/bin/qutebrowser";
     extraConfig = ''
-      c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
+      c.tabs.padding = {'top': 12, 'bottom': 12, 'right': 16, 'left': 16}
 
       # Auto-enter passthrough mode for Missive
       config.set('input.mode_override', 'passthrough', 'mail.missiveapp.com')
@@ -138,8 +138,12 @@ in {
     settings = {
       tabs = {
         show = "multiple";
-        indicator.width = 3;
+        indicator.width = 0;
         favicons.scale = 0.9;
+        title = {
+          alignment = "center";
+          format = "{audio} {current_title}";
+        };
       };
 
       fonts.tabs.selected = "11pt";
