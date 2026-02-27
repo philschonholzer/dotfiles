@@ -99,7 +99,9 @@
 in {
   programs.qutebrowser = {
     enable = true;
-    package = pkgs.writeShellScriptBin "qutebrowser" "/usr/bin/qutebrowser";
+    package = pkgs.writeShellScriptBin "qutebrowser" ''
+      exec /usr/bin/qutebrowser "$@"
+    '';
     extraConfig = ''
       c.tabs.padding = {'top': 12, 'bottom': 12, 'right': 16, 'left': 16}
 

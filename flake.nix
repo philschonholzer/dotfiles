@@ -18,6 +18,10 @@
       url = "github:philschonholzer/dictation";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sqlit = {
+      url = "github:Maxteabag/sqlit";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {
@@ -29,6 +33,7 @@
     vicinae,
     wlavu,
     nerd-dictation,
+    sqlit,
     ...
   }: let
     inherit (self) outputs;
@@ -53,6 +58,7 @@
       specialArgs = {
         inherit outputs nix-colors home-manager vicinae;
         wlavu = wlavu.packages."x86_64-linux".default;
+        sqlit-pkg = sqlit.packages."x86_64-linux".default;
       };
       modules = [
         ./machines/beelink
@@ -64,6 +70,7 @@
       specialArgs = {
         inherit outputs nix-colors home-manager vicinae;
         wlavu = wlavu.packages."x86_64-linux".default;
+        sqlit-pkg = sqlit.packages."x86_64-linux".default;
       };
       modules = [
         ./machines/macbook-intel
@@ -75,6 +82,7 @@
       extraSpecialArgs = {
         inherit outputs nix-colors home-manager vicinae;
         nerd-dictation-pkg = nerd-dictation.packages."aarch64-linux";
+        sqlit-pkg = sqlit.packages."aarch64-linux".default;
         # wlavu = wlavu.packages."x86_64-linux".default;
       };
       modules = [
