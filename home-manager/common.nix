@@ -58,6 +58,7 @@
       unstable.gthumb
       loupe
       libreoffice
+      rapidraw
     ];
   };
 
