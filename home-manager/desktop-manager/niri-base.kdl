@@ -171,7 +171,6 @@ binds {
     Mod+Shift+B hotkey-overlay-title="Browser (Private)" { spawn "focus-or-spawn" "qutebrowser-private" "qutebrowser-private"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
-    // Password manager (matching hyprland config)
     Mod+P { spawn-sh "~/open-repo"; }
     
     // Web apps
@@ -288,6 +287,9 @@ binds {
     Mod+X hotkey-overlay-title="Share Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
     Mod+Shift+X hotkey-overlay-title="Share screen" { set-dynamic-cast-monitor; }
     Mod+Ctrl+X hotkey-overlay-title="Share nothing" { clear-dynamic-cast-target; }
+
+    // Show notifications
+    Mod+M { spawn "makoctl" "restore"; }
     
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
