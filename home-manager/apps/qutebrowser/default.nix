@@ -108,23 +108,12 @@ in
     enable = true;
     package = qutebrowser-wrapped;
     extraConfig = ''
-      c.tabs.padding = {'top': 8, 'bottom': 8, 'right': 16, 'left': 16}
+      c.tabs.padding = {'top': 12, 'bottom': 12, 'right': 16, 'left': 16}
 
       # Auto-enter passthrough or insert mode for Missive, trello and chatgpt
       config.set('input.mode_override', 'passthrough', 'mail.missiveapp.com')
       config.set('input.mode_override', 'passthrough', 'trello.com')
       config.set('input.mode_override', 'insert', 'chatgpt.com')
-
-      # Allow notifications for web apps
-      config.set('content.notifications.enabled', True, 'mail.missiveapp.com')
-      config.set('content.notifications.enabled', True, 'trello.com')
-      config.set('content.notifications.enabled', True, 'voice.google.com')
-      config.set('content.notifications.enabled', True, 'web.whatsapp.com')
-
-      # Allow audio recording
-      config.set('content.media.audio_capture', True, 'voice.google.com')
-      # Allow audio and video recording
-      config.set('content.media.audio_video_capture', True, 'web.whatsapp.com')
 
       # Darkmode for Google Apps
       config.set('colors.webpage.darkmode.enabled', True, '*.google.com')
@@ -143,8 +132,12 @@ in
     settings = {
       tabs = {
         show = "multiple";
-        indicator.width = 3;
+        indicator.width = 0;
         favicons.scale = 0.9;
+        title = {
+          alignment = "center";
+          format = "{audio}{current_title}";
+        };
       };
 
       fonts.tabs.selected = "11pt";
@@ -157,7 +150,6 @@ in
       input = {
         insert_mode = {
           auto_enter = true;
-          auto_load = true;
           auto_leave = true;
         };
       };

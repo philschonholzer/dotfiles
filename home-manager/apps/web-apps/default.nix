@@ -115,7 +115,11 @@ let
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \
         --set "tabs.tabs_are_windows" "true" \
-        --set "content.javascript.clipboard" "access-paste" \
+        --set "content.javascript.clipboard" "access" \
+        --set "content.media.audio_capture" "true" \
+        --set "content.media.video_capture" "true" \
+        --set "content.media.audio_video_capture" "true" \
+        --set "content.notifications.enabled" "true" \
         --desktop-file-name "${class}" \
         --target window \
         --override-restore \
