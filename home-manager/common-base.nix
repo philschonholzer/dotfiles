@@ -19,7 +19,6 @@
 
     packages = with pkgs; [
       unstable.opencode
-      unstable.blender
       bitwarden-desktop
       telegram-desktop
       nodejs_24
