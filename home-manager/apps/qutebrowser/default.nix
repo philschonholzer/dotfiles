@@ -51,6 +51,7 @@
       --basedir "$WORK_DIR" \
       --config-py "$DEFAULT_CONFIG" \
       --desktop-file-name qutebrowser-work \
+      --qt-flag disable-gpu-compositing \
       "$@"
   '';
 
@@ -67,6 +68,7 @@
       --basedir "$PRIVATE_DIR" \
       --config-py "$DEFAULT_CONFIG" \
       --desktop-file-name qutebrowser-private \
+      --qt-flag disable-gpu-compositing \
       "$@"
   '';
   # Bitwarden credential filler userscript
@@ -100,7 +102,7 @@ in {
   programs.qutebrowser = {
     enable = true;
     package = pkgs.writeShellScriptBin "qutebrowser" ''
-      exec /usr/bin/qutebrowser "$@"
+      exec /usr/bin/qutebrowser --qt-flag disable-gpu-compositing "$@"
     '';
     extraConfig = ''
       c.tabs.padding = {'top': 12, 'bottom': 12, 'right': 16, 'left': 16}
