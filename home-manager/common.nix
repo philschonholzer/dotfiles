@@ -18,7 +18,6 @@
     };
 
     packages = with pkgs; [
-      unstable.opencode
       unstable.blender
       # ente-auth
       bitwarden-desktop
