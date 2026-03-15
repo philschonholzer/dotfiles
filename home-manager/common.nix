@@ -59,6 +59,7 @@
       loupe
       libreoffice
       rapidraw
+      cameractrls-gtk4
     ];
   };
 
