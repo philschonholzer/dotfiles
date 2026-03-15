@@ -14,7 +14,7 @@
       url = "github:philschonholzer/wlavu";
       inputs.nixpkgs.follows = "nixpkgs"; # Use your nixpkgs, not wlavu's
     };
-    nerd-dictation = {
+    nerd-    dictation = {
       url = "github:philschonholzer/dictation";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -32,7 +32,7 @@
     nix-colors,
     vicinae,
     wlavu,
-    nerd-dictation,
+    dictation,
     sqlit,
     ...
   }: let
@@ -81,7 +81,7 @@
       inherit pkgs;
       extraSpecialArgs = {
         inherit outputs nix-colors home-manager vicinae;
-        nerd-dictation-pkg = nerd-dictation.packages."aarch64-linux";
+        dictation-pkg = dictation.packages."aarch64-linux";
         sqlit-pkg = sqlit.packages."aarch64-linux".default;
         # wlavu = wlavu.packages."x86_64-linux".default;
       };

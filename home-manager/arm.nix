@@ -1,15 +1,18 @@
-{nix-colors,...}: {
-  imports = [./common.nix];
+{nix-colors, ...}: {
+  imports = [./common-base.nix];
+
+  # Asahi/Fedora uses newer state version for home-manager standalone
+  home.stateVersion = "25.11";
 
   colorScheme = nix-colors.colorSchemes.kanagawa;
-  
+
   # Enable Nix profile integration on non-NixOS systems (Fedora ARM)
   targets.genericLinux = {
     enable = true;
     # Disable automatic GPU driver detection (causes issues on ARM)
     gpu.enable = false;
   };
-  
+
   # arm-specific: packages that are disabled on ARM (commented out on x86)
   # If you want to enable any of these later, add them to home.packages
 }

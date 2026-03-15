@@ -18,8 +18,8 @@
     };
 
     packages = with pkgs; [
+      unstable.opencode
       unstable.blender
-      # ente-auth
       bitwarden-desktop
       telegram-desktop
       nodejs_24
@@ -47,7 +47,6 @@
       gftp
       parsec-bin
       jq
-      alejandra
       unstable.gthumb
       loupe
     ];

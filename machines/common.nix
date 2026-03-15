@@ -6,6 +6,8 @@
   nix-colors,
   vicinae,
   wlavu,
+  dictation,
+  sqlit-pkg,
   ...
 }: {
   imports = [
@@ -16,7 +18,7 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit nix-colors wlavu;};
+        extraSpecialArgs = {inherit nix-colors wlavu dictation sqlit-pkg;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
@@ -40,12 +42,24 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.keyboard.zsa.enable = true;
+  hardware.xpadneo.enable = true;
 
   networking.hostName = lib.mkDefault "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Privacy = "device";
+        JustWorksRepairing = "always";
+        Class = "0x000100";
+        FastConnectable = "true";
+      };
+    };
+  };
   services.blueman.enable = true;
 
   # Enable Avahi for .local hostname resolution (mDNS)
@@ -63,9 +77,25 @@
     };
   };
 
+  # Static hostname for QNAP NAS
+  # This ensures resolution works even for apps that don't use NSS (like browsers with c-ares)
+  # If the QNAP IP changes, update it here or set a DHCP reservation in your router
+  networking.hosts = {
+    "192.168.1.12" = [
+      "NAS.local"
+      "nas"
+    ];
+  };
+
   # Enable hardware graphics acceleration
   hardware.graphics = {
     enable = true;
+    enable32Bit = pkgs.stdenv.hostPlatform.isx86_64; # Only for x86_64 systems
+    extraPackages =
+      with pkgs;
+      lib.optionals stdenv.hostPlatform.isx86_64 [
+        rocmPackages.clr.icd # ROCm/HIP runtime for AMD GPU compute (x86_64 only)
+      ];
   };
 
   # Sound
@@ -104,6 +134,7 @@
   };
 
   services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
@@ -217,7 +248,10 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.allowedTCPPorts = [53317];
+  networking.firewall.allowedTCPPorts = [
+    8081
+    53317
+  ];
   networking.firewall.allowedUDPPorts = [53317];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

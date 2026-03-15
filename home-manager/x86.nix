@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./common.nix];
+  imports = [./common-nixos.nix];
 
   # x86-specific packages
   home.packages = with pkgs; [

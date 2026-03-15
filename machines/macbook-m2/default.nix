@@ -2,7 +2,7 @@
   config,
   pkgs,
   nix-colors,
-  nerd-dictation-pkg,
+  dictation-pkg,
   ...
 }: {
   imports = [
@@ -24,12 +24,12 @@
   # environment.
   home.packages = [
     # Nerd-dictation - offline speech-to-text
-    nerd-dictation-pkg.dictation # Helper script: dictation en/de/stop/status
-    nerd-dictation-pkg.nerd-dictation # Main command
+    dictation-pkg.dictation # Helper script: dictation en/de/stop/status
+    dictation-pkg.nerd-dictation # Main command
 
     # Optional: language models if you want them separately
-    # nerd-dictation-pkg.vosk-model-en-us
-    # nerd-dictation-pkg.vosk-model-de
+    # dictation-pkg.vosk-model-en-us
+    # dictation-pkg.vosk-model-de
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
