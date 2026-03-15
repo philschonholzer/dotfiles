@@ -2,10 +2,8 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   imports = [
-    ./desktop-manager
     ./apps
     ./scripts
   ];
@@ -13,7 +11,6 @@
   home = {
     username = "philip";
     homeDirectory = "/home/philip";
-    stateVersion = "25.05";
 
     sessionVariables = {
       BROWSER = "qutebrowser-work";
@@ -23,13 +20,12 @@
     packages = with pkgs; [
       unstable.opencode
       unstable.blender
-      ente-auth
       bitwarden-desktop
       telegram-desktop
       nodejs_24
       pnpm
       wl-clipboard
-      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       google-cloud-sql-proxy
       keymapp
       p7zip
@@ -46,32 +42,23 @@
       wofi-emoji
       sushi
       handbrake
-      kdePackages.kdenlive
-      ffmpeg-full
       localsend
       inkscape
       gftp
       parsec-bin
-      xwayland-satellite
       jq
-      nixfmt-rfc-style
       unstable.gthumb
       loupe
-      libreoffice
-      rapidraw
-      cameractrls-gtk4
     ];
   };
-
-  programs.alacritty.enable = true;
 
   # Fonts
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      serif = [ "Noto Serif" ];
-      sansSerif = [ "Noto Sans" ];
-      monospace = [ "JetBrainsMono Nerd Font" ];
+      serif = ["Noto Serif"];
+      sansSerif = ["Noto Sans"];
+      monospace = ["JetBrainsMono Nerd Font"];
     };
   };
 
@@ -111,9 +98,6 @@
 
       # Tel
       "x-scheme-handler/tel" = "google-voice.desktop";
-
-      # Games
-      "x-scheme-handler/acmanager" = "Assetto Corsa.desktop";
     };
   };
 
@@ -131,13 +115,14 @@
       height = 110;
       padding = "10";
       margin = "10";
-      border-size = 3;
-      border-radius = 12;
+      border-size = 2;
+      border-radius = 0;
 
       anchor = "top-right";
       layer = "overlay";
 
       default-timeout = 10000;
+      ignore-timeout = false;
       max-visible = 5;
       sort = "-time";
 

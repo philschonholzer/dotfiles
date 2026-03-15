@@ -9,8 +9,7 @@
   dictation,
   sqlit-pkg,
   ...
-}:
-{
+}: {
   imports = [
     ../modules
     home-manager.nixosModules.home-manager
@@ -19,19 +18,16 @@
         backupFileExtension = "backup";
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {
-          inherit
-            nix-colors
-            wlavu
-            dictation
-            sqlit-pkg
-            ;
-        };
+        extraSpecialArgs = {inherit nix-colors wlavu dictation sqlit-pkg;};
         users.philip = {
           imports = [
             nix-colors.homeManagerModules.default
             vicinae.homeManagerModules.default
-            (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)
+            (
+              if pkgs.stdenv.isAarch64
+              then ../home-manager/arm.nix
+              else ../home-manager/x86.nix
+            )
           ];
         };
       };
@@ -143,18 +139,14 @@
   security.pam.services.gdm.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.philip = {
     isNormalUser = true;
     description = "Philip Schoenholzer";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-    ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.zsh;
   };
 
@@ -173,10 +165,7 @@
   };
 
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = ["nix-command" "flakes"];
 
     extra-substituters = [
       "https://vicinae.cachix.org"
@@ -239,6 +228,8 @@
 
   environment.variables.EDITOR = "nvim";
 
+  # Environment variables for Niri are now configured through modules/niri.nix
+
   virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -261,7 +252,7 @@
     8081
     53317
   ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
+  networking.firewall.allowedUDPPorts = [53317];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

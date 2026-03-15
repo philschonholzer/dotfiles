@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "nixos-rebuild *": "deny",
+      "nixos-rebuild * --dry-build*": "allow",
+      "nixos-rebuild *--dry-build*": "allow",
+      "git push*": "deny"
+    }
+  }
+}

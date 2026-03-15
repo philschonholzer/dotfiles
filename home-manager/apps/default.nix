@@ -15,10 +15,11 @@
     ./git.nix
     ./joplin.nix
     ./ghostty.nix
-    ./kdrive.nix
+    # ./kdrive.nix
     ./lazydocker.nix
     ./lazygit.nix
     ./nvim.nix
+    ./opencode.nix
     ./qnap.nix
     ./qutebrowser
     ./rbw.nix
@@ -26,7 +27,7 @@
     ./sqlit.nix
     ./ssh.nix
     ./starship.nix
-    ./table-plus.nix
+    # ./table-plus.nix
     ./vnc.nix
     ./yubikey.nix
     ./zsh.nix
