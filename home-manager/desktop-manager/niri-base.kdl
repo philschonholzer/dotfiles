@@ -177,6 +177,7 @@ binds {
     Mod+E hotkey-overlay-title="Trello Board" { spawn-sh "~/open-trello-board"; }
     Mod+A hotkey-overlay-title="ChatGPT" { spawn "focus-or-spawn" "chatgpt" "webapp-chatgpt"; }
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
+    Mod+I hotkey-overlay-title="Deepl" { spawn "webapp-deepl"; }
     
     // // Volume controls
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
