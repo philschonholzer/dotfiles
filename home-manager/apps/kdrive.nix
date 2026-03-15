@@ -5,8 +5,8 @@
 }:
 let
   kdriveAppImage = pkgs.fetchurl {
-    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.9.1-amd64.AppImage";
-    sha256 = "0qiknfmw108hvrcmi1pml5ls73c3ngr2y18cnzysb9hn2hr5pc40";
+    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.10.1-amd64.AppImage";
+    sha256 = "1bqpqrq618pv05x1nlk6n1qh847q94y1yhz1zip07jaknnzzdw13";
   };
   kdriveEnv = pkgs.writeShellScriptBin "kdrive" ''
     # Force X11 so Qt doesn't explode under Wayland/Hyprland
