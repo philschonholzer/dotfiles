@@ -5,8 +5,8 @@
   home.packages = with pkgs; [
     unstable.morgen
     slack
-    lens
-    onlyoffice-desktopeditors
+    freelens-bin
+    unstable.onlyoffice-desktopeditors
     kchat
     brightnessctl
   ];
