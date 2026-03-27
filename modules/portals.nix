@@ -23,4 +23,7 @@
     #
     # config.common.default = "wlr";
   };
+
+  # Enable niri-autoselect-portal for automatic screencasting
+  services.niri-autoselect-portal.enable = true;
 }

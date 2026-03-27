@@ -8,11 +8,13 @@
   wlavu,
   dictation,
   sqlit-pkg,
+  niri-autoselect-portal,
   ...
 }: {
   imports = [
     ../modules
     home-manager.nixosModules.home-manager
+    niri-autoselect-portal.nixosModules.default
     {
       home-manager = {
         backupFileExtension = "backup";
