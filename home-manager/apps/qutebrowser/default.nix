@@ -153,6 +153,7 @@ in
       ",l" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill";
       ",u" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill username";
       ",p" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill password";
+      ",d" = "set content.headers.accept_language de";
     };
     settings = {
       tabs = {
