@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./apps
     ./scripts
@@ -24,7 +25,7 @@
       nodejs_24
       pnpm
       wl-clipboard
-      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       google-cloud-sql-proxy
       keymapp
       p7zip
@@ -48,6 +49,10 @@
       jq
       unstable.gthumb
       loupe
+      libreoffice
+      rapidraw
+      cameractrls-gtk4
+      file
     ];
   };
 
@@ -55,9 +60,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      serif = ["Noto Serif"];
-      sansSerif = ["Noto Sans"];
-      monospace = ["JetBrainsMono Nerd Font"];
+      serif = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
     };
   };
 
