@@ -3,7 +3,12 @@
     ./common-base.nix
     ./desktop-manager
     ./apps/dictation.nix
+    ./apps/kdrive.nix
+    ./apps/table-plus.nix
   ];
+
+  # Enable Ghostty terminal (NixOS only)
+  programs.ghostty.enable = true;
 
   # NixOS systems use an older state version
   home.stateVersion = "25.05";
