@@ -3,7 +3,7 @@
 
   # x86-specific packages
   home.packages = with pkgs; [
-    unstable.morgen
+    morgen  # Version 3.6.19 - unstable 4.0.4 has GPU access issues
     slack
     freelens-bin
     unstable.onlyoffice-desktopeditors

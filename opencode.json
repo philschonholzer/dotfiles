@@ -4,8 +4,7 @@
     "bash": {
       "*": "allow",
       "nixos-rebuild *": "deny",
-      "nixos-rebuild * --dry-build*": "allow",
-      "nixos-rebuild *--dry-build*": "allow",
+      "nixos-rebuild *--dry-*": "allow",
       "git push*": "deny"
     }
   }
