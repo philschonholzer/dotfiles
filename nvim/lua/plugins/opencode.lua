@@ -18,7 +18,7 @@ return {
     {
       "<leader>oa",
       function()
-        require("opencode").ask("@cursor: ")
+        require("opencode").ask("@this: ")
       end,
       desc = "Ask opencode about this",
       mode = "n",
@@ -26,7 +26,7 @@ return {
     {
       "<leader>oa",
       function()
-        require("opencode").ask("@selection: ")
+        require("opencode").ask("@this: ")
       end,
       desc = "Ask opencode about selection",
       mode = "v",
@@ -78,7 +78,7 @@ return {
     {
       "<leader>oe",
       function()
-        require("opencode").prompt("Explain @cursor and its context")
+        require("opencode").prompt("Explain @this and its context")
       end,
       desc = "Explain code near cursor",
     },
