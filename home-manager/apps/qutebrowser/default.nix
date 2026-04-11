@@ -45,9 +45,8 @@ let
   # Determine qutebrowser binary path based on system
   # On NixOS: use Nix-packaged qutebrowser
   # On Fedora/ARM: use system qutebrowser with full path to bypass wrapper
-  qutebrowserBin = if isNixOS 
-    then "${pkgs.unstable.qutebrowser}/bin/qutebrowser"
-    else "/usr/bin/qutebrowser"; # Use system qutebrowser directly
+  qutebrowserBin =
+    if isNixOS then "${pkgs.unstable.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser"; # Use system qutebrowser directly
 
   # Wrapper script for work profile
   # Shares config with default profile via symlink
@@ -56,10 +55,6 @@ let
     WORK_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-work"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-    ${lib.optionalString isNixOS ''
-      unset QT_PLUGIN_PATH
-      unset LD_LIBRARY_PATH
-    ''}
     exec ${qutebrowserBin} \
       --basedir "$WORK_DIR" \
       --config-py "$DEFAULT_CONFIG" \
@@ -74,10 +69,6 @@ let
     PRIVATE_DIR="${config.home.homeDirectory}/.local/share/qutebrowser-private"
     DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-    ${lib.optionalString isNixOS ''
-      unset QT_PLUGIN_PATH
-      unset LD_LIBRARY_PATH
-    ''}
     exec ${qutebrowserBin} \
       --basedir "$PRIVATE_DIR" \
       --config-py "$DEFAULT_CONFIG" \
@@ -107,26 +98,25 @@ let
   # It also explicitly loads the config from the default location to share settings.
   #
   # On non-NixOS systems (Fedora/ARM), we use the system qutebrowser instead of wrapping it.
-  qutebrowser-wrapped = if isNixOS then
-    pkgs.symlinkJoin {
-      name = "qutebrowser-wrapped";
-      paths = [ pkgs.unstable.qutebrowser ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/qutebrowser \
-          --unset QT_PLUGIN_PATH \
-          --unset LD_LIBRARY_PATH \
-          --add-flags "--basedir ${config.home.homeDirectory}/.local/share/qutebrowser-work --config-py ${config.home.homeDirectory}/.config/qutebrowser/config.py"
+  qutebrowser-wrapped =
+    if isNixOS then
+      pkgs.symlinkJoin {
+        name = "qutebrowser-wrapped";
+        paths = [ pkgs.unstable.qutebrowser ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/qutebrowser \
+            --add-flags "--basedir ${config.home.homeDirectory}/.local/share/qutebrowser-work --config-py ${config.home.homeDirectory}/.config/qutebrowser/config.py"
+        '';
+      }
+    else
+      # On non-NixOS, create a simple wrapper script that calls system qutebrowser
+      pkgs.writeShellScriptBin "qutebrowser" ''
+        exec ${qutebrowserBin} \
+          --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-work" \
+          --config-py "${config.home.homeDirectory}/.config/qutebrowser/config.py" \
+          "$@"
       '';
-    }
-  else
-    # On non-NixOS, create a simple wrapper script that calls system qutebrowser
-    pkgs.writeShellScriptBin "qutebrowser" ''
-      exec ${qutebrowserBin} \
-        --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-work" \
-        --config-py "${config.home.homeDirectory}/.config/qutebrowser/config.py" \
-        "$@"
-    '';
 in
 {
   programs.qutebrowser = {
