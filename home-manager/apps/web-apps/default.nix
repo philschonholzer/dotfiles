@@ -149,29 +149,4 @@ in
     name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
     value.source = dictionaries;
   }) apps;
-
-  # Auto-restart service for webapp-google-voice
-  # Workaround for QtWebEngine crash on suspend/resume due to Wayland timing issue
-  # See: https://bugreports.qt.io/browse/QTBUG-86763
-  systemd.user.services.webapp-google-voice = {
-    Unit = {
-      Description = "Google Voice Web App (Qutebrowser)";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      Type = "simple";
-      ExecStart = "${webApps.google-voice.package}/bin/webapp-google-voice";
-      Restart = "on-failure";
-      RestartSec = 5;
-      # Prevent restart loop if it fails too quickly
-      StartLimitBurst = 5;
-      StartLimitIntervalSec = 30;
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
 }

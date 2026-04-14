@@ -60,7 +60,10 @@ workspace "tasks"
 
 spawn-at-startup "wbg" "-s" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
 
-// Start Missive (Google Voice started via systemd service for auto-restart)
+// Start Google Voice
+spawn-at-startup "webapp-google-voice"
+
+// Start Missive 
 spawn-at-startup "webapp-missive"
 
 // Start Trello
