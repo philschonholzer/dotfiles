@@ -3,6 +3,35 @@ let
   palette = config.colorScheme.palette;
 in
 {
+  # Desktop entry for opening text files in nvim via ghostty
+  xdg.desktopEntries.nvim-terminal = {
+    name = "Neovim (in terminal)";
+    genericName = "Text Editor";
+    comment = "Edit text files in Neovim within Ghostty terminal";
+    exec = "ghostty -e nvim %F";
+    icon = "nvim";
+    terminal = false;
+    type = "Application";
+    categories = [ "Utility" "TextEditor" ];
+    mimeType = [
+      "text/plain"
+      "text/english"
+      "text/x-makefile"
+      "text/x-c++hdr"
+      "text/x-c++src"
+      "text/x-chdr"
+      "text/x-csrc"
+      "text/x-java"
+      "text/x-moc"
+      "text/x-pascal"
+      "text/x-tcl"
+      "text/x-tex"
+      "application/x-shellscript"
+      "text/x-c"
+      "text/x-c++"
+    ];
+  };
+
   programs.ghostty = {
     settings = {
       # Window settings
@@ -17,6 +46,47 @@ in
       # Copy selected text to clipboard automatically
       copy-on-select = "clipboard";
       app-notifications = "no-clipboard-copy";
+      keybind = [
+        # Paste with Ctrl+V
+        "ctrl+v=paste_from_clipboard"
+
+        # Remove fullscreen toggle
+        "ctrl+enter=unbind"
+
+        # Enter vim scroll mode
+        "ctrl+shift+space=activate_key_table:vim"
+
+        # Open scrollback + screen in nvim (via xdg-open)
+        "ctrl+shift+e=write_scrollback_file:open"
+
+        # Vim scroll mode bindings
+        "vim/j=scroll_page_lines:1"
+        "vim/k=scroll_page_lines:-1"
+        "vim/d=scroll_page_fractional:0.5"
+        "vim/u=scroll_page_fractional:-0.5"
+        "vim/ctrl+f=scroll_page_down"
+        "vim/ctrl+b=scroll_page_up"
+        "vim/g>g=scroll_to_top"
+        "vim/shift+g=scroll_to_bottom"
+
+        # Exit vim scroll mode
+        "vim/q=deactivate_key_table"
+        "vim/escape=deactivate_key_table"
+
+        # Open scrollback + screen in nvim (via xdg-open)
+        "vim/ctrl+shift+e=write_scrollback_file:open"
+
+        # Search (vim-style search entry)
+        "vim/slash=start_search"
+        "vim/n=navigate_search:next"
+
+        # Copy mode / selection
+        "vim/v=copy_to_clipboard"
+        "vim/y=copy_to_clipboard"
+
+        # Command Palette
+        "vim/shift+semicolon=toggle_command_palette"
+      ];
 
       theme = "myconfig";
     };

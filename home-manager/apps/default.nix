@@ -17,6 +17,7 @@
     # ./kdrive.nix
     ./lazydocker.nix
     ./lazygit.nix
+    ./npm.nix
     ./nvim.nix
     ./opencode.nix
     ./qnap.nix

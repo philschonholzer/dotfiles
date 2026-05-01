@@ -20,6 +20,7 @@
 
     packages = with pkgs; [
       unstable.opencode
+      unstable.pi-coding-agent
       bitwarden-desktop
       telegram-desktop
       nodejs_24
@@ -81,6 +82,12 @@
 
       # PDF
       "application/pdf" = "org.gnome.Papers.desktop";
+
+      # Text files (open in nvim via ghostty)
+      "text/plain" = "nvim-terminal.desktop";
+      "text/english" = "nvim-terminal.desktop";
+      "text/x-makefile" = "nvim-terminal.desktop";
+      "application/x-shellscript" = "nvim-terminal.desktop";
 
       # Browser
       "text/html" = "org.qutebrowser.qutebrowser.desktop";
