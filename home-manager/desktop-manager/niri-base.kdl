@@ -268,9 +268,11 @@ binds {
     // Floating toggle
     Mod+V { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Alt+V hotkey-overlay-title="Float Top-Left (640x320)" { spawn-sh "niri msg action set-window-width 640 && niri msg action set-window-height 320 && niri msg action move-floating-window -x 2500 -y 8"; }
+    Mod+Shift+Alt+V hotkey-overlay-title="Float Top-Middle (640x320)" { spawn-sh "niri msg action set-window-width 640 && niri msg action set-window-height 320 && niri msg action center-column && niri msg action move-floating-window -y 8"; }
 
     // Clipboard history
-    Mod+Shift+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
+    Mod+Shift+C { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     
     // Dictation controls
     Mod+G hotkey-overlay-title="Dictation (English)" { spawn "dictation" "en"; }

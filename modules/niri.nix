@@ -21,8 +21,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Enable Niri program
-    programs.niri.enable = true;
+    programs.niri = {
+      # Enable Niri program
+      enable = true;
+      package = pkgs.unstable.niri;
+    };
 
     # Set environment variables for Niri session
     environment.sessionVariables = lib.mkIf cfg.enableSystemIntegration {
