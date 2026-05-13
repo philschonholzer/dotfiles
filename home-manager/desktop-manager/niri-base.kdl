@@ -275,9 +275,9 @@ binds {
     Mod+Shift+C { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     
     // Dictation controls
-    Mod+G hotkey-overlay-title="Dictation (English)" { spawn "dictation" "en"; }
-    Mod+Shift+G hotkey-overlay-title="Dictation (German)" { spawn "dictation" "de"; }
-    Mod+Ctrl+G hotkey-overlay-title="Stop Dictation" { spawn "dictation" "stop"; }
+    Mod+G hotkey-overlay-title="Dictation (English)" { spawn-sh "dictation en && notify-send 'Dictation' 'Started (English)' -u low"; }
+    Mod+Shift+G hotkey-overlay-title="Dictation (German)" { spawn-sh "dictation de && notify-send 'Dictation' 'Started (German)' -u low"; }
+    Mod+Ctrl+G hotkey-overlay-title="Stop Dictation" { spawn-sh "dictation stop && notify-send 'Dictation' 'Stopped' -u low"; }
     
     // Open file from Downloads
     Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }
