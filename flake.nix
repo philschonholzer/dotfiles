@@ -47,7 +47,7 @@
     let
       inherit (self) outputs;
       pkgs = import nixpkgs {
-        system = "aarch64-darwin";
+        system = "aarch64-linux";
         config.allowUnfree = true;
         overlays = builtins.attrValues (
           import ./overlays.nix {
@@ -105,7 +105,7 @@
           { networking.hostName = "macbook-intel"; }
         ];
       };
-      nixosConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit
@@ -119,7 +119,6 @@
         modules = [
           nix-colors.homeManagerModules.default
           ./machines/macbook-m2
-          { networking.hostName = "macbook-m2"; }
         ];
       };
       homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {

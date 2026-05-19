@@ -7,9 +7,19 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 let
+  # Detect if we're on NixOS or a foreign distro (like Fedora)
+  isNixOS = config.targets.genericLinux.enable == false;
+
+  # Determine qutebrowser binary path based on system
+  # On NixOS: use Nix-packaged qutebrowser
+  # On Fedora/ARM: use system qutebrowser with full path
+  qutebrowserBin =
+    if isNixOS then "${pkgs.unstable.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser";
+
   apps = {
     chatgpt = {
       name = "ChatGPT";
@@ -105,7 +115,7 @@ let
     package = pkgs.writeShellScriptBin "webapp-${class}" ''
       DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-      exec ${pkgs.qutebrowser}/bin/qutebrowser \
+      exec ${qutebrowserBin} \
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \
         --set "tabs.tabs_are_windows" "true" \
