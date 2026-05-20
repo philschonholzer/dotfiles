@@ -120,6 +120,7 @@ let
         --set "content.media.video_capture" "true" \
         --set "content.media.audio_video_capture" "true" \
         --set "content.notifications.enabled" "true" \
+        --set "content.pdfjs" "true" \
         --desktop-file-name "${class}" \
         --target window \
         --override-restore \

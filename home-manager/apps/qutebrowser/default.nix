@@ -143,7 +143,7 @@ in
       ",l" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill";
       ",u" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill username";
       ",p" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill password";
-      ",d" = "set content.headers.accept_language de";
+      ",d" = "set content.headers.accept_language de ;; reload";
     };
     settings = {
       tabs = {
@@ -189,6 +189,8 @@ in
         "en-US"
         "de-DE"
       ];
+
+      content.pdfjs = true;
 
       colors = {
         webpage.preferred_color_scheme = "dark";
