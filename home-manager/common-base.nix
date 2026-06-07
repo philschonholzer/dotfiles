@@ -35,7 +35,7 @@
       papers
       xournalpp
       pandoc
-      neofetch
+      fastfetch
       mysql84
       gcr
       poedit

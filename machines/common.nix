@@ -201,6 +201,10 @@
     ];
     # Allow unfree packages
     config.allowUnfree = true;
+    # electron-39 is EOL but still required by bitwarden-desktop
+    config.permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -216,7 +220,6 @@
     mako
     libnotify # Notification client ($ notify-send)
     nautilus
-    blueberry
     unzip
     gnome-keyring
     pwvucontrol

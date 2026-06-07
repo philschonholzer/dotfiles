@@ -10,9 +10,12 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withRuby = false;
+    withPython3 = false;
+    sideloadInitLua = true;
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with pkgs; [
-      nixfmt-rfc-style
+      nixfmt
       imagemagick
       websocat
       cargo

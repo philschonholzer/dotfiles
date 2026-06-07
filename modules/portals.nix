@@ -1,27 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     xdg-desktop-portal-wlr = final.unstable.xdg-desktop-portal-wlr;
-  #   })
-  # ];
-  # https://github.com/emersion/xdg-desktop-portal-wlr/issues/107
   xdg.portal = {
     enable = true;
-    # wlr = {
-    #   enable = true;
-    #   settings = {
-    #     screencast = {
-    #       max_fps = 30;
-    #       chooser_type = "dmenu";
-    #       chooser_cmd = "${pkgs.bemenu}/bin/bemenu";
-    #     };
-    #   };
-    # };
-
-    # extraPortals = [];
-    #
-    # config.common.default = "wlr";
+    # Force this to resolve conflict between niri-autoselect-portal ("gtk;gnome")
+    # and the nixpkgs niri module ("gnome;gtk") — functionally identical.
+    config.niri.default = lib.mkForce "gnome;gtk";
   };
 
   # Enable niri-autoselect-portal for automatic screencasting

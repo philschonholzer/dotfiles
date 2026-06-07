@@ -4,47 +4,39 @@ inputs: {
     enableDefaultConfig = false;
     includes = [ "~/.colima/ssh_config" ];
 
-    matchBlocks = {
-      "Github" = {
-        host = "github.com";
-        hostname = "github.com";
-        user = "git";
-        # identityFile removed - uses yubikey-agent instead
+    settings = {
+      "github.com" = {
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/github_ed25519";
       };
-      "Bitbucket" = {
-        host = "bitbucket.org";
-        hostname = "bitbucket.org";
-        user = "git";
-        identityFile = "~/.ssh/id_rsa_bb";
+      "bitbucket.org" = {
+        HostName = "bitbucket.org";
+        User = "git";
+        IdentityFile = "~/.ssh/id_rsa_bb";
       };
-      "Infomaniak" = {
-        host = "phischer";
-        hostname = "91.214.190.25";
-        user = "debian";
-        identityFile = "~/.ssh/infomaniak_ed25519";
-        forwardAgent = true;
+      "phischer" = {
+        HostName = "91.214.190.25";
+        User = "debian";
+        IdentityFile = "~/.ssh/infomaniak_ed25519";
+        ForwardAgent = true;
       };
-      "Infomaniak-Build" = {
-        host = "phischer-build";
-        hostname = "193.108.54.25";
-        user = "debian";
-        identityFile = "~/.ssh/infomaniak-phischer-build-server";
-        forwardAgent = true;
+      "phischer-build" = {
+        HostName = "193.108.54.25";
+        User = "debian";
+        IdentityFile = "~/.ssh/infomaniak-phischer-build-server";
+        ForwardAgent = true;
       };
-      "MacMini" = {
-        host = "macmini";
-        hostname = "192.168.1.65";
-        user = "philip";
-        identityFile = "~/.ssh/id_ed25519_macmini";
-        forwardAgent = true;
+      "macmini" = {
+        HostName = "192.168.1.65";
+        User = "philip";
+        IdentityFile = "~/.ssh/id_ed25519_macmini";
+        ForwardAgent = true;
       };
       "*" = {
-        host = "*";
-        extraOptions = {
-          IgnoreUnknown = "AddKeysToAgent,UseKeychain";
-          AddKeysToAgent = "yes";
-          UseKeychain = "yes";
-        };
+        IgnoreUnknown = "AddKeysToAgent,UseKeychain";
+        AddKeysToAgent = "yes";
+        UseKeychain = "yes";
       };
     };
   };

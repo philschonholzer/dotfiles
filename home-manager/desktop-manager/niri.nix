@@ -71,16 +71,10 @@ in
             command = "${pkgs.systemd}/bin/systemctl suspend";
           }
         ];
-        events = [
-          {
-            event = "before-sleep";
-            command = display "off";
-          }
-          {
-            event = "after-resume";
-            command = display "on";
-          }
-        ];
+        events = {
+          "before-sleep" = display "off";
+          "after-resume" = display "on";
+        };
       }
     );
   };

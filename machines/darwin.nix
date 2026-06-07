@@ -43,7 +43,7 @@
     pnpm
     biome
     gnused
-    nixfmt-rfc-style
+    nixfmt
     lazydocker
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     nerd-fonts.jetbrains-mono
