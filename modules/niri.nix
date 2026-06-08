@@ -24,7 +24,7 @@ in
     programs.niri = {
       # Enable Niri program
       enable = true;
-      package = pkgs.unstable.niri;
+      package = pkgs.niri;
     };
 
     # Set environment variables for Niri session
