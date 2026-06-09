@@ -32,6 +32,7 @@ in
       XDG_CURRENT_DESKTOP = "niri";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "niri";
+      NIXOS_OZONE_WL = "1";
     };
 
     # Configure greetd to use Niri
