@@ -45,8 +45,7 @@ let
   # Determine qutebrowser binary path based on system
   # On NixOS: use Nix-packaged qutebrowser
   # On Fedora/ARM: use system qutebrowser with full path to bypass wrapper
-  qutebrowserBin =
-    if isNixOS then "${pkgs.unstable.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser"; # Use system qutebrowser directly
+  qutebrowserBin = if isNixOS then "${pkgs.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser"; # Use system qutebrowser directly
 
   # Wrapper script for work profile
   # Shares config with default profile via symlink
@@ -89,11 +88,6 @@ let
     ];
     text = builtins.readFile ./bitwarden-fill.sh;
   };
-  # Wrapper for default qutebrowser that unsets Qt environment variables
-  # This prevents conflicts with vicinae (which is in home.packages and sets QT_PLUGIN_PATH
-  # to Qt 6.10.0 via home-manager's buildEnv). Qutebrowser uses Qt 6.10.1 and will crash
-  # with symbol errors if it tries to load Qt 6.10.0 libraries from the environment.
-  #
   # The default qutebrowser now uses the work profile basedir by default.
   # It also explicitly loads the config from the default location to share settings.
   #
@@ -102,7 +96,7 @@ let
     if isNixOS then
       pkgs.symlinkJoin {
         name = "qutebrowser-wrapped";
-        paths = [ pkgs.unstable.qutebrowser ];
+        paths = [ pkgs.qutebrowser ];
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/qutebrowser \

@@ -105,13 +105,7 @@ let
     package = pkgs.writeShellScriptBin "webapp-${class}" ''
       DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-      # Unset Qt environment variables to prevent symbol conflicts
-      # (vicinae in home.packages causes home-manager to set QT_PLUGIN_PATH to Qt 6.10.0,
-      # but qutebrowser uses Qt 6.10.1 and will crash with "undefined symbol" errors)
-      unset QT_PLUGIN_PATH
-      unset LD_LIBRARY_PATH
-
-      exec ${pkgs.unstable.qutebrowser}/bin/qutebrowser \
+      exec ${pkgs.qutebrowser}/bin/qutebrowser \
         --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
         --config-py "$DEFAULT_CONFIG" \
         --set "tabs.tabs_are_windows" "true" \
