@@ -72,9 +72,6 @@ spawn-at-startup "webapp-trello-tasks"
 // Start Slack
 spawn-at-startup "slack"
 
-// Start mako for notifications
-spawn-at-startup "mako"
-
 hotkey-overlay {
     skip-at-startup
 }
@@ -106,7 +103,7 @@ window-rule {
 
 // Open Slack on workspace "slack"
 window-rule {
-    match at-startup=true app-id="Slack"
+    match at-startup=true app-id="slack"
     open-on-workspace "slack"
 }
 
