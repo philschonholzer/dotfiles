@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./common-base.nix
     ./desktop-manager
@@ -22,5 +22,6 @@
     xwayland-satellite
     libreoffice
     alacritty
+    python3
   ];
 }
