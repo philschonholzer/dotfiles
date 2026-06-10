@@ -10,7 +10,7 @@
     ];
 
     sessionVariables = {
-      SOPS_AGE_KEY_FILE = "${./key.txt}"; # output von age-plugin-yubikey als Datei ins nix-repo einchecken und hier referenzieren
+      SOPS_AGE_KEY_FILE = "${./age-yubikey-identity-94f838f0.txt}"; # output von age-plugin-yubikey als Datei ins nix-repo einchecken und hier referenzieren
     };
   };
 

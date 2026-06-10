@@ -1,0 +1,7 @@
+#       Serial: 34058449, Slot: 1
+#         Name: age identity 94f838f0
+#      Created: Wed, 10 Jun 2026 08:44:58 +0000
+#   PIN policy: Never  (A PIN is NOT required to decrypt)
+# Touch policy: Never  (A physical touch is NOT required to decrypt)
+#    Recipient: age1yubikey1qv2ket6l4tmlp5mzxxdqfhpssgd0cvlnd2q8l5yktpwmsk06k5q8w3slmya
+AGE-PLUGIN-YUBIKEY-16XCQWQ5ZJNUR3UQLE2ADQ
