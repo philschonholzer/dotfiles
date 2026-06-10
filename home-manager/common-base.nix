@@ -112,7 +112,6 @@
     };
   };
 
-  programs.swaylock.enable = true;
   services.mako = {
     enable = true;
 

@@ -169,7 +169,6 @@ binds {
     Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
     Mod+B hotkey-overlay-title="Browser (Work)" { spawn "focus-or-spawn" "qutebrowser-work" "qutebrowser-work"; }
     Mod+Shift+B hotkey-overlay-title="Browser (Private)" { spawn "focus-or-spawn" "qutebrowser-private" "qutebrowser-private"; }
-    Super+Alt+L hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
     
     Mod+P { spawn-sh "~/open-repo"; }
     
