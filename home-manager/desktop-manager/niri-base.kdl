@@ -89,6 +89,22 @@ layer-rule {
     block-out-from "screencast"
 }
 
+// Bar
+layer-rule {
+  match namespace="^noctalia-bar-[^\"]+$"
+  background-effect {
+    // xray false
+    blur false
+  }
+}
+
+// Noctalia shell
+layer-rule {
+  match namespace="^noctalia-(notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+  }
+}
 // Open Google Voice on workspace "phone"
 window-rule {
     match app-id=r#"^google-voice$"#
@@ -166,7 +182,7 @@ binds {
     
     // Core applications (matching your existing setup)
     Mod+T { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run Application: vicinae" { spawn "vicinae" "toggle"; }
+    Mod+D hotkey-overlay-title="Launch Application" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+B hotkey-overlay-title="Browser (Work)" { spawn "focus-or-spawn" "qutebrowser-work" "qutebrowser-work"; }
     Mod+Shift+B hotkey-overlay-title="Browser (Private)" { spawn "focus-or-spawn" "qutebrowser-private" "qutebrowser-private"; }
     
@@ -178,21 +194,20 @@ binds {
     Mod+N hotkey-overlay-title="Neovim" { spawn "ghostty" "-e" "nvim"; }
     Mod+I hotkey-overlay-title="Deepl" { spawn "webapp-deepl"; }
     
-    // // Volume controls
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    //
-    // // Media controls
+    // Volume controls
+    XF86AudioRaiseVolume    allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume    allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute           allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+
+    // Brightness controls
+    XF86MonBrightnessUp     allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown   allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+ 
+    // Media controls
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-    //
-    // // Brightness controls
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     
     // Window management
     Mod+W repeat=false { close-window; }
@@ -268,7 +283,7 @@ binds {
     Mod+Shift+Alt+V hotkey-overlay-title="Float Top-Middle (640x320)" { spawn-sh "niri msg action set-window-width 640 && niri msg action set-window-height 320 && niri msg action center-column && niri msg action move-floating-window -y 8"; }
 
     // Clipboard history
-    Mod+Shift+C { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+Shift+C { spawn-sh "noctalia msg panel-toggle clipboard"; }
     
     // Dictation controls
     Mod+G hotkey-overlay-title="Dictation (English)" { spawn-sh "dictation en && notify-send 'Dictation' 'Started (English)' -u low"; }
@@ -296,5 +311,10 @@ binds {
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }
+    Mod+Ctrl+L { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+P { power-off-monitors; }
+}
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }

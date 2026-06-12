@@ -33,6 +33,11 @@ in
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "niri";
       NIXOS_OZONE_WL = "1";
+      # Unset IM module variables so ibus uses the Wayland portal instead of X11 mode
+      # GNOME sets these to "ibus" which forces --xim mode; in Wayland they should be unset
+      # GTK_IM_MODULE = lib.mkForce "";
+      # QT_IM_MODULE = lib.mkForce "";
+      # XMODIFIERS = lib.mkForce "";
     };
 
     # Configure greetd to use Niri
