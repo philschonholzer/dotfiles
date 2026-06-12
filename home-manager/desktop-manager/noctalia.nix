@@ -4,16 +4,92 @@
     systemd.enable = true;
 
     settings = {
-      # This may also be a string or path to a .toml file.
+      bar.default = {
+        background_opacity = 0.0;
+        center = [
+          "date"
+          "clock"
+        ];
+        end = [
+          "cpu"
+          "ram"
+          "tray"
+          "notifications"
+          "clipboard"
+          "bluetooth"
+          "network"
+          "output_volume"
+          "input_volume"
+          "brightness"
+          "battery"
+          "control-center"
+          "session"
+        ];
+        margin_edge = 2;
+        margin_ends = 42;
+        start = [
+          "launcher"
+          "workspaces"
+          "active_window"
+        ];
+        thickness = 38;
+        widget_spacing = 16;
+      };
+
+      location = {
+        auto_locate = true;
+      };
+
+      lockscreen_widgets = {
+        enabled = false;
+        schema_version = 2;
+        widget_order = [ "lockscreen-login-box@DP-3" ];
+
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
+        };
+
+        widget."lockscreen-login-box@DP-3" = {
+          box_height = 0.0;
+          box_width = 0.0;
+          cx = 1600.0;
+          cy = 1227.0;
+          output = "DP-3";
+          rotation = 0.0;
+          type = "login_box";
+
+          settings = {
+            background_color = "surface_variant";
+            background_opacity = 0.88;
+            background_radius = 12.0;
+            input_opacity = 1.0;
+            input_radius = 6.0;
+            show_login_button = true;
+          };
+        };
+      };
+
+      plugins = {
+        enabled = [ ];
+      };
 
       shell = {
         launch_apps_as_systemd_services = true;
+        polkit_agent = true;
+        telemetry_enabled = true;
+
+        panel = {
+          control_center_placement = "floating";
+          transparency_mode = "soft";
+        };
       };
 
       theme = {
+        builtin = "Kanagawa";
         mode = "dark";
         source = "builtin";
-        builtin = "Catppuccin";
       };
 
       wallpaper = {
@@ -21,6 +97,39 @@
         default.path = ./wallpapers/kanagawa-blend.jpg;
       };
 
+      widget = {
+        active_window = {
+          icon_size = 20.0;
+          max_length = 580;
+        };
+
+        cat = {
+          type = "noctalia/bongocat:cat";
+        };
+
+        cpu = {
+          label_min_width = 26;
+        };
+
+        date = {
+          format = "{:%a. %d.%m.}";
+        };
+
+        network = {
+          show_label = false;
+        };
+
+        ram = {
+          label_min_width = 62;
+        };
+
+        workspaces = {
+          display = "name";
+          focused_color = "tertiary";
+          max_label_chars = 10;
+          scale = 1.15;
+        };
+      };
     };
   };
 }
