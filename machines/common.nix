@@ -4,8 +4,8 @@
   lib,
   home-manager,
   noctalia,
+  noctalia-greeter,
   nix-colors,
-  vicinae,
   wlavu,
   dictation,
   sqlit-pkg,
@@ -17,6 +17,7 @@
     ../modules
     home-manager.nixosModules.home-manager
     niri-autoselect-portal.nixosModules.default
+    noctalia-greeter.nixosModules.default
     {
       home-manager = {
         backupFileExtension = "backup";
@@ -35,7 +36,6 @@
           imports = [
             noctalia.homeModules.default
             nix-colors.homeManagerModules.default
-            vicinae.homeManagerModules.default
             (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)
           ];
         };
@@ -154,7 +154,6 @@
       variant = "altgr-intl";
     };
 
-    displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     gnome.gnome-keyring.enable = true;
 
@@ -162,6 +161,10 @@
     niri = {
       enable = true;
       enableSystemIntegration = true;
+    };
+
+    greetd = {
+      settings.default_session.user = "philip";
     };
   };
 
@@ -187,6 +190,7 @@
     pam.services.gdm.enableGnomeKeyring = true;
     pam.services.login.enableGnomeKeyring = true;
     rtkit.enable = true;
+    polkit.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with 'passwd'.
@@ -209,6 +213,7 @@
       enable = true;
       terminal = "ghostty";
     };
+    noctalia-greeter.enable = true;
   };
 
   nix.settings = {
@@ -218,12 +223,10 @@
     ];
 
     extra-substituters = [
-      "https://vicinae.cachix.org"
       "https://cache.garnix.io"
       "https://noctalia.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];

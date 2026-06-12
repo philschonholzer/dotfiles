@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia.url = "github:noctalia-dev/noctalia";
-    vicinae.url = "github:vicinaehq/vicinae";
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
     wlavu = {
       url = "github:philschonholzer/wlavu";
       inputs.nixpkgs.follows = "nixpkgs"; # Use your nixpkgs, not wlavu's
@@ -37,7 +37,7 @@
       home-manager,
       nix-colors,
       noctalia,
-      vicinae,
+      noctalia-greeter,
       wlavu,
       dictation,
       sqlit,
@@ -72,9 +72,9 @@
             outputs
             nix-colors
             home-manager
-            vicinae
             dictation
             niri-autoselect-portal
+            noctalia-greeter
             ;
           wlavu = wlavu.packages."x86_64-linux".default;
           sqlit-pkg = sqlit.packages."x86_64-linux".default;
@@ -92,9 +92,9 @@
             outputs
             nix-colors
             home-manager
-            vicinae
             dictation
             niri-autoselect-portal
+            noctalia-greeter
             ;
           wlavu = wlavu.packages."x86_64-linux".default;
           sqlit-pkg = sqlit.packages."x86_64-linux".default;
@@ -112,7 +112,6 @@
             outputs
             nix-colors
             home-manager
-            vicinae
             ;
           dictation-pkg = dictation.packages."aarch64-linux";
           sqlit-pkg = sqlit.packages."aarch64-linux".default;
