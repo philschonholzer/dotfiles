@@ -82,10 +82,9 @@ animations {
     // Keep animations enabled but simple
 }
 
-// Block out mako notifications from screencasts.
+// Block out notifications from screencasts.
 layer-rule {
-    match namespace="^notifications$"
-
+    match namespace="^noctalia-notification$"
     block-out-from "screencast"
 }
 
@@ -305,9 +304,6 @@ binds {
     Mod+Shift+X hotkey-overlay-title="Share screen" { set-dynamic-cast-monitor; }
     Mod+Ctrl+X hotkey-overlay-title="Share nothing" { clear-dynamic-cast-target; }
 
-    // Show notifications
-    Mod+M { spawn "makoctl" "restore"; }
-    
     // System
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }

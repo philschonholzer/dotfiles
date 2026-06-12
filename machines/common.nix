@@ -267,8 +267,6 @@
     gcc
     alacritty
     fuzzel
-    mako
-    libnotify # Notification client ($ notify-send)
     nautilus
     unzip
     gnome-keyring

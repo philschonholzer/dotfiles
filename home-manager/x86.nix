@@ -15,6 +15,5 @@
   # Note: configFile is specified per-machine in machines/<machine>/default.nix
   services.niri = {
     enable = true;
-    # enableSwayidle = true;
   };
 }
