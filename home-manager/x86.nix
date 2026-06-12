@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  imports = [./common-nixos.nix];
+{ pkgs, ... }: {
+  imports = [ ./common-nixos.nix ];
 
   # x86-specific packages
   home.packages = with pkgs; [
@@ -15,6 +15,6 @@
   # Note: configFile is specified per-machine in machines/<machine>/default.nix
   services.niri = {
     enable = true;
-    enableSwayidle = true;
+    # enableSwayidle = true;
   };
 }

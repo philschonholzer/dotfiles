@@ -3,6 +3,7 @@
   outputs,
   lib,
   home-manager,
+  noctalia,
   nix-colors,
   vicinae,
   wlavu,
@@ -23,6 +24,7 @@
         useUserPackages = true;
         extraSpecialArgs = {
           inherit
+            noctalia
             nix-colors
             wlavu
             dictation
@@ -31,6 +33,7 @@
         };
         users.philip = {
           imports = [
+            noctalia.homeModules.default
             nix-colors.homeManagerModules.default
             vicinae.homeManagerModules.default
             (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)
@@ -143,6 +146,8 @@
       wireplumber.enable = true;
     };
 
+    power-profiles-daemon.enable = true;
+
     # Configure keymap in X11
     xserver.xkb = {
       layout = "us";
@@ -215,10 +220,12 @@
     extra-substituters = [
       "https://vicinae.cachix.org"
       "https://cache.garnix.io"
+      "https://noctalia.cachix.org"
     ];
     extra-trusted-public-keys = [
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
 
     # Optimize storage
@@ -253,6 +260,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    noctalia.packages.${pkgs.system}.default
     neovim
     wget
     curl

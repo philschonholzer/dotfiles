@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia.url = "github:noctalia-dev/noctalia";
     vicinae.url = "github:vicinaehq/vicinae";
     wlavu = {
       url = "github:philschonholzer/wlavu";
@@ -35,6 +36,7 @@
       nixpkgs-unstable,
       home-manager,
       nix-colors,
+      noctalia,
       vicinae,
       wlavu,
       dictation,
@@ -76,6 +78,7 @@
             ;
           wlavu = wlavu.packages."x86_64-linux".default;
           sqlit-pkg = sqlit.packages."x86_64-linux".default;
+          inherit noctalia;
         };
         modules = [
           ./machines/beelink
@@ -95,6 +98,7 @@
             ;
           wlavu = wlavu.packages."x86_64-linux".default;
           sqlit-pkg = sqlit.packages."x86_64-linux".default;
+          inherit noctalia;
         };
         modules = [
           ./machines/macbook-intel
