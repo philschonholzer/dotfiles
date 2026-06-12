@@ -39,10 +39,5 @@ in
       # QT_IM_MODULE = lib.mkForce "";
       # XMODIFIERS = lib.mkForce "";
     };
-
-    # Configure greetd to use Niri
-    services.greetd = lib.mkIf (cfg.enableSystemIntegration && config.services.greetd.enable) {
-      settings.default_session.command = lib.mkForce "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time --sessions ${pkgs.niri}/share/wayland-sessions";
-    };
   };
 }

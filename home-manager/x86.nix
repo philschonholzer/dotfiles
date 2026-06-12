@@ -8,7 +8,6 @@
     freelens-bin
     unstable.onlyoffice-desktopeditors
     kchat
-    brightnessctl
   ];
 
   # Niri configuration for x86

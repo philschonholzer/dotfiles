@@ -53,24 +53,10 @@ overview {
     zoom 0.16
 }
 
-workspace "phone"
-workspace "mail"
-workspace "slack"
-workspace "tasks"
-
-spawn-at-startup "wbg" "-s" "/home/philip/Pictures/Wallpapers/kanagawa-blend.jpg"
-
-// Start Google Voice
-spawn-at-startup "webapp-google-voice"
-
-// Start Missive 
-spawn-at-startup "webapp-missive"
-
-// Start Trello
-spawn-at-startup "webapp-trello-tasks"
-
-// Start Slack
-spawn-at-startup "slack"
+workspace "Phone"
+workspace "Mail"
+workspace "Slack"
+workspace "Tasks"
 
 hotkey-overlay {
     skip-at-startup
@@ -103,29 +89,6 @@ layer-rule {
   background-effect {
     xray false
   }
-}
-// Open Google Voice on workspace "phone"
-window-rule {
-    match app-id=r#"^google-voice$"#
-    open-on-workspace "phone"
-}
-
-// Open Missive on workspace "mail"
-window-rule {
-    match at-startup=true app-id="missive"
-    open-on-workspace "mail"
-}
-
-// Open Slack on workspace "slack"
-window-rule {
-    match at-startup=true app-id="slack"
-    open-on-workspace "slack"
-}
-
-// Open Trello on workspace "tasks"
-window-rule {
-    match at-startup=true app-id="trello-tasks"
-    open-on-workspace "tasks"
 }
 
 // Block out password managers from screencasts.
@@ -225,10 +188,10 @@ binds {
     Mod+Shift+Right { move-column-right; }
     
     // Workspace navigation
-    Mod+J { focus-workspace-down; }
-    Mod+K { focus-workspace-up; }
-    Mod+Down { focus-workspace-down; }
-    Mod+Up { focus-workspace-up; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+Down { focus-window-or-workspace-down; }
+    Mod+Up { focus-window-or-workspace-up; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -259,8 +222,6 @@ binds {
     // Column management
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Tab { focus-window-down-or-top; }
-    Mod+Shift+Tab { toggle-column-tabbed-display; }
     
     // Sizing
     Mod+R { switch-preset-column-width; }
