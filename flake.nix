@@ -46,17 +46,27 @@
     }:
     let
       inherit (self) outputs;
-      pkgs = import nixpkgs {
-        system = "aarch64-linux";
-        config.allowUnfree = true;
-        overlays = builtins.attrValues (
-          import ./overlays.nix {
-            inputs = {
-              inherit nixpkgs-unstable;
-            };
-          }
-        );
-      };
+      supportedSystems = [
+        "aarch64-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      pkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = builtins.attrValues (
+            import ./overlays.nix {
+              inputs = {
+                inherit nixpkgs-unstable;
+              };
+            }
+          );
+        }
+      );
     in
     {
       overlays = import ./overlays.nix {
@@ -106,7 +116,7 @@
         ];
       };
       homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = pkgsFor."aarch64-linux";
         extraSpecialArgs = {
           inherit
             outputs
@@ -122,7 +132,7 @@
         ];
       };
       homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = pkgsFor."aarch64-darwin";
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./machines/darwin.nix ];
@@ -130,10 +140,12 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
+      formatter = {
 
-      # Formatter for `nix fmt`
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
+        # Formatter for `nix fmt`
+        x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+        aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt-rfc-style;
+        aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+      };
     };
 }
