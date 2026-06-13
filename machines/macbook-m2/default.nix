@@ -4,7 +4,8 @@
   nix-colors,
   dictation-pkg,
   ...
-}: {
+}:
+{
   imports = [
     ../../home-manager/arm.nix
   ];
@@ -48,6 +49,18 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  nix.package = pkgs.nix;
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -1,7 +1,21 @@
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  isNixOS = config.targets.genericLinux.enable == false;
+  isFedora = !isNixOS && pkgs.stdenv.isLinux;
+in
+{
   programs.noctalia = {
     enable = true;
     systemd.enable = true;
+
+    package = lib.mkIf isFedora (pkgs.writeShellScriptBin "noctalia" "exec /usr/bin/noctalia \"$@\"");
+
+    validateConfig = !isFedora;
 
     settings = {
       bar.default = {

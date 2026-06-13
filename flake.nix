@@ -57,7 +57,12 @@
         system:
         import nixpkgs {
           inherit system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "electron-39.8.10"
+            ];
+          };
           overlays = builtins.attrValues (
             import ./overlays.nix {
               inputs = {
@@ -122,12 +127,15 @@
             outputs
             nix-colors
             home-manager
+            noctalia
             ;
+          wlavu = wlavu.packages."aarch64-linux".default;
           dictation-pkg = dictation.packages."aarch64-linux";
           sqlit-pkg = sqlit.packages."aarch64-linux".default;
         };
         modules = [
           nix-colors.homeManagerModules.default
+          noctalia.homeModules.default
           ./machines/macbook-m2
         ];
       };

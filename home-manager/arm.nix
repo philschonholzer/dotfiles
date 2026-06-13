@@ -1,5 +1,9 @@
-{nix-colors, ...}: {
-  imports = [./common-base.nix];
+{ nix-colors, ... }:
+{
+  imports = [
+    ./common-base.nix
+    ./desktop-manager
+  ];
 
   # Asahi/Fedora uses newer state version for home-manager standalone
   home.stateVersion = "25.11";

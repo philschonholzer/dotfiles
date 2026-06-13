@@ -264,7 +264,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    noctalia.packages.${pkgs.system}.default
+    # noctalia.packages.${pkgs.system}.default
     neovim
     wget
     curl
