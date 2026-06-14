@@ -160,7 +160,6 @@
     # Niri is now configured through modules/niri.nix
     niri = {
       enable = true;
-      enableSystemIntegration = true;
     };
 
     greetd = {

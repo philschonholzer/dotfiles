@@ -4,9 +4,6 @@
 spawn-at-startup "noctalia"
 
 // ARM-specific environment variable for software GL rendering
-environment {
-    LIBGL_ALWAYS_SOFTWARE "1"
-}
 
 input {
     keyboard {
@@ -18,7 +15,6 @@ input {
     }
 
     touchpad {
-        tap
         natural-scroll
     }
 
@@ -37,9 +33,8 @@ cursor {
     xcursor-size 24
 }
 
-// Virtual display for ARM/VM environment
-output "Virtual-1" {
-    mode "3840x2160@60.000"
+output "eDP-1" {
+    mode "3024x1890@120.000"
     scale 2
     position x=0 y=0
 }
