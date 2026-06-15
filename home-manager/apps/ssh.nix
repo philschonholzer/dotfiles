@@ -33,6 +33,12 @@ inputs: {
         IdentityFile = "~/.ssh/id_ed25519_macmini";
         ForwardAgent = true;
       };
+      "tools-apptiva" = {
+        HostName = "tools.apptiva.ch";
+        User = "root";
+        IdentityFile = "~/.ssh/tools-apptiva";
+        ForwardAgent = true;
+      };
       "*" = {
         IgnoreUnknown = "AddKeysToAgent,UseKeychain";
         AddKeysToAgent = "yes";
