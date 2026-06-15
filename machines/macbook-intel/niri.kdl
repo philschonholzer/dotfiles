@@ -1,8 +1,6 @@
 // x86-specific configuration overrides
 // This file contains only the differences from niri-base.kdl
 
-include "niri-base.kdl"
-
 layout {
     default-column-width { fixed 1280; }
 }

@@ -22,7 +22,10 @@ in
     # Write base config and machine-specific config as separate files.
     # Machine-specific files use `include "niri-base.kdl"` to pull in the base.
     xdg.configFile = {
-      "niri/config.kdl".text = builtins.readFile cfg.configFile;
+      # Prepend include directive so machine-specific overrides come after the base
+      "niri/config.kdl".text =
+        "include \"niri-base.kdl\"\n"
+        + builtins.readFile cfg.configFile;
 
       "niri/niri-base.kdl".text = builtins.readFile ./niri-base.kdl;
     };

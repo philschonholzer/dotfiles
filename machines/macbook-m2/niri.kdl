@@ -1,8 +1,6 @@
 // ARM/MacBook M2-specific configuration overrides
 // This file contains only the differences from niri-base.kdl
 
-include "niri-base.kdl"
-
 spawn-at-startup "noctalia"
 
 // ARM-specific environment variable for software GL rendering
