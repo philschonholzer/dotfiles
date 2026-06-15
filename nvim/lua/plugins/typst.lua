@@ -9,7 +9,7 @@ return {
             -- optional settings for tinymist
             exportPdf = "onSave", -- or "onType"
             formatterMode = "typstyle",
-            formatterProseWrap = true,
+            formatterProseWrap = false,
           },
           keys = {
             { "<leader>cp", "<cmd>TypstPreview<cr>", desc = "Start Typst Preview" },
@@ -40,7 +40,7 @@ return {
       formatters = {
         typstyle = {
           command = "typstyle",
-          args = { "-i", "--wrap-text", "$FILENAME" },
+          args = { "-i", "$FILENAME" },
           stdin = false,
         },
       },
