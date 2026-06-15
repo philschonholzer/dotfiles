@@ -1,4 +1,3 @@
-{ home-manager, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,7 +9,6 @@
   home-manager.users.philip = {
     services.niri = {
       configFile = ./niri.kdl;
-      defaultColumnWidth = "fixed 1280";
     };
   };
 }

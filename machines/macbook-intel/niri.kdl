@@ -1,33 +1,10 @@
 // x86-specific configuration overrides
 // This file contains only the differences from niri-base.kdl
 
-input {
-    keyboard {
-        xkb {
-            layout "us"
-            variant "altgr-intl"
-        }
-        numlock
-    }
+include "niri-base.kdl"
 
-    touchpad {
-        dwt
-        // tap
-        natural-scroll
-    }
-
-    mouse {
-        natural-scroll
-        left-handed
-    }
-    warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="40%"
-}
-
-cursor {
-    hide-after-inactive-ms 650
-    xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 24
+layout {
+    default-column-width { fixed 1280; }
 }
 
 // Macbook Intel Monitor configuration

@@ -1,33 +1,17 @@
 // x86-specific configuration overrides
 // This file contains only the differences from niri-base.kdl
 
+include "niri-base.kdl"
+
 input {
-    keyboard {
-        xkb {
-            layout "us"
-            variant "altgr-intl"
-        }
-        numlock
-    }
-
-    touchpad {
-        dwt
-        tap
-        natural-scroll
-    }
-
     mouse {
-        natural-scroll
         left-handed
+        natural-scroll
     }
-    warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="40%"
 }
 
-cursor {
-    hide-after-inactive-ms 650
-    xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 24
+layout {
+    default-column-width { proportion 0.5; }
 }
 
 // LG Monitor configuration

@@ -1,36 +1,22 @@
 // ARM/MacBook M2-specific configuration overrides
 // This file contains only the differences from niri-base.kdl
 
+include "niri-base.kdl"
+
 spawn-at-startup "noctalia"
 
 // ARM-specific environment variable for software GL rendering
 
 input {
-    keyboard {
-        xkb {
-            layout "us"
-            variant "altgr-intl"
-        }
-        numlock
-    }
-
-    touchpad {
-        natural-scroll
-    }
-
     mouse {
-        natural-scroll
         scroll-factor 0.5
         accel-speed 0.5
+        natural-scroll
     }
-    warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="40%"
 }
 
-cursor {
-    hide-after-inactive-ms 650
-    xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 24
+layout {
+    default-column-width { fixed 1280; }
 }
 
 output "eDP-1" {

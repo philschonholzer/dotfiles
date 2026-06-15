@@ -31,7 +31,6 @@
   services.niri = {
     enable = true;
     configFile = ./niri.kdl;
-    defaultColumnWidth = "fixed 1280";
   };
 
   # Let Home Manager install and manage itself.

@@ -8,6 +8,33 @@ environment {
     GTK_THEME "Adwaita:dark"
 }
 
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "altgr-intl"
+        }
+        numlock
+    }
+
+    touchpad {
+        dwt
+        natural-scroll
+    }
+
+    mouse {
+        natural-scroll
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="40%"
+}
+
+cursor {
+    hide-after-inactive-ms 650
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
 layout {
     gaps 8
     center-focused-column "never"
@@ -33,6 +60,7 @@ layout {
     }
 
     border {
+      on
       width 3
       inactive-color "#727169"
       active-color "#7E9CD8"
