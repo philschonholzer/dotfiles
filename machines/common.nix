@@ -118,8 +118,6 @@
   };
 
   services = {
-    blueman.enable = true;
-
     # Enable Avahi for .local hostname resolution (mDNS)
     avahi = {
       enable = true;
