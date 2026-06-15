@@ -5,16 +5,10 @@
 }:
 let
   kdriveAppImage = pkgs.fetchurl {
-    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.7.10.1-amd64.AppImage";
-    sha256 = "1bqpqrq618pv05x1nlk6n1qh847q94y1yhz1zip07jaknnzzdw13";
+    url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.5.2-amd64.AppImage";
+    sha256 = "00k4fgsbwkxvyzjk7byx9jlbcp5m07w7lz54129d3wy8w5vkprzi";
   };
   kdriveEnv = pkgs.writeShellScriptBin "kdrive" ''
-    # Force X11 so Qt doesn't explode under Wayland/Hyprland
-    export XDG_SESSION_TYPE=x11
-    export QT_QPA_PLATFORM=xcb
-    unset WAYLAND_DISPLAY
-    unset SESSION_MANAGER
-
     exec ${pkgs.appimage-run}/bin/appimage-run ${kdriveAppImage} "$@"
   '';
   kdriveMountPoint = "${config.home.homeDirectory}/kDrive";
