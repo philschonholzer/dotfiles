@@ -71,7 +71,7 @@ layout {
     }
 
     struts {
-      top -4
+      top -6
       left 32
       right 32
     }
