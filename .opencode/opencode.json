@@ -2,5 +2,24 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "opencode-models-discovery"
-  ]
+  ],
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "nixos-rebuild *": "deny",
+      "nixos-rebuild *--dry-*": "allow",
+      "git push*": "deny"
+    }
+  },
+  "mcp": {
+    "nixos": {
+      "type": "local",
+      "command": [
+        "nix",
+        "run",
+        "github:utensils/mcp-nixos",
+        "--"
+      ]
+    }
+  }
 }
