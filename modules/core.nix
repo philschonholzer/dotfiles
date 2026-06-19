@@ -101,49 +101,6 @@
         dictation = inputs.dictation;
         sqlit-pkg = inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
-      users.philip = {
-        imports = [
-          inputs.self.modules.homeManager.git
-          inputs.self.modules.homeManager.zsh
-          inputs.self.modules.homeManager.direnv
-          inputs.self.modules.homeManager.fd
-          inputs.self.modules.homeManager.fzf
-          inputs.self.modules.homeManager.ripgrep
-          inputs.self.modules.homeManager.eza
-          inputs.self.modules.homeManager.starship
-          inputs.self.modules.homeManager.btop
-          inputs.self.modules.homeManager.lazygit
-          inputs.self.modules.homeManager.lazydocker
-          inputs.self.modules.homeManager.npm
-          inputs.self.modules.homeManager.chromium
-          inputs.self.modules.homeManager.firefox
-          inputs.self.modules.homeManager.nvim
-          inputs.self.modules.homeManager.opencode
-          inputs.self.modules.homeManager.qnap
-          inputs.self.modules.homeManager.vnc
-          inputs.self.modules.homeManager.yubikey
-          inputs.self.modules.homeManager.joplin
-          inputs.self.modules.homeManager.rbw
-          inputs.self.modules.homeManager.ssh
-          inputs.self.modules.homeManager.sqlit
-          inputs.self.modules.homeManager.ghostty
-          inputs.self.modules.homeManager.fuzzel
-          inputs.self.modules.homeManager.affinity
-          inputs.self.modules.homeManager.niri
-          inputs.self.modules.homeManager.noctalia
-          inputs.self.modules.homeManager.theme
-          inputs.self.modules.homeManager.wlavu
-          inputs.self.modules.homeManager.nmgui
-          inputs.self.modules.homeManager.web-apps
-          inputs.self.modules.homeManager.qutebrowser
-          inputs.self.modules.homeManager.dictation
-          inputs.self.modules.homeManager.kdrive
-          inputs.self.modules.homeManager.table-plus
-          inputs.noctalia.homeModules.default
-          inputs.nix-colors.homeManagerModules.default
-          (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)
-        ];
-      };
     };
   };
 }

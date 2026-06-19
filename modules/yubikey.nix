@@ -10,7 +10,7 @@
       ];
 
       sessionVariables = {
-        SOPS_AGE_KEY_FILE = "${../../home-manager/apps/age-yubikey-identity-94f838f0.txt}";
+        SOPS_AGE_KEY_FILE = "${../home-manager/apps/age-yubikey-identity-94f838f0.txt}";
       };
     };
 
