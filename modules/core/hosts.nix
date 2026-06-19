@@ -105,6 +105,7 @@ in
     modules = [
       self.modules.nixos.core
       self.modules.nixos.desktop
+      self.modules.nixos.niri
       self.modules.nixos.hardware
       self.modules.nixos.network
       self.modules.nixos.security
@@ -120,6 +121,7 @@ in
     modules = [
       self.modules.nixos.core
       self.modules.nixos.desktop
+      self.modules.nixos.niri
       self.modules.nixos.hardware
       self.modules.nixos.network
       self.modules.nixos.security

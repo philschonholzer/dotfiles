@@ -24,10 +24,7 @@
     ];
   };
 
-  services.niri = {
-    enable = true;
-    configFile = ./niri.kdl;
-  };
+  services.niri.configFile = ./niri.kdl;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

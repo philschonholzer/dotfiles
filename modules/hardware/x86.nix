@@ -7,9 +7,5 @@
       unstable.onlyoffice-desktopeditors
       kchat
     ];
-
-    services.niri = {
-      enable = true;
-    };
   };
 }
