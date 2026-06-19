@@ -1,0 +1,141 @@
+{ ... }: {
+  flake.modules.homeManager.web-apps = { pkgs, config, lib, ... }:
+  let
+    isNixOS = config.targets.genericLinux.enable == false;
+
+    qutebrowserBin =
+      if isNixOS then "${pkgs.unstable.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser";
+
+    apps = {
+      chatgpt = {
+        name = "ChatGPT";
+        url = "https://chat.openai.com";
+        iconPath = "${../theme/icons/chatgpt.png}";
+        categories = [
+          "Network"
+          "Office"
+          "Development"
+        ];
+      };
+      trello = {
+        name = "Trello";
+        url = "https://trello.com";
+        iconPath = "${../theme/icons/trello.svg}";
+        categories = [
+          "Network"
+          "Office"
+          "ProjectManagement"
+        ];
+      };
+      trello-tasks = {
+        name = "Meine Tasks - Trello";
+        url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
+        iconPath = "${../theme/icons/trello.svg}";
+        categories = [
+          "Network"
+          "Office"
+          "ProjectManagement"
+        ];
+      };
+      notion = {
+        name = "Notion";
+        url = "https://notion.so";
+        iconPath = "${../theme/icons/notion.png}";
+        categories = [
+          "Network"
+          "Office"
+        ];
+      };
+      missive = {
+        name = "Missive";
+        url = "https://mail.missiveapp.com/";
+        iconPath = "${../theme/icons/missive.svg}";
+        categories = [
+          "Network"
+          "Email"
+        ];
+      };
+      google-voice = {
+        name = "Google Voice";
+        url = "https://voice.google.com";
+        iconPath = "${../theme/icons/google-voice.svg}";
+        categories = [
+          "Network"
+          "Telephony"
+        ];
+      };
+      whats-app = {
+        name = "WhatsApp";
+        url = "https://web.whatsapp.com/";
+        iconPath = "${../theme/icons/whatsapp.svg}";
+        categories = [
+          "Network"
+          "InstantMessaging"
+          "Chat"
+        ];
+      };
+      deepl = {
+        name = "Deepl Write";
+        url = "https://www.deepl.com/de/write";
+        iconPath = "${../theme/icons/deepl-dark.svg}";
+        categories = [ "Utility" ];
+      };
+      google-drive = {
+        name = "Google Drive";
+        url = "https://drive.google.com/drive/";
+        iconPath = "${../theme/icons/google-drive.svg}";
+        categories = [ "Utility" ];
+      };
+      google-meet = {
+        name = "Google Meet";
+        url = "https://meet.google.com";
+        iconPath = "${../theme/icons/google-meet.svg}";
+        categories = [
+          "Network"
+          "VideoConference"
+        ];
+      };
+    };
+
+    makeWebApp = class: app: {
+      package = pkgs.writeShellScriptBin "webapp-${class}" ''
+        DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
+
+        exec ${qutebrowserBin} \
+          --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
+          --config-py "$DEFAULT_CONFIG" \
+          --set "tabs.tabs_are_windows" "true" \
+          --set "content.javascript.clipboard" "access" \
+          --set "content.media.audio_capture" "true" \
+          --set "content.media.video_capture" "true" \
+          --set "content.media.audio_video_capture" "true" \
+          --set "content.notifications.enabled" "true" \
+          --set "content.pdfjs" "true" \
+          --desktop-file-name "${class}" \
+          --target window \
+          --override-restore \
+          "${app.url}" \
+          "$@"
+      '';
+      desktopEntry = {
+        name = app.name;
+        exec = "webapp-${class} %U";
+        icon = "${app.iconPath}";
+        categories = app.categories;
+      };
+    };
+
+    webApps = pkgs.lib.mapAttrs makeWebApp apps;
+
+    dictionaries = ./qtwebengine_dictionaries;
+  in
+  {
+    home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
+    xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
+
+    xdg.dataFile = pkgs.lib.mapAttrs' (class: _: {
+      name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
+      value.source = dictionaries;
+    }) apps;
+  };
+}
