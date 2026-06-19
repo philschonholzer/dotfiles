@@ -7,11 +7,9 @@ let
     home-manager
     nix-colors
     noctalia
-    noctalia-greeter
     wlavu
     dictation
     sqlit
-    niri-autoselect-portal
     ;
 
   supportedSystems = [
@@ -44,19 +42,6 @@ in
 
   flake.nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = {
-      outputs = self;
-      inherit
-        nix-colors
-        home-manager
-        noctalia
-        niri-autoselect-portal
-        noctalia-greeter
-        ;
-      wlavu = wlavu.packages."x86_64-linux".default;
-      sqlit-pkg = sqlit.packages."x86_64-linux".default;
-      dictation = dictation;
-    };
     modules = [
       self.modules.nixos.core
       self.modules.nixos.desktop
@@ -71,19 +56,6 @@ in
 
   flake.nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = {
-      outputs = self;
-      inherit
-        nix-colors
-        home-manager
-        noctalia
-        niri-autoselect-portal
-        noctalia-greeter
-        ;
-      wlavu = wlavu.packages."x86_64-linux".default;
-      sqlit-pkg = sqlit.packages."x86_64-linux".default;
-      dictation = dictation;
-    };
     modules = [
       self.modules.nixos.core
       self.modules.nixos.desktop
@@ -99,10 +71,8 @@ in
   flake.homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
     pkgs = pkgsFor."aarch64-linux";
     extraSpecialArgs = {
-      outputs = self;
       inherit
         nix-colors
-        home-manager
         noctalia
         ;
       wlavu = wlavu.packages."aarch64-linux".default;
@@ -110,6 +80,7 @@ in
       sqlit-pkg = sqlit.packages."aarch64-linux".default;
     };
     modules = [
+      self.modules.homeManager.git
       nix-colors.homeManagerModules.default
       noctalia.homeModules.default
       ../machines/macbook-m2
@@ -118,6 +89,9 @@ in
 
   flake.homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
     pkgs = pkgsFor."aarch64-darwin";
-    modules = [ ../machines/darwin.nix ];
+    modules = [
+      self.modules.homeManager.git
+      ../machines/darwin.nix
+    ];
   };
 }

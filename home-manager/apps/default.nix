@@ -11,7 +11,6 @@
     ./firefox.nix
     ./fuzzel.nix
     ./fzf.nix
-    ./git.nix
     ./joplin.nix
     ./ghostty.nix
     # ./kdrive.nix
