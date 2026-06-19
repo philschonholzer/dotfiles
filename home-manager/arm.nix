@@ -2,7 +2,6 @@
 {
   imports = [
     ./common-base.nix
-    ./desktop-manager
   ];
 
   # Asahi/Fedora uses newer state version for home-manager standalone

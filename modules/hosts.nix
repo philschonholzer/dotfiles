@@ -101,6 +101,21 @@ in
       self.modules.homeManager.yubikey
       self.modules.homeManager.joplin
       self.modules.homeManager.rbw
+      self.modules.homeManager.ssh
+      self.modules.homeManager.sqlit
+      self.modules.homeManager.ghostty
+      self.modules.homeManager.fuzzel
+      self.modules.homeManager.affinity
+      self.modules.homeManager.niri
+      self.modules.homeManager.noctalia
+      self.modules.homeManager.theme
+      self.modules.homeManager.wlavu
+      self.modules.homeManager.nmgui
+      self.modules.homeManager.web-apps
+      self.modules.homeManager.qutebrowser
+      self.modules.homeManager.dictation
+      self.modules.homeManager.kdrive
+      self.modules.homeManager.table-plus
       nix-colors.homeManagerModules.default
       noctalia.homeModules.default
       ../machines/macbook-m2

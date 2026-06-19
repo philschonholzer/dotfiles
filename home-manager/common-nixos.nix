@@ -1,10 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./common-base.nix
-    ./desktop-manager
-    ./apps/dictation.nix
-    ./apps/kdrive.nix
-    ./apps/table-plus.nix
   ];
 
   # Enable Ghostty terminal (NixOS only)
