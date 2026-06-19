@@ -126,6 +126,7 @@ in
       self.modules.nixos.network
       self.modules.nixos.security
       self.modules.nixos.apps
+      self.modules.nixos.keyd
       hmModuleForNixos
       ../../machines/macbook-intel
       { networking.hostName = "macbook-intel"; }
@@ -145,6 +146,7 @@ in
     };
     modules = hmModules ++ [
       self.modules.homeManager.arm
+      self.modules.homeManager.keyd
       ../../machines/macbook-m2
     ];
   };
