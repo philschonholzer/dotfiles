@@ -10,7 +10,7 @@
       chatgpt = {
         name = "ChatGPT";
         url = "https://chat.openai.com";
-        iconPath = "${../theme/icons/chatgpt.png}";
+        iconPath = "${./icons/chatgpt.png}";
         categories = [
           "Network"
           "Office"
@@ -20,7 +20,7 @@
       trello = {
         name = "Trello";
         url = "https://trello.com";
-        iconPath = "${../theme/icons/trello.svg}";
+        iconPath = "${./icons/trello.svg}";
         categories = [
           "Network"
           "Office"
@@ -30,7 +30,7 @@
       trello-tasks = {
         name = "Meine Tasks - Trello";
         url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
-        iconPath = "${../theme/icons/trello.svg}";
+        iconPath = "${./icons/trello.svg}";
         categories = [
           "Network"
           "Office"
@@ -40,7 +40,7 @@
       notion = {
         name = "Notion";
         url = "https://notion.so";
-        iconPath = "${../theme/icons/notion.png}";
+        iconPath = "${./icons/notion.png}";
         categories = [
           "Network"
           "Office"
@@ -49,7 +49,7 @@
       missive = {
         name = "Missive";
         url = "https://mail.missiveapp.com/";
-        iconPath = "${../theme/icons/missive.svg}";
+        iconPath = "${./icons/missive.svg}";
         categories = [
           "Network"
           "Email"
@@ -58,7 +58,7 @@
       google-voice = {
         name = "Google Voice";
         url = "https://voice.google.com";
-        iconPath = "${../theme/icons/google-voice.svg}";
+        iconPath = "${./icons/google-voice.svg}";
         categories = [
           "Network"
           "Telephony"
@@ -67,7 +67,7 @@
       whats-app = {
         name = "WhatsApp";
         url = "https://web.whatsapp.com/";
-        iconPath = "${../theme/icons/whatsapp.svg}";
+        iconPath = "${./icons/whatsapp.svg}";
         categories = [
           "Network"
           "InstantMessaging"
@@ -77,19 +77,19 @@
       deepl = {
         name = "Deepl Write";
         url = "https://www.deepl.com/de/write";
-        iconPath = "${../theme/icons/deepl-dark.svg}";
+        iconPath = "${./icons/deepl-dark.svg}";
         categories = [ "Utility" ];
       };
       google-drive = {
         name = "Google Drive";
         url = "https://drive.google.com/drive/";
-        iconPath = "${../theme/icons/google-drive.svg}";
+        iconPath = "${./icons/google-drive.svg}";
         categories = [ "Utility" ];
       };
       google-meet = {
         name = "Google Meet";
         url = "https://meet.google.com";
-        iconPath = "${../theme/icons/google-meet.svg}";
+        iconPath = "${./icons/google-meet.svg}";
         categories = [
           "Network"
           "VideoConference"

@@ -174,7 +174,7 @@ in {
         };
 
         shell = {
-          avatar_path = ../theme/avatar/philip.jpg;
+          avatar_path = ./avatar/philip.jpg;
           launch_apps_as_systemd_services = true;
           polkit_agent = true;
           telemetry_enabled = true;
@@ -204,8 +204,8 @@ in {
 
         wallpaper = {
           enabled = true;
-          directory = ../theme/wallpapers;
-          default.path = ../theme/wallpapers/kanagawa-blend.jpg;
+          directory = ./wallpapers;
+          default.path = ./wallpapers/kanagawa-blend.jpg;
         };
 
         widget = {

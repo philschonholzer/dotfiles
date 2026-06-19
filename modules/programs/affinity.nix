@@ -12,7 +12,7 @@
         name = "Affinity";
         comment = "Affinity Photo/Designer/Publisher";
         exec = "affinity-launcher";
-        icon = ../theme/affinity.svg;
+        icon = ./affinity.svg;
         categories = [
           "Graphics"
           "Photography"
