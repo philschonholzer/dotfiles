@@ -29,6 +29,5 @@
     # ./table-plus.nix
     ./vnc.nix
     ./yubikey.nix
-    ./zsh.nix
   ];
 }

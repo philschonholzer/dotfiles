@@ -81,6 +81,7 @@ in
     };
     modules = [
       self.modules.homeManager.git
+      self.modules.homeManager.zsh
       nix-colors.homeManagerModules.default
       noctalia.homeModules.default
       ../machines/macbook-m2

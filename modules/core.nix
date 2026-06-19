@@ -104,6 +104,7 @@
       users.philip = {
         imports = [
           inputs.self.modules.homeManager.git
+          inputs.self.modules.homeManager.zsh
           inputs.noctalia.homeModules.default
           inputs.nix-colors.homeManagerModules.default
           (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)
