@@ -18,7 +18,6 @@
         NIXOS_OZONE_WL = "1";
       };
 
-      services.niri.enable = true;
       services.greetd.settings.default_session.user = "philip";
 
       xdg.portal = {
