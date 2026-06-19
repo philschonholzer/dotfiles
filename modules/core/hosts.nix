@@ -38,49 +38,14 @@ let
   # Home-manager modules shared across all configurations
   hmModules = [
     self.modules.homeManager.common-base
-    self.modules.homeManager.git
-    self.modules.homeManager.zsh
-    self.modules.homeManager.direnv
-    self.modules.homeManager.fd
-    self.modules.homeManager.fzf
-    self.modules.homeManager.ripgrep
-    self.modules.homeManager.eza
-    self.modules.homeManager.starship
-    self.modules.homeManager.btop
-    self.modules.homeManager.lazygit
-    self.modules.homeManager.lazydocker
-    self.modules.homeManager.npm
-    self.modules.homeManager.chromium
-    self.modules.homeManager.firefox
-    self.modules.homeManager.nvim
-    self.modules.homeManager.opencode
-    self.modules.homeManager.qnap
-    self.modules.homeManager.vnc
-    self.modules.homeManager.yubikey
-    self.modules.homeManager.joplin
-    self.modules.homeManager.rbw
-    self.modules.homeManager.ssh
-    self.modules.homeManager.sqlit
-    self.modules.homeManager.ghostty
-    self.modules.homeManager.fuzzel
-    self.modules.homeManager.affinity
-    self.modules.homeManager.niri
-    self.modules.homeManager.noctalia
-    self.modules.homeManager.theme
-    self.modules.homeManager.wlavu
-    self.modules.homeManager.nmgui
-    self.modules.homeManager.web-apps
-    self.modules.homeManager.qutebrowser
-    self.modules.homeManager.dictation
-    self.modules.homeManager.kdrive
-    self.modules.homeManager.table-plus
-    self.modules.homeManager.find-repos
-    self.modules.homeManager.focus-or-spawn
-    self.modules.homeManager.niri-window-indicator
-    self.modules.homeManager.open-downloads
-    self.modules.homeManager.open-repo
-    self.modules.homeManager.qutebrowser-profile
-    self.modules.homeManager.trello-boards
+    self.modules.homeManager.cli
+    self.modules.homeManager.browsers
+    self.modules.homeManager.editors
+    self.modules.homeManager.desktop
+    self.modules.homeManager.apps
+    self.modules.homeManager.security
+    self.modules.homeManager.service
+    self.modules.homeManager.scripts
   ] ++ [
     nix-colors.homeManagerModules.default
     noctalia.homeModules.default

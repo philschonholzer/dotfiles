@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.affinity = { pkgs, ... }:
+  flake.modules.homeManager.apps = { pkgs, ... }:
   let
     affinityLauncher = pkgs.writeShellScriptBin "affinity-launcher" ''
       exec nix run github:mrshmllow/affinity-nix#v3

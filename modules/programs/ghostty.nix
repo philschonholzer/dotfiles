@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.ghostty = { config, ... }:
+  flake.modules.homeManager.apps = { config, ... }:
   let
     palette = config.colorScheme.palette;
   in {

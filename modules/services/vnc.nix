@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.vnc = { pkgs, config, ... }: {
+  flake.modules.homeManager.service = { pkgs, config, ... }: {
     home.packages = [
       pkgs.wlvncc
     ];

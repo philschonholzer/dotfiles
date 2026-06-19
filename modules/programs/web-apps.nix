@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.web-apps = { pkgs, config, lib, ... }:
+  flake.modules.homeManager.apps = { pkgs, config, lib, ... }:
   let
     isNixOS = config.targets.genericLinux.enable == false;
 

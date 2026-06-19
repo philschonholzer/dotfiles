@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.table-plus = { pkgs, config, ... }:
+  flake.modules.homeManager.apps = { pkgs, config, ... }:
   let
     tableplusAppImage = pkgs.fetchurl {
       url = "https://tableplus.com/release/linux/x64/TablePlus-x64.AppImage";

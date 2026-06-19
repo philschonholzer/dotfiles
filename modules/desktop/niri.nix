@@ -28,7 +28,7 @@
       services.niri-autoselect-portal.enable = true;
     };
 
-  flake.modules.homeManager.niri = { lib, config, ... }: {
+  flake.modules.homeManager.desktop = { lib, config, ... }: {
     options.services.niri.configFile = lib.mkOption {
       type = lib.types.path;
       description = "Path to the machine-specific Niri config override file";

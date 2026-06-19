@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.trello-boards = { pkgs, config, ... }: {
+  flake.modules.homeManager.scripts = { pkgs, config, ... }: {
     home.file = {
       "fetch-trello-boards.sh" = {
         source = ./fetch-boards.sh;

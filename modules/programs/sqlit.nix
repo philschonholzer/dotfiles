@@ -2,7 +2,7 @@
 let
   inherit (inputs) sqlit;
 in {
-  flake.modules.homeManager.sqlit = { pkgs, lib, ... }: let
+  flake.modules.homeManager.apps = { pkgs, lib, ... }: let
     sqlit-pkg = sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     python = pkgs.python3;

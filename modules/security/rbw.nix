@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.rbw = { pkgs, ... }: {
+  flake.modules.homeManager.security = { pkgs, ... }: {
     home.packages = with pkgs; [
       rbw
       pinentry-gnome3

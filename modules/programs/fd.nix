@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.fd = {
+  flake.modules.homeManager.cli = {
     programs.fd.enable = true;
   };
 }

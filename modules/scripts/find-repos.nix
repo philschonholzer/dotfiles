@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.find-repos = { ... }: {
+  flake.modules.homeManager.scripts = { ... }: {
     home.file = {
       "repo-preview.sh" = {
         source = ./repo-preview.sh;

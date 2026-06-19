@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.opencode = { pkgs, ... }: {
+  flake.modules.homeManager.editors = { pkgs, ... }: {
     programs.opencode = {
       enable = true;
       package = pkgs.unstable.opencode;

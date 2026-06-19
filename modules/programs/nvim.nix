@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.nvim = { pkgs, config, ... }: {
+  flake.modules.homeManager.editors = { pkgs, config, ... }: {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

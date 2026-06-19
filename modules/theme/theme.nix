@@ -2,7 +2,7 @@
 let
   inherit (inputs) nix-colors;
 in {
-  flake.modules.homeManager.theme = { pkgs, ... }: {
+  flake.modules.homeManager.desktop = { pkgs, ... }: {
     colorScheme = nix-colors.colorSchemes.kanagawa;
 
     gtk = {

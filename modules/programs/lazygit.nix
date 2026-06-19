@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.lazygit = {
+  flake.modules.homeManager.cli = {
     programs.lazygit = {
       enable = true;
       settings = {

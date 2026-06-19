@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.qnap = { pkgs, config, ... }:
+  flake.modules.homeManager.service = { pkgs, config, ... }:
   let
     qnapMountPoint = "${config.home.homeDirectory}/QNAP";
     qnapRemote = "qnap:";

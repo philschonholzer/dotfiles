@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.eza = {
+  flake.modules.homeManager.cli = {
     programs.eza = {
       enable = true;
       enableZshIntegration = true;

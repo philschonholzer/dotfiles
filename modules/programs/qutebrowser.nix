@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.qutebrowser = { pkgs, config, lib, ... }:
+  flake.modules.homeManager.browsers = { pkgs, config, lib, ... }:
   let
     isNixOS = config.targets.genericLinux.enable == false;
 
