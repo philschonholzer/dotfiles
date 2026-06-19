@@ -105,6 +105,25 @@
         imports = [
           inputs.self.modules.homeManager.git
           inputs.self.modules.homeManager.zsh
+          inputs.self.modules.homeManager.direnv
+          inputs.self.modules.homeManager.fd
+          inputs.self.modules.homeManager.fzf
+          inputs.self.modules.homeManager.ripgrep
+          inputs.self.modules.homeManager.eza
+          inputs.self.modules.homeManager.starship
+          inputs.self.modules.homeManager.btop
+          inputs.self.modules.homeManager.lazygit
+          inputs.self.modules.homeManager.lazydocker
+          inputs.self.modules.homeManager.npm
+          inputs.self.modules.homeManager.chromium
+          inputs.self.modules.homeManager.firefox
+          inputs.self.modules.homeManager.nvim
+          inputs.self.modules.homeManager.opencode
+          inputs.self.modules.homeManager.qnap
+          inputs.self.modules.homeManager.vnc
+          inputs.self.modules.homeManager.yubikey
+          inputs.self.modules.homeManager.joplin
+          inputs.self.modules.homeManager.rbw
           inputs.noctalia.homeModules.default
           inputs.nix-colors.homeManagerModules.default
           (if pkgs.stdenv.isAarch64 then ../home-manager/arm.nix else ../home-manager/x86.nix)

@@ -82,6 +82,25 @@ in
     modules = [
       self.modules.homeManager.git
       self.modules.homeManager.zsh
+      self.modules.homeManager.direnv
+      self.modules.homeManager.fd
+      self.modules.homeManager.fzf
+      self.modules.homeManager.ripgrep
+      self.modules.homeManager.eza
+      self.modules.homeManager.starship
+      self.modules.homeManager.btop
+      self.modules.homeManager.lazygit
+      self.modules.homeManager.lazydocker
+      self.modules.homeManager.npm
+      self.modules.homeManager.chromium
+      self.modules.homeManager.firefox
+      self.modules.homeManager.nvim
+      self.modules.homeManager.opencode
+      self.modules.homeManager.qnap
+      self.modules.homeManager.vnc
+      self.modules.homeManager.yubikey
+      self.modules.homeManager.joplin
+      self.modules.homeManager.rbw
       nix-colors.homeManagerModules.default
       noctalia.homeModules.default
       ../machines/macbook-m2

@@ -2,32 +2,13 @@
 {
   imports = [
     ./affinity.nix
-    ./btop.nix
-    ./chromium.nix
-    ./direnv.nix
     ./web-apps
-    ./eza.nix
-    ./fd.nix
-    ./firefox.nix
     ./fuzzel.nix
-    ./fzf.nix
-    ./joplin.nix
     ./ghostty.nix
     # ./kdrive.nix
-    ./lazydocker.nix
-    ./lazygit.nix
-    ./npm.nix
-    ./nvim.nix
-    ./opencode.nix
-    ./qnap.nix
     ./qutebrowser
-    ./rbw.nix
-    ./ripgrep.nix
     ./sqlit.nix
     ./ssh.nix
-    ./starship.nix
     # ./table-plus.nix
-    ./vnc.nix
-    ./yubikey.nix
   ];
 }
