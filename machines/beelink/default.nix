@@ -1,7 +1,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common.nix
   ];
 
   # Machine-specific home-manager configuration

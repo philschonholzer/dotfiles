@@ -12,7 +12,10 @@ in
     icon = "nvim";
     terminal = false;
     type = "Application";
-    categories = [ "Utility" "TextEditor" ];
+    categories = [
+      "Utility"
+      "TextEditor"
+    ];
     mimeType = [
       "text/plain"
       "text/english"

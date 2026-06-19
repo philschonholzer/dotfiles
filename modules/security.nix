@@ -1,0 +1,14 @@
+{ ... }: {
+  flake.modules.nixos.security = { ... }: {
+    security = {
+      pam = {
+        services.gdm.enableGnomeKeyring = true;
+        services.login.enableGnomeKeyring = true;
+      };
+      rtkit.enable = true;
+      polkit.enable = true;
+    };
+
+    services.pcscd.enable = true;
+  };
+}

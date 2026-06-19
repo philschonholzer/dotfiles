@@ -10,18 +10,16 @@
   modifications = final: prev: {
     # Fix morgen 4.0.4 unhandled GPU info rejection in Sentry that causes 100% CPU
     morgen = prev.morgen.overrideAttrs (oldAttrs: {
-      nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [final.asar];
-      postFixup =
-        (oldAttrs.postFixup or "")
-        + ''
-          asar extract $out/opt/Morgen/resources/app.asar $out/opt/Morgen/resources/app
-          substituteInPlace $out/opt/Morgen/resources/app/dist/main.js \
-            --replace-fail \
-              'ee.app.getGPUInfo(e.infoLevel)' \
-              'ee.app.getGPUInfo(e.infoLevel).catch(()=>({gpuDevice:[]}))'
-          asar pack $out/opt/Morgen/resources/app $out/opt/Morgen/resources/app.asar
-          rm -rf $out/opt/Morgen/resources/app
-        '';
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ final.asar ];
+      postFixup = (oldAttrs.postFixup or "") + ''
+        asar extract $out/opt/Morgen/resources/app.asar $out/opt/Morgen/resources/app
+        substituteInPlace $out/opt/Morgen/resources/app/dist/main.js \
+          --replace-fail \
+            'ee.app.getGPUInfo(e.infoLevel)' \
+            'ee.app.getGPUInfo(e.infoLevel).catch(()=>({gpuDevice:[]}))'
+        asar pack $out/opt/Morgen/resources/app $out/opt/Morgen/resources/app.asar
+        rm -rf $out/opt/Morgen/resources/app
+      '';
     });
   };
 
