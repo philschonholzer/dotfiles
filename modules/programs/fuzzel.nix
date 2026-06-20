@@ -5,10 +5,9 @@
       settings = {
         main = {
           lines = 10;
-          prompt = "  ";
           inner-pad = 16;
           width = 30;
-          font = "Sans\\:size=18";
+          font = "Sans:size=18";
           line-height = 30;
         };
 
