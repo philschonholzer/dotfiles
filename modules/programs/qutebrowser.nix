@@ -55,7 +55,7 @@
         coreutils
         fuzzel
       ];
-      text = builtins.readFile ../scripts/bitwarden-fill.sh;
+      text = builtins.readFile ../scripts/qutebrowser/bitwarden-fill.sh;
     };
 
     qutebrowser-wrapped =
