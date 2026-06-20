@@ -46,18 +46,25 @@ let
     self.modules.homeManager.security
     self.modules.homeManager.service
     self.modules.homeManager.scripts
-  ] ++ [
+  ]
+  ++ [
     nix-colors.homeManagerModules.default
     noctalia.homeModules.default
   ];
 
   # Wraps HM modules into a NixOS module via home-manager.users.philip.imports
   hmModuleForNixos = { pkgs, ... }: {
-    home-manager.users.philip.imports = hmModules ++ (
-      if pkgs.stdenv.isAarch64
-      then [ self.modules.homeManager.arm ]
-      else [ self.modules.homeManager.common-nixos self.modules.homeManager.x86 ]
-    );
+    home-manager.users.philip.imports =
+      hmModules
+      ++ (
+        if pkgs.stdenv.isAarch64 then
+          [ self.modules.homeManager.arm ]
+        else
+          [
+            self.modules.homeManager.common-nixos
+            self.modules.homeManager.x86
+          ]
+      );
   };
 in
 {
@@ -68,6 +75,7 @@ in
   flake.nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
+      self.modules.nixos.beelink
       self.modules.nixos.core
       self.modules.nixos.desktop
       self.modules.nixos.niri
@@ -76,7 +84,6 @@ in
       self.modules.nixos.security
       self.modules.nixos.apps
       hmModuleForNixos
-      self.modules.nixos.beelink
       { networking.hostName = "beelink"; }
     ];
   };
@@ -84,6 +91,7 @@ in
   flake.nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
+      self.modules.nixos.macbook-intel
       self.modules.nixos.core
       self.modules.nixos.desktop
       self.modules.nixos.niri
@@ -93,7 +101,6 @@ in
       self.modules.nixos.apps
       self.modules.nixos.keyd
       hmModuleForNixos
-      self.modules.nixos.macbook-intel
       { networking.hostName = "macbook-intel"; }
     ];
   };
@@ -110,18 +117,18 @@ in
       sqlit-pkg = sqlit.packages."aarch64-linux".default;
     };
     modules = hmModules ++ [
+      self.modules.homeManager.macbook-m2
       self.modules.homeManager.arm
       self.modules.homeManager.keyd
-      self.modules.homeManager.macbook-m2
     ];
   };
 
   flake.homeConfigurations."philip" = home-manager.lib.homeManagerConfiguration {
     pkgs = pkgsFor."aarch64-darwin";
     modules = [
+      self.modules.homeManager.darwin
       self.modules.homeManager.git
       self.modules.homeManager.nvim
-      self.modules.homeManager.darwin
     ];
   };
 }

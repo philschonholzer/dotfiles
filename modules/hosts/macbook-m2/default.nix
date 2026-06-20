@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{
   flake.modules.homeManager.macbook-m2 = { pkgs, dictation-pkg, ... }: {
     home.stateVersion = "25.11";
 
