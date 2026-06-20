@@ -16,16 +16,18 @@
       pkgs.rclone
     ];
 
+    xdg.mime.enable = true;
     xdg.desktopEntries = {
       kdrive = {
         name = "kDrive";
         comment = "kDrive cloud sync client";
-        exec = "kdrive";
+        exec = "kdrive %u";
         icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg";
         categories = [
           "Network"
           "FileTransfer"
         ];
+        mimeType = [ "x-scheme-handler/kdrive" ];
         terminal = false;
       };
     };
