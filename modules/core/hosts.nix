@@ -76,7 +76,7 @@ in
       self.modules.nixos.security
       self.modules.nixos.apps
       hmModuleForNixos
-      ../../machines/beelink
+      self.modules.nixos.beelink
       { networking.hostName = "beelink"; }
     ];
   };
@@ -93,7 +93,7 @@ in
       self.modules.nixos.apps
       self.modules.nixos.keyd
       hmModuleForNixos
-      ../../machines/macbook-intel
+      self.modules.nixos.macbook-intel
       { networking.hostName = "macbook-intel"; }
     ];
   };
@@ -112,7 +112,7 @@ in
     modules = hmModules ++ [
       self.modules.homeManager.arm
       self.modules.homeManager.keyd
-      ../../machines/macbook-m2
+      self.modules.homeManager.macbook-m2
     ];
   };
 
@@ -121,7 +121,7 @@ in
     modules = [
       self.modules.homeManager.git
       self.modules.homeManager.nvim
-      ../../machines/darwin.nix
+      self.modules.homeManager.darwin
     ];
   };
 }
