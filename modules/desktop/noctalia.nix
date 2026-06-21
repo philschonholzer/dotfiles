@@ -111,61 +111,63 @@ in
             major_interval = 4;
             visible = true;
           };
+          widget = {
 
-          widget."lockscreen-login-box@DP-3" = {
-            box_height = 0.0;
-            box_width = 0.0;
-            cx = 1600.0;
-            cy = 1227.0;
-            output = "DP-3";
-            rotation = 0.0;
-            type = "login_box";
+            "lockscreen-login-box@DP-3" = {
+              box_height = 0.0;
+              box_width = 0.0;
+              cx = 1600.0;
+              cy = 1227.0;
+              output = "DP-3";
+              rotation = 0.0;
+              type = "login_box";
 
-            settings = {
-              background_color = "surface_variant";
-              background_opacity = 0.88;
-              background_radius = 12.0;
-              input_opacity = 1.0;
-              input_radius = 6.0;
-              show_login_button = true;
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_login_button = true;
+              };
             };
-          };
 
-          widget."lockscreen-login-box@eDP-1" = {
-            box_height = 0.0;
-            box_width = 0.0;
-            cx = 756.0;
-            cy = 822.0;
-            output = "eDP-1";
-            rotation = 0.0;
-            type = "login_box";
+            "lockscreen-login-box@eDP-1" = {
+              box_height = 0.0;
+              box_width = 0.0;
+              cx = 756.0;
+              cy = 822.0;
+              output = "eDP-1";
+              rotation = 0.0;
+              type = "login_box";
 
-            settings = {
-              background_color = "surface_variant";
-              background_opacity = 0.88;
-              background_radius = 12.0;
-              input_opacity = 1.0;
-              input_radius = 6.0;
-              show_login_button = true;
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_login_button = true;
+              };
             };
-          };
 
-          widget."lockscreen-login-box@winit" = {
-            box_height = 0.0;
-            box_width = 0.0;
-            cx = 1057.0;
-            cy = 1623.0;
-            output = "winit";
-            rotation = 0.0;
-            type = "login_box";
+            "lockscreen-login-box@winit" = {
+              box_height = 0.0;
+              box_width = 0.0;
+              cx = 1057.0;
+              cy = 1623.0;
+              output = "winit";
+              rotation = 0.0;
+              type = "login_box";
 
-            settings = {
-              background_color = "surface_variant";
-              background_opacity = 0.88;
-              background_radius = 12.0;
-              input_opacity = 1.0;
-              input_radius = 6.0;
-              show_login_button = true;
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_login_button = true;
+              };
             };
           };
         };
