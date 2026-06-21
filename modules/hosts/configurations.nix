@@ -29,7 +29,7 @@ let
 in
 {
   flake = {
-    overlays = import ../../overlays.nix {
+    overlays = import ../core/_overlays.nix {
       inputs = { inherit nixpkgs-unstable; };
     };
 
