@@ -8,7 +8,10 @@
       "*": "allow",
       "nixos-rebuild *": "deny",
       "nixos-rebuild *--dry-*": "allow",
-      "git push*": "deny"
+      "git push": "deny",
+      "git push *": "deny",
+      "git -c * push*": "deny",
+      "git --git-dir* push*": "deny"
     }
   },
   "mcp": {
