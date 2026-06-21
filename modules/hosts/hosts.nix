@@ -89,6 +89,7 @@ in
       };
       modules = hmModules ++ [
         self.modules.homeManager.macbook-m2
+        self.modules.homeManager.aarch64
         self.modules.homeManager.keyd
         self.modules.homeManager.genericLinux
       ];
