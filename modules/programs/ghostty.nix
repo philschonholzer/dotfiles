@@ -1,6 +1,7 @@
 { ... }: {
   flake.modules.homeManager.genericLinux = {
     programs.ghostty.package = null;
+    programs.ghostty.systemd.enable = false;
   };
   flake.modules.homeManager.philip =
     { config, ... }:
