@@ -24,11 +24,7 @@ let
         allowUnfree = true;
         permittedInsecurePackages = [ "electron-39.8.10" ];
       };
-      overlays = builtins.attrValues (
-        import ../../overlays.nix {
-          inputs = { inherit nixpkgs-unstable; };
-        }
-      );
+      overlays = builtins.attrValues inputs.self.overlays;
     }
   );
 
