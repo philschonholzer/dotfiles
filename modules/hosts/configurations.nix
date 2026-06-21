@@ -3,7 +3,6 @@ let
   inherit (inputs)
     self
     nixpkgs
-    nixpkgs-unstable
     home-manager
     ;
 
@@ -29,10 +28,6 @@ let
 in
 {
   flake = {
-    overlays = import ../core/_overlays.nix {
-      inputs = { inherit nixpkgs-unstable; };
-    };
-
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
