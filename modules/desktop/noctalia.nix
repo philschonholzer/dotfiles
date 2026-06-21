@@ -1,20 +1,21 @@
 { inputs, ... }:
 let
   inherit (inputs) noctalia;
-in {
-  flake.modules.homeManager.philip = { pkgs, config, lib, ... }:
-  let
-    isNixOS = config.targets.genericLinux.enable == false;
-    isFedora = !isNixOS && pkgs.stdenv.isLinux;
-  in
-  {
+in
+{
+  flake.modules.homeManager.genericLinux = { pkgs, ... }: {
+    programs.noctalia = {
+      package = pkgs.writeShellScriptBin "noctalia" "exec /usr/bin/noctalia \"$@\"";
+      validateConfig = false;
+    };
+  };
+  flake.modules.homeManager.philip = { pkgs, ... }: {
+    imports = [
+      noctalia.homeModules.default
+    ];
     programs.noctalia = {
       enable = true;
       systemd.enable = true;
-
-      package = lib.mkIf isFedora (pkgs.writeShellScriptBin "noctalia" "exec /usr/bin/noctalia \"$@\"");
-
-      validateConfig = !isFedora;
 
       settings = {
         bar.default = {

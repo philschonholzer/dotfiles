@@ -6,7 +6,6 @@ let
     nixpkgs-unstable
     home-manager
     nix-colors
-    noctalia
     ;
 
   supportedSystems = [
@@ -32,7 +31,6 @@ let
   hmModules = [
     self.modules.homeManager.philip
     nix-colors.homeManagerModules.default
-    noctalia.homeModules.default
   ];
 
   # Wraps HM modules into a NixOS module via home-manager.users.philip.imports
