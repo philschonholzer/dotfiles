@@ -9,7 +9,7 @@ in
       validateConfig = false;
     };
   };
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     imports = [
       noctalia.homeModules.default
     ];

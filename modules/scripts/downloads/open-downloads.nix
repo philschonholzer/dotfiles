@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, lib, ... }:
+  flake.modules.homeManager.philip = { pkgs, ... }:
   let
     open-downloads = pkgs.writeShellApplication {
       name = "open-downloads";

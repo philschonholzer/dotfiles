@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, config, lib, ... }:
+  flake.modules.homeManager.philip = { pkgs, config, ... }:
   let
     isNixOS = config.targets.genericLinux.enable == false;
 

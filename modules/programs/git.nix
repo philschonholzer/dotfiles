@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     programs.git = {
       enable = true;
       ignores = [

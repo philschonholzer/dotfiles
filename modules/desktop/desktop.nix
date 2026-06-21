@@ -1,6 +1,6 @@
 { inputs, ... }: {
   flake.modules.nixos.base =
-    { pkgs, lib, config, ... }:
+    { pkgs, ... }:
     {
       imports = [
         inputs.noctalia-greeter.nixosModules.default

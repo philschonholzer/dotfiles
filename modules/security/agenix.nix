@@ -3,7 +3,7 @@
     inputs.agenix-rekey.flakeModule
   ];
 
-  perSystem = { config, ... }: {
+  perSystem = { ... }: {
     agenix-rekey = {
       nixosConfigurations = {
         inherit (inputs.self.nixosConfigurations) beelink macbook-intel;

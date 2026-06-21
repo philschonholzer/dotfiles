@@ -32,7 +32,7 @@
       config.rocmSupport = true;
       overlays = [
         # Apply ROCm support to unstable.blender for AMD GPU compute
-        (ufinal: uprev: {
+        (_ufinal: uprev: {
           blender = uprev.blender.override {
             rocmSupport = true;
           };

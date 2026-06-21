@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     programs.zsh = {
       enable = true;
 

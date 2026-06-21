@@ -1,6 +1,6 @@
 { inputs, ... }: {
   flake.modules.nixos.base =
-    { pkgs, lib, config, ... }:
+    { pkgs, lib, ... }:
     {
       imports = [
         inputs.niri-autoselect-portal.nixosModules.default
