@@ -7,9 +7,6 @@ let
     home-manager
     nix-colors
     noctalia
-    wlavu
-    dictation
-    sqlit
     ;
 
   supportedSystems = [
@@ -79,14 +76,6 @@ in
 
     homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor."aarch64-linux";
-      extraSpecialArgs = {
-        inherit
-          nix-colors
-          noctalia
-          ;
-        wlavu = wlavu.packages."aarch64-linux".default;
-        sqlit-pkg = sqlit.packages."aarch64-linux".default;
-      };
       modules = hmModules ++ [
         self.modules.homeManager.macbook-m2
         self.modules.homeManager.aarch64

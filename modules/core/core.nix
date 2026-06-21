@@ -95,12 +95,6 @@
       backupFileExtension = "backup";
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = {
-        inherit (inputs) noctalia nix-colors;
-        wlavu = inputs.wlavu.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        dictation = inputs.dictation;
-        sqlit-pkg = inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      };
     };
   };
 }
