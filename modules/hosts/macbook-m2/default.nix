@@ -1,6 +1,13 @@
 {
-  flake.modules.homeManager.macbook-m2 = { pkgs, dictation-pkg, ... }: {
+  flake.modules.homeManager.macbook-m2 = { pkgs, nix-colors, dictation-pkg, ... }: {
     home.stateVersion = "25.11";
+
+    colorScheme = nix-colors.colorSchemes.kanagawa;
+
+    targets.genericLinux = {
+      enable = true;
+      gpu.enable = false;
+    };
 
     home.packages = [
       dictation-pkg.dictation
