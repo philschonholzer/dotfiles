@@ -1,33 +1,37 @@
 {
-  flake.modules.homeManager.macbook-m2 = { pkgs, nix-colors, dictation-pkg, ... }: {
-    home.stateVersion = "25.11";
+  flake.modules.homeManager.macbook-m2 =
+    {
+      pkgs,
+      dictation-pkg,
+      ...
+    }:
+    {
+      home.stateVersion = "25.11";
 
-    colorScheme = nix-colors.colorSchemes.kanagawa;
+      targets.genericLinux = {
+        enable = true;
+        gpu.enable = false;
+      };
 
-    targets.genericLinux = {
-      enable = true;
-      gpu.enable = false;
-    };
-
-    home.packages = [
-      dictation-pkg.dictation
-      dictation-pkg.nerd-dictation
-    ];
-
-    nix.package = pkgs.nix;
-    nix.settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
+      home.packages = [
+        dictation-pkg.dictation
+        dictation-pkg.nerd-dictation
       ];
-      extra-substituters = [ "https://noctalia.cachix.org" ];
-      extra-trusted-public-keys = [
-        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-      ];
+
+      nix.package = pkgs.nix;
+      nix.settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        extra-substituters = [ "https://noctalia.cachix.org" ];
+        extra-trusted-public-keys = [
+          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        ];
+      };
+
+      services.niri.configFile = ./niri.kdl;
+
+      programs.home-manager.enable = true;
     };
-
-    services.niri.configFile = ./niri.kdl;
-
-    programs.home-manager.enable = true;
-  };
 }
