@@ -85,7 +85,6 @@ in
           noctalia
           ;
         wlavu = wlavu.packages."aarch64-linux".default;
-        dictation-pkg = dictation.packages."aarch64-linux";
         sqlit-pkg = sqlit.packages."aarch64-linux".default;
       };
       modules = hmModules ++ [

@@ -2,7 +2,6 @@
   flake.modules.homeManager.macbook-m2 =
     {
       pkgs,
-      dictation-pkg,
       ...
     }:
     {
@@ -12,11 +11,6 @@
         enable = true;
         gpu.enable = false;
       };
-
-      home.packages = [
-        dictation-pkg.dictation
-        dictation-pkg.nerd-dictation
-      ];
 
       nix.package = pkgs.nix;
       nix.settings = {
