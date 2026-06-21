@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.apps = { pkgs, ... }: {
+  flake.modules.nixos.base = { pkgs, ... }: {
     programs = {
       mosh.enable = true;
       steam.enable = true;

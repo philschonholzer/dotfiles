@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.scripts = { pkgs, ... }:
+  flake.modules.homeManager.philip = { pkgs, ... }:
   let
     qutebrowserProfileIndicator = pkgs.writeShellScriptBin "qutebrowser-profile-indicator" (
       builtins.readFile ./qutebrowser-profile.sh

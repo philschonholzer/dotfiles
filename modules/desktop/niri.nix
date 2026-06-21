@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.nixos.niri =
+  flake.modules.nixos.base =
     { pkgs, lib, config, ... }:
     {
       imports = [
@@ -28,7 +28,7 @@
       services.niri-autoselect-portal.enable = true;
     };
 
-  flake.modules.homeManager.desktop = { lib, config, ... }: {
+  flake.modules.homeManager.philip = { lib, config, ... }: {
     options.services.niri.configFile = lib.mkOption {
       type = lib.types.path;
       description = "Path to the machine-specific Niri config override file";

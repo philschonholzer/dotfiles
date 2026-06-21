@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.service = { pkgs, config, ... }:
+  flake.modules.homeManager.philip = { pkgs, config, ... }:
   let
     kdriveAppImage = pkgs.fetchurl {
       url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.5.2-amd64.AppImage";

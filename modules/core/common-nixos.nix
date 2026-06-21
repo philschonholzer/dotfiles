@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.common-nixos = { pkgs, ... }: {
+  flake.modules.homeManager.nixos = { pkgs, ... }: {
 
     home.packages = with pkgs; [
       unstable.blender

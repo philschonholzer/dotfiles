@@ -1,4 +1,4 @@
-{ _ }: {
+{ ... }: {
   flake.modules.homeManager.genericLinux = {
     programs.ghostty.package = null;
   };

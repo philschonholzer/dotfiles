@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.browsers = { ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     programs.chromium = {
       enable = true;
       commandLineArgs = [

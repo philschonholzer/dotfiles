@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.base =
     { pkgs, lib, config, ... }:
     {
       imports = [

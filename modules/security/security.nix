@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.security = { ... }: {
+  flake.modules.nixos.base = { ... }: {
     security = {
       pam = {
         services.gdm.enableGnomeKeyring = true;

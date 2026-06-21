@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.scripts = { pkgs, ... }:
+  flake.modules.homeManager.philip = { pkgs, ... }:
   let
     focusOrSpawns = pkgs.writeShellScriptBin "focus-or-spawn" (builtins.readFile ./focus-or-spawn.sh);
   in

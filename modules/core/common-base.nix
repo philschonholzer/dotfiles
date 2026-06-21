@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.common-base = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { pkgs, ... }: {
     home = {
       username = "philip";
       homeDirectory = "/home/philip";

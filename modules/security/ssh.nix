@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.security = { ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;

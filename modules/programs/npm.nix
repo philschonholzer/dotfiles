@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.cli = { config, ... }: {
+  flake.modules.homeManager.philip = { config, ... }: {
     home.file.".npmrc".text = ''
       prefix=${config.home.homeDirectory}/.local/npm
     '';

@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.network = { lib, ... }: {
+  flake.modules.nixos.base = { lib, ... }: {
     networking = {
       hostName = lib.mkDefault "nixos";
       networkmanager.enable = true;

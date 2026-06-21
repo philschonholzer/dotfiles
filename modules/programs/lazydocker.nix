@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.cli = {
+  flake.modules.homeManager.philip = {
     programs.lazydocker.enable = true;
   };
 }

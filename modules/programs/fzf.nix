@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.cli = { ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;

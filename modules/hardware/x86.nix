@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.x86 = { pkgs, ... }: {
+  flake.modules.homeManager.x86_64 = { pkgs, ... }: {
     home.packages = with pkgs; [
       morgen
       slack

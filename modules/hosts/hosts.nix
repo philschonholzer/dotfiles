@@ -37,18 +37,7 @@ let
 
   # Home-manager modules shared across all configurations
   hmModules = [
-    self.modules.homeManager.common-base
     self.modules.homeManager.philip
-    self.modules.homeManager.cli
-    self.modules.homeManager.browsers
-    self.modules.homeManager.editors
-    self.modules.homeManager.desktop
-    self.modules.homeManager.apps
-    self.modules.homeManager.security
-    self.modules.homeManager.service
-    self.modules.homeManager.scripts
-  ]
-  ++ [
     nix-colors.homeManagerModules.default
     noctalia.homeModules.default
   ];
@@ -56,8 +45,8 @@ let
   # Wraps HM modules into a NixOS module via home-manager.users.philip.imports
   hmModuleForNixos = { pkgs, ... }: {
     home-manager.users.philip.imports = hmModules ++ [
-      self.modules.homeManager.common-nixos
-      self.modules.homeManager.x86
+      self.modules.homeManager.nixos
+      self.modules.homeManager.x86_64
     ];
   };
 in
@@ -71,13 +60,7 @@ in
       system = "x86_64-linux";
       modules = [
         self.modules.nixos.beelink
-        self.modules.nixos.core
-        self.modules.nixos.desktop
-        self.modules.nixos.niri
-        self.modules.nixos.hardware
-        self.modules.nixos.network
-        self.modules.nixos.security
-        self.modules.nixos.apps
+        self.modules.nixos.base
         hmModuleForNixos
         { networking.hostName = "beelink"; }
       ];
@@ -87,13 +70,7 @@ in
       system = "x86_64-linux";
       modules = [
         self.modules.nixos.macbook-intel
-        self.modules.nixos.core
-        self.modules.nixos.desktop
-        self.modules.nixos.niri
-        self.modules.nixos.hardware
-        self.modules.nixos.network
-        self.modules.nixos.security
-        self.modules.nixos.apps
+        self.modules.nixos.base
         self.modules.nixos.keyd
         hmModuleForNixos
         { networking.hostName = "macbook-intel"; }
@@ -122,8 +99,6 @@ in
       pkgs = pkgsFor."aarch64-darwin";
       modules = [
         self.modules.homeManager.darwin
-        self.modules.homeManager.git
-        self.modules.homeManager.nvim
       ];
     };
   };

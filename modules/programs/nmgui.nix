@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.apps = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { pkgs, ... }: {
     home.packages = [ pkgs.nmgui ];
   };
 }

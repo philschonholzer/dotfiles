@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.hardware = { pkgs, lib, ... }: {
+  flake.modules.nixos.base = { pkgs, lib, ... }: {
     hardware = {
       keyboard.zsa.enable = true;
       xpadneo.enable = true;

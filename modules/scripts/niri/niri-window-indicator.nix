@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.scripts = { pkgs, ... }:
+  flake.modules.homeManager.philip = { pkgs, ... }:
   let
     windowIndicator = pkgs.writeShellScriptBin "niri-window-indicator" (
       builtins.readFile ./window-indicator.sh

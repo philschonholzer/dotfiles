@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.scripts = { ... }: {
+  flake.modules.homeManager.philip = { ... }: {
     home.file = {
       "open-repo" = {
         text = ''

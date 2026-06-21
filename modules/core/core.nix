@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.nixos.core = { pkgs, ... }: {
+  flake.modules.nixos.base = { pkgs, ... }: {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
     boot.loader = {

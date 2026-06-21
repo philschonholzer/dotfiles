@@ -2,7 +2,7 @@
 let
   inherit (inputs) noctalia;
 in {
-  flake.modules.homeManager.desktop = { pkgs, config, lib, ... }:
+  flake.modules.homeManager.philip = { pkgs, config, lib, ... }:
   let
     isNixOS = config.targets.genericLinux.enable == false;
     isFedora = !isNixOS && pkgs.stdenv.isLinux;

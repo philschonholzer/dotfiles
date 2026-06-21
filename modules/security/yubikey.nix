@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.security = { pkgs, ... }: {
+  flake.modules.homeManager.philip = { pkgs, ... }: {
     home = {
       packages = with pkgs; [
         yubikey-manager
