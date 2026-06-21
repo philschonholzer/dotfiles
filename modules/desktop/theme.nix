@@ -1,8 +1,12 @@
 { inputs, ... }:
 let
   inherit (inputs) nix-colors;
-in {
+in
+{
   flake.modules.homeManager.philip = { pkgs, ... }: {
+    imports = [
+      nix-colors.homeManagerModules.default
+    ];
     colorScheme = nix-colors.colorSchemes.kanagawa;
 
     gtk = {

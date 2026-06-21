@@ -5,7 +5,6 @@ let
     nixpkgs
     nixpkgs-unstable
     home-manager
-    nix-colors
     ;
 
   supportedSystems = [
@@ -27,19 +26,6 @@ let
     }
   );
 
-  # Home-manager modules shared across all configurations
-  hmModules = [
-    self.modules.homeManager.philip
-    nix-colors.homeManagerModules.default
-  ];
-
-  # Wraps HM modules into a NixOS module via home-manager.users.philip.imports
-  hmModuleForNixos = { pkgs, ... }: {
-    home-manager.users.philip.imports = hmModules ++ [
-      self.modules.homeManager.nixos
-      self.modules.homeManager.x86_64
-    ];
-  };
 in
 {
   flake = {
@@ -52,8 +38,13 @@ in
       modules = [
         self.modules.nixos.beelink
         self.modules.nixos.base
-        hmModuleForNixos
-        { networking.hostName = "beelink"; }
+        {
+          home-manager.users.philip.imports = [
+            self.modules.homeManager.philip
+            self.modules.homeManager.nixos
+            self.modules.homeManager.x86_64
+          ];
+        }
       ];
     };
 
@@ -63,14 +54,20 @@ in
         self.modules.nixos.macbook-intel
         self.modules.nixos.base
         self.modules.nixos.keyd
-        hmModuleForNixos
-        { networking.hostName = "macbook-intel"; }
+        {
+          home-manager.users.philip.imports = [
+            self.modules.homeManager.philip
+            self.modules.homeManager.nixos
+            self.modules.homeManager.x86_64
+          ];
+        }
       ];
     };
 
     homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor."aarch64-linux";
-      modules = hmModules ++ [
+      modules = [
+        self.modules.homeManager.philip
         self.modules.homeManager.macbook-m2
         self.modules.homeManager.aarch64
         self.modules.homeManager.keyd
