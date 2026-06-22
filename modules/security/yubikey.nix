@@ -16,4 +16,8 @@
 
     services.yubikey-agent.enable = true;
   };
+  flake.modules.nixos.base = {
+    # Needed for Yubikey
+    services.pcscd.enable = true;
+  };
 }

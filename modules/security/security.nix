@@ -8,7 +8,5 @@
       rtkit.enable = true;
       polkit.enable = true;
     };
-
-    services.pcscd.enable = true;
   };
 }
