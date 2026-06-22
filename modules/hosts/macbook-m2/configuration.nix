@@ -3,7 +3,7 @@ let
   inherit (inputs) self home-manager;
 in
 {
-  flake.homeConfigurations.macbook-m2 = home-manager.lib.homeManagerConfiguration {
+  flake.homeConfigurations."philip@macbook-m2" = home-manager.lib.homeManagerConfiguration {
     pkgs = self.lib.pkgsFor."aarch64-linux";
     modules = [
       self.modules.homeManager.philip
