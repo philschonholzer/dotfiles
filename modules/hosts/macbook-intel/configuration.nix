@@ -1,43 +1,8 @@
 { inputs, ... }:
 let
-  inherit (inputs)
-    self
-    nixpkgs
-    home-manager
-    ;
-
-  supportedSystems = [
-    "aarch64-linux"
-    "x86_64-linux"
-    "aarch64-darwin"
-    "x86_64-darwin"
-  ];
-
-  pkgsFor = nixpkgs.lib.genAttrs supportedSystems (
-    system:
-    import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        permittedInsecurePackages = [ "electron-39.8.10" ];
-      };
-      overlays = builtins.attrValues inputs.self.overlays;
-    }
-  );
-
+  inherit (inputs) self nixpkgs;
 in
 {
-  flake.modules.nixos.macbook-intel = {
-    networking.hostName = "macbook-intel";
-
-    home-manager.users.philip = {
-      home.stateVersion = "25.05";
-
-      services.niri = {
-        configFile = ./niri.kdl;
-      };
-    };
-  };
   flake.nixosConfigurations.macbook-intel = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
@@ -52,5 +17,17 @@ in
         ];
       }
     ];
+  };
+
+  flake.modules.nixos.macbook-intel = {
+    networking.hostName = "macbook-intel";
+
+    home-manager.users.philip = {
+      home.stateVersion = "25.05";
+
+      services.niri = {
+        configFile = ./niri.kdl;
+      };
+    };
   };
 }
