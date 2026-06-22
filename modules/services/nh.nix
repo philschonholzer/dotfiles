@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.base = { pkgs, config, ... }: {
+  flake.modules.homeManager.philip = { pkgs, config, ... }: {
     programs.nh = {
       enable = true;
       clean.enable = true;

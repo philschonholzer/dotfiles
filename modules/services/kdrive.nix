@@ -1,51 +1,11 @@
-{ ... }:
-let
-  kdriveService = { kdrivePkg }: {
-    systemd.user.services.kdrive = {
-      Unit = {
-        Description = "kDrive cloud sync client";
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${kdrivePkg}/bin/kdrive";
-        Restart = "on-failure";
-        RestartSec = "10s";
-        Environment = [
-          "XDG_SESSION_TYPE=x11"
-          "QT_QPA_PLATFORM=xcb"
-        ];
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-  };
-in
-{
-  flake.modules.homeManager.philip =
+{ ... }: {
+  flake.modules.homeManager.nixos =
     { pkgs, config, ... }:
     let
       kdriveMountPoint = "${config.home.homeDirectory}/kDrive";
     in
     {
       home.packages = [ pkgs.rclone ];
-
-      xdg.mime.enable = true;
-      xdg.desktopEntries = {
-        kdrive = {
-          name = "kDrive";
-          comment = "kDrive cloud sync client";
-          exec = "kdrive %u";
-          icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg";
-          categories = [
-            "Network"
-            "FileTransfer"
-          ];
-          mimeType = [ "x-scheme-handler/kdrive" ];
-          terminal = false;
-        };
-      };
 
       systemd.user.services.kdrive-mount = {
         Unit = {
@@ -68,7 +28,7 @@ in
     };
 
   flake.modules.homeManager.x86_64 =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     let
       kdriveAppImage = pkgs.fetchurl {
         url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.5.2-amd64.AppImage";
@@ -80,6 +40,41 @@ in
     in
     {
       home.packages = [ kdrivePkg ];
-    }
-    // kdriveService { inherit kdrivePkg; };
+
+      xdg.mime.enable = true;
+      xdg.desktopEntries = {
+        kdrive = {
+          name = "kDrive";
+          comment = "kDrive cloud sync client";
+          exec = "kdrive %u";
+          icon = "${config.home.homeDirectory}/.local/share/icons/kdrive.svg";
+          categories = [
+            "Network"
+            "FileTransfer"
+          ];
+          mimeType = [ "x-scheme-handler/kdrive" ];
+          terminal = false;
+        };
+      };
+
+      systemd.user.services.kdrive = {
+        Unit = {
+          Description = "kDrive cloud sync client";
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "${kdrivePkg}/bin/kdrive";
+          Restart = "on-failure";
+          RestartSec = "10s";
+          Environment = [
+            "XDG_SESSION_TYPE=x11"
+            "QT_QPA_PLATFORM=xcb"
+          ];
+        };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
+    };
 }
