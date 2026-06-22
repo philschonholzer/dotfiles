@@ -26,12 +26,6 @@
       auto-optimise-store = true;
     };
 
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1w";
-    };
-
     nixpkgs = {
       overlays = [
         inputs.self.overlays.modifications

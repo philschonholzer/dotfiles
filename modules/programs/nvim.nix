@@ -24,6 +24,7 @@
         lsof
         tree-sitter
         statix
+        nil
       ];
     };
 
