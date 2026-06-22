@@ -1,10 +1,7 @@
-{ inputs, ... }: {
+{ ... }: {
   flake.modules.nixos.base =
     { pkgs, ... }:
     {
-      imports = [
-        inputs.noctalia-greeter.nixosModules.default
-      ];
 
       services = {
         pipewire = {
@@ -31,7 +28,6 @@
           enable = true;
           terminal = "ghostty";
         };
-        noctalia-greeter.enable = true;
       };
 
       xdg.portal.enable = true;

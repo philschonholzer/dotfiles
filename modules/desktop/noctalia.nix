@@ -3,6 +3,14 @@ let
   inherit (inputs) noctalia;
 in
 {
+  flake.modules.nixos.base = {
+    imports = [
+      inputs.noctalia-greeter.nixosModules.default
+    ];
+    programs = {
+      noctalia-greeter.enable = true;
+    };
+  };
   flake.modules.homeManager.genericLinux = { pkgs, ... }: {
     programs.noctalia = {
       package = pkgs.writeShellScriptBin "noctalia" "exec /usr/bin/noctalia \"$@\"";
