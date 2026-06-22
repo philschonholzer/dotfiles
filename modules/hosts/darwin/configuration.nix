@@ -181,54 +181,40 @@ in
 
     programs.ssh = {
       enable = true;
+      enableDefaultConfig = false;
       includes = [ "~/.colima/ssh_config" ];
 
-      matchBlocks = {
-        "Github" = {
-          host = "github.com";
-          hostname = "github.com";
-          user = "git";
-          identityFile = "~/.ssh/id_rsa";
+      settings = {
+        "github.com" = {
+          HostName = "github.com";
+          User = "git";
+          IdentityFile = "~/.ssh/id_rsa";
         };
-        "Bitbucket" = {
-          host = "bitbucket.org";
-          hostname = "bitbucket.org";
-          user = "git";
-          identityFile = "~/.ssh/id_rsa_bb";
+        "bitbucket.org" = {
+          HostName = "bitbucket.org";
+          User = "git";
+          IdentityFile = "~/.ssh/id_rsa_bb";
         };
-        "Infomaniak" = {
-          host = "phischer";
-          hostname = "91.214.190.25";
-          user = "debian";
-          identityFile = "~/.ssh/id_rsa_infomaniak";
-          forwardAgent = true;
+        "phischer" = {
+          HostName = "91.214.190.25";
+          User = "debian";
+          IdentityFile = "~/.ssh/id_rsa_infomaniak";
+          ForwardAgent = true;
         };
-        "VPN" = {
-          host = "vpn";
-          hostname = "91.214.190.25";
-          port = 22;
-          user = "debian";
-          identityFile = "~/.ssh/id_rsa_infomaniak";
-          remoteForwards = [
-            {
-              bind.port = 9933;
-              host.address = "localhost";
-              host.port = 22;
-            }
-            {
-              bind.port = 9999;
-              host.address = "localhost";
-              host.port = 3000;
-            }
+        "vpn" = {
+          HostName = "91.214.190.25";
+          Port = 22;
+          User = "debian";
+          IdentityFile = "~/.ssh/id_rsa_infomaniak";
+          RemoteForward = [
+            "9933 localhost:22"
+            "9999 localhost:3000"
           ];
         };
-        "Default" = {
-          host = "*";
-          extraOptions = {
-            IgnoreUnknown = "AddKeysToAgent,UseKeychain";
-            AddKeysToAgent = "yes";
-            UseKeychain = "yes";
-          };
+        "*" = {
+          IgnoreUnknown = "AddKeysToAgent,UseKeychain";
+          AddKeysToAgent = "yes";
+          UseKeychain = "yes";
         };
       };
     };
