@@ -56,14 +56,14 @@ layout {
     }
 
     focus-ring {
-      off
+      on
+      width 2
+      inactive-color "#727169"
+      active-color "#7E9CD8"
     }
 
     border {
-      on
-      width 3
-      inactive-color "#727169"
-      active-color "#7E9CD8"
+      off
     }
      tab-indicator {
         width 5
@@ -162,8 +162,11 @@ window-rule {
 }
 
 window-rule {
-  geometry-corner-radius 12
-  clip-to-geometry true
+    geometry-corner-radius 12
+    clip-to-geometry true
+    background-effect {
+        blur true
+    }
 }
 
 binds {
