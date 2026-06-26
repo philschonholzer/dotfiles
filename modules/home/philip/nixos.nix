@@ -3,7 +3,6 @@
 
     home.packages = with pkgs; [
       unstable.blender
-      ente-auth
       kdePackages.kdenlive
       ffmpeg-full
       xwayland-satellite

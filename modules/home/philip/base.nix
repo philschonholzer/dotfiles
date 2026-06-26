@@ -13,6 +13,7 @@
         unstable.opencode
         unstable.pi-coding-agent
         bitwarden-desktop
+        ente-auth
         telegram-desktop
         nodejs_24
         pnpm
