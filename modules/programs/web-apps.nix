@@ -1,141 +1,137 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, config, ... }:
-  let
-    isNixOS = config.targets.genericLinux.enable == false;
+  flake.modules.homeManager.philip =
+    { pkgs, config, ... }:
+    let
+      apps = {
+        chatgpt = {
+          name = "ChatGPT";
+          url = "https://chat.openai.com";
+          iconPath = "${./icons/chatgpt.png}";
+          categories = [
+            "Network"
+            "Office"
+            "Development"
+          ];
+        };
+        trello = {
+          name = "Trello";
+          url = "https://trello.com";
+          iconPath = "${./icons/trello.svg}";
+          categories = [
+            "Network"
+            "Office"
+            "ProjectManagement"
+          ];
+        };
+        trello-tasks = {
+          name = "Meine Tasks - Trello";
+          url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
+          iconPath = "${./icons/trello.svg}";
+          categories = [
+            "Network"
+            "Office"
+            "ProjectManagement"
+          ];
+        };
+        notion = {
+          name = "Notion";
+          url = "https://notion.so";
+          iconPath = "${./icons/notion.png}";
+          categories = [
+            "Network"
+            "Office"
+          ];
+        };
+        missive = {
+          name = "Missive";
+          url = "https://mail.missiveapp.com/";
+          iconPath = "${./icons/missive.svg}";
+          categories = [
+            "Network"
+            "Email"
+          ];
+        };
+        google-voice = {
+          name = "Google Voice";
+          url = "https://voice.google.com";
+          iconPath = "${./icons/google-voice.svg}";
+          categories = [
+            "Network"
+            "Telephony"
+          ];
+        };
+        whats-app = {
+          name = "WhatsApp";
+          url = "https://web.whatsapp.com/";
+          iconPath = "${./icons/whatsapp.svg}";
+          categories = [
+            "Network"
+            "InstantMessaging"
+            "Chat"
+          ];
+        };
+        deepl = {
+          name = "Deepl Write";
+          url = "https://www.deepl.com/de/write";
+          iconPath = "${./icons/deepl-dark.svg}";
+          categories = [ "Utility" ];
+        };
+        google-drive = {
+          name = "Google Drive";
+          url = "https://drive.google.com/drive/";
+          iconPath = "${./icons/google-drive.svg}";
+          categories = [ "Utility" ];
+        };
+        google-meet = {
+          name = "Google Meet";
+          url = "https://meet.google.com";
+          iconPath = "${./icons/google-meet.svg}";
+          categories = [
+            "Network"
+            "VideoConference"
+          ];
+        };
+      };
 
-    qutebrowserBin =
-      if isNixOS then "${pkgs.unstable.qutebrowser}/bin/qutebrowser" else "/usr/bin/qutebrowser";
+      makeWebApp = class: app: {
+        package = pkgs.writeShellScriptBin "webapp-${class}" ''
+          DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
 
-    apps = {
-      chatgpt = {
-        name = "ChatGPT";
-        url = "https://chat.openai.com";
-        iconPath = "${./icons/chatgpt.png}";
-        categories = [
-          "Network"
-          "Office"
-          "Development"
-        ];
+          exec ${config.programs.qutebrowser.package}/bin/qutebrowser \
+            --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
+            --config-py "$DEFAULT_CONFIG" \
+            --set "tabs.tabs_are_windows" "true" \
+            --set "content.javascript.clipboard" "access" \
+            --set "content.media.audio_capture" "true" \
+            --set "content.media.video_capture" "true" \
+            --set "content.media.audio_video_capture" "true" \
+            --set "content.notifications.enabled" "true" \
+            --set "content.pdfjs" "true" \
+            --desktop-file-name "${class}" \
+            --target window \
+            --override-restore \
+            "${app.url}" \
+            "$@"
+        '';
+        desktopEntry = {
+          name = app.name;
+          exec = "webapp-${class} %U";
+          icon = "${app.iconPath}";
+          categories = app.categories;
+        };
       };
-      trello = {
-        name = "Trello";
-        url = "https://trello.com";
-        iconPath = "${./icons/trello.svg}";
-        categories = [
-          "Network"
-          "Office"
-          "ProjectManagement"
-        ];
-      };
-      trello-tasks = {
-        name = "Meine Tasks - Trello";
-        url = "https://trello.com/v/Nqy4HPGw/philip-in-arbeit";
-        iconPath = "${./icons/trello.svg}";
-        categories = [
-          "Network"
-          "Office"
-          "ProjectManagement"
-        ];
-      };
-      notion = {
-        name = "Notion";
-        url = "https://notion.so";
-        iconPath = "${./icons/notion.png}";
-        categories = [
-          "Network"
-          "Office"
-        ];
-      };
-      missive = {
-        name = "Missive";
-        url = "https://mail.missiveapp.com/";
-        iconPath = "${./icons/missive.svg}";
-        categories = [
-          "Network"
-          "Email"
-        ];
-      };
-      google-voice = {
-        name = "Google Voice";
-        url = "https://voice.google.com";
-        iconPath = "${./icons/google-voice.svg}";
-        categories = [
-          "Network"
-          "Telephony"
-        ];
-      };
-      whats-app = {
-        name = "WhatsApp";
-        url = "https://web.whatsapp.com/";
-        iconPath = "${./icons/whatsapp.svg}";
-        categories = [
-          "Network"
-          "InstantMessaging"
-          "Chat"
-        ];
-      };
-      deepl = {
-        name = "Deepl Write";
-        url = "https://www.deepl.com/de/write";
-        iconPath = "${./icons/deepl-dark.svg}";
-        categories = [ "Utility" ];
-      };
-      google-drive = {
-        name = "Google Drive";
-        url = "https://drive.google.com/drive/";
-        iconPath = "${./icons/google-drive.svg}";
-        categories = [ "Utility" ];
-      };
-      google-meet = {
-        name = "Google Meet";
-        url = "https://meet.google.com";
-        iconPath = "${./icons/google-meet.svg}";
-        categories = [
-          "Network"
-          "VideoConference"
-        ];
-      };
+
+      webApps = pkgs.lib.mapAttrs makeWebApp apps;
+
+      dictionaries = ./qtwebengine_dictionaries;
+    in
+    {
+      home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
+      xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
+
+      xdg.dataFile = pkgs.lib.mapAttrs' (class: _: {
+        name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
+        value.source = dictionaries;
+      }) apps;
     };
-
-    makeWebApp = class: app: {
-      package = pkgs.writeShellScriptBin "webapp-${class}" ''
-        DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
-
-        exec ${qutebrowserBin} \
-          --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
-          --config-py "$DEFAULT_CONFIG" \
-          --set "tabs.tabs_are_windows" "true" \
-          --set "content.javascript.clipboard" "access" \
-          --set "content.media.audio_capture" "true" \
-          --set "content.media.video_capture" "true" \
-          --set "content.media.audio_video_capture" "true" \
-          --set "content.notifications.enabled" "true" \
-          --set "content.pdfjs" "true" \
-          --desktop-file-name "${class}" \
-          --target window \
-          --override-restore \
-          "${app.url}" \
-          "$@"
-      '';
-      desktopEntry = {
-        name = app.name;
-        exec = "webapp-${class} %U";
-        icon = "${app.iconPath}";
-        categories = app.categories;
-      };
-    };
-
-    webApps = pkgs.lib.mapAttrs makeWebApp apps;
-
-    dictionaries = ./qtwebengine_dictionaries;
-  in
-  {
-    home.packages = pkgs.lib.mapAttrsToList (_: app: app.package) webApps;
-    xdg.desktopEntries = pkgs.lib.mapAttrs (_: app: app.desktopEntry) webApps;
-
-    xdg.dataFile = pkgs.lib.mapAttrs' (class: _: {
-      name = "qutebrowser-${class}/data/qtwebengine_dictionaries";
-      value.source = dictionaries;
-    }) apps;
-  };
 }

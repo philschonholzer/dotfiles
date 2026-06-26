@@ -1,6 +1,8 @@
 { ... }: {
-  flake.modules.homeManager.genericLinux = {
-    programs.ghostty.package = null;
+  flake.modules.homeManager.genericLinux = { pkgs, ... }: {
+    programs.ghostty.package = pkgs.writeShellScriptBin "ghostty" ''
+      exec ${pkgs.nixgl.nixGLMesa}/bin/nixGLMesa ${pkgs.ghostty}/bin/ghostty "$@"
+    '';
     programs.ghostty.systemd.enable = false;
   };
   flake.modules.homeManager.philip =

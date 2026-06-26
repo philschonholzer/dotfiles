@@ -28,6 +28,7 @@
 
     nixpkgs = {
       overlays = [
+        inputs.self.overlays.nixgl
         inputs.self.overlays.modifications
         inputs.self.overlays.unstable-packages
       ];
