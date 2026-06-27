@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, ... }: {
   flake.modules.nixos.base = {
     programs.localsend.enable = true;
   };
@@ -8,22 +8,11 @@
   };
 
   flake.modules.homeManager.genericLinux =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     let
-      wrapped =
-        pkgs.runCommand "localsend-wrapped"
-          {
-            buildInputs = [ pkgs.makeWrapper ];
-          }
-          ''
-            mkdir -p $out/bin $out/share/applications $out/share/icons
-            makeWrapper ${pkgs.nixgl.nixGLMesa}/bin/nixGLMesa $out/bin/localsend_app \
-              --add-flags "${pkgs.localsend}/bin/localsend_app"
-            cp -r ${pkgs.localsend}/share/applications/* $out/share/applications/
-            cp -r ${pkgs.localsend}/share/icons/* $out/share/icons/
-          '';
+      inherit (inputs.self.lib.nixgl { inherit pkgs lib; }) wrapGL;
     in
     {
-      home.packages = [ wrapped ];
+      home.packages = [ (wrapGL pkgs.localsend "localsend_app") ];
     };
 }

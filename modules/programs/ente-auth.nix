@@ -1,22 +1,11 @@
-{ ... }: {
+{ inputs, ... }: {
   flake.modules.homeManager.genericLinux =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     let
-      wrapped =
-        pkgs.runCommand "ente-auth-wrapped"
-          {
-            buildInputs = [ pkgs.makeWrapper ];
-          }
-          ''
-            mkdir -p $out/bin $out/share/applications $out/share/pixmaps
-            makeWrapper ${pkgs.nixgl.nixGLMesa}/bin/nixGLMesa $out/bin/enteauth \
-              --add-flags "${pkgs.ente-auth}/bin/enteauth"
-            cp -r ${pkgs.ente-auth}/share/applications/* $out/share/applications/
-            cp -r ${pkgs.ente-auth}/share/pixmaps/* $out/share/pixmaps/
-          '';
+      inherit (inputs.self.lib.nixgl { inherit pkgs lib; }) wrapGL;
     in
     {
-      home.packages = [ wrapped ];
+      home.packages = [ (wrapGL pkgs.ente-auth "enteauth") ];
     };
 
   flake.modules.homeManager.nixos = { pkgs, ... }: {

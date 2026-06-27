@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, ... }: {
   flake.modules.homeManager.darwin = { pkgs, config, ... }: {
     programs.qutebrowser.package = pkgs.writeShellScriptBin "qutebrowser" ''
       exec /usr/bin/qutebrowser \
@@ -8,14 +8,24 @@
     '';
   };
 
-  flake.modules.homeManager.genericLinux = { pkgs, config, ... }: {
-    programs.qutebrowser.package = pkgs.writeShellScriptBin "qutebrowser" ''
-      exec ${pkgs.nixgl.nixGLMesa}/bin/nixGLMesa ${pkgs.qutebrowser}/bin/qutebrowser \
-        --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-work" \
-        --config-py "${config.home.homeDirectory}/.config/qutebrowser/config.py" \
-        "$@"
-    '';
-  };
+  flake.modules.homeManager.genericLinux =
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
+    let
+      inherit (inputs.self.lib.nixgl { inherit pkgs lib; }) wrapGLExec;
+    in
+    {
+      programs.qutebrowser.package = wrapGLExec "qutebrowser" "${pkgs.qutebrowser}/bin/qutebrowser" [
+        "--basedir"
+        "${config.home.homeDirectory}/.local/share/qutebrowser-work"
+        "--config-py"
+        "${config.home.homeDirectory}/.config/qutebrowser/config.py"
+      ];
+    };
 
   flake.modules.homeManager.philip =
     {

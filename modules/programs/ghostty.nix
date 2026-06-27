@@ -1,10 +1,13 @@
-{ ... }: {
-  flake.modules.homeManager.genericLinux = { pkgs, ... }: {
-    programs.ghostty.package = pkgs.writeShellScriptBin "ghostty" ''
-      exec ${pkgs.nixgl.nixGLMesa}/bin/nixGLMesa ${pkgs.ghostty}/bin/ghostty "$@"
-    '';
-    programs.ghostty.systemd.enable = false;
-  };
+{ inputs, ... }: {
+  flake.modules.homeManager.genericLinux =
+    { pkgs, lib, ... }:
+    let
+      inherit (inputs.self.lib.nixgl { inherit pkgs lib; }) wrapGLExec;
+    in
+    {
+      programs.ghostty.package = wrapGLExec "ghostty" "${pkgs.ghostty}/bin/ghostty" [ ];
+      programs.ghostty.systemd.enable = false;
+    };
   flake.modules.homeManager.philip =
     { config, ... }:
     let
