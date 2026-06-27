@@ -35,7 +35,6 @@
         wofi-emoji
         sushi
         handbrake
-        localsend
         inkscape
         gftp
         parsec-bin

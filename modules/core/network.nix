@@ -12,9 +12,8 @@
       firewall = {
         allowedTCPPorts = [
           8081
-          53317
         ];
-        allowedUDPPorts = [ 53317 ];
+        allowedUDPPorts = [ ];
       };
     };
 
