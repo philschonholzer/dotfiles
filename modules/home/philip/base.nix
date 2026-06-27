@@ -45,6 +45,7 @@
         cameractrls-gtk4
         file
         gpu-screen-recorder
+        mpv
       ];
     };
 
