@@ -9,11 +9,15 @@
             "*" = "allow";
             "nixos-rebuild *" = "deny";
             "nixos-rebuild *--dry-build*" = "allow";
-            "git push*" = "deny";
+            "git push" = "deny";
+            "git push *" = "deny";
+            "git -c * push*" = "deny";
+            "git --git-dir* push*" = "deny";
           };
         };
         "plugin" = [
           "opencode-models-discovery"
+          "vimcode@git+https://github.com/oribarilan/vimcode.git#v0.15.1"
         ];
         "provider" = {
           "ollama" = {
