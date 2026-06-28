@@ -1,30 +1,30 @@
 { ... }: {
-  flake.modules.homeManager.aarch64 = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      slacky
-    ];
-  };
+  flake.modules.homeManager = {
+    aarch64 = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        slacky
+      ];
+    };
 
-  flake.modules.homeManager.x86_64 = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      morgen
-      slack
-      freelens-bin
-      unstable.onlyoffice-desktopeditors
-    ];
-  };
+    x86_64 = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        morgen
+        slack
+        freelens-bin
+        unstable.onlyoffice-desktopeditors
+      ];
+    };
 
-  flake.modules.homeManager.nixos = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      unstable.blender
-      ffmpeg-full
-      xwayland-satellite
-    ];
-  };
+    nixos = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        unstable.blender
+        ffmpeg-full
+        xwayland-satellite
+      ];
+    };
 
-  flake.modules.homeManager.philip = { pkgs, ... }: {
-    home = {
-      packages = with pkgs; [
+    philip = { pkgs, ... }: {
+      home.packages = with pkgs; [
 
         # Utils
         alacritty
@@ -76,6 +76,7 @@
         cameractrls-gtk4
         gpu-screen-recorder
       ];
+
     };
   };
 }
