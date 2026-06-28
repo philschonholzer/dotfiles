@@ -11,7 +11,7 @@ in
       self.modules.nixos.keyd
       {
         home-manager.users.philip.imports = [
-          self.modules.homeManager.philip
+          self.modules.homeManager.base
           self.modules.homeManager.nixos
           self.modules.homeManager.x86_64
         ];

@@ -8,7 +8,7 @@
       programs.ghostty.package = wrapGLExec "ghostty" "${pkgs.ghostty}/bin/ghostty" [ ];
       programs.ghostty.systemd.enable = false;
     };
-  flake.modules.homeManager.philip =
+  flake.modules.homeManager.base =
     { config, ... }:
     let
       palette = config.colorScheme.palette;

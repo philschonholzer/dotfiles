@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, config, ... }: {
+  flake.modules.homeManager.base = { pkgs, config, ... }: {
     home.packages = [
       pkgs.wlvncc
     ];

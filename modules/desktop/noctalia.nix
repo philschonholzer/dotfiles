@@ -17,7 +17,7 @@ in
       validateConfig = false;
     };
   };
-  flake.modules.homeManager.philip = { ... }: {
+  flake.modules.homeManager.base = { ... }: {
     imports = [
       noctalia.homeModules.default
     ];

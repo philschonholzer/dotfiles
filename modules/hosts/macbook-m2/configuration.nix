@@ -6,7 +6,7 @@ in
   flake.homeConfigurations."philip@macbook-m2" = home-manager.lib.homeManagerConfiguration {
     pkgs = self.lib.pkgsFor."aarch64-linux";
     modules = [
-      self.modules.homeManager.philip
+      self.modules.homeManager.base
       self.modules.homeManager.macbook-m2
       self.modules.homeManager.aarch64
       self.modules.homeManager.keyd

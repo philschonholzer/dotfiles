@@ -6,7 +6,7 @@ in
   flake.homeConfigurations.darwin = home-manager.lib.homeManagerConfiguration {
     pkgs = self.lib.pkgsFor."aarch64-darwin";
     modules = [
-      self.modules.homeManager.philip
+      self.modules.homeManager.base
       self.modules.homeManager.darwin
     ];
   };

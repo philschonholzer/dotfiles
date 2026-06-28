@@ -23,7 +23,7 @@
       ];
     };
 
-    philip = { pkgs, ... }: {
+    base = { pkgs, ... }: {
       home.packages = with pkgs; [
 
         # Utils

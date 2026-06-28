@@ -27,7 +27,7 @@
       ];
     };
 
-  flake.modules.homeManager.philip =
+  flake.modules.homeManager.base =
     {
       pkgs,
       config,

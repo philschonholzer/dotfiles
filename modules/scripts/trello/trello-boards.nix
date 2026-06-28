@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { pkgs, config, ... }: {
+  flake.modules.homeManager.base = { pkgs, config, ... }: {
     home.file = {
       "fetch-trello-boards.sh" = {
         source = ./fetch-boards.sh;

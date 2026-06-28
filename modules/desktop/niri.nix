@@ -28,7 +28,7 @@
       services.niri-autoselect-portal.enable = true;
     };
 
-  flake.modules.homeManager.philip = { lib, config, ... }: {
+  flake.modules.homeManager.base = { lib, config, ... }: {
     options.services.niri.configFile = lib.mkOption {
       type = lib.types.path;
       description = "Path to the machine-specific Niri config override file";
@@ -36,8 +36,7 @@
 
     config.xdg.configFile = {
       "niri/config.kdl".text =
-        "include \"niri-base.kdl\"\n"
-        + builtins.readFile config.services.niri.configFile;
+        "include \"niri-base.kdl\"\n" + builtins.readFile config.services.niri.configFile;
       "niri/niri-base.kdl".text = builtins.readFile ./niri-base.kdl;
     };
   };

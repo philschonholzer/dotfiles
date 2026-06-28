@@ -3,7 +3,7 @@ let
   inherit (inputs) nix-colors;
 in
 {
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+  flake.modules.homeManager.base = { pkgs, ... }: {
     imports = [
       nix-colors.homeManagerModules.default
     ];

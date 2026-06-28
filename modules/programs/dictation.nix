@@ -3,7 +3,7 @@ let
   inherit (inputs) dictation;
 in
 {
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+  flake.modules.homeManager.base = { pkgs, ... }: {
     home.packages = [
       dictation.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

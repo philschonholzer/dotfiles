@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.philip = { ... }: {
+  flake.modules.homeManager.base = { ... }: {
     home.file = {
       "repo-preview.sh" = {
         source = ./repo-preview.sh;

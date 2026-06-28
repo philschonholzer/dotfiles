@@ -1,8 +1,9 @@
 { inputs, ... }:
 let
   inherit (inputs) wlavu;
-in {
-  flake.modules.homeManager.philip = { pkgs, ... }: {
+in
+{
+  flake.modules.homeManager.base = { pkgs, ... }: {
     home.packages = [ wlavu.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
     systemd.user.services.wlavu = {
