@@ -9,43 +9,6 @@
         DEFAULT_BROWSER = "qutebrowser-work";
       };
 
-      packages = with pkgs; [
-        unstable.opencode
-        unstable.pi-coding-agent
-        bitwarden-desktop
-        telegram-desktop
-        nodejs_24
-        pnpm
-        wl-clipboard
-        (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-        google-cloud-sql-proxy
-        keymapp
-        p7zip
-        dbeaver-bin
-        pinta
-        papers
-        xournalpp
-        pandoc
-        fastfetch
-        mysql84
-        gcr
-        poedit
-        gnome-calculator
-        wofi-emoji
-        sushi
-        handbrake
-        inkscape
-        gftp
-        parsec-bin
-        jq
-        unstable.gthumb
-        loupe
-        libreoffice
-        rapidraw
-        cameractrls-gtk4
-        file
-        gpu-screen-recorder
-      ];
     };
 
     fonts.fontconfig = {
