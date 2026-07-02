@@ -34,6 +34,20 @@
       };
     };
 
+    xdg.desktopEntries.opencode = {
+      name = "OpenCode";
+      genericName = "AI Coding Agent";
+      comment = "Open OpenCode in Ghostty terminal";
+      exec = "ghostty -e opencode";
+      icon = ./icons/opencode-dark.svg;
+      terminal = false;
+      type = "Application";
+      categories = [
+        "Development"
+        "Utility"
+      ];
+    };
+
     programs.zsh.shellAliases.oc = "opencode --port";
   };
 }
