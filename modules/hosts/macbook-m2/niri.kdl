@@ -7,6 +7,10 @@ spawn-at-startup "noctalia"
 
 input {
     mouse {
+        natural-scroll
+        left-handed
+    }
+    touchpad {
         scroll-factor 0.5
         accel-speed 0.5
         natural-scroll
