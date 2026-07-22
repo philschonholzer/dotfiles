@@ -96,6 +96,8 @@
       makeWebApp = class: app: {
         package = pkgs.writeShellScriptBin "webapp-${class}" ''
           DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
+          url="''${1:-${app.url}}"
+          [ $# -gt 0 ] && shift
 
           exec ${config.programs.qutebrowser.package}/bin/qutebrowser \
             --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-${class}" \
@@ -110,7 +112,7 @@
             --desktop-file-name "${class}" \
             --target window \
             --override-restore \
-            "${app.url}" \
+            "$url" \
             "$@"
         '';
         desktopEntry = {
