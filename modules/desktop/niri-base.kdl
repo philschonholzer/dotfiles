@@ -82,10 +82,10 @@ overview {
     zoom 0.16
 }
 
-workspace "Phone"
+workspace "Tel"
 workspace "Mail"
 workspace "Slack"
-workspace "Tasks"
+workspace "Cal"
 
 hotkey-overlay {
     skip-at-startup
