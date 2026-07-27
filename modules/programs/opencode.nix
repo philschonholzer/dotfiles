@@ -32,6 +32,10 @@
           };
         };
       };
+      agents = {
+        copy-writer = ./agent/copy-writer.md;
+        assistent = ./agent/assistent.md;
+      };
     };
 
     xdg.desktopEntries.opencode = {
