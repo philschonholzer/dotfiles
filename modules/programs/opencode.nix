@@ -42,10 +42,11 @@
       name = "OpenCode";
       genericName = "AI Coding Agent";
       comment = "Open OpenCode in Ghostty terminal";
-      exec = "ghostty -e opencode";
+      exec = "ghostty --class=dev.opencode --title=OpenCode -e opencode --agent assistent";
       icon = ./icons/opencode-dark.svg;
       terminal = false;
       type = "Application";
+      settings.StartupWMClass = "dev.opencode";
       categories = [
         "Development"
         "Utility"
