@@ -1,9 +1,16 @@
 { ... }: {
   flake.modules.homeManager.base = { pkgs, ... }: {
-    home.packages = with pkgs; [ mpv ];
+    programs.mpv = {
+      enable = true;
 
-    xdg.configFile."mpv/mpv.conf".text = ''
-      gpu-context=wayland
-    '';
+      package = pkgs.mpv.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override { waylandSupport = true; };
+        scripts = [ pkgs.mpvScripts.modernz ];
+      };
+
+      scriptOpts.modernz = {
+        osc_color = "#000000";
+      };
+    };
   };
 }
