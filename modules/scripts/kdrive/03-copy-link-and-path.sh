@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Nautilus script: Share kDrive link
+# Nautilus script: Copy internal kDrive link and local relative path
 set -euo pipefail
 
 # shellcheck source=kdrive-lib.sh
@@ -13,5 +13,5 @@ rel=$(kdrive_rel_path "$filepath")
 file_id=$(kdrive_file_id "$rel")
 url=$(kdrive_url "$file_id")
 
-printf '%s' "$url" | wl-copy
-notify-send "kDrive" "Share link copied to clipboard"
+printf 'Link: %s\nPfad: /%s' "$url" "$rel" | wl-copy
+notify-send "kDrive" "Link and path copied to clipboard"
