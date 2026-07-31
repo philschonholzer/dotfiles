@@ -1,7 +1,9 @@
 { ... }: {
+  flake.modules.homeManager.amd = { pkgs, ... }: {
+    programs.btop.package = pkgs.btop-rocm;
+  };
   flake.modules.homeManager.base = { pkgs, ... }: {
     programs.btop = {
-      package = pkgs.btop-rocm;
       enable = true;
       settings = {
         vim_keys = true;

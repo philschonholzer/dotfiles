@@ -13,6 +13,7 @@ in
           self.modules.homeManager.base
           self.modules.homeManager.nixos
           self.modules.homeManager.x86_64
+          self.modules.homeManager.amd
         ];
       }
     ];
