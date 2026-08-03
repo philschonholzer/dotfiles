@@ -2,7 +2,6 @@
 {
   flake.modules.nixos.base =
     { pkgs, ... }:
-
     {
       services.printing.enable = true;
 
