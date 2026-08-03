@@ -17,8 +17,6 @@
       };
     };
 
-    services.tailscale.enable = true;
-
     services.avahi = {
       enable = true;
       nssmdns4 = true;
