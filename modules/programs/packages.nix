@@ -77,7 +77,6 @@
         kdePackages.kdenlive
         handbrake
         cameractrls-gtk4
-        gpu-screen-recorder
       ];
 
     };
