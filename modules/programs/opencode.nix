@@ -15,6 +15,13 @@
             "git --git-dir* push*" = "deny";
           };
         };
+        "mcp" = {
+          "trello" = {
+            "type" = "remote";
+            "url" = "https://mcp.trello.com/v1";
+            "enabled" = true;
+          };
+        };
         "plugin" = [
           "opencode-models-discovery"
           "vimcode@git+https://github.com/oribarilan/vimcode.git#v0.15.1"
