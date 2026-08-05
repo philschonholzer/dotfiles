@@ -36,6 +36,9 @@
       };
     };
 
+    # Firmware updates (BIOS/UEFI)
+    services.fwupd.enable = true;
+
     users.users.philip = {
       isNormalUser = true;
       description = "Philip Schoenholzer";
