@@ -26,6 +26,9 @@
     base = { pkgs, ... }: {
       home.packages = with pkgs; [
 
+        # Comm
+        fractal # Matrix client
+
         # Utils
         alacritty
         bitwarden-desktop
