@@ -19,7 +19,7 @@ in
 
     targets.genericLinux = {
       enable = true;
-      gpu.enable = false;
+      gpu.enable = true;
     };
 
     nix.package = pkgs.nix;

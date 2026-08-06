@@ -1,11 +1,7 @@
-{ inputs, ... }: {
+{ ... }: {
   flake.modules.homeManager.genericLinux =
-    { pkgs, lib, ... }:
-    let
-      inherit (inputs.self.lib.nixgl { inherit pkgs lib; }) wrapGLExec;
-    in
+    { ... }:
     {
-      programs.ghostty.package = wrapGLExec "ghostty" "${pkgs.ghostty}/bin/ghostty" [ ];
       programs.ghostty.systemd.enable = false;
     };
   flake.modules.homeManager.base =
