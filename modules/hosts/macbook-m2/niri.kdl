@@ -24,5 +24,10 @@ layout {
 output "eDP-1" {
     mode "3024x1890@120.000"
     scale 2
+    position x=600 y=1200
+}
+output "Philips Consumer Electronics Company PHL 346P1C UK02509040653" {
+    mode "3440x1440@100"
+    scale 1.2
     position x=0 y=0
 }
