@@ -279,10 +279,9 @@ binds {
     // Notifications
     Mod+Y { spawn-sh "noctalia msg notification-invoke-latest"; }
 
-    // Dictation controls
-    Mod+G hotkey-overlay-title="Dictation (English)" { spawn-sh "dictation en && notify-send 'Dictation' 'Started (English)' -u low"; }
-    Mod+Shift+G hotkey-overlay-title="Dictation (German)" { spawn-sh "dictation de && notify-send 'Dictation' 'Started (German)' -u low"; }
-    Mod+Ctrl+G hotkey-overlay-title="Stop Dictation" { spawn-sh "dictation stop && notify-send 'Dictation' 'Stopped' -u low"; }
+    // Dictation controls (handy)
+    Mod+G hotkey-overlay-title="Toggle Dictation" { spawn "handy" "--toggle-transcription"; }
+    Mod+Shift+G hotkey-overlay-title="Toggle Dictation (Post-Process)" { spawn "handy" "--toggle-post-process"; }
     
     // Open file from Downloads
     Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }

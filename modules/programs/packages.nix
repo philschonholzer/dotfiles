@@ -41,6 +41,9 @@
         gftp
         parsec-bin
         wl-clipboard
+        unstable.handy # text to speech
+        wtype # used for handy
+        gnome-decoder
 
         # Desktop
         sushi
