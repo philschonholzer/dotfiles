@@ -18,3 +18,10 @@ output "DP-3" {
     scale 1.6
     position x=0 y=0
 }
+
+// DELL of Maria
+output "Dell Inc. DELL U3818DW 5KC0398F0RYL" {
+    mode "3840x1600"
+    scale 1.25
+    position x=0 y=0
+}
