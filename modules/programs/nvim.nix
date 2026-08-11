@@ -9,6 +9,11 @@
       withRuby = false;
       withPython3 = false;
       sideloadInitLua = true;
+      extraWrapperArgs = [
+        "--set"
+        "MARKDOWN_PREVIEW_NVIM_PATH"
+        "${pkgs.vimPlugins.markdown-preview-nvim}"
+      ];
       extraLuaPackages = ps: [ ps.magick ];
       extraPackages = with pkgs; [
         nixfmt

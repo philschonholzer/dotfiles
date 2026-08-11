@@ -1,5 +1,11 @@
 return {
   {
+    -- Use the nixpkgs-built version (via nix wrapper env var) to avoid the broken pre-compiled binary
+    "iamcco/markdown-preview.nvim",
+    dir = vim.env.MARKDOWN_PREVIEW_NVIM_PATH,
+    build = false,
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
