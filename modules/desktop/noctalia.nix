@@ -225,10 +225,6 @@ in
             max_length = 300;
           };
 
-          cat = {
-            type = "noctalia/bongocat:cat";
-          };
-
           cpu = {
             label_min_width = 26;
           };
@@ -248,12 +244,12 @@ in
           workspaces = {
             capsule = true;
             capsule_opacity = 0.25;
-            capsule_padding = 14.0;
-            display = "name";
+            capsule_padding = 20.0;
+            style = "minimal";
+            label_source = "name";
             focused_color = "tertiary";
             max_label_chars = 10;
-            minimal = true;
-            scale = 1.15;
+            scale = 1;
           };
         };
       };
