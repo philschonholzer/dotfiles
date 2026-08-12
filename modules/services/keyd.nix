@@ -6,8 +6,7 @@
         ids = [ "*" ];
         settings = {
           main = {
-            capslock = "tab";
-            tab = "esc";
+            capslock = "esc";
             esc = "capslock";
             j = "lettermod(meta, j, 150, 200)";
             f = "lettermod(meta, f, 150, 200)";
