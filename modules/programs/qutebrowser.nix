@@ -71,16 +71,6 @@
         text = builtins.readFile ../scripts/qutebrowser/bitwarden-fill.sh;
       };
 
-      mpv-notify = pkgs.writeShellApplication {
-        name = "launch-mpv";
-        runtimeInputs = with pkgs; [
-          libnotify
-          mpv
-          yt-dlp
-        ];
-        text = builtins.readFile ../scripts/qutebrowser/launch-mpv.sh;
-      };
-
       qutebrowser-wrapped = pkgs.symlinkJoin {
         name = "qutebrowser-wrapped";
         paths = [ pkgs.qutebrowser ];
@@ -115,8 +105,8 @@
           ",u" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill username";
           ",p" = "spawn --userscript ${bitwarden-fill}/bin/bitwarden-fill password";
           ",d" = "set content.headers.accept_language de ;; reload";
-          ",m" = "spawn ${mpv-notify}/bin/launch-mpv {url}";
-          ",M" = "hint links spawn ${mpv-notify}/bin/launch-mpv {hint-url}";
+          ",m" = "spawn mpv {url}";
+          ",M" = "hint links spawn mpv {hint-url}";
         };
         settings = {
           tabs = {
