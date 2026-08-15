@@ -28,6 +28,7 @@
 
         # Comm
         fractal # Matrix client
+        unstable.aerion # Email client
 
         # Utils
         alacritty
@@ -43,7 +44,7 @@
         wl-clipboard
         unstable.handy # text to speech
         wtype # used for handy
-        gnome-decoder
+        gnome-decoder # QR Code generator/scanner
 
         # Desktop
         sushi
