@@ -1,30 +1,39 @@
-{ ... }: {
-  flake.modules.homeManager.nixos =
-    { pkgs, config, ... }:
+{ ... }:
+{
+  flake.modules.nixos.base =
+    { ... }:
     let
-      qnapMountPoint = "${config.home.homeDirectory}/QNAP";
-      qnapRemote = "qnap:";
+      nasHost = "NAS.local";
+      user = "philip";
+      baseDir = "/home/${user}/QNAP";
+
+      mkNfsMount = share: {
+        device = "${nasHost}:/${share}";
+        fsType = "nfs";
+        options = [
+          "nfsvers=4"
+          "soft"
+          "timeo=30"
+          "nofail"
+          "noauto"
+          "x-systemd.automount"
+          "x-systemd.mount-timeout=10s"
+          "x-systemd.idle-timeout=10min"
+          "_netdev"
+        ];
+      };
     in
     {
-      home.packages = [ pkgs.rclone ];
+      boot.supportedFilesystems = [ "nfs" ];
 
-      systemd.user.services.qnap-mount = {
-        Unit = {
-          Description = "Mount QNAP NAS via rclone";
-          After = [ "network-online.target" ];
-          Wants = [ "network-online.target" ];
-        };
-        Service = {
-          Type = "exec";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${qnapMountPoint}";
-          ExecStart = "${pkgs.rclone}/bin/rclone mount ${qnapRemote} ${qnapMountPoint} --vfs-cache-mode writes --config ${config.home.homeDirectory}/.config/rclone/rclone.conf";
-          ExecStop = "/run/current-system/sw/bin/fusermount -u ${qnapMountPoint}";
-          Restart = "on-failure";
-          RestartSec = "10s";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
+      systemd.tmpfiles.rules = [ "d ${baseDir} 0755 ${user} users -" ];
+
+      fileSystems."${baseDir}/Videos" = mkNfsMount "Videos";
+      fileSystems."${baseDir}/Scans" = mkNfsMount "Scans";
+      fileSystems."${baseDir}/Photos" = mkNfsMount "Photos";
+      fileSystems."${baseDir}/Multimedia" = mkNfsMount "Multimedia";
+      fileSystems."${baseDir}/homes" = mkNfsMount "homes";
+      fileSystems."${baseDir}/home" = mkNfsMount "homes/${user}";
+      fileSystems."${baseDir}/Download" = mkNfsMount "Download";
     };
 }
