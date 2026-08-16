@@ -1,7 +1,5 @@
 { inputs, ... }: {
   flake.overlays = {
-    nixgl = inputs.nixgl.overlays.default;
-
     modifications = final: prev: {
       # Fix morgen 4.0.4 unhandled GPU info rejection in Sentry that causes 100% CPU
       morgen = prev.morgen.overrideAttrs (oldAttrs: {

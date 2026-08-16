@@ -26,9 +26,9 @@
 
     nixpkgs = {
       overlays = [
-        inputs.self.overlays.nixgl
         inputs.self.overlays.modifications
         inputs.self.overlays.unstable-packages
+        inputs.self.overlays.affinity
       ];
       config = {
         allowUnfree = true;
@@ -49,6 +49,9 @@
         "input"
       ];
       shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = [
+        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPsgBnH6UaRLsah6JOfsnPUACYM3mFTzUzV/7Y03gkcp3hvCMtDioWQfsIVwL7XxBZjqIO3hLkuyNxbygQBKczE= YubiKey #34058449 PIV Slot 9a"
+      ];
     };
 
     time.timeZone = "Europe/Zurich";
