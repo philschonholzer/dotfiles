@@ -43,6 +43,9 @@ in
         font-size = 16
         theme = Kanagawa Wave
       '';
+      ".ssh/authorized_keys".text = ''
+        ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPsgBnH6UaRLsah6JOfsnPUACYM3mFTzUzV/7Y03gkcp3hvCMtDioWQfsIVwL7XxBZjqIO3hLkuyNxbygQBKczE= YubiKey #34058449 PIV Slot 9a
+      '';
     };
 
     programs.zellij = {
