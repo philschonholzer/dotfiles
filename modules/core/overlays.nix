@@ -1,19 +1,7 @@
 { inputs, ... }: {
   flake.overlays = {
-    modifications = final: prev: {
-      # Fix morgen 4.0.4 unhandled GPU info rejection in Sentry that causes 100% CPU
-      morgen = prev.morgen.overrideAttrs (oldAttrs: {
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ final.asar ];
-        postFixup = (oldAttrs.postFixup or "") + ''
-          asar extract $out/opt/Morgen/resources/app.asar $out/opt/Morgen/resources/app
-          substituteInPlace $out/opt/Morgen/resources/app/dist/main.js \
-            --replace-fail \
-            'ee.app.getGPUInfo(e.infoLevel)' \
-            'ee.app.getGPUInfo(e.infoLevel).catch(()=>({gpuDevice:[]}))'
-          asar pack $out/opt/Morgen/resources/app $out/opt/Morgen/resources/app.asar
-          rm -rf $out/opt/Morgen/resources/app
-        '';
-      });
+    modifications = _final: _prev: {
+      # morgen overlay removed: 4.0.6 no longer has the getGPUInfo CPU bug that required patching
     };
 
     # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -29,6 +17,12 @@
             blender = uprev.blender.override {
               rocmSupport = true;
             };
+          })
+          # Enable OAuth credentials (Microsoft, Google) for aerion.
+          # The nixpkgs package defaults to withOAuth = false; override to true
+          # so aerion-creds is symlinked into $out/bin/ at build time.
+          (_ufinal: uprev: {
+            aerion = uprev.aerion.override { withOAuth = true; };
           })
         ];
       };

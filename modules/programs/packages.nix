@@ -28,7 +28,7 @@
 
         # Comm
         fractal # Matrix client
-        unstable.aerion # Email client
+        unstable.aerion # Email client (withOAuth = true via overlay)
 
         # Utils
         alacritty
