@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "instructions": [".opencode/local.md"],
   "plugin": [
     "opencode-models-discovery"
   ],
