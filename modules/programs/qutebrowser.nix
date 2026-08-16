@@ -77,7 +77,8 @@
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/qutebrowser \
-            --add-flags "--basedir ${config.home.homeDirectory}/.local/share/qutebrowser-work --config-py ${config.home.homeDirectory}/.config/qutebrowser/config.py"
+            --add-flags "--basedir ${config.home.homeDirectory}/.local/share/qutebrowser-work --config-py ${config.home.homeDirectory}/.config/qutebrowser/config.py" \
+            --set-default QTWEBENGINE_FORCE_USE_GBM 0
         '';
       };
     in
