@@ -45,6 +45,7 @@
         unstable.handy # text to speech
         wtype # used for handy
         gnome-decoder # QR Code generator/scanner
+        file-roller
 
         # Desktop
         sushi
