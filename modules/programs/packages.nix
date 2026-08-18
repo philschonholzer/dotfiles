@@ -47,8 +47,6 @@
         gnome-decoder # QR Code generator/scanner
         file-roller
         gnome-decoder
-        hyprpicker
-
         # Desktop
         sushi
 

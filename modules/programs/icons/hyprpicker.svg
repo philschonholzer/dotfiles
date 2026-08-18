@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#1a1b26"/>
+
+  <!-- Color spectrum arc segments (top half rainbow) -->
+  <path d="M 12 38 A 22 22 0 0 1 52 38" fill="none" stroke="#ff6b6b" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 3"/>
+  <path d="M 14 43 A 20 20 0 0 1 50 43" fill="none" stroke="#ffd166" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 4"/>
+  <path d="M 16 47 A 18 18 0 0 1 48 47" fill="none" stroke="#06d6a0" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 5"/>
+
+  <!-- Dropper body -->
+  <rect x="28" y="10" width="10" height="22" rx="3" fill="#88c0d0" transform="rotate(-35 33 21)"/>
+
+  <!-- Dropper tip triangle -->
+  <polygon points="20,44 26,38 30,44" fill="#81a1c1"/>
+
+  <!-- Dropper cap -->
+  <rect x="34" y="8" width="8" height="5" rx="2" fill="#5e81ac" transform="rotate(-35 38 10)"/>
+
+  <!-- Color drop -->
+  <ellipse cx="18" cy="48" rx="4" ry="5" fill="#8fbcbb" opacity="0.9"/>
+  <ellipse cx="18" cy="47" rx="2" ry="1.5" fill="#d8dee9" opacity="0.4"/>
+</svg>
