@@ -31,6 +31,7 @@
         unstable.aerion # Email client (withOAuth = true via overlay)
 
         # Utils
+        rofimoji # unicode/emoji picker
         alacritty
         bitwarden-desktop
         telegram-desktop

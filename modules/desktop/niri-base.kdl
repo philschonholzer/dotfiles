@@ -283,6 +283,9 @@ binds {
     Mod+G hotkey-overlay-title="Toggle Dictation" { spawn "handy" "--toggle-transcription"; }
     Mod+Shift+G hotkey-overlay-title="Toggle Dictation (Post-Process)" { spawn "handy" "--toggle-post-process"; }
     
+    // Unicode/Emoji picker
+    Mod+U hotkey-overlay-title="Unicode Picker" { spawn "rofimoji" "--action" "type" "--selector" "fuzzel"; }
+
     // Open file from Downloads
     Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }
     // Screenshots
