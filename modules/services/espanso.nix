@@ -14,6 +14,14 @@
               replace = "philip@schoenholzer.com";
             }
             {
+              trigger = ":name";
+              replace = "Philip Schönholzer";
+            }
+            {
+              trigger = ":ln";
+              replace = "Schönholzer";
+            }
+            {
               trigger = ":cal15";
               replace = "https://cal.com/phisch/15min";
             }
@@ -22,8 +30,8 @@
               replace = "https://cal.com/phisch/30min";
             }
             {
-              trigger = ":hello";
-              replace = "line1\nline2";
+              trigger = ":blush";
+              replace = "☺️";
             }
             {
               regex = ":hi(?P<person>.*)\\.";
