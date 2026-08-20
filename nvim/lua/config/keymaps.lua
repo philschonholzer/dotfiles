@@ -4,6 +4,9 @@
 
 local map = vim.keymap.set
 
+-- <C-v> is used by ghostty for paste, remap visual block mode
+map({ "n", "x" }, "<leader>v", "<C-v>", { desc = "Visual Block Mode" })
+
 -- diagnostic
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
