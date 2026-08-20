@@ -10,3 +10,13 @@ After you are finished with a change:
 4. Ask if the changes should be commited (use conventional commits)
 
 If you can not see in the stack trace where a build error is coming use: `--show-trace`
+
+When looking up NixOS or home-manager options, packages, or anything related to nixpkgs,
+always use the nixos MCP tool first. It queries live APIs and is faster and more accurate
+than searching the nix store manually or using `nix search`.
+
+Examples:
+- "is package X available?" -> nix {"action":"info","query":"X"}
+- "home-manager option for X" -> nix {"action":"search","source":"home-manager","query":"X"}
+- "NixOS option for X" -> nix {"action":"search","query":"X","type":"options"}
+

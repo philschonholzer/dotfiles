@@ -43,6 +43,9 @@
         copy-writer = ./agent/copy-writer.md;
         assistent = ./agent/assistent.md;
       };
+      skills = {
+        unslop = ./skill/unslop/SKILL.md;
+      };
     };
 
     xdg.desktopEntries.opencode = {
