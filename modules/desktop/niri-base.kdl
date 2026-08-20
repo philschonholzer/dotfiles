@@ -30,7 +30,7 @@ input {
 }
 
 cursor {
-    hide-after-inactive-ms 650
+    hide-after-inactive-ms 3000
     xcursor-theme "Bibata-Modern-Ice"
     xcursor-size 24
 }
