@@ -21,6 +21,47 @@ in
     imports = [
       noctalia.homeModules.default
     ];
+    xdg.configFile."noctalia/trello.json".text = builtins.toJSON {
+      boards = [
+        {
+          board = "Apptiva-Kreis";
+          list = "In Arbeit";
+        }
+        {
+          board = "App-Entwicklung";
+          list = "In Arbeit";
+        }
+        {
+          board = "Marketing & Akquise";
+          list = "In Arbeit";
+        }
+        {
+          board = "Offerten";
+          list = "Potential";
+        }
+        {
+          board = "Suva Cycle & Slope Track";
+          list = "In Umsetzung";
+        }
+        {
+          board = "FleetAssistant";
+          list = "In Arbeit";
+        }
+        {
+          board = "Administratives";
+          list = "In Arbeit";
+        }
+        {
+          board = "Apptiva Governance";
+          list = "In Arbeit";
+        }
+        {
+          board = "injoi Produktentwicklung";
+          list = "In Arbeit";
+        }
+      ];
+    };
+
     programs.noctalia = {
       enable = true;
       systemd.enable = true;
