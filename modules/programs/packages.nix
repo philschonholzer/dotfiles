@@ -28,7 +28,7 @@
 
         # Comm
         fractal # Matrix client
-        unstable.aerion # Email client (withOAuth = true via overlay)
+        (unstable.aerion.override { withOAuth = true; }) # Email client
 
         # Utils
         rofimoji # unicode/emoji picker
