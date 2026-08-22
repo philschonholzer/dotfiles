@@ -27,13 +27,14 @@
       boot.supportedFilesystems = [ "nfs" ];
 
       systemd.tmpfiles.rules = [ "d ${baseDir} 0755 ${user} users -" ];
-
-      fileSystems."${baseDir}/Videos" = mkNfsMount "Videos";
-      fileSystems."${baseDir}/Scans" = mkNfsMount "Scans";
-      fileSystems."${baseDir}/Photos" = mkNfsMount "Photos";
-      fileSystems."${baseDir}/Multimedia" = mkNfsMount "Multimedia";
-      fileSystems."${baseDir}/homes" = mkNfsMount "homes";
-      fileSystems."${baseDir}/home" = mkNfsMount "homes/${user}";
-      fileSystems."${baseDir}/Download" = mkNfsMount "Download";
+      fileSystems = {
+        "${baseDir}/Videos" = mkNfsMount "Videos";
+        "${baseDir}/Scans" = mkNfsMount "Scans";
+        "${baseDir}/Photos" = mkNfsMount "Photos";
+        "${baseDir}/Multimedia" = mkNfsMount "Multimedia";
+        "${baseDir}/homes" = mkNfsMount "homes";
+        "${baseDir}/home" = mkNfsMount "homes/${user}";
+        "${baseDir}/Download" = mkNfsMount "Download";
+      };
     };
 }
