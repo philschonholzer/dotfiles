@@ -277,7 +277,8 @@ binds {
     Mod+Shift+C { spawn-sh "noctalia msg panel-toggle clipboard"; }
     
     // Notifications
-    Mod+Y { spawn-sh "noctalia msg notification-invoke-latest"; }
+    Mod+Y { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+    Mod+Shift+Y { spawn-sh "noctalia msg notification-invoke-latest"; }
 
     // Dictation controls (handy)
     Mod+G hotkey-overlay-title="Toggle Dictation" { spawn "handy" "--toggle-transcription"; }
