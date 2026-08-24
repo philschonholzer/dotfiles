@@ -17,6 +17,7 @@
     devShells.default = pkgs.mkShell {
       name = "nixos-config";
       packages = with pkgs; [
+        stylua
         nixfmt
         statix
         deadnix
