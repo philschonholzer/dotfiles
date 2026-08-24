@@ -22,6 +22,7 @@
         cargo
         lua
         lua-language-server
+        github-cli
         stylua
         tinymist
         ghostscriptX
