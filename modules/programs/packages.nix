@@ -29,6 +29,7 @@
         # Comm
         fractal # Matrix client
         (unstable.aerion.override { withOAuth = true; }) # Email client
+        teams-for-linux
 
         # Utils
         rofimoji # unicode/emoji picker
