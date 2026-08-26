@@ -13,5 +13,5 @@ rel=$(kdrive_rel_path "$filepath")
 file_id=$(kdrive_file_id "$rel")
 url=$(kdrive_url "$file_id")
 
-printf 'Link: %s\nPfad: /%s' "$url" "$rel" | wl-copy
+printf 'Link: %s\nPfad: `/%s`' "$url" "$rel" | wl-copy
 notify-send "kDrive" "Link and path copied to clipboard"
