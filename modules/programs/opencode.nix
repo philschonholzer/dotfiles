@@ -31,7 +31,17 @@
             "npm" = "@ai-sdk/openai-compatible";
             "name" = "Ollama (MacMini)";
             "options" = {
-              "baseURL" = "http://192.168.1.65:11434/v1";
+              "baseURL" = "http://philips-mac-mini:11434/v1";
+              "modelsDiscovery" = {
+                "enabled" = true;
+              };
+            };
+          };
+          "lm-studio" = {
+            "npm" = "@ai-sdk/openai-compatible";
+            "name" = "LM Studio (MacMini)";
+            "options" = {
+              "baseURL" = "http://philips-mac-mini:1234/v1";
               "modelsDiscovery" = {
                 "enabled" = true;
               };
