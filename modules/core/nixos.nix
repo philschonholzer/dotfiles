@@ -74,6 +74,7 @@
     programs = {
       zsh.enable = true;
       appimage.enable = true;
+      nix-ld.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
