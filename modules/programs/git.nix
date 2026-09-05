@@ -23,6 +23,7 @@
           defaultBranch = "main";
         };
       };
+      lfs.enable = true;
     };
 
     programs.delta = {
