@@ -48,6 +48,14 @@
             };
           };
         };
+        "agent" = {
+          "plan" = {
+            "model" = "github-copilot/gpt-5.6-sol";
+          };
+          "build" = {
+            "model" = "github-copilot/gpt-5.6-luna";
+          };
+        };
       };
       agents = {
         copy-writer = ./agent/copy-writer.md;
