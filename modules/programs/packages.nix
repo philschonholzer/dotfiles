@@ -30,6 +30,7 @@
         fractal # Matrix client
         (unstable.aerion.override { withOAuth = true; }) # Email client
         teams-for-linux
+        linphonePackages.linphone-desktop
 
         # Utils
         rofimoji # unicode/emoji picker
@@ -53,7 +54,6 @@
         sushi
 
         # Dev
-        unstable.opencode
         unstable.pi-coding-agent
         nodejs_24
         pnpm
