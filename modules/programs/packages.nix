@@ -49,7 +49,7 @@
         wtype # used for handy
         gnome-decoder # QR Code generator/scanner
         file-roller
-        gnome-decoder
+        rclone-browser
         # Desktop
         sushi
 
