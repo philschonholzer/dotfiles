@@ -1,5 +1,7 @@
 { ... }: {
-  flake.modules.homeManager.base = { ... }: {
+  flake.modules.homeManager.base = { pkgs, ... }: {
+    home.packages = [ pkgs.time ];
+
     programs.zsh = {
       enable = true;
 
@@ -23,6 +25,7 @@
       historySubstringSearch.enable = true;
 
       shellAliases = {
+        time = "${pkgs.time}/bin/time";
         pn = "pnpm";
         p = "pnpm";
         mysql-proxy-apptiva = "cloud-sql-proxy kubernetes-283408:europe-west6:apptiva-mysql-8-common -p 3308";
