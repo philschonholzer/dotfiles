@@ -4,7 +4,7 @@
 
 local map = vim.keymap.set
 
--- <C-v> is used by ghostty for paste, remap visual block mode
+-- <C-v> is used by foot for paste, remap visual block mode
 map({ "n", "x" }, "<leader>v", "<C-v>", { desc = "Visual Block Mode" })
 
 -- diagnostic

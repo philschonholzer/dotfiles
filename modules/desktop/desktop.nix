@@ -26,7 +26,7 @@
         seahorse.enable = true;
         nautilus-open-any-terminal = {
           enable = true;
-          terminal = "ghostty";
+          terminal = "foot";
         };
       };
 

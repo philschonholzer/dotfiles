@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.base = { pkgs, ... }: {
+  flake.modules.homeManager.base = { lib, pkgs, ... }: {
     programs.opencode = {
       enable = true;
       package = pkgs.unstable.opencode;
@@ -66,11 +66,11 @@
       };
     };
 
-    xdg.desktopEntries.opencode = {
+    xdg.desktopEntries.opencode = lib.mkIf pkgs.stdenv.isLinux {
       name = "OpenCode";
       genericName = "AI Coding Agent";
-      comment = "Open OpenCode in Ghostty terminal";
-      exec = "ghostty --class=dev.opencode --title=OpenCode -e opencode --agent assistent";
+      comment = "Open OpenCode in Foot terminal";
+      exec = "footclient --app-id=dev.opencode --title=OpenCode opencode --agent assistent";
       icon = ./icons/opencode-dark.svg;
       terminal = false;
       type = "Application";

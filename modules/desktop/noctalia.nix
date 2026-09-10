@@ -429,7 +429,6 @@ in
               "btop"
               "gtk3"
               "gtk4"
-              "ghostty"
               "qt"
             ];
             community_ids = [ ];
