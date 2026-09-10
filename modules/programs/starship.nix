@@ -5,6 +5,7 @@
       enableZshIntegration = true;
       settings = {
         add_newline = false;
+        scan_timeout = 200;
         gcloud = {
           disabled = true;
         };
