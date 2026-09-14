@@ -50,6 +50,8 @@
         gnome-decoder # QR Code generator/scanner
         file-roller
         rclone-browser
+        ncdu
+
         # Desktop
         sushi
 
