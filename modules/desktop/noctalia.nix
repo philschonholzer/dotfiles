@@ -24,6 +24,10 @@ in
     xdg.configFile."noctalia/trello.json".text = builtins.toJSON {
       boards = [
         {
+          board = "Philip";
+          list = "In Arbeit";
+        }
+        {
           board = "Apptiva-Kreis";
           list = "In Arbeit";
         }
