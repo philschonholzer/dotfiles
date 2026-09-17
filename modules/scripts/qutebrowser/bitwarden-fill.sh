@@ -32,6 +32,7 @@ fi
 
 # Refresh the local vault before searching it. Without this check, an expired
 # session leaves rbw search using old entries without telling the user.
+echo "message-info 'Syncing Bitwarden $RBW_PROFILE vault...'" >>"$QUTE_FIFO"
 if ! SYNC_ERROR=$(rbw sync 2>&1 >/dev/null); then
   if [[ "$SYNC_ERROR" == *"access_token"* ]] || [[ "$SYNC_ERROR" == *"invalid_grant"* ]]; then
     echo "message-error 'Bitwarden $RBW_PROFILE login expired. Run: RBW_PROFILE=$RBW_PROFILE rbw purge && RBW_PROFILE=$RBW_PROFILE rbw login'" >>"$QUTE_FIFO"
