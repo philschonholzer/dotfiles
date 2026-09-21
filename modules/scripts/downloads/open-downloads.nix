@@ -6,7 +6,6 @@
         name = "open-downloads";
         runtimeInputs = with pkgs; [
           fd
-          fuzzel
           xdg-utils
           libnotify
           coreutils

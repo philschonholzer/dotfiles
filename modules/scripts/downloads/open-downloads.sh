@@ -14,9 +14,11 @@ fi
 
 # List files (excluding directories) with fd, sort by modification time (newest first)
 # Using fd for better performance and filtering
-selected=$(fd --type f --max-depth 1 . "$DOWNLOADS_DIR" --exec-batch ls -t | \
+if ! selected=$(fd --type f --max-depth 1 . "$DOWNLOADS_DIR" --exec-batch ls -t | \
     sed "s|$DOWNLOADS_DIR/||" | \
-    fuzzel --dmenu --prompt "Downloads: ")
+    noctalia dmenu -p "Downloads"); then
+    exit 0
+fi
 
 # Exit if no selection was made
 if [ -z "$selected" ]; then
@@ -27,7 +29,9 @@ fi
 full_path="$DOWNLOADS_DIR/$selected"
 
 # Ask user what action to take
-action=$(printf "Open\nCopy path\nCopy file" | fuzzel --dmenu --prompt "Action: ")
+if ! action=$(printf "Open\nCopy path\nCopy file" | noctalia dmenu -p "Action"); then
+    exit 0
+fi
 
 # Exit if no action was selected
 if [ -z "$action" ]; then
