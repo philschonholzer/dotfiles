@@ -11,9 +11,13 @@
           #!/usr/bin/env bash
           set -euo pipefail
 
-          board=$(~/fetch-trello-boards.sh 2>&1 | fuzzel -d --with-nth=1 --accept-nth=2)
+          if ! selection=$(~/fetch-trello-boards.sh 2>&1 | noctalia dmenu -p "Trello board"); then
+            exit 1
+          fi
 
-          if [ $? -ne 0 ] || [ -z "$board" ]; then
+          board="''${selection#*$'\t'}"
+
+          if [ -z "$selection" ] || [ -z "$board" ]; then
             exit 1
           fi
 
