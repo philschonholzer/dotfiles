@@ -66,7 +66,6 @@
           gawk
           gnused
           coreutils
-          fuzzel
         ];
         text = builtins.readFile ../scripts/qutebrowser/bitwarden-fill.sh;
       };

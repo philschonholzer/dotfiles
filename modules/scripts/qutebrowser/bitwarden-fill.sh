@@ -104,7 +104,10 @@ if [[ -z "$ENTRIES" ]]; then
     exit 1
   fi
 
-  SELECTED=$(echo "$ALL_ENTRIES" | fuzzel -d)
+  if ! SELECTED=$(echo "$ALL_ENTRIES" | noctalia dmenu -p "Bitwarden entry"); then
+    echo "message-info 'No entry selected'" >>"$QUTE_FIFO"
+    exit 0
+  fi
 
   if [[ -z "$SELECTED" ]]; then
     echo "message-info 'No entry selected'" >>"$QUTE_FIFO"
@@ -125,8 +128,11 @@ if [[ -z "${MANUAL_SELECTION:-}" ]]; then
     # Single match - auto-fill
     ENTRY_NAME="$ENTRIES"
   else
-    # Multiple matches - let user choose with fuzzel
-    SELECTED=$(echo "$ENTRIES" | fuzzel -d)
+    # Multiple matches - let user choose with Noctalia
+    if ! SELECTED=$(echo "$ENTRIES" | noctalia dmenu -p "Bitwarden entry"); then
+      echo "message-info 'No entry selected'" >>"$QUTE_FIFO"
+      exit 0
+    fi
 
     if [[ -z "$SELECTED" ]]; then
       echo "message-info 'No entry selected'" >>"$QUTE_FIFO"
