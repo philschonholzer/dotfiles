@@ -50,6 +50,8 @@
         gnome-decoder # QR Code generator/scanner
         file-roller
         rclone-browser
+        restic-browser
+        restic
         ncdu
 
         # Desktop
@@ -89,6 +91,7 @@
         kdePackages.kdenlive
         handbrake
         cameractrls-gtk4
+        losslesscut-bin
       ];
 
     };
