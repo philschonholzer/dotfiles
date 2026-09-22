@@ -290,10 +290,10 @@ binds {
     // Open file from Downloads
     Mod+Z hotkey-overlay-title="Open Downloads" { spawn "open-downloads"; }
     // Screenshots
-    Print { screenshot; }
-    Mod+S { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Mod+Ctrl+S { screenshot-screen; }
+    Print { spawn-sh "noctalia msg screenshot-region"; }
+    Mod+S { spawn-sh "noctalia msg screenshot-region"; }
+    Ctrl+Print { spawn-sh "noctalia msg screenshot-fullscreen"; }
+    Mod+Ctrl+S { spawn-sh "noctalia msg screenshot-fullscreen"; }
     Shift+Print { screenshot-window; }
     Mod+Shift+S { screenshot-window; }
 
