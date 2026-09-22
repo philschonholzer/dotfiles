@@ -8,7 +8,7 @@
         # Run `update-meow` to accept the download consent, fetch the latest
         # AppImage, update this hash, format the file, stage the change, and
         # run `nix flake check`.
-        sha256 = "11g6grhrpgpdqzdfv5ad4mf99krx039d69qzl8m8j49nd9anpnhi";
+        sha256 = "0sh5j34l2vmp34fk5qz1xsnpmcdrcl40mm6wi97vr9msigbi9lry";
       };
 
       meow = pkgs.writeShellScriptBin "meow-sip" ''

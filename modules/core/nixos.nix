@@ -17,9 +17,11 @@
       ];
       extra-substituters = [
         "https://noctalia.cachix.org"
+        "https://cache.forall.systems"
       ];
       extra-trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
       ];
       auto-optimise-store = true;
     };
