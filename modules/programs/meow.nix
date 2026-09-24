@@ -33,5 +33,22 @@
         meow
         updateMeow
       ];
+
+      xdg.desktopEntries.meow-sip = {
+        name = "Meow";
+        genericName = "SIP Phone";
+        comment = "A modern SIP voice client";
+        exec = "meow-sip %u";
+        icon = "meow-sip";
+        terminal = false;
+        type = "Application";
+        categories = [
+          "Network"
+          "Telephony"
+        ];
+        mimeType = [ "x-scheme-handler/tel" ];
+      };
+
+      xdg.mimeApps.defaultApplications."x-scheme-handler/tel" = "meow-sip.desktop";
     };
 }
