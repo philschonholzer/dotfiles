@@ -50,10 +50,10 @@
         };
         "agent" = {
           "plan" = {
-            "model" = "github-copilot/gpt-5.6-sol";
+            "model" = "github-copilot/claude-opus-5.5";
           };
           "build" = {
-            "model" = "github-copilot/gpt-5.6-luna";
+            "model" = "github-copilot/claude-sonnet-5";
           };
         };
       };
