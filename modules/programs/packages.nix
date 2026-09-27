@@ -2,7 +2,6 @@
   flake.modules.homeManager = {
     aarch64 = { pkgs, ... }: {
       home.packages = with pkgs; [
-        slacky
       ];
     };
 
@@ -12,6 +11,7 @@
         slack
         freelens-bin
         unstable.onlyoffice-desktopeditors
+        losslesscut-bin
       ];
     };
 
@@ -91,7 +91,6 @@
         kdePackages.kdenlive
         handbrake
         cameractrls-gtk4
-        losslesscut-bin
       ];
 
     };

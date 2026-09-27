@@ -45,8 +45,8 @@
         enable = true;
         settings = {
           main = {
-            dpi-aware = "yes";
-            font = "JetBrainsMono Nerd Font:size=13";
+            dpi-aware = "no";
+            font = "JetBrainsMono Nerd Font Mono:size=11";
             pad = "8x8";
             selection-target = "clipboard";
           };
