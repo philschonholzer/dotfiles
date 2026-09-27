@@ -15,14 +15,18 @@ trap 'rm -rf "$tmpdir"' EXIT
 cookie="$tmpdir/cookie"
 appimage="$tmpdir/meow.AppImage"
 
+origin='https://meow.qfiber.co.il'
+
 curl --fail --silent --show-error --cookie-jar "$cookie" \
   --header 'Content-Type: application/json' \
+  --header "Origin: $origin" \
   --data '{"accepted":true}' \
-  'https://meow.qfiber.co.il/api/v1/download/consent' >/dev/null
+  "$origin/api/v1/download/consent" >/dev/null
 
 curl --fail --location --silent --show-error --cookie "$cookie" \
+  --header "Origin: $origin" \
   --output "$appimage" \
-  'https://meow.qfiber.co.il/api/v1/download/meow.AppImage'
+  "$origin/api/v1/download/meow.AppImage"
 
 hash=$(nix-prefetch-url "file://$appimage" | sed -n '$p')
 
