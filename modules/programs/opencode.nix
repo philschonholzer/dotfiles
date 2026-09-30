@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.modules.homeManager.base = { lib, pkgs, ... }: {
     programs.opencode = {
       enable = true;
@@ -53,7 +53,7 @@
             "model" = "github-copilot/claude-opus-5.5";
           };
           "build" = {
-            "model" = "github-copilot/claude-sonnet-5";
+            "model" = "github-copilot/gpt-6.1-sol";
           };
         };
       };
