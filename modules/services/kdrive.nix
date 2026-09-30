@@ -30,9 +30,12 @@
   flake.modules.homeManager.x86_64 =
     { pkgs, config, ... }:
     let
+      # Run `update-clients` and select kDrive to update the client.
+      # The updater stages the URL/hash change and runs nix flake check.
+      # Commit pending changes to this file first, then rebuild/switch to apply the update.
       kdriveAppImage = pkgs.fetchurl {
-        url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.5.2-amd64.AppImage";
-        sha256 = "00k4fgsbwkxvyzjk7byx9jlbcp5m07w7lz54129d3wy8w5vkprzi";
+        url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.7.1-amd64.AppImage";
+        sha256 = "0yj3m8dgl1avmrh43jswm9q09lr0icbb8xnnbqqkw1lall7pyrcd";
       };
       kdrivePkg = pkgs.writeShellScriptBin "kdrive" ''
         exec ${pkgs.appimage-run}/bin/appimage-run ${kdriveAppImage} "$@"

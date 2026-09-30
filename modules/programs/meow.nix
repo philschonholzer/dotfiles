@@ -5,34 +5,19 @@
     let
       meowAppImage = pkgs.fetchurl {
         url = "https://meow.qfiber.co.il/api/v1/download/meow.AppImage";
-        # Run `update-meow` to accept the download consent, fetch the latest
+        # Run `update-clients` and select Meow to accept the download consent, fetch the latest
         # AppImage, update this hash, format the file, stage the change, and
         # run `nix flake check`.
-        sha256 = "0xqxgdfqwjbdsjr4lga7mzc683r3gxiark7i4yzlgzhmrmd44yh0";
+        sha256 = "0xm82cr1rwxsb35g1gyn51ch72i3k5dlyg0dv87xpq9d593jxcsk";
       };
 
       meow = pkgs.writeShellScriptBin "meow-sip" ''
         exec ${pkgs.appimage-run}/bin/appimage-run ${meowAppImage} "$@"
       '';
 
-      updateMeow = pkgs.writeShellApplication {
-        name = "update-meow";
-        runtimeInputs = with pkgs; [
-          curl
-          coreutils
-          git
-          nix
-          nixfmt
-          gnused
-        ];
-        text = builtins.readFile ./update-meow.sh;
-      };
     in
     {
-      home.packages = [
-        meow
-        updateMeow
-      ];
+      home.packages = [ meow ];
 
       xdg.desktopEntries.meow-sip = {
         name = "Meow";
