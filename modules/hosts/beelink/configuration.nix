@@ -25,6 +25,8 @@ in
     home-manager.users.philip = {
       home.stateVersion = "25.05";
 
+      programs.foot.settings.main.font = "JetBrainsMono Nerd Font Mono:size=12";
+
       services.niri = {
         configFile = ./niri.kdl;
       };
