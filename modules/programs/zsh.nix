@@ -32,6 +32,7 @@
         v = "c && vi .";
         nrs = "sudo nixos-rebuild switch --flake .#$HOST";
         lg = "lazygit";
+        o = if pkgs.stdenv.isDarwin then "open" else "xdg-open";
       };
     };
   };

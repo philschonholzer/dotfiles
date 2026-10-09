@@ -34,8 +34,8 @@
       # The updater stages the URL/hash change and runs nix flake check.
       # Commit pending changes to this file first, then rebuild/switch to apply the update.
       kdriveAppImage = pkgs.fetchurl {
-        url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.7.1-amd64.AppImage";
-        sha256 = "0yj3m8dgl1avmrh43jswm9q09lr0icbb8xnnbqqkw1lall7pyrcd";
+        url = "https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.8.8.1-amd64.AppImage";
+        sha256 = "0mswvfa9n0drw6j3dlif7vv7sl6n87lag0nw9arivks7dbg59645";
       };
       kdrivePkg = pkgs.writeShellScriptBin "kdrive" ''
         exec ${pkgs.appimage-run}/bin/appimage-run ${kdriveAppImage} "$@"
