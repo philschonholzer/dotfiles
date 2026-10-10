@@ -144,7 +144,7 @@
             "{file}"
           ];
 
-          messages.timeout = 4000;
+          messages.timeout = 3000;
 
           spellcheck.languages = [
             "en-US"
