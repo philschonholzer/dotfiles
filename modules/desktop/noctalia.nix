@@ -63,6 +63,10 @@ in
           board = "injoi Produktentwicklung";
           list = "In Arbeit";
         }
+        {
+          board = "Ki-Business etablieren";
+          list = "In Arbeit";
+        }
       ];
     };
 
