@@ -16,6 +16,11 @@
           User = "git";
           IdentityFile = "~/.ssh/id_rsa_bb";
         };
+        "codeberg.org" = {
+          HostName = "codeberg.org";
+          User = "git";
+          IdentityFile = "~/.ssh/codeberg_ed25519";
+        };
         "phischer" = {
           HostName = "91.214.190.25";
           User = "debian";
