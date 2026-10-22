@@ -24,7 +24,6 @@
         };
         "plugin" = [
           "opencode-models-discovery"
-          "vimcode@git+https://github.com/oribarilan/vimcode.git#v0.15.1"
         ];
         "provider" = {
           "ollama" = {
@@ -70,7 +69,7 @@
       name = "OpenCode";
       genericName = "AI Coding Agent";
       comment = "Open OpenCode in Foot terminal";
-      exec = "footclient --app-id=dev.opencode --title=OpenCode opencode --agent assistent";
+      exec = "footclient --app-id=dev.opencode --title=OpenCode opencode";
       icon = ./icons/opencode-dark.svg;
       terminal = false;
       type = "Application";
@@ -81,6 +80,6 @@
       ];
     };
 
-    programs.zsh.shellAliases.oc = "opencode --port";
+    programs.zsh.shellAliases.oc = "opencode";
   };
 }
