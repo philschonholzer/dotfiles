@@ -19,10 +19,6 @@
       url = "github:philschonholzer/dictation";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sqlit = {
-      url = "github:Maxteabag/sqlit";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     niri-autoselect-portal = {
       url = "git+https://codeberg.org/debugloop/niri-autoselect-portal.git";
       inputs.nixpkgs.follows = "nixpkgs";

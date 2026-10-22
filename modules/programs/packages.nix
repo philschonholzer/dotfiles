@@ -73,6 +73,7 @@
         ])
         google-cloud-sql-proxy
         poedit
+        unstable.sqlit-tui
 
         # Office
         libreoffice
