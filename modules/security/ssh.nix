@@ -34,7 +34,7 @@
           ForwardAgent = true;
         };
         "macmini" = {
-          HostName = "192.168.1.65";
+          HostName = "Philips-Mac-mini-2202.local";
           User = "philip";
           IdentityFile = "~/.ssh/id_ed25519_macmini";
           ForwardAgent = true;
