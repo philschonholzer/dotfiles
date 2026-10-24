@@ -38,6 +38,9 @@
           User = "philip";
           IdentityFile = "~/.ssh/id_ed25519_macmini";
           ForwardAgent = true;
+          # No foot terminfo on the mac; pretend to be a plain
+          # xterm-256color over SSH
+          SetEnv.TERM = "xterm-256color";
         };
         "tools.apptiva.ch" = {
           HostName = "tools.apptiva.ch";
