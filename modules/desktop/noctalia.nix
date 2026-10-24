@@ -7,9 +7,7 @@ in
     imports = [
       inputs.noctalia-greeter.nixosModules.default
     ];
-    programs = {
-      noctalia-greeter.enable = true;
-    };
+    services.displayManager.noctalia-greeter.enable = true;
   };
   flake.modules.homeManager.genericLinux = { pkgs, ... }: {
     programs.noctalia = {
