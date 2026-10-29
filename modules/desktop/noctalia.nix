@@ -42,6 +42,10 @@ in
           list = "Potential";
         }
         {
+          board = "HSLU Curriculum Configurator";
+          list = "In Arbeit";
+        }
+        {
           board = "Suva Cycle & Slope Track";
           list = "In Umsetzung";
         }
