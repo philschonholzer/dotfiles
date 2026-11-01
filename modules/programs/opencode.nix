@@ -16,10 +16,15 @@
           };
         };
         "mcp" = {
-          "trello" = {
-            "type" = "remote";
-            "url" = "https://mcp.trello.com/v1";
-            "enabled" = true;
+          "servers" = {
+            "nixos" = {
+              "type" = "local";
+              "command" = [ (lib.getExe pkgs.unstable.mcp-nixos) ];
+            };
+            "trello" = {
+              "type" = "remote";
+              "url" = "https://mcp.trello.com/v1";
+            };
           };
         };
         "plugin" = [

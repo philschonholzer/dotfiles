@@ -14,16 +14,5 @@
       "git -c * push*": "deny",
       "git --git-dir* push*": "deny"
     }
-  },
-  "mcp": {
-    "nixos": {
-      "type": "local",
-      "command": [
-        "nix",
-        "run",
-        "github:utensils/mcp-nixos",
-        "--"
-      ]
-    }
   }
 }
