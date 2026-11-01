@@ -36,6 +36,8 @@ in
 
     services.niri.configFile = ./niri.kdl;
 
+    programs.umbriel.settings.output."eDP-1".scale = 2.0;
+
     programs.home-manager.enable = true;
   };
 
