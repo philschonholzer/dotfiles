@@ -12,7 +12,7 @@ in
   flake.modules.homeManager.genericLinux = { pkgs, ... }: {
     programs.noctalia = {
       package = pkgs.writeShellScriptBin "noctalia" "exec /usr/bin/noctalia \"$@\"";
-      validateConfig = false;
+      checkConfig = false;
     };
   };
   flake.modules.homeManager.base = { ... }: {

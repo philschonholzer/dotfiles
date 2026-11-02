@@ -9,8 +9,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia.url = "github:noctalia-dev/noctalia";
-    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wlavu = {
       url = "github:philschonholzer/wlavu";
       inputs.nixpkgs.follows = "nixpkgs";
