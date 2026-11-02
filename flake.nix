@@ -15,10 +15,6 @@
       url = "github:philschonholzer/wlavu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dictation = {
-      url = "github:philschonholzer/dictation";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     niri-autoselect-portal = {
       url = "git+https://codeberg.org/debugloop/niri-autoselect-portal.git";
       inputs.nixpkgs.follows = "nixpkgs";
