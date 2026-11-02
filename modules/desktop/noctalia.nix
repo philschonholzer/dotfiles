@@ -7,7 +7,10 @@ in
     imports = [
       inputs.noctalia-greeter.nixosModules.default
     ];
-    services.displayManager.noctalia-greeter.enable = true;
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings.session.default = "umbriel";
+    };
   };
   flake.modules.homeManager.genericLinux = { pkgs, ... }: {
     programs.noctalia = {
