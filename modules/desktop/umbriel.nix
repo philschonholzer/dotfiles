@@ -32,8 +32,18 @@ in
           };
           cursor = {
             hide_when_typing = true;
+            hide_timeout_ms = 3000;
           };
         };
+
+        appearance.corner_radius = 12;
+
+        workspace = [
+          { name = "Tel"; }
+          { name = "Mail"; }
+          { name = "Slack"; }
+          { name = "Cal"; }
+        ];
 
         overview = {
           zoom = 0.25;
@@ -44,6 +54,17 @@ in
           # Applications and session
           "Mod+D" = "spawn noctalia msg panel-toggle launcher";
           "Mod+T" = "spawn footclient";
+          "Mod+B" = "spawn umbriel-focus-or-spawn qutebrowser-work qutebrowser-work";
+          "Mod+Shift+B" = "spawn umbriel-focus-or-spawn qutebrowser-private qutebrowser-private";
+          "Mod+E" = "spawn ~/open-trello-board";
+          "Mod+M" = "spawn noctalia msg panel-toggle philip/trello:panel";
+          "Mod+A" =
+            "spawn umbriel-focus-or-spawn dev.opencode footclient --app-id=dev.opencode --title=OpenCode opencode";
+          "Mod+Shift+A" = "spawn umbriel-focus-or-spawn chatgpt webapp-chatgpt";
+          "Mod+N" = "spawn ~/open-repo";
+          "Mod+Shift+N" = "spawn footclient nvim";
+          "Mod+I" = "spawn webapp-deepl";
+          "Mod+Shift+P" = "dpms-off";
           "Mod+W" = {
             action = "window-close";
             repeat = false;
@@ -54,6 +75,24 @@ in
             allow_when_inhibited = true;
             repeat = false;
           };
+
+          # Clipboard and notifications
+          "Mod+Shift+C" = "spawn noctalia msg panel-toggle clipboard";
+          "Mod+Y" = "spawn noctalia msg panel-toggle control-center notifications";
+          "Mod+Shift+Y" = "spawn noctalia msg notification-invoke-latest";
+          "Mod+Ctrl+Y" = "spawn noctalia msg notification-clear-active";
+
+          # Dictation
+          "Mod+G" = "spawn handy --toggle-transcription";
+          "Mod+Shift+G" = "spawn handy --toggle-post-process";
+
+          # Screenshots
+          "Print" = "spawn noctalia msg screenshot-region";
+          "Mod+S" = "spawn noctalia msg screenshot-region";
+          "Ctrl+Print" = "spawn noctalia msg screenshot-fullscreen";
+          "Mod+Ctrl+S" = "spawn noctalia msg screenshot-fullscreen";
+          "Shift+Print" = "spawn noctalia msg screenshot-window";
+          "Mod+Shift+S" = "spawn noctalia msg screenshot-window";
 
           # Change or pause an active single-source screen share.
           "Mod+X" = {
@@ -186,7 +225,12 @@ in
         };
 
         layout = {
-          gap = 5;
+          gap = 8;
+          struts = {
+            top = -6;
+            left = 32;
+            right = 32;
+          };
           extent_presets = [
             0.333
             0.5
@@ -197,6 +241,16 @@ in
 
         window_rule = [
           { blur = true; }
+          {
+            match.app_id = "Bitwarden";
+            block_capture = true;
+          }
+          {
+            match.is_cast_target = true;
+            border_width = 2;
+            border_color_focused = "#f38ba8";
+            border_color_unfocused = "#f38ba8";
+          }
           {
             match.app_id = "^dev.noctalia.Noctalia$";
             default_floating = true;
@@ -236,11 +290,17 @@ in
         ];
 
         layer_rule = [
+          # Umbriel has no layer capture-exclusion rule for Noctalia notifications yet.
           {
             match.namespace = ''^noctalia-(bar-[^"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^"]*)$'';
             blur = true;
             blur_ignore_alpha = 0.5;
             blur_popups = true;
+          }
+          {
+            match.namespace = ''^noctalia-bar-[^"]+$'';
+            blur = false;
+            blur_popups = false;
           }
           {
             match.namespace = "^noctalia-(notification|dock|panel|attached-panel|osd)$";
@@ -298,6 +358,13 @@ in
             source = "${config.programs.umbriel.package}/lib/${name}";
           })
         // {
+          # Keep the compositor running during Home Manager switches to avoid losing the session.
+          # Binary updates take effect on the next login; settings still reload live.
+          "systemd/user/umbriel.service.d/override.conf".text = ''
+            [Unit]
+            X-SwitchMethod=keep-old
+          '';
+
           "systemd/user/xdg-desktop-portal-umbriel.service".source =
             "${portal}/lib/systemd/user/xdg-desktop-portal-umbriel.service";
 
