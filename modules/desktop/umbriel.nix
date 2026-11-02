@@ -35,8 +35,13 @@ in
             hide_timeout_ms = 3000;
           };
         };
+        appearance = {
 
-        appearance.corner_radius = 12;
+          corner_radius = 12;
+          shadow = {
+            enabled = false;
+          };
+        };
 
         workspace = [
           { name = "Tel"; }
@@ -46,7 +51,7 @@ in
         ];
 
         overview = {
-          zoom = 0.25;
+          zoom = 0.2;
         };
 
         # Defining this table replaces the built-in bindings.
@@ -64,7 +69,7 @@ in
           "Mod+N" = "spawn ~/open-repo";
           "Mod+Shift+N" = "spawn footclient nvim";
           "Mod+I" = "spawn webapp-deepl";
-          "Mod+Shift+P" = "dpms-off";
+          "Mod+Shift+Q" = "dpms-off";
           "Mod+W" = {
             action = "window-close";
             repeat = false;
@@ -164,12 +169,12 @@ in
           "Mod+Shift+L" = "column-move-right";
 
           # Window state and layout
-          "Mod+Shift+T" = {
-            action = "window-focus-switch-floating";
-            repeat = false;
-          };
           "Mod+P" = {
             action = "window-toggle-pinned";
+            repeat = false;
+          };
+          "Mod+Shift+P" = {
+            action = "window-focus-switch-floating";
             repeat = false;
           };
           "Mod+F" = {
