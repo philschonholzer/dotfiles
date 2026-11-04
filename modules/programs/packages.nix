@@ -94,6 +94,7 @@
         cameractrls-gtk4
       ];
 
+      programs.spotify-player.enable = true;
     };
   };
 }
