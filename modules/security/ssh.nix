@@ -11,8 +11,8 @@
           User = "git";
           IdentityFile = "~/.ssh/github_ed25519";
         };
-        "bitbucket.org" = {
-          HostName = "bitbucket.org";
+        "ssh.bitbucket.org" = {
+          HostName = "ssh.bitbucket.org";
           User = "git";
           IdentityFile = "~/.ssh/id_rsa_bb";
         };
