@@ -694,6 +694,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
+        "trello-tray": "trello-tray",
         "umbriel": "umbriel",
         "wlavu": "wlavu"
       }
@@ -750,6 +751,27 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
+      }
+    },
+    "trello-tray": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793826007,
+        "narHash": "sha256-MTEJGbvo1ffdpBdfKoEZmkDtERX7o7Zg+HUgvCRtUOQ=",
+        "ref": "main",
+        "rev": "b9d0a3a9477bb81d8379d99d749f617b1a3297f5",
+        "revCount": 19,
+        "type": "git",
+        "url": "https://bitbucket.org/apptivateam/trello-tray.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://bitbucket.org/apptivateam/trello-tray.git"
       }
     },
     "umbriel": {
