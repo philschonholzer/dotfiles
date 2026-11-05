@@ -187,8 +187,8 @@ in
           };
           "Mod+R" = "window-cycle-primary-extent";
           "Mod+Shift+R" = "window-cycle-primary-extent-back";
-          "Mod+Comma" = "window-modify-primary-extent -0.05";
-          "Mod+Period" = "window-modify-primary-extent 0.05";
+          "Mod+Comma" = "window-modify-primary-extent -0.1";
+          "Mod+Period" = "window-modify-primary-extent 0.1";
           "Mod+WheelUp" = "window-focus-left";
           "Mod+WheelDown" = "window-focus-right";
           "Mod+O" = {

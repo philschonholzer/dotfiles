@@ -40,7 +40,7 @@ in
       output."eDP-1" = {
         scale = 2.0;
         layout.scrolling = {
-          default_extent_fraction = 0.7;
+          default_extent_fraction = 0.8;
         };
       };
     };
