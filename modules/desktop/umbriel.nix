@@ -62,7 +62,7 @@ in
           "Mod+B" = "spawn umbriel-focus-or-spawn qutebrowser-work qutebrowser-work";
           "Mod+Shift+B" = "spawn umbriel-focus-or-spawn qutebrowser-private qutebrowser-private";
           "Mod+E" = "spawn ~/open-trello-board";
-          "Mod+M" = "spawn noctalia msg panel-toggle philip/trello:panel";
+          "Mod+M" = "spawn trello-tray --toggle";
           "Mod+A" =
             "spawn umbriel-focus-or-spawn dev.opencode footclient --app-id=dev.opencode --title=OpenCode opencode";
           "Mod+Shift+A" = "spawn umbriel-focus-or-spawn chatgpt webapp-chatgpt";
