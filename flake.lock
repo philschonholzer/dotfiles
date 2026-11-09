@@ -760,11 +760,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793951623,
-        "narHash": "sha256-qgDtohLlkZklkPppe287v3lpchdx6fKpr6CAK62g3Iw=",
+        "lastModified": 1794242685,
+        "narHash": "sha256-y/WSuUGWZv7z/6ggNQGUN1Xi8mJemle+PB5d9O1ug3c=",
         "ref": "main",
-        "rev": "e4d77cdfe48a4c3b8cc1841b71a47310b953b1b3",
-        "revCount": 24,
+        "rev": "b8c117ab41fb6fb0680158a6917d2702c762334e",
+        "revCount": 46,
         "type": "git",
         "url": "https://bitbucket.org/apptivateam/trello-tray.git"
       },
