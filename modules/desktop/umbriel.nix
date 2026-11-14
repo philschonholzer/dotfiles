@@ -20,6 +20,7 @@ in
         include.optional.files = [ ];
 
         general.autostart = [ "noctalia" ];
+
         input = {
           keyboard = {
             layout = "us";
@@ -35,8 +36,17 @@ in
             hide_timeout_ms = 3000;
           };
         };
-        appearance = {
 
+        output = {
+          "LG Electronics LG ULTRAWIDE 312NTKF9B237" = {
+            scale = 1.5;
+          };
+          "Dell Inc. DELL U3818DW 5KC0398F0RYL" = {
+            scale = 1.25;
+          };
+        };
+
+        appearance = {
           corner_radius = 12;
           shadow = {
             enabled = false;

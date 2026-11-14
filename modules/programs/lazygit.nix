@@ -7,10 +7,10 @@
           sidePanelWidth = 0.2;
         };
         git = {
-          pagers = [
+          diffRenderers = [
             {
               colorArgs = "always";
-              pager = "delta --dark --paging=never --syntax-theme base16-256 -s";
+              command = "delta --dark --paging=never --syntax-theme base16-256 -s";
             }
           ];
         };

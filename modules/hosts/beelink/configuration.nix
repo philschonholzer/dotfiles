@@ -14,9 +14,19 @@ in
           self.modules.homeManager.nixos
           self.modules.homeManager.x86_64
           self.modules.homeManager.amd
+          self.modules.homeManager.beelink
         ];
       }
     ];
+  };
+
+  flake.modules.homeManager.beelink = { pkgs, ... }: {
+    programs.umbriel.settings = {
+      input.mouse = {
+        natural_scroll = true;
+        left_handed = true;
+      };
+    };
   };
 
   flake.modules.nixos.beelink = {

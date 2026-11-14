@@ -10,7 +10,7 @@
         morgen
         slack
         freelens-bin
-        unstable.onlyoffice-desktopeditors
+        onlyoffice-desktopeditors # Stable still permits the GTK2 dependency.
         losslesscut-bin
       ];
     };
@@ -41,7 +41,6 @@
         keymapp
         p7zip
         fastfetch
-        gnome-calculator
         gftp
         parsec-bin
         wl-clipboard
@@ -79,6 +78,9 @@
         libreoffice
         papers
         xournalpp
+        unstable.pdfcraft
+        unstable.gridcraft
+        unstable.wordcraft
 
         # Image editor and viewers
         loupe # modern image viewer

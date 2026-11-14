@@ -2,6 +2,7 @@
   flake.modules.homeManager.base = {
     services.espanso = {
       enable = true;
+      waylandSupport = true;
       configs.default.show_notifications = false;
       matches = {
         base = {
