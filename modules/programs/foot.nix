@@ -1,20 +1,19 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.linux =
     {
       config,
       lib,
-      pkgs,
       ...
     }:
     let
       palette = config.colorScheme.palette;
     in
     {
-      home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
+      home.sessionVariables = {
         TERMINAL = "foot";
       };
 
-      programs.zsh.initContent = lib.mkIf pkgs.stdenv.isLinux ''
+      programs.zsh.initContent = ''
         if [[ $TERM == foot* && -z ''${_foot_cursor_initialized-} ]]; then
           typeset -g _foot_cursor_initialized=1
 
@@ -41,7 +40,7 @@
         fi
       '';
 
-      programs.foot = lib.mkIf pkgs.stdenv.isLinux {
+      programs.foot = {
         enable = true;
         settings = {
           main = {

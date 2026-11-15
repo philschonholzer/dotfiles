@@ -29,3 +29,10 @@ The system-wide environment managed for a NixOS host. It can include home config
 
 **Home configuration**:
 The per-user environment managed by this repository on NixOS, Fedora, or macOS. It does not imply management of the underlying operating system.
+
+**Home Manager aspect**:
+A named grouping of per-user settings that can be combined with other aspects to form a home configuration. The Linux aspect contains settings shared by NixOS and other Linux environments, while the NixOS and generic Linux aspects contain settings specific to those environments.
+_Avoid_: Home Manager type when referring to a named grouping of settings.
+
+**Web app**:
+A named application dedicated to an online service, with a browsing session separate from the Work and Private browsers. Two web apps for the same service can have separate login sessions.

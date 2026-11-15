@@ -1,9 +1,9 @@
 { ... }:
 {
-  flake.modules.homeManager.base =
-    { lib, pkgs, ... }:
+  flake.modules.homeManager.linux =
+    { ... }:
     {
-      xdg.desktopEntries.nvim-terminal = lib.mkIf pkgs.stdenv.isLinux {
+      xdg.desktopEntries.nvim-terminal = {
         name = "Neovim (in terminal)";
         genericName = "Text Editor";
         comment = "Edit text files in Neovim within Foot terminal";

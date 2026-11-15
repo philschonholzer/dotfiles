@@ -1,9 +1,9 @@
 { ... }:
 {
-  flake.modules.homeManager.base =
-    { lib, pkgs, ... }:
+  flake.modules.homeManager.linux =
+    { ... }:
     {
-      home.file."open-repo" = lib.mkIf pkgs.stdenv.isLinux {
+      home.file."open-repo" = {
         text = ''
           if ! selection=$(
             fd -H -d 3 -t d -g '.git' ~/Projects ~/nixos-config --exec dirname |

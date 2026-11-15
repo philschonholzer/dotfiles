@@ -84,21 +84,23 @@
         };
       };
 
-      xdg.desktopEntries.opencode = lib.mkIf pkgs.stdenv.isLinux {
-        name = "OpenCode";
-        genericName = "AI Coding Agent";
-        comment = "Open OpenCode in Foot terminal";
-        exec = "footclient --app-id=dev.opencode --title=OpenCode opencode";
-        icon = ./icons/opencode-dark.svg;
-        terminal = false;
-        type = "Application";
-        settings.StartupWMClass = "dev.opencode";
-        categories = [
-          "Development"
-          "Utility"
-        ];
-      };
-
       programs.zsh.shellAliases.oc = "opencode";
     };
+
+  flake.modules.homeManager.linux = { ... }: {
+    xdg.desktopEntries.opencode = {
+      name = "OpenCode";
+      genericName = "AI Coding Agent";
+      comment = "Open OpenCode in Foot terminal";
+      exec = "footclient --app-id=dev.opencode --title=OpenCode opencode";
+      icon = ./icons/opencode-dark.svg;
+      terminal = false;
+      type = "Application";
+      settings.StartupWMClass = "dev.opencode";
+      categories = [
+        "Development"
+        "Utility"
+      ];
+    };
+  };
 }

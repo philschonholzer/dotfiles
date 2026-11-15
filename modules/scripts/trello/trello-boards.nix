@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.base = { pkgs, config, ... }: {
+  flake.modules.homeManager.base = { config, ... }: {
     home.file = {
       "fetch-trello-boards.sh" = {
         source = ./fetch-boards.sh;
@@ -21,15 +21,7 @@
             exit 1
           fi
 
-          DEFAULT_CONFIG="${config.home.homeDirectory}/.config/qutebrowser/config.py"
-
-          exec ${config.programs.qutebrowser.package}/bin/qutebrowser \
-            --basedir "${config.home.homeDirectory}/.local/share/qutebrowser-trello" \
-            --config-py "$DEFAULT_CONFIG" \
-            --set "tabs.tabs_are_windows" "true" \
-            --desktop-file-name "trello" \
-            --target window \
-            --override-restore \
+          exec "${config.home.profileDirectory}/bin/webapp-trello" \
             "$board" \
             "$@"
         '';

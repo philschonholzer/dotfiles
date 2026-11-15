@@ -1,6 +1,6 @@
 { ... }: {
-  flake.modules.homeManager.base = { pkgs, lib, ... }: {
-    xdg.desktopEntries."org.gnome.Settings" = lib.mkIf pkgs.stdenv.isLinux {
+  flake.modules.homeManager.linux = { ... }: {
+    xdg.desktopEntries."org.gnome.Settings" = {
       name = "GNOME Settings";
       comment = "Configure GNOME settings";
       exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
