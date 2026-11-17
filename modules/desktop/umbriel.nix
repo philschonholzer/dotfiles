@@ -35,6 +35,10 @@ in
             hide_when_typing = true;
             hide_timeout_ms = 3000;
           };
+          focus = {
+            follows_mouse = "sloppy";
+            follows_mouse_max_scroll = 0;
+          };
         };
 
         output = {
