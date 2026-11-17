@@ -32,6 +32,7 @@ in
             disable_while_typing = true;
           };
           cursor = {
+            follows_focus = true;
             hide_when_typing = true;
             hide_timeout_ms = 3000;
           };
@@ -173,6 +174,7 @@ in
           "Mod+K" = "window-focus-or-workspace-up";
           "Mod+L" = "window-focus-right";
           "Mod+F1" = "window-focus-next";
+          "Mod+C" = "column-center";
           "Mod+Shift+Left" = "column-move-left";
           "Mod+Shift+Down" = "window-move-or-workspace-down";
           "Mod+Shift+Up" = "window-move-or-workspace-up";
