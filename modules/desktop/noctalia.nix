@@ -386,10 +386,12 @@ in
           source = "builtin";
 
           templates = {
+            enable_builtin_templates = true;
             builtin_ids = [
               "btop"
               "gtk3"
               "gtk4"
+              "luciole"
               "qt"
             ];
             community_ids = [ ];

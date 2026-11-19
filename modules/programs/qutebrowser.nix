@@ -136,7 +136,7 @@
               directory = "${config.home.homeDirectory}/Downloads/";
               prompt = false;
             };
-            open_dispatcher = "nautilus";
+            open_dispatcher = if pkgs.stdenv.isLinux then "xdg-open" else "open";
           };
 
           editor.command = [
