@@ -15,7 +15,10 @@ in
       inherit system;
       config = {
         allowUnfree = true;
-        permittedInsecurePackages = [ "electron-39.8.10" ];
+        permittedInsecurePackages = [
+          "electron-39.8.10"
+          "qutebrowser-3.7.0"
+        ];
       };
       overlays = builtins.attrValues inputs.self.overlays;
     }
