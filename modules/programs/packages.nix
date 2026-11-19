@@ -72,7 +72,10 @@
         ])
         google-cloud-sql-proxy
         poedit
-        sqlit-tui
+        (sqlit-tui.overridePythonAttrs (old: {
+          dependencies = (old.dependencies or [ ]) ++ [ python3Packages.pymysql ];
+          pythonImportsCheck = (old.pythonImportsCheck or [ ]) ++ [ "pymysql" ];
+        }))
 
         # Office
         libreoffice
