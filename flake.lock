@@ -53,6 +53,26 @@
         "type": "github"
       }
     },
+    "artcraft": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794519742,
+        "narHash": "sha256-YI41WSTM0UHbY1HqvUO2ZQ0hmwJn/XsibH4ZkBCsiW0=",
+        "owner": "devitek",
+        "repo": "artcraft-nixos",
+        "rev": "7d7369245e30f5f0b997609773e0e4e7e4710b17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devitek",
+        "repo": "artcraft-nixos",
+        "type": "github"
+      }
+    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -685,6 +705,7 @@
       "inputs": {
         "affinity-nix": "affinity-nix",
         "agenix-rekey": "agenix-rekey",
+        "artcraft": "artcraft",
         "flake-parts": "flake-parts_3",
         "home-manager": "home-manager",
         "import-tree": "import-tree",

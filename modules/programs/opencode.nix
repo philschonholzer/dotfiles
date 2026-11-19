@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     { lib, pkgs, ... }:
@@ -34,6 +35,17 @@
               "trello" = {
                 "type" = "remote";
                 "url" = "https://mcp.trello.com/v1";
+              };
+            }
+            // lib.optionalAttrs (inputs.artcraft.packages ? ${pkgs.stdenv.hostPlatform.system}) {
+              "figcraft" = {
+                "type" = "local";
+                "command" = [
+                  (lib.getExe' inputs.artcraft.packages.${pkgs.stdenv.hostPlatform.system}.figcraft "figcraft-cli")
+                  "mcp"
+                  "--attach"
+                  "7979"
+                ];
               };
             };
           };
