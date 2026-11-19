@@ -6,6 +6,8 @@
       settings = {
         add_newline = false;
         scan_timeout = 200;
+        # Avoid blocking the prompt on symlinks into unavailable network mounts.
+        follow_symlinks = false;
         gcloud = {
           disabled = true;
         };
