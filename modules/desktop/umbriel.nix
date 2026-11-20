@@ -1,13 +1,43 @@
 { inputs, ... }:
 let
   inherit (inputs) umbriel;
+  portalFor = pkgs: umbriel.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-umbriel;
+  autoShareFor =
+    pkgs:
+    pkgs.writeShellApplication {
+      name = "umbriel-auto-share";
+      runtimeInputs = [
+        pkgs.coreutils
+        pkgs.jq
+      ];
+      text = ''
+        request=$(cat)
+        if selection=$(jq -ce '
+          select((.types // []) | index("monitor"))
+          | ([.outputs[] | select(.focused == true)][0]
+              // (if (.outputs | length) == 1 then .outputs[0] else null end))
+          | select(.name | type == "string" and length > 0)
+          | {selections: [{kind: "monitor", output: .name}], dynamic: true}
+        ' <<< "$request"); then
+          printf '%s\n' "$selection"
+        else
+          # Keep the picker for window-only requests or an ambiguous output.
+          exec ${portalFor pkgs}/libexec/umbriel-share-picker <<< "$request"
+        fi
+      '';
+    };
 in
 {
-  flake.modules.nixos.base = {
-    imports = [ umbriel.nixosModules.default ];
+  flake.modules.nixos.base =
+    { pkgs, ... }:
+    {
+      imports = [ umbriel.nixosModules.default ];
 
-    programs.umbriel.enable = true;
-  };
+      programs.umbriel = {
+        enable = true;
+        portalPackage = portalFor pkgs;
+      };
+    };
 
   flake.modules.homeManager.base = { config, lib, ... }: {
     imports = [ umbriel.homeModules.default ];
@@ -340,6 +370,23 @@ in
     };
   };
 
+  # User portal configuration replaces the system file, including its defaults.
+  # Keep Umbriel available when other modules add interface-specific backends.
+  flake.modules.homeManager.linux =
+    { pkgs, ... }:
+    {
+      xdg.portal.config.umbriel.default = [
+        "umbriel"
+        "gtk"
+      ];
+
+      # Automatically approves monitor capture requests from any portal client.
+      xdg.configFile."xdg-desktop-portal-umbriel/config.toml".text = ''
+        [screencast]
+        chooser_cmd = "${autoShareFor pkgs}/bin/umbriel-auto-share"
+      '';
+    };
+
   flake.modules.homeManager.genericLinux =
     {
       config,
@@ -348,7 +395,7 @@ in
       ...
     }:
     let
-      portal = umbriel.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-umbriel;
+      portal = portalFor pkgs;
     in
     {
       xdg.portal = {
@@ -358,7 +405,6 @@ in
           pkgs.xdg-desktop-portal-gtk
         ];
         config.umbriel = {
-          default = [ "gtk" ];
           "org.freedesktop.impl.portal.ScreenCast" = [ "umbriel" ];
           "org.freedesktop.impl.portal.Screenshot" = [ "umbriel" ];
           "org.freedesktop.impl.portal.InputCapture" = [ "umbriel" ];
