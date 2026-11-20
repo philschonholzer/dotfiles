@@ -58,6 +58,8 @@ in
           };
         };
 
+        workspaces.back_and_forth = true;
+
         workspace = [
           { name = "Tel"; }
           { name = "Mail"; }
