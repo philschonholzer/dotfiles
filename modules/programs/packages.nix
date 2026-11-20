@@ -75,6 +75,8 @@
         (sqlit-tui.overridePythonAttrs (old: {
           dependencies = (old.dependencies or [ ]) ++ [ python3Packages.pymysql ];
           pythonImportsCheck = (old.pythonImportsCheck or [ ]) ++ [ "pymysql" ];
+          # Upstream lists this path in disabledTests, which does not exclude the directory.
+          disabledTestPaths = (old.disabledTestPaths or [ ]) ++ [ "tests/ui" ];
         }))
 
         # Office
